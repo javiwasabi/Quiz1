@@ -1,12 +1,19 @@
-import React from 'react';
-import { ButtonStart, ButtonNext, Choice } from '../components/buttons';
+import React from "react";
+import { ButtonStart } from "../components/buttons";
+
 const Vie: React.FC = () => {
   return (
-    <div
-      className="h-screen bg-cover bg-center"
-      style={{ backgroundImage: 'url(/images/first-image.jpg)' }}
-    >
-      <ButtonStart />
+    <div className="relative h-screen w-screen">
+
+      <img
+        src="./first-image.png"
+        alt="Background"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+
+      <div className="absolute bottom-[30%] left-[20%] z-10">
+        <ButtonStart />
+      </div>
     </div>
   );
 };

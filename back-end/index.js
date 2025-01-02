@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 // Conexión a MongoDB
-mongoose.connect('mongodb://localhost:27017', {
+mongoose.connect('mongodb://localhost:27017/Quiz1', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -39,7 +39,7 @@ app.post('/api/results', async (req, res) => {
 });
 
 // Iniciar el servidor
-app.listen(5000, () => {
+app.listen(3000, () => {
   console.log('Servidor en puerto 5000');
 });
 
