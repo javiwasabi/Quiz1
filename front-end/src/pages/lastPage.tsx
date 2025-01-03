@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Last: React.FC = () => {
   const [email, setEmail] = useState<string>("");
-  const [resultados, setResultados] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
 
+  const [finalScore, setFinalScore] = useState<string | null>("");
+
+  useEffect(() => {
+    
+    const score = sessionStorage.getItem("finalScore");
+    if (score) {
+      setFinalScore(score);
+    }
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email || !resultados) {
+    if (!email || !finalScore) {
       setError("Por favor, complete todos los campos.");
       return;
     }
@@ -22,12 +31,11 @@ const Last: React.FC = () => {
     try {
       await axios.post("http://localhost:5000/api/results", {
         email,
-        resultados,
+        resultados: finalScore,
       });
 
       setSuccess(true);
       setEmail("");
-      setResultados("");
     } catch (error) {
       setError("Hubo un error al enviar los datos.");
     } finally {
@@ -44,9 +52,11 @@ const Last: React.FC = () => {
         className="absolute inset-0 h-full w-full object-cover z-0"
       />
 
-      {/* Contenido sobre la imagen */}
+    
       <div className="relative flex flex-col items-center justify-center h-full bg-black bg-opacity-50 z-10">
-        <h1 className="text-white text-5xl font-bold mb-8">¡Resultados Obtenidos: X !</h1>
+        <h1 className="text-white text-5xl font-bold mb-8">
+          SCORE: {finalScore}
+        </h1>
 
         {success && (
           <div className="mb-4 text-green-500">
@@ -70,13 +80,6 @@ const Last: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Correo Electrónico"
             className="p-3 border border-gray-300 rounded w-80"
-            required
-          />
-          <textarea
-            value={resultados}
-            onChange={(e) => setResultados(e.target.value)}
-            placeholder="Resultados obtenidos"
-            className="p-3 border border-gray-300 rounded w-80 h-40"
             required
           />
           <button

@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ButtonNext } from "../components/buttons";
 import Card from "../components/questions";
+import { useNavigate } from "react-router-dom"; // Importar useNavigate para redirigir
 
 const Middle: React.FC = () => {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [answered, setAnswered] = useState(false); // Estado para controlar si se respondió
+  const [isFlipped, setIsFlipped] = useState(false); // Estado para controlar el flip de la carta
+  const [questionCount, setQuestionCount] = useState(0); // Contador de preguntas respondidas
+
+  const navigate = useNavigate(); // Inicializar useNavigate
 
   const questions = [
     {
@@ -14,10 +20,11 @@ const Middle: React.FC = () => {
       context: "This person was an inventor",
     },
     {
-      imageUrl: "https://example.com/murderer.jpg",
+      imageUrl: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/MSNBC/Components/Photo/_new/081111-arthur-shawcross-vsmall-12p.jpg",
       correctAnswer: "Murderer",
       context: "He was a big criminal.",
     },
+   
   ];
 
   const handleAnswer = (answer: string) => {
@@ -27,12 +34,37 @@ const Middle: React.FC = () => {
     if (isAnswerCorrect) {
       setScore((prevScore) => prevScore + 1);
     }
+
+    setAnswered(true); // Marca la pregunta como respondida
+    setIsFlipped(true); // Voltea la carta después de elegir una respuesta
+
+    // Incrementa el contador de preguntas respondidas
+    setQuestionCount((prevCount) => prevCount + 1);
   };
 
   const handleNextQuestion = () => {
+    // Si se han respondido todas las preguntas, redirige a la página final
+    if (questionCount >= questions.length) {
+      // Guardar el puntaje en el sessionStorage (puedes usar localStorage si prefieres)
+      sessionStorage.setItem("finalScore", score.toString());
+      navigate("/final"); // Redirige a /final
+      return;
+    }
+
+    // Avanza a la siguiente pregunta
     setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length);
     setIsCorrect(false);
+    setAnswered(false); // Reinicia el estado de respuesta para la siguiente pregunta
+    setIsFlipped(false); // Resetea el flip para la nueva pregunta
   };
+
+  useEffect(() => {
+    // Si el contador llega al número total de preguntas, redirige automáticamente
+    if (questionCount >= questions.length) {
+      sessionStorage.setItem("finalScore", score.toString()); // Guardar el puntaje
+      navigate("/final"); // Redirige a /final
+    }
+  }, [questionCount, score, navigate]);
 
   return (
     <div className="relative h-screen w-screen">
@@ -42,33 +74,40 @@ const Middle: React.FC = () => {
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      <div className="absolute top-4 right-4 z-10">
-        <ButtonNext onClick={handleNextQuestion} />
-      </div>
+      {/* Botón Next solo aparece cuando se responde */}
+      {answered && (
+        <div className="absolute bottom-[20%] left-1/2 transform -translate-x-1/2 z-10 flex gap-x-8">
+          <ButtonNext onClick={handleNextQuestion} />
+        </div>
+      )}
 
-      <div className="w-1/2 h-1/2 mx-auto flex justify-center items-center bg-gray-100">
+      <div className="w-1/2 h-1/2 mx-auto flex justify-center items-center bg-gray-100  ">
         <Card
           imageUrl={questions[currentQuestion].imageUrl}
           context={questions[currentQuestion].context}
           score={score}
           isCorrect={isCorrect}
+          isFlipped={isFlipped} // Pasa el estado del flip al componente Card
         />
       </div>
 
-      <div className="absolute bottom-[20%] left-1/2 transform -translate-x-1/2 z-10 flex space-x-4">
+      {/* Los botones de opción solo aparecen si no se ha respondido */}
+      {!answered && (
+        <div className="absolute bottom-[20%] left-1/2 transform -translate-x-1/2 z-10 flex gap-x-8">
         <button
-          className="px-5 py-5 bg-blue-600 text-white text-md opacity-70"
+          className="relative bg-blue-600 text-white font-medium text-lg py-4 px-8 rounded-full transition-all before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-blue-500 before:rounded-full before:content-[''] before:transition-all hover:top-0 hover:left-0 hover:before:top-0 hover:before:left-0 active:top-1 active:left-1 active:before:top-1 active:before:left-1 z-10"
           onClick={() => handleAnswer("Murderer")}
         >
           Murderer
         </button>
         <button
-          className="px-5 py-5 bg-red-600 text-white text-md opacity-70"
+          className="relative bg-red-600 text-white font-medium text-lg py-4 px-8 rounded-full transition-all before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-red-500 before:rounded-full before:content-[''] before:transition-all hover:top-0 hover:left-0 hover:before:top-0 hover:before:left-0 active:top-1 active:left-1 active:before:top-1 active:before:left-1 z-10"
           onClick={() => handleAnswer("Inventor")}
         >
           Inventor
         </button>
       </div>
+      )}
     </div>
   );
 };

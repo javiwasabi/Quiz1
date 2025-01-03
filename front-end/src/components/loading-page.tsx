@@ -4,13 +4,12 @@ const LoadingPage: React.FC<{ onLoadComplete: () => void }> = ({ onLoadComplete 
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-
     setTimeout(() => {
-      setFadeOut(true);  
+      setFadeOut(true);  // Inicia la transición de opacidad
       setTimeout(() => {
-        onLoadComplete();  
-      }, 500); 
-    }, 2000);  
+        onLoadComplete();  // Llama a la función para ocultar el loader después de la animación
+      }, 500); // Espera a que la animación termine antes de continuar
+    }, 2000);  // El loader aparece por 2 segundos
   }, [onLoadComplete]);
 
   return (
