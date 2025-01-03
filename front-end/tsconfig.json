@@ -12,11 +12,12 @@
       "moduleResolution": "Node",
       "resolveJsonModule": true,
       "isolatedModules": true,
-      "jsx": "react-jsx"
+      "jsx": "react-jsx",
+      "types": ["jest", "@testing-library/jest-dom"]
     },
     "include": [
-      "src/**/*",  // Esto incluye todos los archivos de la carpeta src, incluyendo tu archivo de declaración
-      "src/declaration.d.ts"  // Asegúrate de que tu archivo de declaración sea incluido
+      "src/**/*",  
+      "src/declaration.d.ts"  
     ]
   }
   

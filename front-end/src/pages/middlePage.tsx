@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { ButtonNext } from "../components/buttons";
 import Card from "../components/questions";
-import { useNavigate } from "react-router-dom"; // Importar useNavigate para redirigir
+import { useNavigate } from "react-router-dom"; 
 
 const Middle: React.FC = () => {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [answered, setAnswered] = useState(false); // Estado para controlar si se respondió
-  const [isFlipped, setIsFlipped] = useState(false); // Estado para controlar el flip de la carta
-  const [questionCount, setQuestionCount] = useState(0); // Contador de preguntas respondidas
+  const [answered, setAnswered] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false); 
+  const [questionCount, setQuestionCount] = useState(0); 
 
-  const navigate = useNavigate(); // Inicializar useNavigate
+  const navigate = useNavigate(); 
 
   const questions = [
     {
@@ -35,34 +35,32 @@ const Middle: React.FC = () => {
       setScore((prevScore) => prevScore + 1);
     }
 
-    setAnswered(true); // Marca la pregunta como respondida
-    setIsFlipped(true); // Voltea la carta después de elegir una respuesta
+    setAnswered(true);
+    setIsFlipped(true); 
 
-    // Incrementa el contador de preguntas respondidas
     setQuestionCount((prevCount) => prevCount + 1);
   };
 
   const handleNextQuestion = () => {
-    // Si se han respondido todas las preguntas, redirige a la página final
+    
     if (questionCount >= questions.length) {
-      // Guardar el puntaje en el sessionStorage (puedes usar localStorage si prefieres)
+     
       sessionStorage.setItem("finalScore", score.toString());
-      navigate("/final"); // Redirige a /final
+      navigate("/final");
       return;
     }
 
-    // Avanza a la siguiente pregunta
     setCurrentQuestion((prevIndex) => (prevIndex + 1) % questions.length);
     setIsCorrect(false);
-    setAnswered(false); // Reinicia el estado de respuesta para la siguiente pregunta
-    setIsFlipped(false); // Resetea el flip para la nueva pregunta
+    setAnswered(false);
+    setIsFlipped(false); 
   };
 
   useEffect(() => {
-    // Si el contador llega al número total de preguntas, redirige automáticamente
+    
     if (questionCount >= questions.length) {
-      sessionStorage.setItem("finalScore", score.toString()); // Guardar el puntaje
-      navigate("/final"); // Redirige a /final
+      sessionStorage.setItem("finalScore", score.toString()); 
+      navigate("/final"); 
     }
   }, [questionCount, score, navigate]);
 
@@ -87,11 +85,11 @@ const Middle: React.FC = () => {
           context={questions[currentQuestion].context}
           score={score}
           isCorrect={isCorrect}
-          isFlipped={isFlipped} // Pasa el estado del flip al componente Card
+          isFlipped={isFlipped} 
         />
       </div>
 
-      {/* Los botones de opción solo aparecen si no se ha respondido */}
+
       {!answered && (
         <div className="absolute bottom-[20%] left-1/2 transform -translate-x-1/2 z-10 flex gap-x-8">
         <button
