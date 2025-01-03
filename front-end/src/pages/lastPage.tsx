@@ -72,7 +72,13 @@ const Last: React.FC = () => {
             className="p-3 border border-gray-300 rounded w-80"
             required
           />
-         
+          <textarea
+            value={resultados}
+            onChange={(e) => setResultados(e.target.value)}
+            placeholder="Resultados obtenidos"
+            className="p-3 border border-gray-300 rounded w-80 h-40"
+            required
+          />
           <button
             type="submit"
             disabled={loading}
