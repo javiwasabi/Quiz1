@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactCardFlip from "react-card-flip";
 
 interface CardProps {
@@ -6,33 +6,35 @@ interface CardProps {
   context: string;
   score: number;
   isCorrect: boolean;
-  isFlipped: boolean; // Prop para controlar el flip
+  isFlipped: boolean;
 }
 
 const Card: React.FC<CardProps> = ({ imageUrl, context, score, isCorrect, isFlipped }) => {
   return (
-    <div className="flex flex-col justify-center items-center w-full h-screen mt-[20%]">
+    <div className="flex flex-col justify-center items-center w-[90%] h-auto sm:w-[80%] sm:h-[70%] lg:w-[60%] mt-[10%] mx-auto">
       <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-        {/* Cara frontal */}
-        <div className="w-56 h-72 bg-white shadow-lg rounded-lg overflow-hidden relative flex flex-col items-center justify-end mt-[20%]">
+        {/* Front side */}
+        <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-8">
           <img
             src={imageUrl}
-            alt="Imagen Polaroid"
-            className="w-2/3 h-2/3 object-cover z-10 rounded-md"
+            alt="Card"
+            className="w-full h-48 sm:h-64 object-cover rounded-lg"
           />
-          {/* Texto inferior */}
-          <div className="w-full p-2 text-center text-sm text-black z-10 bg-opacity-75 bg-black">
-            <p className="text-white">Choose</p>
-          </div>
+          <p className="mt-4 text-sm sm:text-base lg:text-lg  text-gray-700 font-frijole">
+            Can you guess who this is?
+          </p>
         </div>
 
-        {/* Cara trasera */}
-        <div className="w-56 h-72 bg-gray-800 opacity-95 flex flex-col justify-center items-center rounded-lg shadow-lg text-white">
-          <p className="text-center text-lg font-bold">
-            {isCorrect ? "¡Nice!" : "Wrong"}
+        {/* Back side */}
+        <div className="flex flex-col items-center bg-gray-800 shadow-lg rounded-lg p-4 sm:p-8 text-white">
+          <p className="text-sm sm:text-base lg:text-lg">{context}</p>
+          <p
+            className={`mt-4 text-lg sm:text-xl font-bold ${
+              isCorrect ? "text-green-500" : "text-red-500"
+            }`}>
+            {isCorrect ? "Correct!" : "Wrong!"}
           </p>
-          <p className="text-center mt-2">{context}</p>
-          <p className="text-center mt-4">Puntaje: {score}</p>
+          <p className="text-sm sm:text-base">Score: {score}</p>
         </div>
       </ReactCardFlip>
     </div>
@@ -40,4 +42,5 @@ const Card: React.FC<CardProps> = ({ imageUrl, context, score, isCorrect, isFlip
 };
 
 export default Card;
+
 

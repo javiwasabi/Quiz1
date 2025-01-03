@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}",],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        title:["Sixtyfour", "serif"],
+        frijole:[ "Frijole", "serif"],
+      }
+    },
   },
   plugins: [],
 }

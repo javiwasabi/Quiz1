@@ -10,7 +10,6 @@ const Last: React.FC = () => {
   const [finalScore, setFinalScore] = useState<string | null>("");
 
   useEffect(() => {
-    
     const score = sessionStorage.getItem("finalScore");
     if (score) {
       setFinalScore(score);
@@ -21,7 +20,7 @@ const Last: React.FC = () => {
     e.preventDefault();
 
     if (!email || !finalScore) {
-      setError("Por favor, complete todos los campos.");
+      setError("Please fill out all fields.");
       return;
     }
 
@@ -37,7 +36,7 @@ const Last: React.FC = () => {
       setSuccess(true);
       setEmail("");
     } catch (error) {
-      setError("Hubo un error al enviar los datos.");
+      setError("There was an error submitting your data.");
     } finally {
       setLoading(false);
     }
@@ -45,49 +44,34 @@ const Last: React.FC = () => {
 
   return (
     <div className="relative h-screen w-screen">
-      {/* Imagen de fondo */}
       <img
         src="./final-image.webp"
         alt="Background"
-        className="absolute inset-0 h-full w-full object-cover z-0"
+        className="absolute inset-0 h-full w-full object-cover"
       />
-
-    
-      <div className="relative flex flex-col items-center justify-center h-full bg-black bg-opacity-50 z-10">
-        <h1 className="text-white text-5xl font-bold mb-8">
+      <div className="relative flex flex-col items-center justify-center h-full bg-black bg-opacity-50">
+        <h1 className="text-white text-3xl md:text-5xl font-bold mb-6">
           SCORE: {finalScore}
         </h1>
-
-        {success && (
-          <div className="mb-4 text-green-500">
-            <p>¡Datos enviados correctamente!</p>
-          </div>
-        )}
-
-        {error && (
-          <div className="mb-4 text-red-500">
-            <p>{error}</p>
-          </div>
-        )}
-
+        {success && <p className="text-green-400 mb-4">Data sent successfully!</p>}
+        {error && <p className="text-red-400 mb-4">{error}</p>}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col items-center space-y-4 bg-white p-6 rounded-lg shadow-lg"
+          className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg space-y-4"
         >
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Correo Electrónico"
-            className="p-3 border border-gray-300 rounded w-80"
-            required
+            placeholder="Email Address"
+            className="p-2 border border-gray-300 rounded-md w-full md:w-96"
           />
           <button
             type="submit"
             disabled={loading}
-            className="px-10 py-3 bg-blue-500 text-white text-xl rounded-full"
+            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
           >
-            {loading ? "Enviando..." : "Enviar"}
+            {loading ? "Sending..." : "Submit"}
           </button>
         </form>
       </div>
