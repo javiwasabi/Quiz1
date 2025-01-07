@@ -28,6 +28,18 @@ const Middle: React.FC = () => {
       correctAnswer: "Murderer",
       context: "He was a big criminal.",
     },
+    {
+      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Ted_Bundy_headshot.jpg",
+      correctAnswer: "Murderer",
+      context: "He was a big criminal.",
+    },  {
+      imageUrl: " https://retro-hardware.com/wp-content/uploads/2019/05/KenThompson-240x300.jpg",
+      correctAnswer: "Murderer",
+      context: "He was a big criminal.",
+    },
+
+   
+    
   ];
 
   const handleAnswer = (answer: string) => {

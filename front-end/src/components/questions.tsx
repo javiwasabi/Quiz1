@@ -18,7 +18,7 @@ interface CardProps {
   isCorrect: boolean;
   isFlipped: boolean;
 }
-export const Card: React.FC<CardProps> = ({ imageUrl, context, isCorrect, isFlipped }) => {
+export const Card: React.FC<CardProps> = ({ imageUrl, context, isCorrect, isFlipped, score }) => {
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
 
@@ -47,9 +47,14 @@ export const Card: React.FC<CardProps> = ({ imageUrl, context, isCorrect, isFlip
       >
         {isFlipped ? (
           <div className="p-4">
-            <p className=" sm:text-base lg:text-lg text-2xl mt-4 font-Merriweather" style={{ animation: "blink 0.5s step-end infinite" }}>
+            <p
+              data-testid={`typed-text-${score}`} // Agregar un identificador único
+              className="sm:text-base lg:text-lg text-2xl mt-4 font-Merriweather"
+              style={{ animation: "blink 0.5s step-end infinite" }}
+            >
               {typedText}
             </p>
+
           
           </div>
         ) : (

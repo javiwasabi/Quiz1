@@ -34,31 +34,3 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick }) => {
 };
 
 
-interface ChoiceProps {
-  title: string;
-  route: string;
-}
-
-export const Choice1: React.FC<ChoiceProps> = ({ title, route }) => {
-  return (
-    <div className="flex flex-col items-center">
-      <Link to={route}>
-        <button className="relative bg-blue-600 text-white font-medium text-lg py-4 px-8 rounded-full transition-all before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-blue-500 before:rounded-full before:content-[''] before:transition-all hover:top-0 hover:left-0 hover:before:top-0 hover:before:left-0 active:top-1 active:left-1 active:before:top-1 active:before:left-1">
-          {title}
-        </button>
-      </Link>
-    </div>
-  );
-};
-
-export const Choice2: React.FC<ChoiceProps> = ({ title, route }) => {
-  return (
-    <div className="flex flex-col items-center">
-      <Link to={route}>
-        <button className="relative bg-red-600 text-white font-medium text-lg py-4 px-8 rounded-full transition-all before:absolute before:top-1 before:left-1 before:w-full before:h-full before:bg-red-500 before:rounded-full before:content-[''] before:transition-all hover:top-0 hover:left-0 hover:before:top-0 hover:before:left-0 active:top-1 active:left-1 active:before:top-1 active:before:left-1">
-          {title}
-        </button>
-      </Link>
-    </div>
-  );
-};
