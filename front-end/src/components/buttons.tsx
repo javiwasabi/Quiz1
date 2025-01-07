@@ -6,8 +6,8 @@ export const ButtonStart: React.FC = () => {
     <div className="flex flex-col items-center justify-center h-[10%] w-full font-title">
       <Link to="/question">
         <button
-          className="relative -top-1 -left-1 bg-gray-800 py-8 px-8 sm:py-20 sm:px-10 font-medium uppercase text-white text-xl sm:text-2xl md:text-3xl transition-all before:absolute before:top-1 before:left-1 before:-z-[1] before:h-full before:w-full before:border-2 before:border-gray-700 before:transition-all before:content-[''] hover:top-0 hover:left-0 before:hover:top-0 before:hover:left-0 rounded-md"
-          style={{ transform: "rotate(-8deg)" }}
+          className="relative -top-1 -left-1 bg-gray-800 py-10 px-8 sm:py-20 sm:px-10 font-medium uppercase text-white text-3xl sm:text-2xl bg-transparent"
+          style={{ transform: "rotate(-11deg)" }}
         >
           START
         </button>
@@ -24,7 +24,7 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick }) => {
   return (
     <div className="flex flex-col h-[10%] rounded-full relative font-title">
       <button
-        className="relative px-6 py-3 sm:px-10 sm:py-5 bg-transparent text-white text-base sm:text-lg md:text-xl rounded-md transition-all hover:text-black"
+        className="relative px-100 py-100 sm:px-10 sm:py-5 bg-transparent text-black text-base sm:text-2xl md:text-2xl rounded-md transition-all hover:text-grey-700"
         onClick={onClick}>
         <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity">
          
