@@ -12,8 +12,8 @@ const Vie: React.FC = () => {
       <div className="absolute top-[67%] left-[40%] transform -translate-x-1/2 -translate-y-1/2">
         <ButtonStart />
       </div>
-      <div className="absolute top-[20%] left-[35%] transform -translate-x-1/2 text-center px-4 md:px-0 bg-black bg-opacity-30 rounded-md">
-      <p className="text-2xl md:text-4xl font-frijole text-white">
+      <div className="absolute top-[20%] left-[32%] transform -translate-x-1/2 text-center px-4 md:px-0  rounded-md">
+      <p className="text-4xl md:text-4xl font-bentham text-white">
         Can you guess an inventor from a murderer?
       </p>
     </div>

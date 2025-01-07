@@ -9,47 +9,58 @@ interface fileCardProps {
   isFlipped: boolean;
 }
 
+
+
 interface CardProps {
   imageUrl: string;
   context: string;
   score: number;
   isCorrect: boolean;
-  isFlipped: boolean; // Indicador de si la carta está volteada
+  isFlipped: boolean;
 }
-
-export const Card: React.FC<CardProps> = ({ imageUrl, context, score, isCorrect, isFlipped }) => {
+export const Card: React.FC<CardProps> = ({ imageUrl, context, isCorrect, isFlipped }) => {
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setTypedText("");
+    setIndex(0);
+  }, [context]);
 
   useEffect(() => {
     if (isFlipped && index < context.length) {
       const timeoutId = setTimeout(() => {
         setTypedText((prev) => prev + context[index]);
-        setIndex(index + 1);
+        setIndex((prevIndex) => prevIndex + 1);
       }, 50);
       return () => clearTimeout(timeoutId);
     }
   }, [index, context, isFlipped]);
 
   return (
-    <div className="flex flex-col w-[60%]  sm:w-[80%] lg:w-[60%] mx-auto mt-[0] absolute left-[40%]">
-      <div className={`flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-8`}>
-        <div className="w-[100%] h-48 sm:h-64 object-cover rounded-lg" style={{ backgroundColor: isFlipped ? "white" : "black" }}>
-          {isFlipped ? (
-            <p className="text-sm sm:text-base lg:text-lg mt-4 font-title" style={{ borderRight: "2px solid white", animation: "blink 0.5s step-end infinite" }}>
+    <div className="flex flex-col items-center justify-center w-[50%] sm:w-[60%] lg:w-[60%] mx-auto mt-4 "
+    style={{ transform: "rotate(11deg)"}}>
+      <div
+        className={`relative flex items-center justify-center w-full h-64 sm:h-80 bg-white shadow-lg rounded-lg ${
+          isFlipped ? "bg-white" : ""
+        }`}
+      >
+        {isFlipped ? (
+          <div className="p-4">
+            <p className=" sm:text-base lg:text-lg text-2xl mt-4 font-Merriweather" style={{ animation: "blink 0.5s step-end infinite" }}>
               {typedText}
             </p>
-          ) : (
-            <p className="text-sm sm:text-base lg:text-lg mt-4 text-transparent">{"."}</p>
-          )}
-          {isFlipped && (
-            <p className={`mt-4 text-lg sm:text-xl font-frijole ${isCorrect ? "text-green-500" : "text-red-500"}`}>
-              {isCorrect ? "Correct!" : "Wrong!"}
+          
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full bg-white">
+            <div className="w-40 h-40 bg-black rounded-lg shadow-md">Can you guess who this is?</div>
+            <p className="mt-4 text-sm sm:text-base align-center lg:text-lg text-white opacity-50 font-frijole">
+              Can you guess who this is?
             </p>
-          )}
-        </div>
+          </div>
+        )}
       </div>
-
       <style>
         {`
           @keyframes blink {
@@ -64,10 +75,10 @@ export const Card: React.FC<CardProps> = ({ imageUrl, context, score, isCorrect,
 
 export const FileCard: React.FC<fileCardProps> = ({ imageUrl, context, score, isCorrect, isFlipped }) => {
   return (
-    <div className="flex flex-col justify-center items-center w-[60%] sm:w-[80%] lg:w-[60%] mx-auto mt-[0] absolute left-[30%]">
-      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-8" style={{ transform: "rotate(11deg)" }}>
+    <div className="flex flex-col justify-center items-center w-[100%] sm:w-[80%] lg:w-[60%] mx-auto mt-[0] absolute left-[0%]">
+      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-8" style={{ transform: "rotate(-11deg)" }}>
         <img src={imageUrl} alt="Card" className="w-full h-48 sm:h-64 object-cover rounded-lg" />
-        <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-700 font-frijole">Can you guess who this is?</p>
+        <p className="mt-4 text-xl text-center sm:text-base lg:text-lg text-gray-900 font-Merriweather">Can you guess who this is?</p>
       </div>
     </div>
   );
@@ -80,8 +91,9 @@ export const PolaroidPhoto: React.FC = () => {
         <div className="w-full h-48 sm:h-64 object-cover rounded-lg bg-black">
           <p>hola</p>
         </div>
-        <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-700 font-frijole">Can you guess who this is?</p>
+        <p className="mt-4 text-sm sm:text-base lg:text-lg font-bold text-white" >Can you guess who this is?</p>
       </div>
     </div>
   );
 };
+

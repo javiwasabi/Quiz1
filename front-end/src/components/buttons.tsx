@@ -22,13 +22,11 @@ interface ButtonNextProps {
 
 export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick }) => {
   return (
-    <div className="flex flex-col h-[10%] rounded-full relative font-title">
+    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-4 sm:mb-8 md:mb-12 lg:mb-16">
       <button
-        className="relative px-100 py-100 sm:px-10 sm:py-5 bg-transparent text-black text-base sm:text-2xl md:text-2xl rounded-md transition-all hover:text-grey-700"
+        className="relative px-8 py-4 sm:px-12 sm:py-6 lg:px-16 lg:py-8 xl:px-20 xl:py-10 bg-transparent text-black text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bentham rounded-full border-4  transition-all hover:bg-black hover:text-white"
         onClick={onClick}>
-        <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity">
-         
-        </div>
+        <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity"></div>
         <span className="relative z-10">NEXT</span>
       </button>
     </div>

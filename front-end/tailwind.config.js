@@ -6,6 +6,8 @@ module.exports = {
       fontFamily: {
         title:["Sixtyfour", "serif"],
         frijole:[ "Frijole", "serif"],
+        bentham:[ "Bentham", "serif"],
+        Merriweather: ["Merriweather", "serif"]
       }
     },
   },
