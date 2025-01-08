@@ -24,11 +24,11 @@ const fs = require('fs');
     }, 10000);
     console.log("DOM fully loaded.");
 
-    // Capture screenshot after page load
+  
     await takeScreenshot('step2_page_loaded.png');
     console.log("Page load screenshot captured.");
 
-    // Click the START button
+  
     const startButton = await driver.wait(
       until.elementLocated(By.xpath("//button[text()='START']")),
       15000
@@ -92,7 +92,7 @@ const fs = require('fs');
     await emailIcon.click();
     console.log("Email icon clicked.");
 
-    // Capture screenshot after clicking the email icon
+
     await takeScreenshot('step4_email_icon_clicked.png');
     console.log("Email icon clicked screenshot captured.");
 

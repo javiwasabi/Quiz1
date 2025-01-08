@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Vie from './pages/firstPage'; // Asegúrate de que la ruta esté correcta
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Importa Router y Routes

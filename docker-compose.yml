@@ -5,7 +5,7 @@ services:
       context: ./back-end
       dockerfile: dockerfile
     ports:
-      - "3500:3500"
+      - "3000:3000"
     volumes:
       - ./back-end:/app
     environment:
@@ -18,7 +18,7 @@ services:
       context: ./front-end
       dockerfile: dockerfile
     ports:
-      - "3000:80"
+      - "3500:80"
     volumes:
       - ./front-end:/app
     stdin_open: true
@@ -32,5 +32,30 @@ services:
     volumes:
       - mongo_data:/data/db
 
+  jenkins:
+    image: jenkinsci/blueocean
+    container_name: jenkins
+    user: root
+    ports:
+      - "8080:8080" # Puerto para acceder a Jenkins
+      - "50000:50000" # Puerto para agentes de Jenkins
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+    volumes:
+      - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock # Para que Jenkins pueda manejar Docker
+      - ./jenkins-docker-certs:/certs/client:ro # Certificados para conexión segura con Docker
+      - ./back-end:/var/jenkins_home/workspace/back-end # Código del backend
+      - ./front-end:/var/jenkins_home/workspace/front-end # Código del frontend
+      - ./functional-tests:/var/jenkins_home/workspace/functional-tests # Tests funcionales
+    networks:
+      - mern_network
+
 volumes:
   mongo_data:
+  jenkins-data:
+
+networks:
+  mern_network:

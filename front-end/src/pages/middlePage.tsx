@@ -155,7 +155,7 @@ const Middle: React.FC = () => {
             </div>
           </div>
 
-          <div className="absolute top-[40%] w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center right-[70%]">
+          <div className="absolute top-[40%] w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center absolute right-0">
             <PolaroidPhoto />
           </div>
 
@@ -167,37 +167,41 @@ const Middle: React.FC = () => {
             <PolaroidPhoto />
           </div>
 
-        {!answered && (
-          <div className="absolute bottom-[10%] w-full flex justify-between items-center px-16 z-10 font-bentham mt-10">
-            {showSerialKiller && (
-              <div
-                className="relative w-[45%] h-[5rem] bg-yellow-300 text-black py-4 px-6 font-medium uppercase text-center transition-all shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center mt-4 sm:mt-6 md:mt-8 lg:mt-10"
-                style={{
-                  background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-                  transform: 'rotate(-2deg)',
-                }}
-                onClick={() => handleAnswer("Serial Killer")}
-              >
-                <span className="block text-3xl">Killer</span>
-              </div>
-            )}
+          {!answered && (
+            <div className="absolute bottom-[10%] w-full flex justify-between items-center px-16 z-10 font-bentham mt-10">
+              {showSerialKiller && (
+                <div
+                  className="relative w-[45%] h-[5rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
+                  style={{
+                    background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+                    transform: 'rotate(-2deg)',
+                  }}
+                  onClick={() => handleAnswer("Serial Killer")}
+                >
+                  <span className="block text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
+                    Killer
+                  </span>
+                </div>
+              )}
 
-            {showInventor && (
-              <div
-                className="relative w-[50%] h-[5rem] bg-yellow-300 text-black py-4 px-6 font-medium uppercase text-center transition-all shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center mt-4 sm:mt-6 md:mt-8 lg:mt-10"
-                style={{
-                  background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-                  transform: 'rotate(3deg)',
-                }}
-                onClick={() => handleAnswer("Inventor")}
-              >
-                <span className="block text-3xl">Inventor</span>
-              </div>
-            )}
-          </div>
-        )}
+              {showInventor && (
+                <div
+                  className="relative w-[50%] h-[5rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
+                  style={{
+                    background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+                    transform: 'rotate(3deg)',
+                  }}
+                  onClick={() => handleAnswer("Inventor")}
+                >
+                  <span className="block text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
+                    Inventor
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
 
         </>
       )}

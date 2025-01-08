@@ -105,10 +105,11 @@ export const PolaroidPhoto: React.FC = () => {
         className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8"
         style={{ transform: "rotate(-11deg)" }}
       >
-        <div className="w-[100%] h-[50%] sm:h-64 object-cover rounded-lg bg-black flex items-center justify-center">
-          <p className="text-black">Photo Placeholder  </p>
-          
+
+        <div className="w-full aspect-[3/4] bg-black flex items-center justify-center rounded-lg">
+          <p className="text-black">Photo Placeholder</p>
         </div>
+
         <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white font-bentham">
           Guess
         </p>
