@@ -1,111 +1,110 @@
 const request = require('supertest');
-const app = require('../app'); // Ruta a tu archivo principal donde configuras express
+const express = require('express');
+const usersController = require('../../controllers/usersController');
 const User = require('../../models/User');
-const mongoose = require('mongoose');
 
-// Simula el modelo User
 jest.mock('../../models/User');
 
+const app = express();
+app.use(express.json());
+app.get('/users', usersController.getAllUsers);
+app.post('/users', usersController.createNewUser);
+app.patch('/users', usersController.updateUser);
+
 describe('Users Controller', () => {
-
-  // Test para obtener todos los usuarios
-  describe('GET /users', () => {
-    it('should return all users', async () => {
-      const users = [{ userEmail: 'test@example.com', score: 10 }];
-      User.find.mockResolvedValue(users); // Simula la respuesta de la base de datos
-
-      const res = await request(app).get('/users');
-
-      expect(res.status).toBe(200);
-      expect(res.body).toEqual(users);
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
-    it('should return an error if no users found', async () => {
-      User.find.mockResolvedValue([]); // Simula que no hay usuarios
+    describe('getAllUsers', () => {
+        it('should return a list of users', async () => {
+            User.find.mockResolvedValue([{ userEmail: 'test@example.com', score: '10' }]);
 
-      const res = await request(app).get('/users');
+            const response = await request(app).get('/users');
 
-      expect(res.status).toBe(400);
-      expect(res.body.message).toBe('No users found');
-    });
-  });
+            expect(response.status).toBe(200);
+            expect(response.body).toEqual([{ userEmail: 'test@example.com', score: '10' }]);
+        });
 
-  // Test para crear un nuevo usuario
-  describe('POST /users', () => {
-    it('should create a new user', async () => {
-      const newUser = { userEmail: 'test@example.com', score: 10 };
-      User.create.mockResolvedValue(newUser); // Simula la creación del usuario
+        it('should return 404 if no users are found', async () => {
+            User.find.mockResolvedValue([]);
 
-      const res = await request(app).post('/users').send(newUser);
+            const response = await request(app).get('/users');
 
-      expect(res.status).toBe(201);
-      expect(res.body.message).toBe(`New user with email test@example.com created`);
+            expect(response.status).toBe(404);
+            expect(response.body.message).toBe('No users found');
+        });
     });
 
-    it('should return an error if required fields are missing', async () => {
-      const res = await request(app).post('/users').send({ userEmail: 'test@example.com' });
+    describe('createNewUser', () => {
+        it('should create a new user', async () => {
+            User.findOne.mockResolvedValue(null);
+            User.create.mockResolvedValue({ _id: '500', userEmail: 'test@example.com', score: '10' });
 
-      expect(res.status).toBe(400);
-      expect(res.body.message).toBe('All fields are required');
+            const response = await request(app)
+                .post('/users')
+                .send({ userEmail: 'test@example.com', score: '10' });
+
+            expect(response.status).toBe(201);
+            expect(response.body.message).toBe('New user created: test@example.com');
+        });
+
+        it('should return 400 if required fields are missing', async () => {
+            const response = await request(app).post('/users').send({ userEmail: '' });
+
+            expect(response.status).toBe(400);
+            expect(response.body.message).toBe('userEmail is required');
+        });
+
+        it('should return 409 if duplicate userEmail exists', async () => {
+            User.findOne.mockResolvedValue({ _id: '500', userEmail: 'test@example.com' });
+
+            const response = await request(app)
+                .post('/users')
+                .send({ userEmail: 'test@example.com', score: '10' });
+
+            expect(response.status).toBe(409);
+            expect(response.body.message).toBe('Duplicate userEmail');
+        });
     });
 
-    it('should return an error if userEmail is duplicate', async () => {
-      const newUser = { userEmail: 'test@example.com', score: 10 };
-      User.findOne.mockResolvedValue(newUser); // Simula que el correo ya existe
+    describe('updateUser', () => {
+        it('should update an existing user', async () => {
+            User.findById.mockResolvedValue({
+                _id: '123',
+                save: jest.fn().mockResolvedValue({ userEmail: 'updated@example.com', score: '20' }),
+            });
+            User.findOne.mockResolvedValue(null);
 
-      const res = await request(app).post('/users').send(newUser);
+            const response = await request(app)
+                .patch('/users')
+                .send({ id: '123', userEmail: 'updated@example.com', score: '20' });
 
-      expect(res.status).toBe(409);
-      expect(res.body.message).toBe('Duplicate userEmail');
+            expect(response.status).toBe(200);
+            expect(response.body.message).toBe('User updated: updated@example.com');
+        });
+
+        it('should return 404 if user not found', async () => {
+            User.findById.mockResolvedValue(null);
+
+            const response = await request(app)
+                .patch('/users')
+                .send({ id: '123', userEmail: 'updated@example.com', score: '20' });
+
+            expect(response.status).toBe(404);
+            expect(response.body.message).toBe('User not found');
+        });
+
+        it('should return 409 if duplicate userEmail exists', async () => {
+            User.findById.mockResolvedValue({ _id: '123' });
+            User.findOne.mockResolvedValue({ _id: '456' });
+
+            const response = await request(app)
+                .patch('/users')
+                .send({ id: '123', userEmail: 'duplicate@example.com', score: '20' });
+
+            expect(response.status).toBe(409);
+            expect(response.body.message).toBe('Duplicate userEmail');
+        });
     });
-  });
-
-  // Test para actualizar un usuario
-  describe('PATCH /users', () => {
-    it('should update an existing user', async () => {
-      const updatedUser = { id: '123', userEmail: 'updated@example.com', score: 20 };
-      const existingUser = { _id: '123', userEmail: 'test@example.com', score: 10 };
-      User.findById.mockResolvedValue(existingUser); // Simula que el usuario existe
-      User.findOne.mockResolvedValue(null); // Simula que no hay un correo duplicado
-      User.prototype.save.mockResolvedValue(updatedUser); // Simula la actualización
-
-      const res = await request(app).patch('/users').send(updatedUser);
-
-      expect(res.status).toBe(200);
-      expect(res.body.message).toBe(`User with email updated@example.com updated`);
-    });
-
-    it('should return an error if user not found', async () => {
-      const updatedUser = { id: '123', userEmail: 'updated@example.com', score: 20 };
-      User.findById.mockResolvedValue(null); // Simula que el usuario no existe
-
-      const res = await request(app).patch('/users').send(updatedUser);
-
-      expect(res.status).toBe(400);
-      expect(res.body.message).toBe('User not found');
-    });
-
-    it('should return an error if required fields are missing', async () => {
-      const res = await request(app).patch('/users').send({ userEmail: 'updated@example.com' });
-
-      expect(res.status).toBe(400);
-      expect(res.body.message).toBe('All fields are required');
-    });
-
-    it('should return an error if userEmail is duplicate', async () => {
-      const updatedUser = { id: '123', userEmail: 'updated@example.com', score: 20 };
-      const duplicateUser = { userEmail: 'updated@example.com' };
-      User.findOne.mockResolvedValue(duplicateUser); // Simula que el correo ya existe
-
-      const res = await request(app).patch('/users').send(updatedUser);
-
-      expect(res.status).toBe(409);
-      expect(res.body.message).toBe('Duplicate userEmail');
-    });
-  });
-
-  // Cerrar la conexión a la base de datos después de las pruebas
-  afterAll(() => {
-    mongoose.connection.close();
-  });
 });

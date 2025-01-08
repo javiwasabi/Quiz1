@@ -21,32 +21,43 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @route POST /users
 // @access Private
 const createNewUser = asyncHandler(async (req, res) => {
-    const { userEmail, score } = req.body
+    const { userEmail, score, checklist1, checklist2 } = req.body;
 
-    // Confirm data
-    if (!userEmail || !score) {
-        return res.status(400).json({ message: 'All fields are required' })
+    // Confirmar que los datos requeridos están presentes
+    if (!userEmail || score === undefined) {
+        return res.status(400).json({ message: 'Todos los campos son obligatorios' });
     }
 
-    // Check for duplicate userEmail
-    const duplicate = await User.findOne({ userEmail }).lean().exec()
 
-    if (duplicate) {
-        return res.status(409).json({ message: 'Duplicate userEmail' })
+    const existingUser = await User.findOne({ userEmail }).exec();
+
+    if (existingUser) {
+
+        existingUser.score = score;
+        existingUser.checklist1 = checklist1 !== undefined ? checklist1 : existingUser.checklist1;
+        existingUser.checklist2 = checklist2 !== undefined ? checklist2 : existingUser.checklist2;
+
+        const updatedUser = await existingUser.save();
+
+        return res.status(200).json({ 
+            message: `Usuario con email ${updatedUser.userEmail} actualizado`, 
+            user: updatedUser 
+        });
     }
 
-    // Create new user object
-    const userObject = { userEmail, score }
+    const userObject = { userEmail, score, checklist1, checklist2 };
 
-    // Create and store new user 
-    const user = await User.create(userObject)
+    const newUser = await User.create(userObject);
 
-    if (user) { //created 
-        res.status(201).json({ message: `New user with email ${userEmail} created` })
+    if (newUser) {
+        res.status(201).json({ 
+            message: `Nuevo usuario con email ${userEmail} creado`, 
+            user: newUser 
+        });
     } else {
-        res.status(400).json({ message: 'Invalid user data received' })
+        res.status(400).json({ message: 'Error al crear el usuario' });
     }
-})
+});
 
 // @desc Update a user
 // @route PATCH /users

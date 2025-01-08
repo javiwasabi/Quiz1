@@ -18,14 +18,17 @@ export const ButtonStart: React.FC = () => {
 
 interface ButtonNextProps {
   onClick?: () => void;
+  id?: string; 
 }
 
-export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick }) => {
+export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
   return (
     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-4 sm:mb-8 md:mb-12 lg:mb-16">
       <button
-        className="relative px-8 py-4 sm:px-12 sm:py-6 lg:px-16 lg:py-8 xl:px-20 xl:py-10 bg-transparent text-black text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bentham rounded-full border-4  transition-all hover:bg-black hover:text-white"
-        onClick={onClick}>
+        id={id} 
+        className="relative px-8 py-4 sm:px-12 sm:py-6 lg:px-16 lg:py-8 xl:px-20 xl:py-10 bg-gray-800 text-white text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bentham rounded-full border-4 transition-all hover:bg-black hover:text-white"
+        onClick={onClick}
+      >
         <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity"></div>
         <span className="relative z-10">NEXT</span>
       </button>

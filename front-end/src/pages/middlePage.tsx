@@ -28,17 +28,7 @@ const Middle: React.FC = () => {
       correctAnswer: "Murderer",
       context: "He was a big criminal.",
     },
-    {
-      imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Ted_Bundy_headshot.jpg",
-      correctAnswer: "Murderer",
-      context: "He was a big criminal.",
-    },  {
-      imageUrl: " https://retro-hardware.com/wp-content/uploads/2019/05/KenThompson-240x300.jpg",
-      correctAnswer: "Murderer",
-      context: "He was a big criminal.",
-    },
 
-   
     
   ];
 
@@ -131,19 +121,21 @@ const Middle: React.FC = () => {
             ))}
           </ul>
           <div className="mt-8">
-            <ButtonNext onClick={handleFinishGame} />
+          <ButtonNext id="final-button" onClick={handleFinishGame} />
+
           </div>
         </div>
       ) : (
         <>
           {answered && (
-            <div className="absolute bottom-[10%] left-1/2 transform -translate-x-1/2 z-10 flex gap-x-8 text-black">
-              <ButtonNext onClick={handleNextQuestion} />
+            <div className="absolute bottom-[5%] left-1/2 transform -translate-x-1/2 z-10 flex gap-x-8 text-black">
+              <ButtonNext id="next-button" onClick={handleNextQuestion} />
+
             </div>
           )}
 
-          <div className="absolute top-[30%] left-0 w-[80%] sm:w-[60%] md:w-[55%] lg:w-[50%] h-1/2 mx-auto flex bg-transparent relative z-10">
-            <div className="w-[100%] sm:w-[100%] md:w-[100%] lg:w-[100%] absolute top-[30%] left-0 h-1/2 mx-auto flex justify-center items-center relative top-[-20%] bg-transparent z-10">
+          <div className="absolute top-[0%] left-0 w-[80%] sm:w-[60%] md:w-[55%] lg:w-[50%] h-1/2 mx-auto flex bg-transparent relative z-10">
+            <div className="w-[80%] sm:w-[100%] md:w-[100%] lg:w-[100%] absolute top-[10%] left-0 h-[1/2] mx-auto flex justify-center items-center relative top-[-20%] bg-transparent z-9">
               <FileCard
                 imageUrl={questions[currentQuestion].imageUrl}
                 context={questions[currentQuestion].context}
@@ -152,6 +144,7 @@ const Middle: React.FC = () => {
                 isFlipped={isFlipped}
               />
             </div>
+            <div className="w-[80%] sm:w-[100%] md:w-[100%] lg:w-[100%] absolute top-[10%] left-0 h-[1/2] mx-auto flex justify-center items-center relative top-[-20%] bg-transparent z-8">
             <Card
               imageUrl={questions[currentQuestion].imageUrl}
               context={questions[currentQuestion].context}
@@ -159,43 +152,53 @@ const Middle: React.FC = () => {
               isCorrect={isCorrect}
               isFlipped={isFlipped}
             />
+            </div>
           </div>
 
-          <div className="absolute top-0 w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center">
+          <div className="absolute top-[40%] w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center right-[70%]">
             <PolaroidPhoto />
           </div>
 
-          <div className="absolute top-[0%] left-10 w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center">
+          <div className="absolute top-[40%] right-[65%] w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center">
             <PolaroidPhoto />
           </div>
-          <div className="absolute top-[0%] left-[50%] w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center"
+          <div className="absolute top-[40%] left-[50%] w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center"
             style={{ transform: "rotate(22deg)" }}>
             <PolaroidPhoto />
           </div>
 
-          {!answered && (
-            <div className="absolute bottom-[10%] left-1/2 transform -translate-x-1/2 z-10 flex gap-x-8 font-bentham mt-[20%]">
-              {showSerialKiller && (
-                <div
-                  className="relative w-[30%] sm:w-[35%] md:w-[40%] h-[30%] sm:h-[35%] md:h-[40%] bg-no-repeat bg-contain bg-center text-black py-4 px-6 font-medium uppercase text-center transition-all"
-                  style={{ backgroundColor: 'transparent' }}
-                  onClick={() => handleAnswer("Serial Killer")}
-                >
-                  <span className="block text-3xl">Serial Killer</span>
-                </div>
-              )}
+        {!answered && (
+          <div className="absolute bottom-[10%] w-full flex justify-between items-center px-16 z-10 font-bentham mt-10">
+            {showSerialKiller && (
+              <div
+                className="relative w-[45%] h-[5rem] bg-yellow-300 text-black py-4 px-6 font-medium uppercase text-center transition-all shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center mt-4 sm:mt-6 md:mt-8 lg:mt-10"
+                style={{
+                  background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+                  transform: 'rotate(-2deg)',
+                }}
+                onClick={() => handleAnswer("Serial Killer")}
+              >
+                <span className="block text-3xl">Killer</span>
+              </div>
+            )}
 
-              {showInventor && (
-                <div
-                  className="relative w-[30%] sm:w-[35%] md:w-[40%] h-[30%] sm:h-[35%] md:h-[40%] bg-no-repeat bg-contain bg-center text-black py-4 px-6 font-medium uppercase text-center transition-all"
-                  style={{ backgroundColor: 'transparent' }}
-                  onClick={() => handleAnswer("Inventor")}
-                >
-                  <span className="block text-3xl">Inventor</span>
-                </div>
-              )}
-            </div>
-          )}
+            {showInventor && (
+              <div
+                className="relative w-[50%] h-[5rem] bg-yellow-300 text-black py-4 px-6 font-medium uppercase text-center transition-all shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center mt-4 sm:mt-6 md:mt-8 lg:mt-10"
+                style={{
+                  background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+                  transform: 'rotate(3deg)',
+                }}
+                onClick={() => handleAnswer("Inventor")}
+              >
+                <span className="block text-3xl">Inventor</span>
+              </div>
+            )}
+          </div>
+        )}
+
         </>
       )}
     </div>
