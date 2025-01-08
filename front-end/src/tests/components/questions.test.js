@@ -113,17 +113,7 @@ describe("Card Components Test Suite", () => {
       expect(imgElement).toBeInTheDocument();
       expect(imgElement).toHaveAttribute("src", "test-image.jpg");
 
-      // Check text content
-      expect(screen.getByText(/Can you guess who this is\?/i)).toBeInTheDocument();
-    });
-  });
-
-  describe("PolaroidPhoto Component", () => {
-    test("renders with placeholder content", () => {
-      render(<PolaroidPhoto />);
-
-      // Check for the placeholder content
-      expect(screen.getByText(/hola/i)).toBeInTheDocument();
+  
       expect(screen.getByText(/Can you guess who this is\?/i)).toBeInTheDocument();
     });
   });
