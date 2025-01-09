@@ -16,5 +16,7 @@ RUN apt-get update && apt-get install -y \
 # Añadir el usuario Jenkins al grupo Docker para permitir el uso de Docker sin sudo
 RUN usermod -aG docker jenkins
 
+
+
 # Asegurarte de que el contenedor ejecute como el usuario Jenkins
 USER jenkins
