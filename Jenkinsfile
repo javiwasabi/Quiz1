@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/javiwasabi/Quiz1.git'
+                // Especificamos la rama main
+                git branch: 'main', url: 'https://github.com/javiwasabi/Quiz1.git'
             }
         }
         stage('Run Backend Unit Tests') {
