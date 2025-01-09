@@ -1,12 +1,6 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
+    agent any
     environment {
-        CI = 'true'
         BACKEND_DIR = 'back-end'
         FRONTEND_DIR = 'front-end'
         TESTS_DIR = 'functional-tests'
@@ -22,7 +16,7 @@ pipeline {
             steps {
                 dir("${BACKEND_DIR}") {
                     sh "echo 'Installing backend dependencies...'"
-                    sh "npm install"
+                    sh "/usr/bin/npm install"
                 }
             }
         }
@@ -30,7 +24,7 @@ pipeline {
             steps {
                 dir("${BACKEND_DIR}") {
                     sh "echo 'Running backend tests...'"
-                    sh "npm test"
+                    sh "/usr/bin/npm test"
                 }
             }
         }
@@ -38,7 +32,7 @@ pipeline {
             steps {
                 dir("${FRONTEND_DIR}") {
                     sh "echo 'Installing frontend dependencies...'"
-                    sh "npm install"
+                    sh "/usr/bin/npm install"
                 }
             }
         }
@@ -46,7 +40,7 @@ pipeline {
             steps {
                 dir("${FRONTEND_DIR}") {
                     sh "echo 'Running frontend tests...'"
-                    sh "npm test"
+                    sh "/usr/bin/npm test"
                 }
             }
         }
@@ -54,16 +48,9 @@ pipeline {
             steps {
                 dir("${TESTS_DIR}") {
                     sh "echo 'Preparing for functional tests...'"
-                    sh "npm install"
-                    sh "npm test"
+                    sh "/usr/bin/npm install"
+                    sh "/usr/bin/npm test"
                 }
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
             }
         }
     }
