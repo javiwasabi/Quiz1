@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
         DOCKER_REGISTRY = 'docker.io/javiwasabis'
-        NODE_IMAGE = 'node:16' 
+        NODE_IMAGE = 'node:16'  
+    }
     stages {
         stage('Checkout Code') {
             steps {
@@ -49,7 +50,7 @@ pipeline {
             steps {
                 sh 'docker-compose down'
                 sh 'docker-compose up -d'
-                sh 'docker ps'
+                sh 'docker ps' 
             }
         }
         stage('Run Functional Tests') {
