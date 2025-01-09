@@ -1,78 +1,70 @@
 pipeline {
     agent any
     environment {
-        NODE_ENV = 'test'
+        DOCKER_REGISTRY = 'docker.io/javiwasabis' 
     }
     stages {
-        stage('Setup Backend') {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/javiwasabi/Quiz1.git'
+            }
+        }
+        stage('Run Backend Unit Tests') {
             steps {
                 dir('back-end') {
-                    script {
-                        
-                        sh 'npm install'
-                    }
+                    sh 'npm install'
+                    sh 'npm test'
                 }
             }
         }
-        stage('Run Backend Tests') {
-            steps {
-                dir('back-end/tests') {
-                    script {
-               
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
-        stage('Setup Frontend') {
+        stage('Run Frontend Unit Tests') {
             steps {
                 dir('front-end') {
-                    script {
-                        sh 'npm install'
-                    }
+                    sh 'npm install'
+                    sh 'npm test'
                 }
             }
         }
-        stage('Run Frontend Tests') {
+        stage('Build Docker Images') {
             steps {
-                dir('front-end/src/tests') {
-                    script {
-                        // Ejecutar los tests unitarios del frontend
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
-        stage('Setup Functional Tests') {
-            steps {
-                dir('functional-tests') {
-                    script {
+                script {
+                    // Construir y etiquetar imágenes para el backend y frontend
+                    def backendImage = docker.build("${DOCKER_REGISTRY}/backend-image:latest", './back-end')
+                    def frontendImage = docker.build("${DOCKER_REGISTRY}/frontend-image:latest", './front-end')
 
-                        sh 'npm install'
+                    // Subir imágenes al registro Docker
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
+                        backendImage.push()
+                        frontendImage.push()
                     }
+
                 }
+            }
+        }
+        stage('Deploy Containers') {
+            steps {
+                sh 'docker-compose down' 
+                sh 'docker-compose up -d' 
             }
         }
         stage('Run Functional Tests') {
             steps {
-                dir('functional-tests/selenium') {
-                    script {
-                        sh 'node user-flow.test.js '
-                    }
+                dir('functional-tests') {
+                    sh 'npm install'
+                    sh 'npm test'
                 }
             }
         }
     }
     post {
         always {
-            echo 'Cleaning up workspace...'
-            cleanWs()
-        }
-        success {
-            echo 'All tests passed successfully!'
+
+            junit 'back-end/tests/results.xml'
+            junit 'front-end/tests/results.xml'
+            echo 'Pipeline completed.'
         }
         failure {
-            echo 'Some tests failed. Check the logs for details.'
+            echo 'Pipeline failed.'
         }
     }
 }

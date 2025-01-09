@@ -33,25 +33,31 @@ services:
       - mongo_data:/data/db
 
   jenkins:
-    image: jenkinsci/blueocean
+    image: jenkins/jenkins:lts
     container_name: jenkins
     user: root
     ports:
-      - "8080:8080" # Puerto para acceder a Jenkins
-      - "50000:50000" # Puerto para agentes de Jenkins
+      - "8070:8080"  # Ajuste del puerto para evitar conflicto
+      - "50001:50000" # Puerto para agentes de Jenkins
     environment:
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
       - DOCKER_TLS_VERIFY=1
+      # Asegúrate de que Java esté configurado correctamente en el contenedor de Jenkins
+      - JAVA_HOME= C:\Program Files\Java\jdk-21# Ruta a la instalación de Java (si es necesario)
+      - JAVA_OPTS="-Dfile.encoding=UTF-8"
     volumes:
       - jenkins-data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock # Para que Jenkins pueda manejar Docker
-      - ./jenkins-docker-certs:/certs/client:ro # Certificados para conexión segura con Docker
-      - ./back-end:/var/jenkins_home/workspace/back-end # Código del backend
-      - ./front-end:/var/jenkins_home/workspace/front-end # Código del frontend
-      - ./functional-tests:/var/jenkins_home/workspace/functional-tests # Tests funcionales
+      - /var/run/docker.sock:/var/run/docker.sock # Permitir Jenkins usar Docker
+      - ./jenkins-docker-certs:/certs/client:ro
+      - ./back-end:/var/jenkins_home/workspace/back-end
+      - ./front-end:/var/jenkins_home/workspace/front-end
+      - ./functional-tests:/var/jenkins_home/workspace/functional-tests
     networks:
       - mern_network
+    restart: unless-stopped  # Reiniciar Jenkins automáticamente si falla
+
+
 
 volumes:
   mongo_data:
@@ -59,3 +65,4 @@ volumes:
 
 networks:
   mern_network:
+
