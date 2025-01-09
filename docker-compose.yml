@@ -42,10 +42,10 @@ services:
     volumes:
       - jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
     networks:
       - mern_network
-    restart: unless-stopped 
+    restart: unless-stopped
+
 
 volumes:
   mongo_data:

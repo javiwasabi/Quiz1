@@ -48,9 +48,11 @@ pipeline {
         }
         stage('Deploy Containers') {
             steps {
-                sh 'docker-compose down'
-                sh 'docker-compose up -d'
-                sh 'docker ps' 
+                script {
+                    sh 'docker-compose down'
+                    sh 'docker-compose up -d'
+                    sh 'docker ps' 
+                }
             }
         }
         stage('Run Functional Tests') {
@@ -75,3 +77,4 @@ pipeline {
         }
     }
 }
+
