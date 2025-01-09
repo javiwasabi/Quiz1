@@ -18,5 +18,7 @@ RUN usermod -aG docker jenkins
 
 
 
+
+
 # Asegurarte de que el contenedor ejecute como el usuario Jenkins
 USER jenkins
