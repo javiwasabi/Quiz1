@@ -2,27 +2,35 @@ pipeline {
     agent any
     environment {
         DOCKER_REGISTRY = 'docker.io/javiwasabis'
+        NODE_IMAGE = 'node:16'  // Usamos una imagen de Node.js
     }
     stages {
         stage('Checkout Code') {
             steps {
-                // Especificamos la rama main
                 git branch: 'main', url: 'https://github.com/javiwasabi/Quiz1.git'
             }
         }
         stage('Run Backend Unit Tests') {
             steps {
-                dir('back-end') {
-                    sh 'npm install'
-                    sh 'npm test'
+                script {
+                    docker.image(NODE_IMAGE).inside {
+                        dir('back-end') {
+                            sh 'npm install'
+                            sh 'npm test'
+                        }
+                    }
                 }
             }
         }
         stage('Run Frontend Unit Tests') {
             steps {
-                dir('front-end') {
-                    sh 'npm install'
-                    sh 'npm test'
+                script {
+                    docker.image(NODE_IMAGE).inside {
+                        dir('front-end') {
+                            sh 'npm install'
+                            sh 'npm test'
+                        }
+                    }
                 }
             }
         }
