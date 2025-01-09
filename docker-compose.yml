@@ -40,7 +40,8 @@ services:
       - "8070:8080"  # Ajuste del puerto para evitar conflicto
       - "50001:50000" # Puerto para agentes de Jenkins
     environment:
-      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_HOST=unix:///var/run/docker.sock
+
       - DOCKER_CERT_PATH=/certs/client
       - DOCKER_TLS_VERIFY=1
       # Asegúrate de que Java esté configurado correctamente en el contenedor de Jenkins
