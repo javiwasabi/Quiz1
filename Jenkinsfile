@@ -2,8 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_REGISTRY = 'docker.io/javiwasabis'
-        NODE_IMAGE = 'node:16'  // Usamos una imagen de Node.js
-    }
+        NODE_IMAGE = 'node:16' 
     stages {
         stage('Checkout Code') {
             steps {
@@ -50,13 +49,13 @@ pipeline {
             steps {
                 sh 'docker-compose down'
                 sh 'docker-compose up -d'
-                sh 'docker ps' // Verificar contenedores activos
+                sh 'docker ps'
             }
         }
         stage('Run Functional Tests') {
             steps {
                 dir('functional-tests') {
-                    sh 'sleep 10' // Esperar a que los servicios estén listos
+                    sh 'sleep 10' 
                     sh 'npm install'
                     sh 'npm test'
                 }
