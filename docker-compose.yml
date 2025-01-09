@@ -37,28 +37,15 @@ services:
     container_name: jenkins
     user: root
     ports:
-      - "8070:8080"  
-      - "50001:50000" 
-    environment:
-      - DOCKER_HOST=unix:///var/run/docker.sock
-
-      - DOCKER_CERT_PATH=/certs/client
-      - DOCKER_TLS_VERIFY=1
-
-      - JAVA_HOME= C:\Program Files\Java\jdk-21
-      - JAVA_OPTS="-Dfile.encoding=UTF-8"
+      - "8070:8080"
+      - "50001:50000"
     volumes:
       - jenkins-data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock 
-      - ./jenkins-docker-certs:/certs/client:ro
-      - ./back-end:/var/jenkins_home/workspace/back-end
-      - ./front-end:/var/jenkins_home/workspace/front-end
-      - ./functional-tests:/var/jenkins_home/workspace/functional-tests
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
     networks:
       - mern_network
     restart: unless-stopped 
-
-
 
 volumes:
   mongo_data:
@@ -66,5 +53,3 @@ volumes:
 
 networks:
   mern_network:
-
-#tesm
