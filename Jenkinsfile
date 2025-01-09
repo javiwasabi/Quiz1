@@ -1,8 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKER_REGISTRY = 'docker.io/javiwasabis'
-        NODE_IMAGE = 'node:16'  
+        NODE_IMAGE = 'node:16'  y
     }
     stages {
         stage('Checkout Code') {
@@ -12,33 +11,25 @@ pipeline {
         }
         stage('Run Backend Unit Tests') {
             steps {
-                script {
-                    docker.image(NODE_IMAGE).inside {
-                        dir('back-end') {
-                            sh 'npm install'
-                            sh 'npm test'
-                        }
-                    }
+                dir('back-end') {
+                    sh 'npm install'
+                    sh 'npm test' 
                 }
             }
         }
         stage('Run Frontend Unit Tests') {
             steps {
-                script {
-                    docker.image(NODE_IMAGE).inside {
-                        dir('front-end') {
-                            sh 'npm install'
-                            sh 'npm test'
-                        }
-                    }
+                dir('front-end') {
+                    sh 'npm install'
+                    sh 'npm test'  // Ejecuta las pruebas directamente sin Docker
                 }
             }
         }
         stage('Build Docker Images') {
             steps {
                 script {
-                    def backendImage = docker.build("${DOCKER_REGISTRY}/backend-image:latest", './back-end')
-                    def frontendImage = docker.build("${DOCKER_REGISTRY}/frontend-image:latest", './front-end')
+                    def backendImage = docker.build("docker.io/javiwasabis/backend-image:latest", './back-end')
+                    def frontendImage = docker.build("docker.io/javiwasabis/frontend-image:latest", './front-end')
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-credentials') {
                         backendImage.push()
                         frontendImage.push()
@@ -58,7 +49,7 @@ pipeline {
         stage('Run Functional Tests') {
             steps {
                 dir('functional-tests') {
-                    sh 'sleep 10' 
+                    sh 'sleep 10'
                     sh 'npm install'
                     sh 'npm test'
                 }
@@ -67,9 +58,7 @@ pipeline {
     }
     post {
         always {
-            junit 'back-end/tests/results.xml'
-            junit 'front-end/tests/results.xml'
-            junit 'functional-tests/results.xml'
+            junit '**/tests/results.xml'  // Asegúrate de tener los resultados en un archivo XML para poder reportarlos
             echo 'Pipeline completed.'
         }
         failure {
@@ -77,4 +66,3 @@ pipeline {
         }
     }
 }
-
