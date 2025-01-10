@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const request = require('supertest');
 const asyncHandler = require('express-async-handler');
 
 // @desc Get all users
