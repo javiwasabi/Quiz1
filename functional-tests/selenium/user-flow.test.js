@@ -1,21 +1,10 @@
 const { Builder, By, until } = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
 const fs = require('fs');
 
 (async function automatedFlow() {
-  // Configuración de opciones de Chrome
-  let options = new chrome.Options();
-  options.addArguments(
-    '--headless',          // Modo sin cabeza
-    '--disable-gpu',       // Deshabilita la aceleración de GPU
-    '--no-sandbox',        // Para evitar errores de sandbox
-    '--disable-dev-shm-usage', // Evita problemas con recursos compartidos
-    '--remote-debugging-port=9222' // Habilita el puerto de depuración remota
-  );
-
   const driver = await new Builder()
     .forBrowser('chrome')
-    .setChromeOptions(options)  // Establece las opciones de Chrome
+    .setChromeOptions(new (require('selenium-webdriver').chrome.Options)().headless())
     .build();
 
   const takeScreenshot = async (filename) => {
@@ -25,6 +14,7 @@ const fs = require('fs');
 
   try {
     console.log("Starting automated flow...");
+
     await takeScreenshot('step1_initial_page.png');
     console.log("Initial page screenshot captured.");
 
