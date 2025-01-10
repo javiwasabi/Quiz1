@@ -14,6 +14,7 @@ pipeline {
             steps {
                 echo 'Setting up Xvfb...'
                 sh 'Xvfb :99 -ac &'
+                sleep 5 // Esperar que Xvfb se inicie completamente
             }
         }
 
@@ -28,8 +29,14 @@ pipeline {
                 stage('Frontend Dependencies') {
                     steps {
                         dir('frontend') {
-                            echo 'Installing frontend dependencies...'
-                            sh 'npm install'
+                            script {
+                                if (fileExists('package.json')) {
+                                    echo 'Installing frontend dependencies...'
+                                    sh 'npm install'
+                                } else {
+                                    error 'package.json no se encuentra en el directorio frontend.'
+                                }
+                            }
                         }
                     }
                 }
@@ -37,6 +44,7 @@ pipeline {
                     steps {
                         dir('functional-tests/selenium') {
                             echo 'Installing selenium dependencies...'
+                            sh 'npm cache clean --force'
                             sh 'npm install selenium-webdriver'
                             sh 'npm install chromedriver'
                             sh 'npm install'
@@ -113,11 +121,11 @@ pipeline {
     post {
         success {
             echo 'Pipeline completed successfully!'
-            slackSend(channel: '#proyecto', color: 'good', message: "Build exitoso :)")
+            // slackSend(channel: '#proyecto', color: 'good', message: "Build exitoso :)")
         }
         failure {
             echo 'Pipeline failed.'
-            slackSend(channel: '#proyecto', color: 'danger', message: "Build fallido :(")
+            // slackSend(channel: '#proyecto', color: 'danger', message: "Build fallido :(")
         }
     }
 }
