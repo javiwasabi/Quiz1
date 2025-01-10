@@ -82,7 +82,7 @@ pipeline {
 
         stage('Run Unit Tests Front-end') {
             steps {
-                dir('front-end/src') {
+                dir('front-end') {
                     echo 'Running front-end Unit tests...'
                     bat 'npm test'
                 }
@@ -91,7 +91,7 @@ pipeline {
         stage('Run Unit Tests Back-end') {
             steps {
                 dir('back-end') {
-                    echo 'Running front-end Unit tests...'
+                    echo 'Running back-end Unit tests...'
                     bat 'npm test'
                 }
             }
