@@ -52,6 +52,7 @@ pipeline {
                             echo 'Installing backend dependencies...'
                             bat 'npm install'
                             bat 'npm install --save-dev supertest'
+                            bat 'npm install -g supertest'
                         }
                     }
                 }
