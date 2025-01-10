@@ -4,9 +4,9 @@ pipeline {
     environment {
         NODE_ENV = 'production'
         MONGO_URI = 'mongodb+srv://javiwasabi:bhu8nji9@cluster0.t7nmc.mongodb.net/InternshipDB?retryWrites=true&w=majority&appName=Cluster0'
-        DISPLAY = ':99' // Necesario para ejecutar Chrome sin un servidor gráfico
-        PATH = "$PATH:/usr/local/bin" // Incluye la ruta de ChromeDriver
-        XDG_RUNTIME_DIR = '/tmp/runtime-jenkins' // Necesario para Chrome en Jenkins
+        DISPLAY = ':99'
+        PATH = "$PATH:/usr/local/bin"
+        XDG_RUNTIME_DIR = '/tmp/runtime-jenkins'
     }
 
     stages {
@@ -24,18 +24,24 @@ pipeline {
         }
 
         stage('Install Dependencies') {
-            steps {
-                dir('frontend/src') {
-                    echo 'Installing frontend dependencies...'
-                    sh 'npm install'
+            parallel {
+                stage('Frontend Dependencies') {
+                    steps {
+                        dir('frontend') {
+                            echo 'Installing frontend dependencies...'
+                            sh 'npm install'
+                        }
+                    }
                 }
-                dir('functional-tests/selenium') {
-                    echo 'Installing selenium dependencies...'
-                    // Asegúrate de instalar selenium-webdriver globalmente para Jenkins
-                    sh 'npm install selenium-webdriver'
-                    sh 'npm install chromedriver'
-                    sh 'npm i'
-                    sh 'node user-flowt.test.js '
+                stage('Selenium Dependencies') {
+                    steps {
+                        dir('functional-tests/selenium') {
+                            echo 'Installing selenium dependencies...'
+                            sh 'npm install selenium-webdriver'
+                            sh 'npm install chromedriver'
+                            sh 'npm install'
+                        }
+                    }
                 }
             }
         }
@@ -73,32 +79,32 @@ pipeline {
         stage('Wait for Servers') {
             steps {
                 echo 'Waiting for servers to start...'
-                sleep 10 // Ajusta el tiempo si es necesario
+                sleep 10
             }
         }
 
         stage('Run Cypress Tests') {
             steps {
-                echo 'Running Cypress tests...'
-                sh 'npx cypress run --config-file cypress.config.js --headless --browser electron'
+                dir('frontend') {
+                    echo 'Running Cypress tests...'
+                    sh 'npx cypress run --config-file cypress.config.js --headless --browser electron'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                // Aquí puedes agregar los comandos necesarios para desplegar tu aplicación
+                // Añade comandos específicos para tu despliegue aquí
             }
         }
 
         stage('Run Selenium Tests') {
             steps {
-                dir('selenium') {
+                dir('functional-tests/selenium') {
                     echo 'Running Selenium tests...'
-                    // Limpia el caché de npm por seguridad
                     sh 'npm cache clean --force'
-                    // Ejecuta los tests asegurándote de que se use el entorno configurado
-                    sh 'node runner.js'
+                    sh 'node user-flow.test.js'
                 }
             }
         }
