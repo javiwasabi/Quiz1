@@ -139,6 +139,7 @@ const fs = require('fs');
     console.error("An error occurred:", err);
     await takeScreenshot('error.png');
   } finally {
+    
     setTimeout(() => {
       driver.quit();
       console.log("Browser closed.");
