@@ -1,24 +1,28 @@
 FROM jenkins/jenkins:lts
 
-# Establecer como root para realizar instalaciones
 USER root
 
-# Instalar paquetes necesarios para Docker
+# Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
+    docker.io \
     curl \
-    gnupg2 \
-    lsb-release \
-    sudo \
+    xvfb \
+    libglib2.0-0 \
+    libnss3 \
+    libgconf-2-4 \
+    libfontconfig1 \
+    libxi6 \
     && rm -rf /var/lib/apt/lists/*
 
-# Añadir el usuario Jenkins al grupo Docker para permitir el uso de Docker sin sudo
-RUN usermod -aG docker jenkins
+# Instalar Node.js y npm
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g npm
 
+# Instalar Selenium WebDriver y Chromedriver
+RUN npm install -g selenium-webdriver chromedriver
 
+# Verificar las instalaciones
+RUN docker --version && node --version && npm --version && chromedriver --version
 
-
-
-# Asegurarte de que el contenedor ejecute como el usuario Jenkins
 USER jenkins

@@ -33,18 +33,21 @@ services:
       - mongo_data:/data/db
 
   jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
-    user: root
-    ports:
-      - "8070:8080"
-      - "50001:50000"
-    volumes:
-      - jenkins-data:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - mern_network
-    restart: unless-stopped
+      build:
+        context: '.'
+        dockerfile: Dockerfile
+      container_name: jenkins
+      user: root
+      ports:
+        - "8070:8080"
+        - "50001:50000"
+      volumes:
+        - jenkins-data:/var/jenkins_home
+        - /var/run/docker.sock:/var/run/docker.sock
+      networks:
+        - mern_network
+      restart: unless-stopped
+
 
 
 volumes:
