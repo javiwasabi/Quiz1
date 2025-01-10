@@ -1,78 +1,117 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
+    agent any
+
     environment {
-        CI = 'true'
-        BACKEND_DIR = 'back-end'
-        FRONTEND_DIR = 'front-end'
-        TESTS_DIR = 'functional-tests'
+        NODE_ENV = 'production'
+        MONGO_URI = 'mongodb+srv://javiwasabi:bhu8nji9@cluster0.t7nmc.mongodb.net/InternshipDB?retryWrites=true&w=majority&appName=Cluster0'
+        DISPLAY = ':99' // Necesario para ejecutar Chrome sin un servidor gráfico
+        PATH = "$PATH:/usr/local/bin" // Incluye la ruta de ChromeDriver
+        XDG_RUNTIME_DIR = '/tmp/runtime-jenkins' // Necesario para Chrome en Jenkins
     }
+
     stages {
-        stage('Checkout Code') {
+        stage('Setup Xvfb') {
             steps {
-                sh "echo 'Cloning repository...'"
-                git branch: 'main', url: 'https://github.com/javiwasabi/Quiz1.git'
+                echo 'Setting up Xvfb...'
+                sh 'Xvfb :99 -ac &'
             }
         }
-        stage('Install Dependencies and Build Backend') {
+
+        stage('Checkout') {
             steps {
-                dir("${BACKEND_DIR}") {
-                    sh "echo 'Installing backend dependencies...'"
-                    sh "npm install"
+                git url: 'https://github.com/javiwasabi/Quiz1.git', branch: 'main'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                dir('frontend/src') {
+                    echo 'Installing frontend dependencies...'
+                    sh 'npm install'
+                }
+                dir('functional-tests/selenium') {
+                    echo 'Installing selenium dependencies...'
+                    // Asegúrate de instalar selenium-webdriver globalmente para Jenkins
+                    sh 'npm install selenium-webdriver'
+                    sh 'npm install chromedriver'
+                    sh 'npm i'
+                    sh 'node user-flowt.test.js '
                 }
             }
         }
-        stage('Run Backend Tests') {
+
+        stage('Build') {
             steps {
-                dir("${BACKEND_DIR}") {
-                    sh "echo 'Running backend tests...'"
-                    sh "npm test"
+                dir('frontend') {
+                    echo 'Building frontend...'
+                    sh 'npm run build'
                 }
             }
         }
-        stage('Install Dependencies and Build Frontend') {
-            steps {
-                dir("${FRONTEND_DIR}") {
-                    sh "echo 'Installing frontend dependencies...'"
-                    sh "npm install"
+
+        stage('Start Servers') {
+            parallel {
+                stage('Start Frontend Server') {
+                    steps {
+                        dir('frontend') {
+                            echo 'Starting frontend server...'
+                            sh 'nohup npm run start &'
+                        }
+                    }
+                }
+                stage('Start Backend Server') {
+                    steps {
+                        dir('backend') {
+                            echo 'Starting backend server...'
+                            sh 'nohup npm run start &'
+                        }
+                    }
                 }
             }
         }
-        stage('Run Frontend Tests') {
+
+        stage('Wait for Servers') {
             steps {
-                dir("${FRONTEND_DIR}") {
-                    sh "echo 'Running frontend tests...'"
-                    sh "npm test"
-                }
+                echo 'Waiting for servers to start...'
+                sleep 10 // Ajusta el tiempo si es necesario
             }
         }
-        stage('Deploy and Run Functional Tests') {
+
+        stage('Run Cypress Tests') {
             steps {
-                dir("${TESTS_DIR}") {
-                    sh "echo 'Preparing for functional tests...'"
-                    sh "npm install"
-                    sh "npm test"
-                }
+                echo 'Running Cypress tests...'
+                sh 'npx cypress run --config-file cypress.config.js --headless --browser electron'
             }
         }
-        stage('Deliver') {
+
+        stage('Deploy') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                echo 'Deploying application...'
+                // Aquí puedes agregar los comandos necesarios para desplegar tu aplicación
+            }
+        }
+
+        stage('Run Selenium Tests') {
+            steps {
+                dir('selenium') {
+                    echo 'Running Selenium tests...'
+                    // Limpia el caché de npm por seguridad
+                    sh 'npm cache clean --force'
+                    // Ejecuta los tests asegurándote de que se use el entorno configurado
+                    sh 'node runner.js'
+                }
             }
         }
     }
+
     post {
-        always {
-            echo 'Pipeline completed.'
+        success {
+            echo 'Pipeline completed successfully!'
+            slackSend(channel: '#proyecto', color: 'good', message: "Build exitoso :)")
         }
         failure {
             echo 'Pipeline failed.'
+            slackSend(channel: '#proyecto', color: 'danger', message: "Build fallido :(")
         }
     }
 }
