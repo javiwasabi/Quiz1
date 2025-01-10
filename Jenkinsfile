@@ -33,6 +33,7 @@ pipeline {
                                 if (fileExists('package.json')) {
                                     echo 'Installing frontend dependencies...'
                                     sh 'npm install --legacy-peer-deps   '
+                                    sh 'npm install typescript --save-dev'
                                 } else {
                                     error 'package.json no se encuentra en el directorio frontend.'
                                 }
