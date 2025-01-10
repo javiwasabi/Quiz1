@@ -56,21 +56,22 @@ pipeline {
                 stage('Start Frontend Server') {
                     steps {
                         dir('front-end') {
-                            echo 'Starting frontend server...'
-                            bat 'nohup npm run start &'
+                            echo 'Starting frontend server in the background...'
+                            bat 'start /B npm run start'
                         }
                     }
                 }
                 stage('Start Backend Server') {
                     steps {
                         dir('back-end') {
-                            echo 'Starting backend server...'
-                            bat 'nohup npm run start &'
+                            echo 'Starting backend server in the background...'
+                            bat 'start /B npm run start'
                         }
                     }
                 }
             }
         }
+
 
         stage('Wait for Servers') {
             steps {
