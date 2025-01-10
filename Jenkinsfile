@@ -82,10 +82,10 @@ pipeline {
 
         stage('Run Unit Tests Front-end') {
             steps {
-                dir('front-end') {
+                dir('front-end/src/tests') {
                     echo 'Running front-end Unit tests...'
                     bat 'npm test'
-                    sleep 5
+                
                 }
             }
         }
