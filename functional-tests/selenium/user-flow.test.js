@@ -1,10 +1,15 @@
-const { Builder, By, until } = require('selenium-webdriver');
+const { Builder, By, until, Capabilities } = require('selenium-webdriver');
 const fs = require('fs');
 
 (async function automatedFlow() {
+  const capabilities = Capabilities.chrome();
+  capabilities.set('chromeOptions', {
+    args: ['--headless', '--disable-gpu', '--no-sandbox']
+  });
+
   const driver = await new Builder()
     .forBrowser('chrome')
-    .setChromeOptions(new (require('selenium-webdriver').chrome.Options)().headless())
+    .withCapabilities(capabilities)
     .build();
 
   const takeScreenshot = async (filename) => {
