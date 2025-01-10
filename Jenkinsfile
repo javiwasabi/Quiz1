@@ -28,7 +28,7 @@ pipeline {
             parallel {
                 stage('Frontend Dependencies') {
                     steps {
-                        dir('frontend') {
+                        dir('front-end') {
                             script {
                                 if (fileExists('package.json')) {
                                     echo 'Installing frontend dependencies...'
@@ -56,7 +56,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('frontend') {
+                dir('front-end') {
                     echo 'Building frontend...'
                     sh 'npm run build'
                 }
@@ -75,7 +75,7 @@ pipeline {
                 }
                 stage('Start Backend Server') {
                     steps {
-                        dir('backend') {
+                        dir('back-end') {
                             echo 'Starting backend server...'
                             sh 'nohup npm run start &'
                         }
