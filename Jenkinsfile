@@ -80,6 +80,23 @@ pipeline {
             }
         }
 
+        stage('Run Unit Tests Front-end') {
+            steps {
+                dir('front-end/src') {
+                    echo 'Running front-end Unit tests...'
+                    bat 'npm test'
+                }
+            }
+        }
+        stage('Run Unit Tests Back-end') {
+            steps {
+                dir('back-end') {
+                    echo 'Running front-end Unit tests...'
+                    bat 'npm test'
+                }
+            }
+        }
+
 
         stage('Run Selenium Tests') {
             steps {
