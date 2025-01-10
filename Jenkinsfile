@@ -85,6 +85,7 @@ pipeline {
                 dir('front-end') {
                     echo 'Running front-end Unit tests...'
                     bat 'npm test'
+                    sleep 5
                 }
             }
         }
