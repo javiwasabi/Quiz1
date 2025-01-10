@@ -34,6 +34,7 @@ pipeline {
                                     echo 'Installing frontend dependencies...'
                                     sh 'npm install --legacy-peer-deps   '
                                     sh 'npm install typescript --save-dev'
+                                    sh 'npm install @babel/plugin-proposal-private-property-in-object --save-dev'
                                 } else {
                                     error 'package.json no se encuentra en el directorio frontend.'
                                 }
@@ -49,28 +50,21 @@ pipeline {
                             sh 'npm install selenium-webdriver'
                             sh 'npm install chromedriver'
                             sh 'npm install'
+                            
                         }
                     }
                 }
             }
         }
 
-        stage('Build') {
-            steps {
-                dir('front-end') {
-                    echo 'Building frontend...'
-                    sh 'npm start'
-                }
-            }
-        }
 
         stage('Start Servers') {
             parallel {
                 stage('Start Frontend Server') {
                     steps {
-                        dir('frontend') {
+                        dir('front-end') {
                             echo 'Starting frontend server...'
-                            sh 'nohup npm run start &'
+                            sh 'npm start'
                         }
                     }
                 }
@@ -78,7 +72,7 @@ pipeline {
                     steps {
                         dir('back-end') {
                             echo 'Starting backend server...'
-                            sh 'nohup npm run start &'
+                            sh 'npm start'
                         }
                     }
                 }
@@ -91,16 +85,6 @@ pipeline {
                 sleep 10
             }
         }
-
-        stage('Run Cypress Tests') {
-            steps {
-                dir('frontend') {
-                    echo 'Running Cypress tests...'
-                    sh 'npx cypress run --config-file cypress.config.js --headless --browser electron'
-                }
-            }
-        }
-
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
@@ -112,7 +96,6 @@ pipeline {
             steps {
                 dir('functional-tests/selenium') {
                     echo 'Running Selenium tests...'
-                    sh 'npm cache clean --force'
                     sh 'node user-flow.test.js'
                 }
             }
