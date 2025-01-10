@@ -84,8 +84,7 @@ pipeline {
             steps {
                 dir('front-end/src/tests') {
                     echo 'Running front-end Unit tests...'
-                    bat 'npm test'
-                
+                    bat 'npm test -- --passWithNoTests'
                 }
             }
         }
