@@ -46,6 +46,14 @@ pipeline {
                         }
                     }
                 }
+                stage('Backend Dependencies') {
+                    steps {
+                        dir('back-end') {
+                            bat 'npm install'
+                            bat 'npm install --save-dev supertest'
+                        }
+                    }
+                }
             }
         }
 
