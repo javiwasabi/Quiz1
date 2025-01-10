@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Setting up Xvfb...'
                 sh 'Xvfb :99 -ac &'
-                sleep 5 // Esperar que Xvfb se inicie completamente
+                sleep 5 
             }
         }
 
@@ -32,7 +32,7 @@ pipeline {
                             script {
                                 if (fileExists('package.json')) {
                                     echo 'Installing frontend dependencies...'
-                                    sh 'npm install'
+                                    sh 'npm install --legacy-peer-deps   '
                                 } else {
                                     error 'package.json no se encuentra en el directorio frontend.'
                                 }
