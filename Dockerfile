@@ -25,4 +25,5 @@ RUN npm install -g selenium-webdriver chromedriver
 # Verificar las instalaciones
 RUN docker --version && node --version && npm --version && chromedriver --version
 
+
 USER jenkins
