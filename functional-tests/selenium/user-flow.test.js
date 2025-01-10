@@ -1,8 +1,22 @@
 const { Builder, By, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 const fs = require('fs');
 
 (async function automatedFlow() {
-  const driver = await new Builder().forBrowser('chrome').build();
+  // Configuración de opciones de Chrome
+  let options = new chrome.Options();
+  options.addArguments(
+    '--headless',          // Modo sin cabeza
+    '--disable-gpu',       // Deshabilita la aceleración de GPU
+    '--no-sandbox',        // Para evitar errores de sandbox
+    '--disable-dev-shm-usage', // Evita problemas con recursos compartidos
+    '--remote-debugging-port=9222' // Habilita el puerto de depuración remota
+  );
+
+  const driver = await new Builder()
+    .forBrowser('chrome')
+    .setChromeOptions(options)  // Establece las opciones de Chrome
+    .build();
 
   const takeScreenshot = async (filename) => {
     const screenshot = await driver.takeScreenshot();
@@ -11,11 +25,8 @@ const fs = require('fs');
 
   try {
     console.log("Starting automated flow...");
-
-
     await takeScreenshot('step1_initial_page.png');
     console.log("Initial page screenshot captured.");
-
 
     await driver.get('http://localhost:3500');
     console.log("Navigating to FirstPage...");
@@ -24,11 +35,9 @@ const fs = require('fs');
     }, 10000);
     console.log("DOM fully loaded.");
 
-  
     await takeScreenshot('step2_page_loaded.png');
     console.log("Page load screenshot captured.");
 
-  
     const startButton = await driver.wait(
       until.elementLocated(By.xpath("//button[text()='START']")),
       15000
@@ -92,7 +101,6 @@ const fs = require('fs');
     await emailIcon.click();
     console.log("Email icon clicked.");
 
-
     await takeScreenshot('step4_email_icon_clicked.png');
     console.log("Email icon clicked screenshot captured.");
 
@@ -117,13 +125,11 @@ const fs = require('fs');
     await checklist2.click();
     console.log("Checklist 2 checked.");
 
-
     const score = 2;  
     console.log(`Score entered: ${score}`);
 
     await takeScreenshot('step5_email_and_checklist_completed.png');
     console.log("Email and checklist completed screenshot captured.");
-
 
     const submitButton = await driver.wait(
       until.elementLocated(By.xpath("//button[text()='Submit']")),
