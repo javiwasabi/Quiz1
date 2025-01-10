@@ -58,7 +58,7 @@ pipeline {
             steps {
                 dir('front-end') {
                     echo 'Building frontend...'
-                    sh 'npm run build'
+                    sh 'npm start'
                 }
             }
         }
