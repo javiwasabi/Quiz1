@@ -10,14 +10,7 @@ pipeline {
     }
 
     stages {
-        stage('Setup Xvfb') {
-            steps {
-                echo 'Setting up Xvfb...'
-                bat 'Xvfb :99 -ac &'
-                sleep 5 
-            }
-        }
-
+       
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/javiwasabi/Quiz1.git', branch: 'main'
