@@ -25,7 +25,7 @@ pipeline {
                             script {
                                 if (fileExists('package.json')) {
                                     echo 'Installing frontend dependencies...'
-                                    bat 'npm install --legacy-peer-deps   '
+                                    bat 'npm install --legacy-peer-deps'
                                     bat 'npm install typescript --save-dev'
                                     bat 'npm install @babel/plugin-proposal-private-property-in-object --save-dev'
                                 } else {
@@ -43,13 +43,20 @@ pipeline {
                             bat 'npm install selenium-webdriver'
                             bat 'npm install chromedriver'
                             bat 'npm install'
-                            
                         }
                     }
                 }
             }
         }
 
+        stage('Install Jest for Back-end') {
+            steps {
+                dir('back-end') {
+                    echo 'Installing Jest for back-end tests...'
+                    bat 'npm install --save-dev jest'
+                }
+            }
+        }
 
         stage('Start Servers') {
             parallel {
@@ -72,7 +79,6 @@ pipeline {
             }
         }
 
-
         stage('Wait for Servers') {
             steps {
                 echo 'Waiting for servers to start...'
@@ -88,6 +94,7 @@ pipeline {
                 }
             }
         }
+
         stage('Run Unit Tests Back-end') {
             steps {
                 dir('back-end') {
@@ -96,7 +103,6 @@ pipeline {
                 }
             }
         }
-
 
         stage('Run Selenium Tests') {
             steps {
