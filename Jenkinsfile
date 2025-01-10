@@ -54,6 +54,9 @@ pipeline {
                 dir('back-end') {
                     echo 'Installing Jest for back-end tests...'
                     bat 'npm install --save-dev jest'
+                    bat 'npx jest'
+          
+
                 }
             }
         }
@@ -90,7 +93,7 @@ pipeline {
             steps {
                 dir('front-end/src/tests/components') {
                     echo 'Running front-end Unit tests...'
-                    bat 'npm test -- --passWithNoTests'
+                    bat 'npm test -- --passWithNoTests --testPathPattern=src/tests/components'
                 }
             }
         }
