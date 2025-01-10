@@ -10,7 +10,7 @@ pipeline {
     }
 
     stages {
-       
+
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/javiwasabi/Quiz1.git', branch: 'main'
@@ -49,6 +49,7 @@ pipeline {
                 stage('Backend Dependencies') {
                     steps {
                         dir('back-end') {
+                            echo 'Installing backend dependencies...'
                             bat 'npm install'
                             bat 'npm install --save-dev supertest'
                         }
@@ -62,9 +63,15 @@ pipeline {
                 dir('back-end') {
                     echo 'Installing Jest for back-end tests...'
                     bat 'npm install --save-dev jest'
-                    bat 'npx jest'
-          
+                }
+            }
+        }
 
+        stage('Run Backend Unit Tests') {
+            steps {
+                dir('back-end') {
+                    echo 'Running back-end Unit tests...'
+                    bat 'npx jest'
                 }
             }
         }
@@ -102,15 +109,6 @@ pipeline {
                 dir('front-end/src/tests/components') {
                     echo 'Running front-end Unit tests...'
                     bat 'npm test -- --passWithNoTests --testPathPattern=src/tests/components'
-                }
-            }
-        }
-
-        stage('Run Unit Tests Back-end') {
-            steps {
-                dir('back-end') {
-                    echo 'Running back-end Unit tests...'
-                    bat 'npm test'
                 }
             }
         }
