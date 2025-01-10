@@ -64,7 +64,7 @@ pipeline {
                     steps {
                         dir('front-end') {
                             echo 'Starting frontend server...'
-                            sh 'npm start'
+                            sh 'nohup npm run start &'
                         }
                     }
                 }
@@ -72,7 +72,7 @@ pipeline {
                     steps {
                         dir('back-end') {
                             echo 'Starting backend server...'
-                            sh 'npm start'
+                            sh 'nohup npm run start &'
                         }
                     }
                 }
@@ -82,15 +82,10 @@ pipeline {
         stage('Wait for Servers') {
             steps {
                 echo 'Waiting for servers to start...'
-                sleep 10
+                sleep 5
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                // Añade comandos específicos para tu despliegue aquí
-            }
-        }
+
 
         stage('Run Selenium Tests') {
             steps {
