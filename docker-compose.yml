@@ -32,27 +32,10 @@ services:
     volumes:
       - mongo_data:/data/db
 
-  jenkins:
-      build:
-        context: '.'
-        dockerfile: Dockerfile
-      container_name: jenkins
-      user: root
-      ports:
-        - "8070:8080"
-        - "50001:50000"
-      volumes:
-        - jenkins-data:/var/jenkins_home
-        - /var/run/docker.sock:/var/run/docker.sock
-      networks:
-        - mern_network
-      restart: unless-stopped
-
 
 
 volumes:
   mongo_data:
-  jenkins-data:
 
 networks:
   mern_network:
