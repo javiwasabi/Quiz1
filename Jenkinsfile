@@ -88,7 +88,7 @@ pipeline {
 
         stage('Run Unit Tests Front-end') {
             steps {
-                dir('front-end/src/tests') {
+                dir('front-end/src/tests/components') {
                     echo 'Running front-end Unit tests...'
                     bat 'npm test -- --passWithNoTests'
                 }
