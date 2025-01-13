@@ -20,15 +20,18 @@ pipeline {
         stage('Start Docker Compose') {
             steps {
                 echo 'Starting Docker Compose services...'
-                bat 'docker-compose -f docker-compose.yml up -d'
-                bat 'docker-compose up --build'
+                script {
+                    // Inicia Docker Compose en segundo plano
+                    bat 'start /B docker-compose up -d'
+
+                    // Construye y asegura que los contenedores se construyan
+                    bat 'docker-compose up --build'
+                }
             }
         }
 
-
         stage('Install Dependencies') {
             parallel {
-                
                 stage('Selenium Dependencies') {
                     steps {
                         dir('functional-tests/selenium') {
@@ -40,10 +43,8 @@ pipeline {
                         }
                     }
                 }
-                
             }
         }
-
 
         stage('Wait for Servers') {
             steps {
@@ -51,7 +52,6 @@ pipeline {
                 sleep 5
             }
         }
-
 
         stage('Run Selenium Tests') {
             steps {
