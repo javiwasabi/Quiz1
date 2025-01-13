@@ -27,14 +27,28 @@ pipeline {
             parallel {
                 stage('Frontend Dependencies') {
                     steps {
-                        echo 'Installing frontend dependencies...'
-                        bat 'docker exec $(docker-compose ps -q frontend) npm install --legacy-peer-deps'
+                        script {
+                            def frontendContainerId = bat(script: "docker-compose ps -q frontend", returnStdout: true).trim()
+                            if (frontendContainerId) {
+                                echo 'Installing frontend dependencies...'
+                                bat "docker exec ${frontendContainerId} npm install --legacy-peer-deps"
+                            } else {
+                                error 'Frontend container not found.'
+                            }
+                        }
                     }
                 }
                 stage('Backend Dependencies') {
                     steps {
-                        echo 'Installing backend dependencies...'
-                        bat 'docker exec $(docker-compose ps -q backend) npm install'
+                        script {
+                            def backendContainerId = bat(script: "docker-compose ps -q backend", returnStdout: true).trim()
+                            if (backendContainerId) {
+                                echo 'Installing backend dependencies...'
+                                bat "docker exec ${backendContainerId} npm install"
+                            } else {
+                                error 'Backend container not found.'
+                            }
+                        }
                     }
                 }
             }
@@ -44,14 +58,28 @@ pipeline {
             parallel {
                 stage('Run Backend Tests') {
                     steps {
-                        echo 'Running backend tests...'
-                        bat 'docker exec $(docker-compose ps -q backend) npm test'
+                        script {
+                            def backendContainerId = bat(script: "docker-compose ps -q backend", returnStdout: true).trim()
+                            if (backendContainerId) {
+                                echo 'Running backend tests...'
+                                bat "docker exec ${backendContainerId} npm test"
+                            } else {
+                                error 'Backend container not found for testing.'
+                            }
+                        }
                     }
                 }
                 stage('Run Selenium Tests') {
                     steps {
-                        echo 'Running Selenium tests...'
-                        bat 'docker exec $(docker-compose ps -q frontend) node user-flow.test.js'
+                        script {
+                            def frontendContainerId = bat(script: "docker-compose ps -q frontend", returnStdout: true).trim()
+                            if (frontendContainerId) {
+                                echo 'Running Selenium tests...'
+                                bat "docker exec ${frontendContainerId} node user-flow.test.js"
+                            } else {
+                                error 'Frontend container not found for Selenium tests.'
+                            }
+                        }
                     }
                 }
             }
@@ -65,4 +93,3 @@ pipeline {
         }
     }
 }
-
