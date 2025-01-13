@@ -20,39 +20,10 @@ pipeline {
             steps {
                 echo 'Starting Docker Compose services...'
                 bat 'docker-compose -f docker-compose.yml up -d'
+                bat 'docker-compose up --build'
             }
         }
 
-        stage('Install Dependencies') {
-            parallel {
-                stage('Frontend Dependencies') {
-                    steps {
-                        script {
-                            def frontendContainerId = bat(script: "docker-compose ps -q frontend", returnStdout: true).trim()
-                            if (frontendContainerId) {
-                                echo 'Installing frontend dependencies...'
-                                bat "docker exec ${frontendContainerId} npm install --legacy-peer-deps"
-                            } else {
-                                error 'Frontend container not found.'
-                            }
-                        }
-                    }
-                }
-                stage('Backend Dependencies') {
-                    steps {
-                        script {
-                            def backendContainerId = bat(script: "docker-compose ps -q backend", returnStdout: true).trim()
-                            if (backendContainerId) {
-                                echo 'Installing backend dependencies...'
-                                bat "docker exec ${backendContainerId} npm install"
-                            } else {
-                                error 'Backend container not found.'
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         stage('Run Tests') {
             parallel {
