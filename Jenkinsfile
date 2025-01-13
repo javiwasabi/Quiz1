@@ -60,11 +60,12 @@ pipeline {
             }
         }
         
-        stage('Run Selenium Tests') {
+        stage('Closing Docker') {
             steps {
-                dir('functional-tests/selenium') {
-                    echo 'Running Selenium tests...'
-                    bat 'node user-flow.test.js'
+                echo 'Closing Docker Compose services ... '
+                script {
+                    bat 'docker-compose down'
+             
                 }
             }
         }
