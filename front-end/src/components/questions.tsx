@@ -36,67 +36,60 @@ export const Card: React.FC<CardProps> = ({ imageUrl, context, isCorrect, isFlip
   }, [index, context, isFlipped]);
 
   return (
-    <div
-      className="flex flex-col items-center justify-center w-[90%] sm:w-[80%] md:w-[90%] lg:w-[90%] mx-auto mt-4"
-      style={{ transform: "rotate(11deg)" }}
-    >
+    <div className="flex flex-col items-center justify-center w-full sm:w-full md:w-11/12 lg:w-8/12 mx-auto mt-4">
       <div
-        className={`relative flex items-center justify-center w-full h-64 sm:h-80 bg-white shadow-lg rounded-lg ${
-          isFlipped ? "bg-white" : ""
-        }`}
+        className={`relative flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 ${isFlipped ? "" : ""}`}
+        style={{ transform: isFlipped ? "rotate(0deg)" : "rotate(11deg)" }}
       >
         {isFlipped ? (
-          <div className="p-4">
+          <div className="p-4 w-full">
             <p
-              data-testid={`typed-text-${score}`}
-              className="sm:text-base lg:text-lg text-2xl mt-4 font-Merriweather"
-              style={{ animation: "blink 0.5s step-end infinite" }}
-            >
-              {typedText}
-            </p>
+  className="mt-4 text-lg sm:text-base md:text-lg lg:text-xl font-light font-Merriweather"
+  style={{
+    fontSize: "3vw",
+    lineHeight: "1.5", 
+  }}
+>
+  {typedText}
+</p>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-full bg-white">
-            <div className=" text-3xl font-bentham w-32 h-32 sm:w-40 sm:h-40 bg-black rounded-lg shadow-md text-white flex items-center justify-center text-center">
-              Guess 
+          <>
+            <div className="w-full aspect-[3/4] bg-black flex items-center justify-center rounded-lg">
+              <p className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bentham">Guess</p>
             </div>
-            <p className="mt-4 text-sm sm:text-base lg:text-lg text-white font-frijole">
+            <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white font-bentham">
               Can you guess who this is?
             </p>
-          </div>
+          </>
         )}
       </div>
-      <style>
-        {`
-          @keyframes blink {
-            from { border-right-color: transparent; }
-            to { border-right-color: white; }
-          }
-        `}
-      </style>
     </div>
   );
 };
 
 export const FileCard: React.FC<fileCardProps> = ({ imageUrl, context, score, isCorrect, isFlipped }) => {
   return (
-    <div className="flex flex-col justify-center items-center w-[100%] sm:w-[100%] md:w-[70%] lg:w-[100%] mx-auto mt-4">
-      <div
-        className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8"
-        style={{ transform: "rotate(-11deg)" }}
-      >
-        <img
-          src={imageUrl}
-          alt="Card"
-          className="w-full h-48 sm:h-64 object-cover rounded-lg"
-        />
-        <p className="mt-4 text-xl sm:text-xl md:text-2xl text-center text-gray-900 font-Merriweather">
+    <div className="flex flex-col w-full sm:w-3/4 md:w-4/5 lg:w-4/5 mx-auto mt-4">
+      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8" style={{ transform: "rotate(-11deg)" }}>
+        <div className="w-full aspect-[4/3] bg-white flex items-center justify-center rounded-lg">
+          <img
+            src={imageUrl}
+            alt="Polaroid"
+            className="w-full h-full object-contain"
+            style={{ maxWidth: "100%", maxHeight: "500px" }}
+          />
+        </div>
+
+        <p className="mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black font-bentham text-center leading-tight">
           Can you guess who this is?
         </p>
       </div>
     </div>
   );
 };
+
+
 
 export const PolaroidPhoto: React.FC = () => {
   return (
