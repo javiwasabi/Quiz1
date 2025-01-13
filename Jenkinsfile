@@ -17,6 +17,15 @@ pipeline {
             }
         }
 
+        stage('Start Docker Compose') {
+            steps {
+                echo 'Starting Docker Compose services...'
+                bat 'docker-compose -f docker-compose.yml up -d'
+                bat 'docker-compose up --build'
+            }
+        }
+
+
         stage('Install Dependencies') {
             parallel {
                 
