@@ -23,7 +23,7 @@ pipeline {
                 script {
                     bat 'docker-compose down'
                     bat 'start /B docker-compose up -d'  
-                    bat 'docker-compose up --build'     
+             
                 }
             }
         }
