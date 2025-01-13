@@ -59,16 +59,17 @@ pipeline {
                 }
             }
         }
-    }
-
-    stage('Closing Docker Compose') {
+        
+        stage('Run Selenium Tests') {
             steps {
-                script {
-                    bat 'docker-compose down'
-             
+                dir('functional-tests/selenium') {
+                    echo 'Running Selenium tests...'
+                    bat 'node user-flow.test.js'
                 }
             }
         }
+    }
+    
 
     post {
         success {
