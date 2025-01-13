@@ -26,7 +26,7 @@ services:
 
   mongo:
     image: mongo:5.0
-    container_name: mongo-new
+    container_name: mongo
     ports:
       - "27017:27017"
     volumes:
