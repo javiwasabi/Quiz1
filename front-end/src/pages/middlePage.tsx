@@ -113,7 +113,8 @@ const Middle: React.FC = () => {
     ></div>
   
 
-  <div className="h-full w-full flex flex-col space-y-4 transform scale-[0.95] md:scale-[0.85] lg:scale-[0.8]">
+  <div className="h-full w-full flex flex-col space-y-4 transform scale-[0.7] md:scale-[0.65] lg:scale-[0.6]">
+
 
   
         {showResults ? (
@@ -149,7 +150,7 @@ const Middle: React.FC = () => {
         ) : (
           <>
             {answered && (
-              <div className="absolute bottom-[0%] left-1/2 transform -translate-x-1/2 z-20 flex gap-x-8 text-black">
+              <div className="absolute bottom-[0%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black">
                 <ButtonNext id="next-button" onClick={handleNextQuestion} />
 
               </div>

@@ -71,7 +71,7 @@ export const Card: React.FC<CardProps> = ({ imageUrl, context, isCorrect, isFlip
 export const FileCard: React.FC<fileCardProps> = ({ imageUrl, context, score, isCorrect, isFlipped }) => {
   return (
     <div className="flex flex-col w-full sm:w-3/4 md:w-4/5 lg:w-4/5 mx-auto mt-4">
-      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8" style={{ transform: "rotate(-11deg)" }}>
+      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8" style={{ transform: "rotate(0deg)" }}>
         <div className="w-full aspect-[4/3] bg-white flex items-center justify-center rounded-lg">
           <img
             src={imageUrl}
