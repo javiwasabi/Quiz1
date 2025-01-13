@@ -19,14 +19,19 @@ pipeline {
 
         stage('Start Docker Compose') {
             steps {
-                echo 'Starting Docker Compose services...'
+                echo 'Starting Docker Compose services in background...'
                 script {
-                    // Inicia Docker Compose en segundo plano
-                    bat 'start /B docker-compose up -d'
-
-                    // Construye y asegura que los contenedores se construyan
-                    bat 'docker-compose up --build'
+                    bat 'docker-compose down'
+                    bat 'start /B docker-compose up -d'  
+                    bat 'docker-compose up --build'     
                 }
+            }
+        }
+
+        stage('Wait for Servers') {
+            steps {
+                echo 'Waiting for servers to start...'
+                sleep 5  // Tiempo de espera para que los servidores estén listos
             }
         }
 
@@ -43,13 +48,6 @@ pipeline {
                         }
                     }
                 }
-            }
-        }
-
-        stage('Wait for Servers') {
-            steps {
-                echo 'Waiting for servers to start...'
-                sleep 5
             }
         }
 
