@@ -61,6 +61,15 @@ pipeline {
         }
     }
 
+    stage('Closing Docker Compose') {
+            steps {
+                script {
+                    bat 'docker-compose down'
+             
+                }
+            }
+        }
+
     post {
         success {
             echo 'Pipeline completed successfully!'
