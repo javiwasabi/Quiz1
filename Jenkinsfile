@@ -1,4 +1,4 @@
-pipeline { 
+pipeline {
     agent any
 
     environment {
@@ -10,16 +10,10 @@ pipeline {
     }
 
     stages {
+
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/javiwasabi/Quiz1.git', branch: 'main'
-            }
-        }
-
-        stage('Start Docker Compose') {
-            steps {
-                echo 'Starting Docker Compose services...'
-                sh 'docker-compose -f docker-compose.yml up -d'
             }
         }
 
@@ -31,9 +25,9 @@ pipeline {
                             script {
                                 if (fileExists('package.json')) {
                                     echo 'Installing frontend dependencies...'
-                                    sh 'npm install --legacy-peer-deps'
-                                    sh 'npm install typescript --save-dev'
-                                    sh 'npm install @babel/plugin-proposal-private-property-in-object --save-dev'
+                                    bat 'npm install --legacy-peer-deps'
+                                    bat 'npm install typescript --save-dev'
+                                    bat 'npm install @babel/plugin-proposal-private-property-in-object --save-dev'
                                 } else {
                                     error 'package.json no se encuentra en el directorio frontend.'
                                 }
@@ -45,10 +39,10 @@ pipeline {
                     steps {
                         dir('functional-tests/selenium') {
                             echo 'Installing selenium dependencies...'
-                            sh 'npm cache clean --force'
-                            sh 'npm install selenium-webdriver'
-                            sh 'npm install chromedriver'
-                            sh 'npm install'
+                            bat 'npm cache clean --force'
+                            bat 'npm install selenium-webdriver'
+                            bat 'npm install chromedriver'
+                            bat 'npm install'
                         }
                     }
                 }
@@ -56,9 +50,9 @@ pipeline {
                     steps {
                         dir('back-end') {
                             echo 'Installing backend dependencies...'
-                            sh 'npm install'
-                            sh 'npm install --save-dev supertest'
-                            sh 'npm install -g supertest'
+                            bat 'npm install'
+                            bat 'npm install --save-dev supertest'
+                            bat 'npm install -g supertest'
                         }
                     }
                 }
@@ -69,28 +63,47 @@ pipeline {
             steps {
                 dir('back-end') {
                     echo 'Installing Jest for back-end tests...'
-                    sh 'npm install --save-dev jest'
+                    bat 'npm install --save-dev jest'
                 }
             }
         }
 
-        stage('Run Tests') {
+
+
+        stage('Start Servers') {
             parallel {
-                stage('Run Backend Tests') {
+                stage('Start Frontend Server') {
                     steps {
-                        dir('back-end') {
-                            echo 'Running backend tests...'
-                            sh 'npm test'
+                        dir('front-end') {
+                            echo 'Starting frontend server in the background...'
+                            bat 'start /B npm run start'
                         }
                     }
                 }
-                stage('Run Selenium Tests') {
+                stage('Start Backend Server') {
                     steps {
-                        dir('functional-tests/selenium') {
-                            echo 'Running Selenium tests...'
-                            sh 'node user-flow.test.js'
+                        dir('back-end') {
+                            echo 'Starting backend server in the background...'
+                            bat 'start /B npm run start'
                         }
                     }
+                }
+            }
+        }
+
+        stage('Wait for Servers') {
+            steps {
+                echo 'Waiting for servers to start...'
+                sleep 5
+            }
+        }
+
+
+        stage('Run Selenium Tests') {
+            steps {
+                dir('functional-tests/selenium') {
+                    echo 'Running Selenium tests...'
+                    bat 'node user-flow.test.js'
                 }
             }
         }
@@ -104,10 +117,6 @@ pipeline {
         failure {
             echo 'Pipeline failed.'
             // slackSend(channel: '#proyecto', color: 'danger', message: "Build fallido :(")
-        }
-        always {
-            echo 'Cleaning up Docker Compose services...'
-            sh 'docker-compose -f docker-compose.yml down'
         }
     }
 }
