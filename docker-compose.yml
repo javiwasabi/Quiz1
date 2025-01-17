@@ -1,17 +1,5 @@
 
 services:
-  backend:
-    build:
-      context: ./back-end
-      dockerfile: dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./back-end:/app
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/quiz
-    depends_on:
-      - mongo
 
   frontend:
     build:
@@ -24,17 +12,6 @@ services:
     stdin_open: true
     tty: true
 
-  mongo:
-    image: mongo:5.0
-    container_name: mongo-new
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-
-
-volumes:
-  mongo_data:
 
 networks:
   mern_network:
