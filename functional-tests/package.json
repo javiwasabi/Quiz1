@@ -9,13 +9,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "selenium-test": "/selenium"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
     "chromedriver": "^131.0.4",
+    "react-redux": "^9.2.0",
     "selenium-webdriver": "^4.27.0"
   },
   "devDependencies": {

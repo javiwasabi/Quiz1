@@ -16,25 +16,62 @@ const Middle: React.FC = () => {
   const [showInventor, setShowInventor] = useState(false);
 
   const navigate = useNavigate();
-
   const questions = [
     {
-      imageUrl: "https://cdn-images-1.medium.com/max/1200/0*2iJ2cYEH3kqHrarJ.jpg",
+      imageUrl: "assets/Guido-portrait-2014-curvves.jpg",
       correctAnswer: "Inventor",
-      context: "This person was the inventor of python and a real genius.",
+      context: "Creator of Python, a popular programming language.",
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
     {
-      imageUrl: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/MSNBC/Components/Photo/_new/081111-arthur-shawcross-vsmall-12p.jpg",
-      correctAnswer: "Murderer",
-      context: "Found guilty of killing 2 children and 11 prostitutes, cannibalism and mutilation.",
+      imageUrl: "assets/Dennis_Ritchie_2011.jpg",
+      correctAnswer: "Inventor",
+      context: "Co-creator of C programming language and Unix OS.",
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
-
-    
+    {
+      imageUrl: "assets/dennis-rader-btk-.jpg",
+      correctAnswer: "Killer",
+      context: "Known as the BTK killer, responsible for multiple murders.",
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+    {
+      imageUrl: "assets/James_Gosling_2008-1.jpg",
+      correctAnswer: "Inventor",
+      context: "Creator of the Java programming language.",
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+    {
+      imageUrl: "assets/jeffrey-dahmer-4.webp",
+      correctAnswer: "Killer",
+      context: "Notorious for the Milwaukee Cannibal murders.",
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+    {
+      imageUrl: "assets/Edmund_Kemper_.jpg",
+      correctAnswer: "Killer",
+      context: "Infamous serial killer, known for his brutal crimes.",
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+    {
+      imageUrl: "assets/Grace_Hopper_and_UNIVAC.jpg",
+      correctAnswer: "Inventor",
+      context: "Pioneer in computer science, worked on UNIVAC and compilers.",
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+    {
+      imageUrl: "assets/Guido-portrait-2014-curvves.jpg",
+      correctAnswer: "Inventor",
+      context: "Creator of Python, a popular programming language.",
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
   ];
-
-  const [visibleResults, setVisibleResults] = useState(2);
+  
+  
+  
+  const [visibleResults, setVisibleResults] = useState(3);
   const loadMoreResults = () => {
-    setVisibleResults((prev) => prev + 2); // Muestra dos resultados más
+    setVisibleResults((prev) => prev + 3);
   };
 
   const handleAnswer = (answer: string) => {
@@ -52,7 +89,8 @@ const Middle: React.FC = () => {
   };
 
   const handleNextQuestion = () => {
-    if (questionCount >= questions.length) {
+    
+    if (questionCount  >= questions.length + 5) {
       setShowResults(true);
       return;
     }

@@ -7,7 +7,7 @@ export const ButtonStart: React.FC = () => {
       <Link to="/question">
         <button
           className="relative -top-1 -left-1 bg-gray-800 py-10 px-8 sm:py-20 sm:px-10 font-medium uppercase text-white text-3xl sm:text-2xl bg-transparent"
-          style={{ transform: "rotate(-11deg)" }}
+          style={{ transform: "rotate(0deg)" }}
         >
           START
         </button>
@@ -36,3 +36,54 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
   );
 };
 
+
+export const NextP:React.FC<ButtonNextProps> = ({ onClick, id }) => {
+  return (
+    <div className="flex flex-col items-center justify-center h-[10%] w-full font-title">
+        <button
+          className="relative -top-1 -left-1 bg-gray-800 py-10 px-8 sm:py-20 sm:px-10 font-medium uppercase text-black text-3xl sm:text-2xl bg-transparent"
+          style={{ transform: "rotate(0deg)" }}
+          onClick={onClick}
+          id={id} 
+        >
+          NEXT
+        </button>
+
+    </div>
+  );
+};
+
+
+export const Choice: React.FC<{ onClick: () => void; id: string }> = ({
+  onClick,
+  id,
+}) => {
+  return (
+    <div className="flex flex-col items-center justify-center h-[10%] w-[90%] font-title">
+      <button
+        className=" bg-gray-800 py-10 px-8 sm:py-14 sm:px-10 md:py-16 md:px-12 lg:py-18 lg:px-16 font-medium uppercase text-white text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl bg-transparent"
+        onClick={onClick}
+        id={id}
+      >
+        {id === "choice-pokemon" ? "Pokemon" : "Technology"}
+      </button>
+    </div>
+  );
+};
+
+
+
+export const ButtonStartp: React.FC = () => {
+  return (
+    <div className="flex flex-col items-center justify-center h-[10%] w-full font-title">
+      <Link to="/guess">
+        <button
+          className="relative -top-1 -left-1 bg-gray-800 py-10 px-8 sm:py-20 sm:px-10 font-medium uppercase text-white text-3xl sm:text-2xl bg-transparent"
+          style={{ transform: "rotate(0deg)" }}
+        >
+          START
+        </button>
+      </Link>
+    </div>
+  );
+};

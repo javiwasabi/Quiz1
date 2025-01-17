@@ -100,8 +100,55 @@ const updateUser = asyncHandler(async (req, res) => {
     }
 });
 
+const deleteUser = async (req, res) => {
+    const { userEmail } = req.body
+
+    // Confirm data
+    if (!userEmail) {
+        return res.status(400).json({ message: 'User email Required' })
+    }
+
+    // Does the user exist to delete?
+    const user = await User.findOne({ userEmail: userEmail }).exec();
+
+
+    if (!user) {
+        return res.status(400).json({ message: 'User not found' })
+    }
+
+    await user.deleteOne()
+
+    const reply = `Email ${userEmail} deleted`
+
+    res.json(reply)
+}
+
+const findOneUser = async (req, res) => {
+    const { userEmail } = req.body
+
+    // Confirm data
+    if (!userEmail) {
+        return res.status(400).json({ message: 'User email Required' })
+    }
+
+    // Does the user exist to delete?
+    const user = await User.findOne({ userEmail: userEmail }).exec();
+
+
+    if (!user) {
+        return res.status(400).json({ message: 'User not found' })
+    }
+
+
+
+    res.json(user)
+}
+
+
 module.exports = {
     getAllUsers,
     createOrUpdateUser,
     updateUser,
+    deleteUser,
+    findOneUser,
 };

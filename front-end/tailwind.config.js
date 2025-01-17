@@ -8,6 +8,10 @@ module.exports = {
         frijole:[ "Frijole", "serif"],
         bentham:[ "Bentham", "serif"],
         Merriweather: ["Merriweather", "serif"]
+      },
+      colors: {
+        'custom-dark': 'rgba(25,73,93,1)',
+        'radio-yellow': 'rgb(234 216 106)',
       }
     },
   },

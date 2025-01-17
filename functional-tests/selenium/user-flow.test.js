@@ -1,5 +1,17 @@
-const { Builder, By, until, Capabilities } = require('selenium-webdriver');
+
+
+const { Builder, By, until, Capabilities, webdriver } = require('selenium-webdriver');
 const fs = require('fs');
+
+const deletetestUser = async (email) => {
+  
+
+  driver = webdriver.Chrome()
+
+  script = "fetch('http://localhost:3000/api/users', { method: 'DELETE', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ email: "+email+" })}).then(response => response.json()).then(data => console.log('Success:', data)).catch(error => console.error('Error:', error));"
+  
+  driver.execute_script(script)
+};
 
 (async function automatedFlow() {
   const capabilities = Capabilities.chrome();
@@ -103,7 +115,7 @@ const fs = require('fs');
       until.elementLocated(By.xpath("//input[@type='email']")),
       5000
     );
-    await emailInput.sendKeys("test@example.com");
+    await emailInput.sendKeys("aver@example.com");
     console.log("Email entered.");
 
     const checklist1 = await driver.wait(
@@ -135,11 +147,39 @@ const fs = require('fs');
 
     await takeScreenshot('step6_form_submitted.png');
     console.log("Form submitted screenshot captured.");
+
+    // **Intentando agregar el mismo correo de nuevo**
+    console.log("Attempting to add the same email again...");
+    await emailInput.clear();
+    await emailInput.sendKeys("aver@example.com");
+    console.log("Same email entered again.");
+
+    const submitButtonAgain = await driver.wait(
+      until.elementLocated(By.xpath("//button[text()='Submit']")),
+      5000
+    );
+    await submitButtonAgain.click();
+    console.log("Form with duplicate email submitted.");
+
+    await takeScreenshot('step7_duplicate_email.png');
+    console.log("Duplicate email submission screenshot captured.");
+    try {
+    
+        console.log("Deleting the test user...");
+        const deleteSuccess = await deletetestUser("aver@example.com");
+
+        if (!deleteSuccess) {
+            console.warn('Test user deletion failed');
+        }
+      
+  } catch (err) {
+      console.error('Error during test user deletion:', err);
+  }
+   
   } catch (err) {
     console.error("An error occurred:", err);
     await takeScreenshot('error.png');
   } finally {
-    
     setTimeout(() => {
       driver.quit();
       console.log("Browser closed.");
