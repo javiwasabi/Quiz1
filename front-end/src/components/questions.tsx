@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NextP } from "./buttons";
 import '../styles/background.css';
+import ReactCardFlip from "react-card-flip";
+import { useTranslation } from "react-i18next";
 
 interface fileCardProps {
   imageUrl: string;
@@ -13,14 +15,36 @@ interface fileCardProps {
 interface CardProps {
   imageUrl: string;
   context: string;
-  score: number;
-  isCorrect: boolean;
   isFlipped: boolean;
 }
 
-export const Card: React.FC<CardProps> = ({ imageUrl, context, isCorrect, isFlipped, score }) => {
+export const Card: React.FC<CardProps> = ({ imageUrl, context, isFlipped }) => {
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
+   const [showSerialKiller, setShowSerialKiller] = useState(false);
+    const [showInventor, setShowInventor] = useState(false);
+    const { t, i18n } = useTranslation();
+    
+      
+      useEffect(() => {
+        const browserLanguage = navigator.language || navigator.languages[0];
+        const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+        i18n.changeLanguage(languageToSet).then(() => {
+          console.log(`Idioma inicial configurado a: ${languageToSet}`);
+        });
+      }, [i18n]);
+    
+      console.log("Idiomas disponibles:", i18n.languages);
+      console.log("Idioma actual:", i18n.language);
+      console.log("Traducción para 'guessText':", t("guessText"));
+    
+      const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng).then(() => {
+          console.log(`Idioma cambiado a: ${lng}`);
+          console.log("Texto traducido después del cambio:", t("guessText"));
+        });
+      };
+    
 
   useEffect(() => {
     setTypedText("");
@@ -38,37 +62,32 @@ export const Card: React.FC<CardProps> = ({ imageUrl, context, isCorrect, isFlip
   }, [index, context, isFlipped]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full sm:w-full md:w-11/12 lg:w-8/12 mx-auto mt-4">
-      <div
-        className={`relative flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 ${isFlipped ? "" : ""}`}
-        style={{ transform: isFlipped ? "rotate(0deg)" : "rotate(11deg)" }}
-      >
-        {isFlipped ? (
-          <div className="p-4 w-full">
-            <p
-  className="mt-4 text-lg sm:text-base md:text-lg lg:text-xl font-light font-Merriweather"
-  style={{
-    fontSize: "3vw",
-    lineHeight: "1.5", 
-  }}
->
-  {typedText}
-</p>
-          </div>
-        ) : (
-          <>
-            <div className="w-full aspect-[3/4] bg-black flex items-center justify-center rounded-lg">
-              <p className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bentham">Guess</p>
-            </div>
-            <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white font-bentham">
-              Can you guess who this is?
-            </p>
-          </>
-        )}
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+
+      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%]  items-center justify-center">
+        <div className="w-full aspect-[4/3] bg-white flex items-center justify-center rounded-lg">
+          <img
+            src={imageUrl}
+            alt="Polaroid"
+            className="w-full h-full object-contain"
+            style={{ maxWidth: "100%", maxHeight: "900px" }}
+          />
+        </div>
+        <p className="mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black font-bentham text-center leading-tight">
+        {t("textp")}
+        </p>
       </div>
-    </div>
+
+      
+      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8">
+        <p className="mt-4 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-light font-Merriweather text-center">
+          {typedText}
+        </p>
+      </div>
+    </ReactCardFlip>
   );
 };
+
 
 export const FileCard: React.FC<fileCardProps> = ({ imageUrl, context, score, isCorrect, isFlipped }) => {
   return (
@@ -102,7 +121,7 @@ export const PolaroidPhoto: React.FC = () => {
       >
 
         <div className="w-full aspect-[3/4] bg-black flex items-center justify-center rounded-lg">
-          <p className="text-black">Photo Placeholder</p>
+          <p className="text-black"></p>
         </div>
 
         <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white font-bentham">
@@ -112,6 +131,7 @@ export const PolaroidPhoto: React.FC = () => {
     </div>
   );
 };
+
 
 
 

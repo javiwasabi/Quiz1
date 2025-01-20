@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import '../styles/background.css';
+import ReactCardFlip from "react-card-flip";
+import { useTranslation } from "react-i18next";
+
 import { Link } from "react-router-dom";
 
 export const ButtonStart: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-[10%] w-full font-title">
+    <div className="flex flex-col items-center justify-center h-[10%] w-full font-title px-4">
       <Link to="/question">
         <button
-          className="relative -top-1 -left-1 bg-gray-800 py-10 px-8 sm:py-20 sm:px-10 font-medium uppercase text-white text-3xl sm:text-2xl bg-transparent"
+          className="relative -top-1 -left-1 bg-gray-800 py-6 px-6 sm:py-10 sm:px-8 lg:py-12 lg:px-10 font-medium uppercase text-white text-2xl sm:text-3xl lg:text-4xl bg-transparent w-full sm:w-auto"
           style={{ transform: "rotate(0deg)" }}
         >
           START
@@ -16,12 +21,34 @@ export const ButtonStart: React.FC = () => {
   );
 };
 
+
 interface ButtonNextProps {
   onClick?: () => void;
   id?: string; 
 }
 
 export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
+  const { t, i18n } = useTranslation();
+      
+        
+        useEffect(() => {
+          const browserLanguage = navigator.language || navigator.languages[0];
+          const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+          i18n.changeLanguage(languageToSet).then(() => {
+            console.log(`Idioma inicial configurado a: ${languageToSet}`);
+          });
+        }, [i18n]);
+      
+        console.log("Idiomas disponibles:", i18n.languages);
+        console.log("Idioma actual:", i18n.language);
+        console.log("Traducción para 'guessText':", t("guessText"));
+      
+        const changeLanguage = (lng: string) => {
+          i18n.changeLanguage(lng).then(() => {
+            console.log(`Idioma cambiado a: ${lng}`);
+            console.log("Texto traducido después del cambio:", t("guessText"));
+          });
+        };
   return (
     <div className="absolute bottom-[15%] left-1/2 transform -translate-x-1/2 mb-4 sm:mb-6 md:mb-8 lg:mb-10">
       <button
@@ -30,7 +57,7 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
         onClick={onClick}
       >
         <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity"></div>
-        <span className="relative z-10">NEXT</span>
+        <span className="relative z-10"> {t("nextstep")}</span>
       </button>
     </div>
   );
@@ -38,6 +65,27 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
 
 
 export const NextP:React.FC<ButtonNextProps> = ({ onClick, id }) => {
+   const { t, i18n } = useTranslation();
+      
+        
+        useEffect(() => {
+          const browserLanguage = navigator.language || navigator.languages[0];
+          const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+          i18n.changeLanguage(languageToSet).then(() => {
+            console.log(`Idioma inicial configurado a: ${languageToSet}`);
+          });
+        }, [i18n]);
+      
+        console.log("Idiomas disponibles:", i18n.languages);
+        console.log("Idioma actual:", i18n.language);
+        console.log("Traducción para 'guessText':", t("guessText"));
+      
+        const changeLanguage = (lng: string) => {
+          i18n.changeLanguage(lng).then(() => {
+            console.log(`Idioma cambiado a: ${lng}`);
+            console.log("Texto traducido después del cambio:", t("guessText"));
+          });
+        };
   return (
     <div className="flex flex-col items-center justify-center h-[10%] w-full font-title">
         <button
@@ -46,7 +94,7 @@ export const NextP:React.FC<ButtonNextProps> = ({ onClick, id }) => {
           onClick={onClick}
           id={id} 
         >
-          NEXT
+          {t("nextstep")}
         </button>
 
     </div>

@@ -27,7 +27,7 @@ const Game: React.FC = () => {
 
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/2/2d/TensorFlow_logo.svg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/TensorFlow_logo.svg/640px-TensorFlow_logo.svg.png",
       correctAnswer: "Technology",
       context: "An open-source machine learning framework developed by Google.",
       name: "TensorFlow",
@@ -41,7 +41,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/e/e2/Kubernetes_logo_without_workmark.svg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/640px-Kubernetes_logo_without_workmark.svg.png",
       correctAnswer: "Technology",
       context: "A platform for automating deployment, scaling, and operations of applications.",
       name: "Kubernetes",
@@ -57,7 +57,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a7/Ansible_logo.svg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Ansible_logo.svg/640px-Ansible_logo.svg.png",
       correctAnswer: "Technology",
       context: "A simple IT automation platform used for configuration management.",
       name: "Ansible",
@@ -65,7 +65,7 @@ const Game: React.FC = () => {
    
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/3/30/Prometheus_Logo.svg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/640px-Prometheus_software_logo.svg.png",
       correctAnswer: "Technology",
       context: "An open-source monitoring and alerting toolkit designed for reliability.",
       name: "Prometheus",
@@ -86,7 +86,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/4/4e/Terraform_Logo.svg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Sdcsdxc.jpg/640px-Sdcsdxc.jpg",
       correctAnswer: "Technology",
       context: "A tool for building, changing, and managing infrastructure as code.",
       name: "Terraform",
