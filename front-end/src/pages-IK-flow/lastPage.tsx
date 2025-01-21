@@ -112,45 +112,42 @@ const Last: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen flex items-center justify-center">
-      <div className="relative w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
+      <div className="relative w-[90%] sm:w-[80%] lg:w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
         <img
           src="assets/background-IK.jpg"
           alt="Background"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="relative flex flex-col items-center justify-center h-[60%] w-[80%] bg-black bg-opacity-30 p-6">
-          <h1 className="text-white text-4xl md:text-6xl font-bold mb-6 items-center">
+        <div className="relative flex flex-col items-center justify-center h-[60%] w-[90%] sm:w-[80%] bg-black bg-opacity-30 p-6 rounded-md">
+          <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-center">
             {t("result")}: {score}
           </h1>
-          {success && <p className="text-green-400 mb-4">Data sent successfully!</p>}
-          {error && <p className="text-red-400 mb-4">{error}</p>}
-          <p className="font-bentham text-white text-3xl sm:text-4xl text-center items-center">{t("share")}</p>
-
-          <div className="flex space-x-8 mt-8">
-            <a 
-              href="#"
-              onClick={handleClick} 
-              id='email-buttton'
-            >
-              <IoMdMail size={40} className="text-white hover:text-yellow-500 transition-colors" />
+          {success && <p className="text-green-400 mb-4 text-center">Data sent successfully!</p>}
+          {error && <p className="text-red-400 mb-4 text-center">{error}</p>}
+          <p className="font-bentham text-white text-2xl sm:text-3xl lg:text-4xl text-center">
+            {t("share")}
+          </p>
+  
+          <div className="flex space-x-4 mt-6 sm:mt-8">
+            <a href="#" onClick={handleClick} id="email-button">
+              <IoMdMail size={32} className="text-white hover:text-yellow-500 transition-colors" />
             </a>
             <a href="#" onClick={shareOnInstagram}>
-              <IoLogoInstagram size={40} className="text-white hover:text-pink-500 transition-colors" />
+              <IoLogoInstagram size={32} className="text-white hover:text-pink-500 transition-colors" />
             </a>
             <a href="#" onClick={shareOnFacebook}>
-              <IoLogoFacebook size={40} className="text-white hover:text-blue-600 transition-colors" />
+              <IoLogoFacebook size={32} className="text-white hover:text-blue-600 transition-colors" />
             </a>
             <a href="#" onClick={shareOnLinkedIn}>
-              <IoLogoLinkedin size={40} className="text-white hover:text-blue-600 transition-colors" />
+              <IoLogoLinkedin size={32} className="text-white hover:text-blue-600 transition-colors" />
             </a>
           </div>
         </div>
       </div>
-
-      {/* Mostrar el input solo cuando showInput es true */}
+  
       {showInput && (
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-2xl mb-4">Your Score and Image</h2>
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg w-[90%] sm:w-[60%] lg:w-[40%]">
+          <h2 className="text-2xl mb-4 text-center">{t("yourScoreAndImage")}</h2>
           <input
             type="text"
             value={`Score: ${score}\nImage: `}
@@ -160,21 +157,21 @@ const Last: React.FC = () => {
           {capturedImage && (
             <img src={capturedImage} alt="Captured score" className="mt-4 max-w-full h-auto rounded-lg" />
           )}
-          <p className="mt-4">{t("shareYourScore")}</p>
+          <p className="mt-4 text-center">{t("shareYourScore")}</p>
         </div>
       )}
-
+  
       {t("changeLanguageButton") && (
         <div className="absolute top-4 right-4 flex space-x-2">
           <button
             onClick={() => changeLanguage("en")}
-            className="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-md hover:bg-blue-600"
+            className="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-md hover:bg-blue-600 transition-all"
           >
             {t("englishButton")}
           </button>
           <button
             onClick={() => changeLanguage("es")}
-            className="px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-green-600"
+            className="px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-green-600 transition-all"
           >
             {t("spanishButton")}
           </button>
@@ -182,6 +179,7 @@ const Last: React.FC = () => {
       )}
     </div>
   );
+  
 };
 
 export default Last;
