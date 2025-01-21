@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
-
+import PokemonCard from './pages-PT-flow/poke';
 import First from './pages-PT-flow/fPage';
 import { Provider } from 'react-redux';
 import Game from './pages-PT-flow/mPage';
@@ -24,6 +24,9 @@ root.render(
           <Route path="/" element={<First />} /> 
           <Route path="/guess" element={<Game />} /> 
           <Route path="/p" element={<LastP />} />
+
+          <Route path="/poke" element={<PokemonCard />} />
+          
         </Routes>
       </Router>
       </Suspense>

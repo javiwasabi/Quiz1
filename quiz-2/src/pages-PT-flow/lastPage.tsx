@@ -21,9 +21,8 @@ const Last: React.FC = () => {
     image: null,
   });
 
-  // Captura de pantalla automática
   const captureResult = async () => {
-    const elementToCapture = document.querySelector(".relative"); // Elemento a capturar
+    const elementToCapture = document.querySelector(".relative"); 
 
     if (!elementToCapture) {
       alert("The element to capture was not found. Please check your layout.");
@@ -58,21 +57,21 @@ const Last: React.FC = () => {
   
     switch (platform) {
       case "linkedin":
-        // Genera un enlace para compartir en LinkedIn
+
         window.open(
           `https://www.linkedin.com/shareArticle?mini=true&url=https://example.com&title=My%20Score&summary=${encodedMessage}`,
           "_blank"
         );
         break;
       case "facebook":
-        // Genera un enlace para compartir en Facebook
+
         window.open(
           `https://www.facebook.com/sharer/sharer.php?u=https://example.com&quote=${encodedMessage}`,
           "_blank"
         );
         break;
       case "twitter":
-        // Genera un enlace para compartir en Twitter
+
         window.open(
           `https://twitter.com/intent/tweet?text=${encodedMessage}`,
           "_blank"
@@ -85,8 +84,7 @@ const Last: React.FC = () => {
   
   
   const uploadImageToServer = async (image: string): Promise<string> => {
-    // Aquí puedes implementar el código para subir la imagen a un servidor o servicio como AWS S3, Imgur, etc.
-    // Ejemplo con una API ficticia:
+
     try {
       const response = await fetch("https://your-image-hosting-service.com/upload", {
         method: "POST",
@@ -94,16 +92,16 @@ const Last: React.FC = () => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await response.json();
-      return data.publicUrl; // Devuelve el URL público de la imagen
+      return data.publicUrl; 
     } catch (error) {
       console.error("Error uploading image:", error);
       throw new Error("Failed to upload image.");
     }
   };
   
-  // Enviar por correo electrónico
+
   const sendEmail = async () => {
-    // Captura el resultado automáticamente antes de enviar
+
     await captureResult();
 
     const { message, image } = shareData;
@@ -115,20 +113,20 @@ const Last: React.FC = () => {
 
     emailjs
       .send(
-        "your_service_id", // Cambia esto por tu Service ID
-        "your_template_id", // Cambia esto por tu Template ID
+        "your_service_id", 
+        "your_template_id", 
         {
           message: message,
           screenshot: image,
         },
-        "your_user_id" // Cambia esto por tu User ID
+        "your_user_id" 
       )
       .then(() => alert("Email sent successfully"))
       .catch(() => alert("Failed to send email"));
   };
 
   useEffect(() => {
-    // Obtener el puntaje almacenado en el sessionStorage
+
     const storedScore = sessionStorage.getItem("finalScore");
     if (storedScore) {
       setShareData((prev) => ({

@@ -34,9 +34,6 @@ const First: React.FC = () => {
     </div>
         </div>
         
-    
-
-
         <div className="absolute top-[90%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-full items-center justify-center  text-center">
           <h2 className=" uppercase text-white text-xl sm:text-2xl bg-transparent items-center justify-center text-center">
             Tecnology or Pokemon

@@ -134,7 +134,7 @@ const Middle: React.FC = () => {
     
   };
   const handleNextQuestion = () => {
-    if (!answered) return; // Evita avanzar si no se ha respondido
+    if (!answered) return; 
     if (currentQuestion + 1 >= questions.length) {
       setShowResults(true);
     } else {

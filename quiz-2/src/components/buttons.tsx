@@ -59,9 +59,9 @@ export const Choice: React.FC<{ onClick: () => void; id: string }> = ({
   id,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center h-[10%] w-[90%] font-title">
+    <div className="flex flex-col items-center justify-center h-[10%] w-[90%] font-title ">
       <button
-        className=" bg-gray-800 py-10 px-8 sm:py-14 sm:px-10 md:py-16 md:px-12 lg:py-18 lg:px-16 font-medium uppercase text-white text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl bg-transparent"
+        className=" bg-gray-800 py-10 px-8 sm:py-14 sm:px-10 md:py-16 md:px-12 lg:py-18 lg:px-16 font-medium uppercase text-white text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl bg-transparent"
         onClick={onClick}
         id={id}
       >
