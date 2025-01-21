@@ -183,14 +183,13 @@ const Middle: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-black min-h-screen flex items-center justify-center">
-      <div className="relative w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
-
-      
-      <img
-        src="assets/background-IK.jpg"
-        alt="Background"
-        className="absolute inset-0 h-full w-full "/>
+    <div className="bg-black min-h-screen flex items-center justify-center z-0 relative">
+  <div className="relative w-[80%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10">
+    <img
+      src="assets/background-IK.jpg"
+      alt="Background"
+      className="absolute inset-0 h-full w-full object-cover z-0"
+    />
     
 
       <div className="h-full w-full flex flex-col space-y-4 transform scale-[1] md:scale-[0.85] lg:scale-[0.9] justify-center ">
