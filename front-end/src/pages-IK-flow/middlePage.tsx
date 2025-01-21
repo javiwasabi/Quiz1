@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ButtonNext } from "../components/buttons";
-import { FileCard, Card, PolaroidPhoto } from "../components/questions";
+import { Card, PolaroidPhoto } from "../components/questions";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -10,33 +10,26 @@ const Middle: React.FC = () => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
-  const [questionCount, setQuestionCount] = useState(0);
   const [showResults, setShowResults] = useState(false);
 
   const [showSerialKiller, setShowSerialKiller] = useState(false);
   const [showInventor, setShowInventor] = useState(false);
   const { t, i18n } = useTranslation();
-  
-    
-    useEffect(() => {
-      const browserLanguage = navigator.language || navigator.languages[0];
-      const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
-      i18n.changeLanguage(languageToSet).then(() => {
-        console.log(`Idioma inicial configurado a: ${languageToSet}`);
-      });
-    }, [i18n]);
-  
-    console.log("Idiomas disponibles:", i18n.languages);
-    console.log("Idioma actual:", i18n.language);
-    console.log("Traducción para 'guessText':", t("guessText"));
-  
-    const changeLanguage = (lng: string) => {
-      i18n.changeLanguage(lng).then(() => {
-        console.log(`Idioma cambiado a: ${lng}`);
-        console.log("Texto traducido después del cambio:", t("guessText"));
-      });
-    };
-  
+
+
+  useEffect(() => {
+    const browserLanguage = navigator.language || navigator.languages[0];
+    const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+    i18n.changeLanguage(languageToSet).then(() => {
+
+    });
+  }, [i18n]);
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng).then(() => {
+
+    });
+  };
 
   const navigate = useNavigate();
   const translations = {
@@ -48,6 +41,7 @@ const Middle: React.FC = () => {
       "Notorious for the Milwaukee Cannibal murders.": "Notorious for the Milwaukee Cannibal murders.",
       "Infamous serial killer, known for his brutal crimes.": "Infamous serial killer, known for his brutal crimes.",
       "Pioneer in computer science, worked on UNIVAC and compilers.": "Pioneer in computer science, worked on UNIVAC and compilers.",
+      "Pioneer in multiple fields, including computer science and game theory.": "Pioneer in multiple fields, including computer science and game theory.",
     },
     es: {
       "Creator of Python, a popular programming language.": "Creador de Python, un lenguaje de programación popular.",
@@ -57,6 +51,7 @@ const Middle: React.FC = () => {
       "Notorious for the Milwaukee Cannibal murders.": "Conocido por los asesinatos del Caníbal de Milwaukee.",
       "Infamous serial killer, known for his brutal crimes.": "Asesino en serie infame, conocido por sus crímenes brutales.",
       "Pioneer in computer science, worked on UNIVAC and compilers.": "Pionera en informática, trabajó en UNIVAC y compiladores.",
+      "Pioneer in multiple fields, including computer science and game theory.": "Pionero en múltiples campos, incluyendo informática y teoría de juegos.",
     },
   };
   
@@ -105,52 +100,58 @@ const Middle: React.FC = () => {
       context: translations[userLanguage]["Pioneer in computer science, worked on UNIVAC and compilers."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
+    {
+      imageUrl: "assets/John_von_Neumann.jpg",
+      correctAnswer: "Inventor",
+      context: translations[userLanguage]["Pioneer in multiple fields, including computer science and game theory."],
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
   ];
-
-  const [visibleResults, setVisibleResults] = useState(3);
-  const loadMoreResults = () => {
-    setVisibleResults((prev) => prev + 3);
-  };
-
-
-
+  
+  const scoreRef = useRef(0);
   const handleAnswer = (answer: string) => {
+    if (answered) return;
+  
     const isAnswerCorrect = answer === questions[currentQuestion].correctAnswer;
     setIsCorrect(isAnswerCorrect);
-
+  
     if (isAnswerCorrect) {
-      setScore((prevScore) => prevScore + 1);
-    } 
+      scoreRef.current += 1; // Actualiza el valor directamente
+      setScore(scoreRef.current); // Sincroniza el estado visualmente
+    }
+  
+    console.log("Puntaje (ref):", scoreRef.current);
     console.log("Pregunta actual:", currentQuestion);
     console.log("Respuesta dada:", answer);
     console.log("Respuesta correcta:", questions[currentQuestion].correctAnswer);
-
-
-
+    console.log("¿Es correcta?:", isAnswerCorrect);
+  
     setAnswered(true);
     setIsFlipped(true);
     setShowSerialKiller(false);
     setShowInventor(false);
-    
   };
   const handleNextQuestion = () => {
-    if (!answered) return; 
+    if (!answered) return;
+  
     if (currentQuestion + 1 >= questions.length) {
       setShowResults(true);
     } else {
       setCurrentQuestion((prev) => prev + 1);
       setIsCorrect(false);
-      setAnswered(false);
+      setAnswered(false); // Reinicia el estado de "respondido"
       setIsFlipped(false);
       setShowSerialKiller(false);
       setShowInventor(false);
+  
       const timer1 = setTimeout(() => {
         setShowSerialKiller(true);
       }, 500);
   
       const timer2 = setTimeout(() => {
         setShowInventor(true);
-      }, 1000); 
+      }, 1000);
+  
       return () => {
         clearTimeout(timer1);
         clearTimeout(timer2);
@@ -158,15 +159,17 @@ const Middle: React.FC = () => {
     }
   };
   
-  
-  
+  const [visibleResults, setVisibleResults] = useState(3);
+  const loadMoreResults = () => {
+    setVisibleResults((prev) => prev + 3);
+  };
 
   const handleFinishGame = () => {
+    console.log("Puntaje final guardado:", score);
     sessionStorage.setItem("finalScore", score.toString());
     navigate("/final");
   };
-
- 
+  
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setShowSerialKiller(true);
@@ -181,6 +184,10 @@ const Middle: React.FC = () => {
       clearTimeout(timer2);
     };
   }, []);
+  useEffect(() => {
+    console.log("Puntaje actualizado:", score);
+  }, [score]);
+
 
   return (
     <div className="bg-black min-h-screen flex items-center justify-center z-0 relative">
@@ -236,17 +243,16 @@ const Middle: React.FC = () => {
                   <div
                     className="relative flex bg-transparent z-8 justify-center"
                     style={{
-                      width: "70%", // Tamaño por defecto para cámaras muy pequeñas
+                      width: "70%", 
                     }}
                   >
                     <div className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%]">
                       <Card
                         imageUrl={questions[currentQuestion].imageUrl}
                         context={questions[currentQuestion].context}
-                        score={score}
-                        isCorrect={isCorrect}
+
                         isFlipped={isFlipped}
-                      />
+                        onAnswer={(answer) => handleAnswer(answer)} />
                     </div>
                   </div>
                 </div>
@@ -274,7 +280,7 @@ const Middle: React.FC = () => {
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
                           transform: 'rotate(-2deg)',
                         }}
-                        onClick={() => handleAnswer("Serial Killer")}
+                        onClick={() => handleAnswer("Killer")}
                       >
                         <span className="block text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
                         {t("who")}

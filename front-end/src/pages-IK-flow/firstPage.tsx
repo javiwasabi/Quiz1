@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonStart } from "../components/buttons";
-import { FileCard, Card, PolaroidPhoto } from "../components/questions";
+import { Card, PolaroidPhoto } from "../components/questions";
 const Vie: React.FC = () => {
   const { t, i18n } = useTranslation();
 
-  // Configuración inicial: detectar el idioma del navegador
+  
   useEffect(() => {
     const browserLanguage = navigator.language || navigator.languages[0];
     const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";

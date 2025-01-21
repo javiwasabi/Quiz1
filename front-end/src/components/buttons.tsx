@@ -35,18 +35,15 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
           const browserLanguage = navigator.language || navigator.languages[0];
           const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
           i18n.changeLanguage(languageToSet).then(() => {
-            console.log(`Idioma inicial configurado a: ${languageToSet}`);
+
           });
         }, [i18n]);
-      
-        console.log("Idiomas disponibles:", i18n.languages);
-        console.log("Idioma actual:", i18n.language);
-        console.log("Traducción para 'guessText':", t("guessText"));
+
+
       
         const changeLanguage = (lng: string) => {
           i18n.changeLanguage(lng).then(() => {
-            console.log(`Idioma cambiado a: ${lng}`);
-            console.log("Texto traducido después del cambio:", t("guessText"));
+
           });
         };
   return (
@@ -72,18 +69,15 @@ export const NextP:React.FC<ButtonNextProps> = ({ onClick, id }) => {
           const browserLanguage = navigator.language || navigator.languages[0];
           const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
           i18n.changeLanguage(languageToSet).then(() => {
-            console.log(`Idioma inicial configurado a: ${languageToSet}`);
+
           });
         }, [i18n]);
       
-        console.log("Idiomas disponibles:", i18n.languages);
-        console.log("Idioma actual:", i18n.language);
-        console.log("Traducción para 'guessText':", t("guessText"));
+
       
         const changeLanguage = (lng: string) => {
           i18n.changeLanguage(lng).then(() => {
-            console.log(`Idioma cambiado a: ${lng}`);
-            console.log("Texto traducido después del cambio:", t("guessText"));
+
           });
         };
   return (

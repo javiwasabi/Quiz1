@@ -4,47 +4,23 @@ import '../styles/background.css';
 import ReactCardFlip from "react-card-flip";
 import { useTranslation } from "react-i18next";
 
-interface fileCardProps {
-  imageUrl: string;
-  context: string;
-  score: number;
-  isCorrect: boolean;
-  isFlipped: boolean;
-}
+
 
 interface CardProps {
   imageUrl: string;
   context: string;
   isFlipped: boolean;
+  onAnswer: (answer: string) => void; // Función que recibe una respuesta y no retorna nada
 }
 
-export const Card: React.FC<CardProps> = ({ imageUrl, context, isFlipped }) => {
+export const Card: React.FC<CardProps> = ({
+  imageUrl,
+  context,
+  isFlipped,
+  onAnswer, // Nueva prop para manejar respuestas
+}) => {
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
-   const [showSerialKiller, setShowSerialKiller] = useState(false);
-    const [showInventor, setShowInventor] = useState(false);
-    const { t, i18n } = useTranslation();
-    
-      
-      useEffect(() => {
-        const browserLanguage = navigator.language || navigator.languages[0];
-        const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
-        i18n.changeLanguage(languageToSet).then(() => {
-          console.log(`Idioma inicial configurado a: ${languageToSet}`);
-        });
-      }, [i18n]);
-    
-      console.log("Idiomas disponibles:", i18n.languages);
-      console.log("Idioma actual:", i18n.language);
-      console.log("Traducción para 'guessText':", t("guessText"));
-    
-      const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng).then(() => {
-          console.log(`Idioma cambiado a: ${lng}`);
-          console.log("Texto traducido después del cambio:", t("guessText"));
-        });
-      };
-    
 
   useEffect(() => {
     setTypedText("");
@@ -63,8 +39,11 @@ export const Card: React.FC<CardProps> = ({ imageUrl, context, isFlipped }) => {
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-
-      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%]  items-center justify-center">
+      {/* Cara frontal */}
+      <div
+        className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer"
+        onClick={() => onAnswer("Inventor")} // Ejemplo: Manda la respuesta "Inventor"
+      >
         <div className="w-full aspect-[4/3] bg-white flex items-center justify-center rounded-lg">
           <img
             src={imageUrl}
@@ -74,39 +53,17 @@ export const Card: React.FC<CardProps> = ({ imageUrl, context, isFlipped }) => {
           />
         </div>
         <p className="mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black font-bentham text-center leading-tight">
-        {t("textp")}
+          Haz clic para responder
         </p>
       </div>
 
-      
+      {/* Cara trasera */}
       <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8">
         <p className="mt-4 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-light font-Merriweather text-center">
           {typedText}
         </p>
       </div>
     </ReactCardFlip>
-  );
-};
-
-
-export const FileCard: React.FC<fileCardProps> = ({ imageUrl, context, score, isCorrect, isFlipped }) => {
-  return (
-    <div className="flex flex-col w-full sm:w-3/4 md:w-4/5 lg:w-4/5 mx-auto mt-4">
-      <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8" style={{ transform: "rotate(0deg)" }}>
-        <div className="w-full aspect-[4/3] bg-white flex items-center justify-center rounded-lg">
-          <img
-            src={imageUrl}
-            alt="Polaroid"
-            className="w-full h-full object-contain"
-            style={{ maxWidth: "100%", maxHeight: "500px" }}
-          />
-        </div>
-
-        <p className="mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black font-bentham text-center leading-tight">
-          Can you guess who this is?
-        </p>
-      </div>
-    </div>
   );
 };
 
@@ -134,15 +91,6 @@ export const PolaroidPhoto: React.FC = () => {
 
 
 
-
-
-interface CardProps {
-  imageUrl: string;
-  context: string;
-  score: number;
-  isCorrect: boolean;
-  isFlipped: boolean;
-}
 
 
 interface CardPropsp {
