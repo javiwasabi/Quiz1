@@ -116,8 +116,8 @@ const Middle: React.FC = () => {
     setIsCorrect(isAnswerCorrect);
   
     if (isAnswerCorrect) {
-      scoreRef.current += 1; // Actualiza el valor directamente
-      setScore(scoreRef.current); // Sincroniza el estado visualmente
+      scoreRef.current += 1; 
+      setScore(scoreRef.current); 
     }
   
     console.log("Puntaje (ref):", scoreRef.current);
@@ -139,7 +139,7 @@ const Middle: React.FC = () => {
     } else {
       setCurrentQuestion((prev) => prev + 1);
       setIsCorrect(false);
-      setAnswered(false); // Reinicia el estado de "respondido"
+      setAnswered(false); 
       setIsFlipped(false);
       setShowSerialKiller(false);
       setShowInventor(false);
@@ -201,9 +201,9 @@ const Middle: React.FC = () => {
 
       <div className="h-full w-full flex flex-col space-y-4 transform scale-[1] md:scale-[0.85] lg:scale-[0.9] justify-center ">
             {showResults ? (
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 font-Merriweather">
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 font-Merriweather ">
                 <h2 className="text-4xl font-bold mb-4 font-bentham">Game Results</h2>
-                <ul className="flex flex-wrap gap-4 justify-center max-h-[50vh] overflow-auto">
+                <ul className="flex flex-wrap gap-4 justify-center max-h-[30vh] overflow-auto">
                   {questions.slice(0, visibleResults).map((question, index) => (
                     <li key={index} className="flex flex-col items-center w-48">
                       <img
@@ -220,12 +220,12 @@ const Middle: React.FC = () => {
                 {visibleResults < questions.length && (
                   <button
                     onClick={loadMoreResults}
-                    className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700"
+                    className="mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg shadow hover:bg-blue-700"
                   >
                     See More Results
                   </button>
                 )}
-                <div className="mt-8 mt-[20%]">
+                <div className="mt-8 mt-[20%] absolute bottom-0">
 
                   <ButtonNext id="final-button" onClick={handleFinishGame} />
                 </div>
