@@ -10,18 +10,33 @@ interface CardProps {
   imageUrl: string;
   context: string;
   isFlipped: boolean;
-  onAnswer: (answer: string) => void; // Función que recibe una respuesta y no retorna nada
+  onAnswer: (answer: string) => void; 
 }
 
 export const Card: React.FC<CardProps> = ({
   imageUrl,
   context,
   isFlipped,
-  onAnswer, // Nueva prop para manejar respuestas
+  onAnswer, 
 }) => {
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
+  const { t, i18n } = useTranslation();
+    
+      
+  useEffect(() => {
+    const browserLanguage = navigator.language || navigator.languages[0];
+    const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+    i18n.changeLanguage(languageToSet).then(() => {
 
+    });
+  }, [i18n]);
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng).then(() => {
+
+    });
+  };
   useEffect(() => {
     setTypedText("");
     setIndex(0);
@@ -39,25 +54,23 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-      {/* Cara frontal */}
+
       <div
         className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer"
-        onClick={() => onAnswer("Inventor")} // Ejemplo: Manda la respuesta "Inventor"
+        onClick={() => onAnswer("Inventor")} 
       >
         <div className="w-full aspect-[4/3] bg-white flex items-center justify-center rounded-lg">
           <img
             src={imageUrl}
             alt="Polaroid"
             className="w-full h-full object-contain"
-            style={{ maxWidth: "100%", maxHeight: "900px" }}
+            style={{ maxWidth: "100%", maxHeight: "500px" }}
           />
         </div>
         <p className="mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black font-bentham text-center leading-tight">
-          Haz clic para responder
+        {t("textp")}
         </p>
       </div>
-
-      {/* Cara trasera */}
       <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8">
         <p className="mt-4 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-light font-Merriweather text-center">
           {typedText}
