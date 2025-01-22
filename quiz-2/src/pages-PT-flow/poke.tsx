@@ -1,98 +1,99 @@
-import React, { useState, useEffect } from "react";
-import "../styles/poke.css";
-
-const typeColor: Record<string, string> = {
-  bug: "#26de81",
-  dragon: "#CEB154",
-  electric: "#F3C92A",
-  fairy: "#FF0069",
-  fighting: "#30336b",
-  fire: "#f0932b",
-  flying: "#81ecec",
-  grass: "#00b894",
-  ground: "#EFB549",
-  ghost: "#a55eea",
-  ice: "#74b9ff",
-  normal: "#95afc0",
-  poison: "#6c5ce7",
-  psychic: "#a29bfe",
-  rock: "#2d3436",
-  water: "#59A2E6",
-};
+import React, { useState, useRef, useEffect } from "react";
 
 const PokemonCard: React.FC = () => {
-  const [pokemon, setPokemon] = useState<any>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [position, setPosition] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const handleRef = useRef<HTMLDivElement>(null);
 
-  const fetchPokemon = async () => {
-    const id = Math.floor(Math.random() * 150) + 1;
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const data = await response.json();
-    setPokemon(data);
+  const handleStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+  };
+
+  const handleMove = (e: MouseEvent | TouchEvent) => {
+    if (!isDragging || !sliderRef.current || !handleRef.current) return;
+
+    const sliderWidth = sliderRef.current.offsetWidth;
+    const handleWidth = handleRef.current.offsetWidth;
+    const sliderLeft = sliderRef.current.getBoundingClientRect().left;
+
+    const clientX =
+      "touches" in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+
+    let newPosition = clientX - sliderLeft - handleWidth / 2;
+    newPosition = Math.max(0, Math.min(newPosition, sliderWidth - handleWidth));
+
+    setPosition(newPosition);
+  };
+
+  const handleEnd = () => {
+    if (!isDragging || !sliderRef.current || !handleRef.current) return;
+
+    const sliderWidth = sliderRef.current.offsetWidth;
+    const handleWidth = handleRef.current.offsetWidth;
+
+    if (position >= sliderWidth - handleWidth) {
+      alert("¡Confirmación completada!");
+    }
+
+    setPosition(0); // Reinicia la posición
+    setIsDragging(false);
   };
 
   useEffect(() => {
-    fetchPokemon();
-  }, []);
+    const handleGlobalMove = (e: MouseEvent | TouchEvent) => handleMove(e);
+    const handleGlobalEnd = () => handleEnd();
 
-  if (!pokemon) {
-    return <div>Loading...</div>;
-  }
+    if (isDragging) {
+      document.addEventListener("mousemove", handleGlobalMove);
+      document.addEventListener("mouseup", handleGlobalEnd);
+      document.addEventListener("touchmove", handleGlobalMove);
+      document.addEventListener("touchend", handleGlobalEnd);
+    }
 
-  const {
-    stats,
-    sprites,
-    name,
-    types,
-  }: { stats: any[]; sprites: any; name: string; types: any[] } = pokemon;
-  const hp = stats[0].base_stat;
-  const imgSrc = sprites.other.dream_world.front_default;
-  const pokeName = name[0].toUpperCase() + name.slice(1);
-  const statAttack = stats[1].base_stat;
-  const statDefense = stats[2].base_stat;
-  const statSpeed = stats[5].base_stat;
-  const themeColor = typeColor[types[0].type.name];
+    return () => {
+      document.removeEventListener("mousemove", handleGlobalMove);
+      document.removeEventListener("mouseup", handleGlobalEnd);
+      document.removeEventListener("touchmove", handleGlobalMove);
+      document.removeEventListener("touchend", handleGlobalEnd);
+    };
+  }, [isDragging, position]);
 
   return (
-    <div className="container">
+    <div
+      ref={sliderRef}
+      style={{
+        position: "relative",
+        width: "90%",
+        maxWidth: "400px",
+        height: "60px", // Ajusta según el tamaño de la figura
+        borderRadius: "30px",
+        backgroundColor: position >= (sliderRef.current?.offsetWidth || 300) - 60 ? "#4caf50" : "#ddd",
+        margin: "20px auto",
+        overflow: "hidden",
+      }}
+    >
       <div
-        id="card"
+        ref={handleRef}
+        onMouseDown={handleStart}
+        onTouchStart={handleStart}
         style={{
-          background: `radial-gradient(circle at 70% 0%, ${themeColor} 46%, #EEEEEE 36%)`,
+          position: "absolute",
+          top: "10px",
+          left: `${position}px`,
+          cursor: "pointer",
         }}
       >
-        <p className="hp">
-          <span>HP</span> {hp}
-        </p>
-        <img src={imgSrc} alt={pokeName} />
-        <h2 className="poke-name">{pokeName}</h2>
-        <div className="types">
-          {types.map((type, index) => (
-            <span
-              key={index}
-              style={{ backgroundColor: themeColor }}
-            >
-              {type.type.name}
-            </span>
-          ))}
-        </div>
-        <div className="stats">
-          <div>
-            <h3>{statAttack}</h3>
-            <p>Attack</p>
-          </div>
-          <div>
-            <h3>{statDefense}</h3>
-            <p>Defense</p>
-          </div>
-          <div>
-            <h3>{statSpeed}</h3>
-            <p>Speed</p>
-          </div>
+
+        <div className=" ">
+        <img
+          src=" https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png"
+          alt="Background"
+          className="absolute inset-0 h-full w-[10%]"
+        />
+
         </div>
       </div>
-      <button id="btn" onClick={fetchPokemon}>
-        Refresh ↻
-      </button>
     </div>
   );
 };

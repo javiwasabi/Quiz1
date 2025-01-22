@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { ButtonNext, NextP, Choice } from "../components/buttons";
+import { ButtonNext, NextP, Choice, PokemonCard } from "../components/buttons";
 import { useNavigate } from "react-router-dom";
 import "../styles/poke.css";
 import "../styles/background.css";
 import { CardPok } from "../components/questions";
+import { IoMdMail, IoLogoInstagram, IoLogoFacebook, IoLogoLinkedin , IoLogoWhatsapp} from "react-icons/io";
 
 const Game: React.FC = () => {
   const [score, setScore] = useState(0);
@@ -14,8 +15,31 @@ const Game: React.FC = () => {
   const [showResults, setShowResults] = useState(false);
   const [showPokemonButton, setShowPokemonButton] = useState(true);
   const [showTechnologyButton, setShowTechnologyButton] = useState(true);
-
+  const [showOr, setShowOr] = useState(true);
   const navigate = useNavigate();
+  const shareOnFacebook = () => {
+    const message = `I scored ${score} in this app!`; 
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://www.example.com&quote=${encodeURIComponent(message)}`;
+    window.open(facebookUrl, '_blank');
+  };
+
+  const shareOnLinkedIn = () => {
+    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.example.com&title=${encodeURIComponent(message)}`;
+    window.open(linkedInUrl, '_blank');
+  };
+
+  const shareOnWhatssap = () => {
+    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
+    window.open(instagramUrl, '_blank');
+  };
+
+  const shareOnInstagram= () => {
+    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
+    window.open(instagramUrl, '_blank');
+  };
   const questions = [
     {
       imageUrl:
@@ -57,16 +81,7 @@ const Game: React.FC = () => {
       },
       name: "Kubernetes",
     },
-    {
-      imageUrl:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/81.png",
-      correctAnswer: "Pokemon",
-      context: {
-        en: "A Steel/Electric-type Pokémon that can generate magnetic fields.",
-        es: "Un Pokémon de tipo Acero/Eléctrico que puede generar campos magnéticos.",
-      },
-      name: "Magnemite",
-    },
+
     {
       imageUrl:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Ansible_logo.svg/640px-Ansible_logo.svg.png",
@@ -164,6 +179,7 @@ const Game: React.FC = () => {
     setIsFlipped(true);
     setShowPokemonButton(false);
     setShowTechnologyButton(false);
+    setShowOr(false);
   };
 
   const handleNextQuestion = () => {
@@ -177,10 +193,15 @@ const Game: React.FC = () => {
 
       setShowPokemonButton(false);
       setShowTechnologyButton(false);
+      setShowOr(false);
 
       const timer1 = setTimeout(() => {
         setShowPokemonButton(true);
       }, 500);
+      const timer3 = setTimeout(() => {
+        setShowOr(true);
+      }, 600);
+
 
       const timer2 = setTimeout(() => {
         setShowTechnologyButton(true);
@@ -188,6 +209,7 @@ const Game: React.FC = () => {
 
       return () => {
         clearTimeout(timer1);
+        clearTimeout(timer3);
         clearTimeout(timer2);
       };
     }
@@ -199,19 +221,72 @@ const Game: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-300 min-h-screen flex items-center justify-center p-4">
+    <div className="relative bg-blue min-h-screen flex items-center justify-center overflow-hidden">
+      <img
+        src="fondo.png"
+        alt="Background"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      
       <div className="relative w-full md:w-[70%] lg:w-[60%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-bl from-custom-dark via-custom-dark to-[#ebeaea]"></div>
-        {showResults ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 font-Merriweather">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 font-bentham">Game Results</h2>
-            <p className="text-lg md:text-xl">Your score: {score}</p>
-            <NextP id="final-button" onClick={handleFinishGame} />
+    
+        <img
+          src="field.jpg"
+          alt="Background"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      {showResults ? (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg max-w-4xl w-[80%]">
+            <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">Game Results</h2>
+
+            {questions.length > 0 && (
+              <>
+                <p className="text-2xl md:text-3xl mt-4 text-center">
+                  Tuviste el {((score / questions.length) * 100).toFixed(2)}% de aciertos
+                </p>
+
+  
+              </>
+            )}
+
+            {questions.length > 0 && (
+              <p className="text-3xl md:text-4xl mt-2 text-center  font-bentham ">
+                {((score / questions.length) * 100) < 40
+                  ? "Ups! Parece que no eres un fan"
+                  : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+                  ? "Parece que sabes algo pero aún falta"
+                  : "¡Eres un experto total en identificar nombres!"}
+              </p>
+            )}
+             <div className="mt-8 w-full flex flex-col items-center">
+        <p className="font-bold font-bentham text-black text-4xl sm:text-5xl lg:text-5xl text-center">
+          Comparte tus resultados
+        </p>
+
+        <div className="flex space-x-4 mt-6 sm:mt-8">
+          <a href="#" onClick={shareOnWhatssap} id="email-button">
+            <IoLogoWhatsapp size={32} className="text-black hover:text-yellow-500 transition-colors" />
+          </a>
+          <a href="#" onClick={shareOnInstagram}>
+            <IoLogoInstagram size={32} className="text-black hover:text-pink-500 transition-colors" />
+          </a>
+          <a href="#" onClick={shareOnFacebook}>
+            <IoLogoFacebook size={32} className="text-black hover:text-blue-600 transition-colors" />
+          </a>
+          <a href="#" onClick={shareOnLinkedIn}>
+            <IoLogoLinkedin size={32} className="text-black hover:text-blue-600 transition-colors" />
+          </a>
+        </div>
+      </div>
           </div>
-        ) : (
+        </div>
+      ) 
+
+      : (
           <>
-           <div className={`flex justify-center z-20 text-center w-full mt-[0%] absolute top-[25%] ${isFlipped ? 'invisible' : ''}`}>
-            <h3 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-semibold text-white">
+           <div className={`flex justify-center z-20 text-center w-full mt-[0%] absolute top-[5%] ${isFlipped ? 'invisible' : ''}`}>
+            <h3 className="text-5xl sm:text-3xl md:text-2xl lg:text-3xl xl:text-7xl font-Merriweather text-black">
               {questions[currentQuestion].name}
             </h3>
           </div>
@@ -219,7 +294,7 @@ const Game: React.FC = () => {
 
 
             <div className="w-full h-[30%]">
-              <div className="relative w-full h-[60%] flex justify-center absolute bottom-[-40%]">
+              <div className="relative w-full h-[100%] flex justify-center absolute bottom-[-10%]">
                 <CardPok
                   imageUrl={questions[currentQuestion].imageUrl}
                   context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
@@ -229,40 +304,47 @@ const Game: React.FC = () => {
                   onNext={handleNextQuestion}
                   namep={questions[currentQuestion].name}
                 />
-
               </div>
 
-              
+              {isFlipped && (
+
+                          <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
+                          
+                            <PokemonCard id="next-button" onClick={handleNextQuestion} />
+                          </div>
+                        )}
+
             </div>
-            
 
+              <div className="absolute bottom-0 flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-4 px-4 w-full">
+                {/* Botón de Pokémon */}
+                <div className="flex justify-center items-center w-full sm:max-w-[42%] px-2">
+                  {showPokemonButton && (
+                    <Choice
+                      id="choice-pokemon"
+                      onClick={() => handleAnswer("Pokemon")}
+                    />
+                  )}
+                </div>
 
+                {/* Texto "or" */}
+                {showOr  && (
+                <div className="absolute flex justify-center items-center w-full sm:w-auto px-0">
+                  <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-md">
+                    or
+                  </span>
+                </div>)}
 
-            {isFlipped && (
-              <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
-                <NextP id="next-button" onClick={handleNextQuestion} />
+                {/* Botón de Tecnología */}
+                <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2">
+                  {showTechnologyButton && (
+                    <Choice
+                      id="choice-technology"
+                      onClick={() => handleAnswer("Technology")}
+                    />
+                  )}
+                </div>
               </div>
-            )}
-
-<div className="absolute bottom-0 flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-[10%] px-4 w-full mt-0">
-  <div className="w-full sm:w-1/2 max-w-[200px] px-4 absolute bottom-20">
-    {showPokemonButton && (
-      <Choice
-        id="choice-pokemon"
-        onClick={() => handleAnswer("Pokemon")}
-      />
-    )}
-  </div>
-  <div className="w-full sm:w-1/2 max-w-[200px] px-4 py-0">
-    {showTechnologyButton && (
-      <Choice
-        id="choice-technology"
-        onClick={() => handleAnswer("Technology")}
-      />
-    )}
-  </div>
-</div>
-
 
 
           </>

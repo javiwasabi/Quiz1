@@ -3,7 +3,7 @@ import { ButtonNext } from "../components/buttons";
 import { Card, PolaroidPhoto } from "../components/questions";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import { IoMdMail, IoLogoInstagram, IoLogoFacebook, IoLogoLinkedin , IoLogoWhatsapp} from "react-icons/io";
 const Middle: React.FC = () => {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -14,7 +14,32 @@ const Middle: React.FC = () => {
 
   const [showSerialKiller, setShowSerialKiller] = useState(false);
   const [showInventor, setShowInventor] = useState(false);
+  const [showOr, setShowOr] = useState(false);
   const { t, i18n } = useTranslation();
+  const shareOnFacebook = () => {
+    const message = `I scored ${score} in this app!`; 
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://www.example.com&quote=${encodeURIComponent(message)}`;
+    window.open(facebookUrl, '_blank');
+  };
+
+  const shareOnLinkedIn = () => {
+    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.example.com&title=${encodeURIComponent(message)}`;
+    window.open(linkedInUrl, '_blank');
+  };
+
+  const shareOnWhatssap = () => {
+    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
+    window.open(instagramUrl, '_blank');
+  };
+
+  const shareOnInstagram= () => {
+    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
+    window.open(instagramUrl, '_blank');
+  };
+
 
 
   useEffect(() => {
@@ -130,6 +155,7 @@ const Middle: React.FC = () => {
     setIsFlipped(true);
     setShowSerialKiller(false);
     setShowInventor(false);
+    setShowOr(false);
   };
   const handleNextQuestion = () => {
     if (!answered) return;
@@ -143,18 +169,25 @@ const Middle: React.FC = () => {
       setIsFlipped(false);
       setShowSerialKiller(false);
       setShowInventor(false);
+      setShowOr(false);
   
       const timer1 = setTimeout(() => {
         setShowSerialKiller(true);
       }, 500);
+      const timer3 = setTimeout(() => {
+        setShowOr(true);
+      }, 700);
   
       const timer2 = setTimeout(() => {
         setShowInventor(true);
       }, 1000);
+      
   
       return () => {
         clearTimeout(timer1);
+        clearTimeout(timer3);
         clearTimeout(timer2);
+        
       };
     }
   };
@@ -174,6 +207,9 @@ const Middle: React.FC = () => {
     const timer1 = setTimeout(() => {
       setShowSerialKiller(true);
     }, 500);
+    const timer3 = setTimeout(() => {
+      setShowInventor(true);
+    }, 700); 
 
     const timer2 = setTimeout(() => {
       setShowInventor(true);
@@ -181,7 +217,9 @@ const Middle: React.FC = () => {
 
     return () => {
       clearTimeout(timer1);
+      clearTimeout(timer3);
       clearTimeout(timer2);
+ 
     };
   }, []);
   useEffect(() => {
@@ -200,40 +238,63 @@ const Middle: React.FC = () => {
     
 
       <div className="h-full w-full flex flex-col space-y-4 transform scale-[1] md:scale-[0.85] lg:scale-[0.9] justify-center ">
-            {showResults ? (
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 font-Merriweather ">
-                <h2 className="text-4xl font-bold mb-4 font-bentham">Game Results</h2>
-                <ul className="flex flex-wrap gap-4 justify-center max-h-[30vh] overflow-auto">
-                  {questions.slice(0, visibleResults).map((question, index) => (
-                    <li key={index} className="flex flex-col items-center w-48">
-                      <img
-                        src={question.imageUrl}
-                        alt={`Question ${index + 1}`}
-                        className="w-48 h-48 object-cover mb-2 rounded-md"
-                      />
-                      <p className="text-2xl text-center">
-                        <strong>Correct Answer:</strong> {question.correctAnswer}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-                {visibleResults < questions.length && (
-                  <button
-                    onClick={loadMoreResults}
-                    className="mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg shadow hover:bg-blue-700"
-                  >
-                    See More Results
-                  </button>
-                )}
-                <div className="mt-8 mt-[20%] absolute bottom-0">
+      {showResults ? (
+  <div className="absolute inset-0 flex items-center justify-center">
+    <div className="  p-6 rounded-md  max-w-4xl w-full flex flex-col items-center">
+      {/* Resultados del juego */}
+      <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">Game Results</h2>
 
-                  <ButtonNext id="final-button" onClick={handleFinishGame} />
-                </div>
-              </div>
-            ) : (
+      {questions.length > 0 && (
+        <>
+          <p className="text-2xl md:text-3xl mt-4 text-center">
+            Tuviste el {((score / questions.length) * 100).toFixed(2)}% de aciertos
+          </p>
+          
+          
+
+         
+        </>
+      )}
+
+      {questions.length > 0 && (
+        <p className="text-3xl md:text-4xl mt-2 text-center font-bentham">
+          {((score / questions.length) * 100) < 40
+            ? "Ups! Parece que no eres un fan"
+            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+            ? "Parece que sabes algo pero aún falta"
+            : "¡Eres un experto total en identificar nombres!"}
+        </p>
+      )}
+
+      {/* Sección de compartir resultados */}
+      <div className="mt-8 w-full flex flex-col items-center">
+        <p className="font-bold font-bentham text-black text-4xl sm:text-5xl lg:text-5xl text-center">
+          {t("share")}
+        </p>
+
+        <div className="flex space-x-4 mt-6 sm:mt-8">
+          <a href="#" onClick={shareOnWhatssap} id="email-button">
+            <IoLogoWhatsapp size={32} className="text-black hover:text-yellow-500 transition-colors" />
+          </a>
+          <a href="#" onClick={shareOnInstagram}>
+            <IoLogoInstagram size={32} className="text-black hover:text-pink-500 transition-colors" />
+          </a>
+          <a href="#" onClick={shareOnFacebook}>
+            <IoLogoFacebook size={32} className="text-black hover:text-blue-600 transition-colors" />
+          </a>
+          <a href="#" onClick={shareOnLinkedIn}>
+            <IoLogoLinkedin size={32} className="text-black hover:text-blue-600 transition-colors" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+) 
+
+ : (
               <>
                 {answered && (
-                  <div className="absolute bottom-[0%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black">
+                  <div className="absolute bottom-[0%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black w-full">
                     <ButtonNext id="next-button" onClick={handleNextQuestion} />
 
                   </div>
@@ -274,7 +335,7 @@ const Middle: React.FC = () => {
                   <div className="absolute bottom-[4%] w-full flex justify-between items-center z-10 font-bentham mt-10">
                     {showSerialKiller && (
                       <div
-                        className="relative w-[50%] max-w-[45%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
+                        className="relative w-[45%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
                         style={{
                           background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
@@ -283,14 +344,21 @@ const Middle: React.FC = () => {
                         onClick={() => handleAnswer("Killer")}
                       >
                         <span className="block text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
-                        {t("who")}
+                          {t("who")}
                         </span>
                       </div>
                     )}
 
+                    {showOr  && (
+                      <span className="text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-gray-600 mx-4">
+                      or
+                      </span>
+                    )}
+                    
+
                     {showInventor && (
                       <div
-                        className="relative w-[50%] max-w-[45%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
+                        className="relative w-[45%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
                         style={{
                           background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
@@ -303,7 +371,6 @@ const Middle: React.FC = () => {
                         </span>
                       </div>
                     )}
-              
                   </div>
                 )}
 

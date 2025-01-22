@@ -44,7 +44,7 @@ export const CardPok: React.FC<CardPropsp> = ({
   const [isRevealed, setIsRevealed] = useState(false);
   
   const [pokemon, setPokemon] = useState<any>(null);
-  const hp = 10
+
   
 
   // Sincroniza el estado interno con isFlipped
@@ -58,7 +58,7 @@ export const CardPok: React.FC<CardPropsp> = ({
       <div className="relative flex flex-col items-center">
         {/* Ball */}
         <div
-          className="relative w-40 h-40 ball"
+          className="relative w-40 h-40 ball "
           style={{
             transform: isRevealed ? "rotate(0deg)" : "rotateY(180deg)",
             transition: "transform 0.5s ease-in-out",
@@ -66,7 +66,7 @@ export const CardPok: React.FC<CardPropsp> = ({
         >
           <div className="inside"></div>
           <div className="center"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-white rounded-b-full border-t-4 border-black shadow-2xl"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-transparent rounded-b-full "></div>
         </div>
 
         {/* Pokémon / Card */}
@@ -81,15 +81,13 @@ export const CardPok: React.FC<CardPropsp> = ({
           <div
             id="card"
             style={{
-              background: `radial-gradient(circle at 70% 0%, #ffddc1, 46%, #EEEEEE 36%)`,
+              background: `radial-gradient(circle at 70% 0%,rgb(200, 210, 218), 46%, #EEEEEE 36%)`,
               transform: isRevealed ? "scale(1)" : "scale(0.7)",
               opacity: isRevealed ? "1" : "0",
             }}
             className="card"
           >
-            <p className="hp">
-              <span>HP</span> {score}
-            </p>
+     
             <img
               src={imageUrl}
               alt={context}
@@ -99,7 +97,7 @@ export const CardPok: React.FC<CardPropsp> = ({
                 transition: "transform 0.5s ease",
               }}
             />
-            <h2 className="poke-name">{context}</h2>
+            <h2 className="poke-name font-light font-bentham">{context}</h2>
           </div>
         </div>
       </div>
