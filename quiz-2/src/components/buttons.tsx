@@ -119,17 +119,20 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
 
     setPosition(newPosition);
 
-    // Si el deslizador alcanza el final, ejecuta onClick
+   
     if (newPosition >= sliderWidth - handleWidth) {
       onClick();
-      setIsDragging(false); // Detenemos el deslizamiento
+      setIsDragging(false); 
     }
   };
 
   const handleEnd = () => {
     setIsDragging(false);
-    setPosition(0); // Reinicia la posición al final
+    setPosition(0); 
   };
+  const userLanguage = navigator.language || navigator.languages[0];
+  const isSpanish = userLanguage.startsWith("es");
+
 
   useEffect(() => {
     const handleGlobalMove = (e: MouseEvent | TouchEvent) => handleMove(e);
@@ -154,11 +157,11 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
     <div
       ref={sliderRef}
       style={{
-        position: "fixed", // Asegura que el componente esté siempre en pantalla.
-        bottom: "20px", // Ajusta según lo necesario.
-        left: "50%", // Centra el componente horizontalmente
-        transform: "translateX(-50%)", // Asegura el centrado perfecto
-        zIndex: 9999, // Asegura que el componente esté por encima de otros elementos
+        position: "fixed",
+        bottom: "20px", 
+        left: "50%", 
+        transform: "translateX(-50%)",
+        zIndex: 9999, 
         width: "90%",
         maxWidth: "400px",
         height: "60px",
@@ -171,7 +174,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
         overflow: "",
       }}
     >
-      {/* Texto centrado */}
+   
       <div
         style={{
           position: "absolute",
@@ -184,7 +187,15 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
           zIndex: 100, 
         }}
       >
-        Desliza para continuar
+        {isSpanish ? (
+              <>
+                Desliza para continuar
+              </>
+            ) : (
+              <>
+                Swipe to continue 
+              </>
+            )}
       </div>
 
       <div

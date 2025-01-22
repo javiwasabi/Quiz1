@@ -24,19 +24,19 @@ const Game: React.FC = () => {
   };
 
   const shareOnLinkedIn = () => {
-    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const message = `I scored ${score} in this app!`; 
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.example.com&title=${encodeURIComponent(message)}`;
     window.open(linkedInUrl, '_blank');
   };
 
   const shareOnWhatssap = () => {
-    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const message = `I scored ${score} in this app!`; 
     const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
     window.open(instagramUrl, '_blank');
   };
 
   const shareOnInstagram= () => {
-    const message = `I scored ${score} in this app!`; // Traducción en inglés o español
+    const message = `I scored ${score} in this app!`; 
     const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
     window.open(instagramUrl, '_blank');
   };
@@ -200,7 +200,7 @@ const Game: React.FC = () => {
       }, 500);
       const timer3 = setTimeout(() => {
         setShowOr(true);
-      }, 600);
+      }, 1200);
 
 
       const timer2 = setTimeout(() => {
@@ -236,32 +236,41 @@ const Game: React.FC = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
       {showResults ? (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg max-w-4xl w-[80%]">
-            <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">Game Results</h2>
+  <div className="absolute inset-0 flex items-center justify-center">
+    <div className="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg max-w-4xl w-[80%]">
+      <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">
+        {navigator.language.includes("es") ? "Resultados del Juego" : "Game Results"}
+      </h2>
 
-            {questions.length > 0 && (
-              <>
-                <p className="text-2xl md:text-3xl mt-4 text-center">
-                  Tuviste el {((score / questions.length) * 100).toFixed(2)}% de aciertos
-                </p>
+      {questions.length > 0 && (
+        <>
+          <p className="text-2xl md:text-3xl mt-4 text-center">
+            {navigator.language.includes("es")
+              ? `Tuviste el ${((score / questions.length) * 100).toFixed(2)}% de aciertos`
+              : `You had ${((score / questions.length) * 100).toFixed(2)}% correct answers`}
+          </p>
+        </>
+      )}
 
-  
-              </>
-            )}
+      {questions.length > 0 && (
+        <p className="text-3xl md:text-4xl mt-2 text-center font-bentham">
+          {navigator.language.includes("es")
+            ? ((score / questions.length) * 100) < 40
+              ? "¡Ups! Parece que no eres un fan"
+              : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+              ? "Parece que sabes algo pero aún falta"
+              : "¡Eres un experto total en identificar nombres!"
+            : ((score / questions.length) * 100) < 40
+            ? "Oops! Looks like you're not a fan"
+            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+            ? "You seem to know something but still need more"
+            : "You're a total expert at identifying names!"}
+        </p>
+      )}
 
-            {questions.length > 0 && (
-              <p className="text-3xl md:text-4xl mt-2 text-center  font-bentham ">
-                {((score / questions.length) * 100) < 40
-                  ? "Ups! Parece que no eres un fan"
-                  : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
-                  ? "Parece que sabes algo pero aún falta"
-                  : "¡Eres un experto total en identificar nombres!"}
-              </p>
-            )}
-             <div className="mt-8 w-full flex flex-col items-center">
+      <div className="mt-8 w-full flex flex-col items-center">
         <p className="font-bold font-bentham text-black text-4xl sm:text-5xl lg:text-5xl text-center">
-          Comparte tus resultados
+          {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
         </p>
 
         <div className="flex space-x-4 mt-6 sm:mt-8">
@@ -279,9 +288,10 @@ const Game: React.FC = () => {
           </a>
         </div>
       </div>
-          </div>
-        </div>
-      ) 
+    </div>
+  </div>
+) 
+
 
       : (
           <>

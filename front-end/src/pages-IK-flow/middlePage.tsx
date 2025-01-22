@@ -191,6 +191,8 @@ const Middle: React.FC = () => {
       };
     }
   };
+
+const isSpanish = userLanguage.startsWith('es');
   
   const [visibleResults, setVisibleResults] = useState(3);
   const loadMoreResults = () => {
@@ -209,7 +211,7 @@ const Middle: React.FC = () => {
     }, 500);
     const timer3 = setTimeout(() => {
       setShowInventor(true);
-    }, 700); 
+    }, 1100); 
 
     const timer2 = setTimeout(() => {
       setShowInventor(true);
@@ -242,31 +244,36 @@ const Middle: React.FC = () => {
   <div className="absolute inset-0 flex items-center justify-center">
     <div className="  p-6 rounded-md  max-w-4xl w-full flex flex-col items-center">
       {/* Resultados del juego */}
-      <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">Game Results</h2>
+      <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">
+      {isSpanish ? "Resultados del Juego" : "Game Results"}
+    </h2>
 
-      {questions.length > 0 && (
-        <>
-          <p className="text-2xl md:text-3xl mt-4 text-center">
-            Tuviste el {((score / questions.length) * 100).toFixed(2)}% de aciertos
-          </p>
-          
-          
-
-         
-        </>
-      )}
-
-      {questions.length > 0 && (
-        <p className="text-3xl md:text-4xl mt-2 text-center font-bentham">
-          {((score / questions.length) * 100) < 40
-            ? "Ups! Parece que no eres un fan"
-            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
-            ? "Parece que sabes algo pero aún falta"
-            : "¡Eres un experto total en identificar nombres!"}
+    {questions.length > 0 && (
+      <>
+        <p className="text-2xl md:text-3xl mt-4 text-center">
+          {isSpanish 
+            ? `Tuviste el ${((score / questions.length) * 100).toFixed(2)}% de aciertos` 
+            : `You got ${((score / questions.length) * 100).toFixed(2)}% correct`}
         </p>
-      )}
+      </>
+    )}
 
-      {/* Sección de compartir resultados */}
+    {questions.length > 0 && (
+      <p className="text-3xl md:text-4xl mt-2 text-center font-bentham">
+        {((score / questions.length) * 100) < 40
+          ? isSpanish 
+            ? "Ups! Parece que no eres un fan" 
+            : "Oops! It seems you're not a fan"
+          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+          ? isSpanish 
+            ? "Parece que sabes algo pero aún falta" 
+            : "It seems you know something, but there's room for improvement"
+          : isSpanish 
+            ? "¡Eres un experto total en identificar nombres!" 
+            : "You're a total expert at identifying names!"}
+      </p>
+    )}
+
       <div className="mt-8 w-full flex flex-col items-center">
         <p className="font-bold font-bentham text-black text-4xl sm:text-5xl lg:text-5xl text-center">
           {t("share")}
@@ -378,22 +385,7 @@ const Middle: React.FC = () => {
             )}
           </div>
       </div>
-      {t("changeLanguageButton") && (
-        <div className="absolute top-4 right-4 flex space-x-2">
-          <button
-            onClick={() => changeLanguage("en")}
-            className="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-md hover:bg-blue-600"
-          >
-            {t("englishButton")}
-          </button>
-          <button
-            onClick={() => changeLanguage("es")}
-            className="px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-green-600"
-          >
-            {t("spanishButton")}
-          </button>
-        </div>
-      )}
+
     </div>
   );
 };

@@ -5,6 +5,10 @@ import "../styles/background.css";
 const First: React.FC = () => {
   const [isRevealed, setIsRevealed] = useState(false);
 
+  // Detectar el idioma del navegador
+  const userLanguage = navigator.language || navigator.languages[0];
+  const isSpanish = userLanguage.startsWith("es");
+
   const handleClick = () => {
     setIsRevealed(!isRevealed);
   };
@@ -24,15 +28,19 @@ const First: React.FC = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        {/* Texto 1 */}
         <div className="absolute top-[10%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-full text-center">
-          <h1 className="text-4xl md:text-5xl  text-black font-bentham drop-shadow-lg ">
-            Are you 
-            <span className="text-black font-extrabold"> able to identify the name</span> of a Pokémon?
+          <h1 className="text-4xl md:text-5xl text-black font-bentham drop-shadow-lg">
+            {isSpanish ? (
+              <>
+                ¿Eres capaz de identificar el <span className="font-extrabold">nombre</span> de un Pokémon?
+              </>
+            ) : (
+              <>
+                Are you able to identify the <span className="font-extrabold">name</span> of a Pokémon?
+              </>
+            )}
           </h1>
         </div>
-
-        
 
         {/* Pokeball interactiva */}
         <div
