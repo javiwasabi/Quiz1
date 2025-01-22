@@ -139,7 +139,7 @@ const Last: React.FC = () => {
 
   return (
     <div className="bg-gray-300 min-h-screen flex items-center justify-center">
-      <div className="relative w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex items-center justify-center">
+      <div className="relative w-[60%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-bl from-custom-dark via-custom-dark to-[#ebeaea]"></div>
 
         <div className="relative flex flex-col items-center justify-center h-full p-6">
