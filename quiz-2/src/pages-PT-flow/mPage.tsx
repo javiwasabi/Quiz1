@@ -326,9 +326,9 @@ const Game: React.FC = () => {
 
             </div>
 
-              <div className="absolute bottom-0 flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-4 px-4 w-full">
+              <div className="absolute bottom-[10%] flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-4 px-4 w-full">
                 {/* Botón de Pokémon */}
-                <div className="flex justify-center items-center w-full sm:max-w-[42%] px-2">
+                <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2">
                   {showPokemonButton && (
                     <Choice
                       id="choice-pokemon"
@@ -337,7 +337,7 @@ const Game: React.FC = () => {
                   )}
                 </div>
 
-                {/* Texto "or" */}
+
                 {showOr  && (
                 <div className="absolute flex justify-center items-center w-full sm:w-auto px-0">
                   <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-md">

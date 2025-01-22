@@ -37,16 +37,14 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
 };
 
 
-
 export const Choice: React.FC<{ onClick: () => void; id: string }> = ({
   onClick,
   id,
 }) => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-auto font-bentham ">
+    <div className="flex flex-col items-center justify-center w-full h-auto font-bentham">
       <button
-        className="bg-gray-800 flex items-center justify-center w-full py-6 px-4 sm:py-8 sm:px-6 md:py-10 md:px-8 lg:py-12 lg:px-10 font-medium uppercase text-black text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-5xl bg-transparent leading-tight"
-
+        className="bg-white flex items-center justify-center w-80 py-3 px-4 sm:py-4 sm:px-6 md:py-5 md:px-8 lg:py-6 lg:px-10 font-medium uppercase text-black text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl leading-tight rounded-full shadow-lg hover:shadow-2xl transition-shadow duration-300"
         onClick={onClick}
         id={id}
       >
@@ -55,6 +53,8 @@ export const Choice: React.FC<{ onClick: () => void; id: string }> = ({
     </div>
   );
 };
+
+
 
 
 
@@ -115,24 +115,25 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
       "touches" in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
 
     let newPosition = clientX - sliderLeft - handleWidth / 2;
+    // Limitar el movimiento a un rango más corto
     newPosition = Math.max(0, Math.min(newPosition, sliderWidth - handleWidth));
 
     setPosition(newPosition);
 
-   
+    // Activar clic cuando se alcanza el final
     if (newPosition >= sliderWidth - handleWidth) {
       onClick();
-      setIsDragging(false); 
+      setIsDragging(false);
     }
   };
 
   const handleEnd = () => {
     setIsDragging(false);
-    setPosition(0); 
+    setPosition(0);
   };
+
   const userLanguage = navigator.language || navigator.languages[0];
   const isSpanish = userLanguage.startsWith("es");
-
 
   useEffect(() => {
     const handleGlobalMove = (e: MouseEvent | TouchEvent) => handleMove(e);
@@ -158,12 +159,12 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
       ref={sliderRef}
       style={{
         position: "fixed",
-        bottom: "20px", 
-        left: "50%", 
+        bottom: "20px",
+        left: "50%",
         transform: "translateX(-50%)",
-        zIndex: 9999, 
-        width: "90%",
-        maxWidth: "400px",
+        zIndex: 9999,
+        width: "50%", // Hacer el deslizable más corto
+        maxWidth: "200px", // Limitar el tamaño máximo
         height: "60px",
         borderRadius: "30px",
         backgroundColor:
@@ -171,10 +172,9 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
             ? "#4caf50"
             : "#ddd",
         margin: "0 auto",
-        overflow: "",
+        overflow: "hidden",
       }}
     >
-   
       <div
         style={{
           position: "absolute",
@@ -184,18 +184,10 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
           fontSize: "16px",
           color: "black",
           fontWeight: "bold",
-          zIndex: 100, 
+          zIndex: 100,
         }}
       >
-        {isSpanish ? (
-              <>
-                Desliza para continuar
-              </>
-            ) : (
-              <>
-                Swipe to continue 
-              </>
-            )}
+        {isSpanish ? "Desliza para continuar" : "Swipe to continue"}
       </div>
 
       <div
