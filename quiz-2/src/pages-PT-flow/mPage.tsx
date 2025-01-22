@@ -244,11 +244,11 @@ const Game: React.FC = () => {
 
       {questions.length > 0 && (
         <>
-          <p className="text-2xl md:text-3xl mt-4 text-center">
-            {navigator.language.includes("es")
-              ? `Tuviste el ${((score / questions.length) * 100).toFixed(2)}% de aciertos`
-              : `You had ${((score / questions.length) * 100).toFixed(2)}% correct answers`}
-          </p>
+           <p className="text-2xl md:text-3xl mt-4 text-center">
+    {navigator.language.includes("es")
+      ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
+      : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+  </p>
         </>
       )}
 

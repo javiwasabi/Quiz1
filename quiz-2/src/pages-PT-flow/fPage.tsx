@@ -4,8 +4,6 @@ import "../styles/background.css";
 
 const First: React.FC = () => {
   const [isRevealed, setIsRevealed] = useState(false);
-
-  // Detectar el idioma del navegador
   const userLanguage = navigator.language || navigator.languages[0];
   const isSpanish = userLanguage.startsWith("es");
 
@@ -30,19 +28,20 @@ const First: React.FC = () => {
 
         <div className="absolute top-[10%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-full text-center">
           <h1 className="text-4xl md:text-5xl text-black font-bentham drop-shadow-lg">
-            {isSpanish ? (
+          {isSpanish ? (
               <>
-                ¿Eres capaz de identificar el <span className="font-extrabold">nombre</span> de un Pokémon?
+                ¿Puedes distinguir la diferencia entre <span className="font-extrabold"> Tecnologías</span> Digitales y <span className="font-extrabold">  Pokemones</span> ? 
               </>
             ) : (
               <>
-                Are you able to identify the <span className="font-extrabold">name</span> of a Pokémon?
+                Can you tell the difference between <span className="font-extrabold">Digital Technologies</span> and <span className="font-extrabold">Pokémon?</span> 
               </>
             )}
+
           </h1>
         </div>
 
-        {/* Pokeball interactiva */}
+
         <div
           className="relative w-48 h-48 ball absolute bottom-[-10%] cursor-pointer"
           onClick={handleClick}
@@ -52,7 +51,6 @@ const First: React.FC = () => {
           <div className="absolute bottom-[0%] left-0 right-0 h-1/2 rounded-b-full bg-transparent"></div>
         </div>
 
-        {/* Contenido oculto */}
         <div
           className={`absolute transition-transform duration-500 ${
             isRevealed
@@ -65,7 +63,7 @@ const First: React.FC = () => {
           </div>
         </div>
 
-        {/* Botón Start */}
+
         <div className="absolute top-[90%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-full text-center">
           <ButtonStartp />
         </div>
