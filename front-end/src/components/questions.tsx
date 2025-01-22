@@ -11,6 +11,7 @@ interface CardProps {
   context: string;
   isFlipped: boolean;
   onAnswer: (answer: string) => void; 
+  isCorrect: boolean
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -18,10 +19,19 @@ export const Card: React.FC<CardProps> = ({
   context,
   isFlipped,
   onAnswer, 
+  isCorrect
 }) => {
   const [typedText, setTypedText] = useState("");
   const [index, setIndex] = useState(0);
   const { t, i18n } = useTranslation();
+  const [isSpanish, setIsSpanish] = useState(false);
+
+  useEffect(() => {
+    const userLanguage = navigator.language || navigator.languages[0];
+    setIsSpanish(userLanguage.startsWith("es"));
+  }, []);
+    
+  
     
       
   useEffect(() => {
@@ -72,7 +82,23 @@ export const Card: React.FC<CardProps> = ({
         </p>
       </div>
       <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8">
-        <p className="mt-4 text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-light font-Merriweather text-center">
+      {isFlipped && (
+      <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-10%]">
+        <h1
+          className={`absolute bottom-[-60%] text-xl sm:text-xl md:text-4xl font-bentham text-black ${isCorrect ? 'text-black' : 'text-black'} transition-all duration-500 w-[70%] max-w-[300px] text-center`}
+        >
+          {isSpanish
+            ? isCorrect
+              ? "¡Correcto!"
+              : "¡Incorrecto!"
+            : isCorrect
+            ? "Correct!"
+            : "Incorrect!"
+          }
+        </h1>
+      </div>
+    )}
+        <p className="mt-4 text-xl sm:text-xl md:text-4xl font-light font-Merriweather text-center">
           {typedText}
         </p>
       </div>

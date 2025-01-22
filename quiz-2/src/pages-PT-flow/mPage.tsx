@@ -143,6 +143,12 @@ const Game: React.FC = () => {
       name: "Zygarde",
     },
   ];
+  const [isSpanish, setIsSpanish] = useState(false);
+
+useEffect(() => {
+  const userLanguage = navigator.language || navigator.languages[0];
+  setIsSpanish(userLanguage.startsWith("es"));
+}, []);
   
 
   function getBrowserLanguage() {
@@ -284,19 +290,20 @@ const Game: React.FC = () => {
         </p>
 
         <div className="flex space-x-4 mt-6 sm:mt-8">
-          <a href="#" onClick={shareOnWhatssap} id="email-button">
-            <IoLogoWhatsapp size={32} className="text-black hover:text-yellow-500 transition-colors" />
-          </a>
-          <a href="#" onClick={shareOnInstagram}>
-            <IoLogoInstagram size={32} className="text-black hover:text-pink-500 transition-colors" />
-          </a>
-          <a href="#" onClick={shareOnFacebook}>
-            <IoLogoFacebook size={32} className="text-black hover:text-blue-600 transition-colors" />
-          </a>
-          <a href="#" onClick={shareOnLinkedIn}>
-            <IoLogoLinkedin size={32} className="text-black hover:text-blue-600 transition-colors" />
-          </a>
-        </div>
+  <a href="#" onClick={shareOnWhatssap} id="email-button">
+    <IoLogoWhatsapp className="text-black hover:text-green-500 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
+  </a>
+  <a href="#" onClick={shareOnInstagram}>
+    <IoLogoInstagram className="text-black hover:text-pink-500 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
+  </a>
+  <a href="#" onClick={shareOnFacebook}>
+    <IoLogoFacebook className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
+  </a>
+  <a href="#" onClick={shareOnLinkedIn}>
+    <IoLogoLinkedin className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
+  </a>
+</div>
+
       </div>
     </div>
   </div>
@@ -341,6 +348,23 @@ const Game: React.FC = () => {
                             <NextP id="next-button" onClick={handleNextQuestion} />
                           </div>
                         )}
+               {isFlipped && (
+      <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-0%]">
+        <h1
+          className={`absolute bottom-[-0%] text-xl sm:text-xl md:text-4xl font-bentham text-black ${isCorrect ? 'text-black' : 'text-black'} transition-all duration-500 w-[70%] max-w-[300px] text-center`}
+        >
+          {isSpanish
+            ? isCorrect
+              ? "¡Correcto!"
+              : "¡Incorrecto!"
+            : isCorrect
+            ? "Correct!"
+            : "Incorrect!"
+          }
+        </h1>
+      </div>
+    )}
+
 
             </div>
 

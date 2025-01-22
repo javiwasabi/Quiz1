@@ -282,17 +282,17 @@ const isSpanish = userLanguage.startsWith('es');
         </p>
 
         <div className="flex space-x-4 mt-6 sm:mt-8">
-          <a href="#" onClick={shareOnWhatssap} id="email-button">
-            <IoLogoWhatsapp size={32} className="text-black hover:text-yellow-500 transition-colors" />
+        <a href="#" onClick={shareOnWhatssap} id="email-button">
+            <IoLogoWhatsapp size={50} className="text-black hover:text-yellow-500 transition-colors" />
           </a>
           <a href="#" onClick={shareOnInstagram}>
-            <IoLogoInstagram size={32} className="text-black hover:text-pink-500 transition-colors" />
+            <IoLogoInstagram size={50} className="text-black hover:text-pink-500 transition-colors" />
           </a>
           <a href="#" onClick={shareOnFacebook}>
-            <IoLogoFacebook size={32} className="text-black hover:text-blue-600 transition-colors" />
+            <IoLogoFacebook size={50} className="text-black hover:text-blue-600 transition-colors" />
           </a>
           <a href="#" onClick={shareOnLinkedIn}>
-            <IoLogoLinkedin size={32} className="text-black hover:text-blue-600 transition-colors" />
+            <IoLogoLinkedin size={50} className="text-black hover:text-blue-600 transition-colors" />
           </a>
         </div>
       </div>
@@ -322,7 +322,8 @@ const isSpanish = userLanguage.startsWith('es');
                         context={questions[currentQuestion].context}
 
                         isFlipped={isFlipped}
-                        onAnswer={(answer) => handleAnswer(answer)} />
+                        onAnswer={(answer) => handleAnswer(answer)} 
+                        isCorrect= {isCorrect}/>
                     </div>
                   </div>
                 </div>
