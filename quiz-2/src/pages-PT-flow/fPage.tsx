@@ -26,9 +26,10 @@ const First: React.FC = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute top-[10%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-full text-center">
-          <h1 className="text-4xl md:text-5xl text-black font-bentham drop-shadow-lg">
-          {isSpanish ? (
+        <div className="absolute top-[20%] left-[50%] transform  -translate-x-1/2 -translate-y-1/2 z-10 w-[80%] text-center ">
+        <div className="absolute inset-0 bg-black opacity-20 rounded-lg shadow-x z-0"></div>
+          <h1 className="text-3xl sm:text-5xl text-black font-bentham drop-shadow-lg z-10">
+            {isSpanish ? (
               <>
                 ¿Puedes distinguir la diferencia entre <span className="font-extrabold"> Tecnologías</span> Digitales y <span className="font-extrabold">  Pokemones</span> ? 
               </>
@@ -37,10 +38,8 @@ const First: React.FC = () => {
                 Can you tell the difference between <span className="font-extrabold">Digital Technologies</span> and <span className="font-extrabold">Pokémon?</span> 
               </>
             )}
-
           </h1>
         </div>
-
 
         <div
           className="relative w-48 h-48 ball absolute bottom-[-10%] cursor-pointer"
@@ -58,11 +57,8 @@ const First: React.FC = () => {
               : "translate-y-0 opacity-0"
           }`}
         >
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-6xl font-extrabold">
-            ?
-          </div>
+      
         </div>
-
 
         <div className="absolute top-[90%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-full text-center">
           <ButtonStartp />

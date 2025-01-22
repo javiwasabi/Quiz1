@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonNext, NextP, Choice, PokemonCard } from "../components/buttons";
 import { useNavigate } from "react-router-dom";
 import "../styles/poke.css";
@@ -219,6 +219,16 @@ const Game: React.FC = () => {
     sessionStorage.setItem("finalScore", score.toString());
     navigate("/p");
   };
+  const [animationClass, setAnimationClass] = useState("");
+
+  useEffect(() => {
+    // Cuando el texto debe aparecer, activamos la animación
+    if (!isFlipped) {
+      setAnimationClass("opacity-100 scale-100");
+    } else {
+      setAnimationClass("opacity-0 scale-95");
+    }
+  }, [isFlipped]);
 
   return (
     <div className="relative bg-blue min-h-screen flex items-center justify-center overflow-hidden">
@@ -295,11 +305,19 @@ const Game: React.FC = () => {
 
       : (
           <>
-           <div className={`flex justify-center z-20 text-center w-full mt-[0%] absolute top-[5%] ${isFlipped ? 'invisible' : ''}`}>
-            <h3 className="text-5xl sm:text-3xl md:text-2xl lg:text-3xl xl:text-7xl font-Merriweather text-black">
-              {questions[currentQuestion].name}
-            </h3>
-          </div>
+            <div
+        className={`flex justify-center z-20 text-center w-full mt-[0%] absolute top-[5%] transition-all duration-500 ease-out transform ${animationClass}`}
+      >
+        <h3 className="text-5xl sm:text-3xl md:text-2xl lg:text-3xl xl:text-7xl font-Merriweather text-black">
+      
+          {questions[currentQuestion].name}
+        </h3>
+      </div>
+
+      <button onClick={() => setIsFlipped(!isFlipped)} className="absolute bottom-10">
+      
+      </button>
+ 
 
 
 
@@ -320,13 +338,13 @@ const Game: React.FC = () => {
 
                           <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
                           
-                            <PokemonCard id="next-button" onClick={handleNextQuestion} />
+                            <NextP id="next-button" onClick={handleNextQuestion} />
                           </div>
                         )}
 
             </div>
 
-              <div className="absolute bottom-[10%] flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-4 px-4 w-full">
+              <div className="absolute bottom-[5%] flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-4 px-4 w-full">
                 {/* Botón de Pokémon */}
                 <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2">
                   {showPokemonButton && (

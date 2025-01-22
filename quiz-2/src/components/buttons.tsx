@@ -73,19 +73,24 @@ export const ButtonStartp: React.FC = () => {
   );
 };
 
-
-export const NextP:React.FC<ButtonNextProps> = ({ onClick, id }) => {
+export const NextP: React.FC<ButtonNextProps> = ({ onClick, id }) => {
   return (
-    <div className="flex flex-col items-center justify-center h-[10%] w-full font-title">
-        <button
-          className="relative -top-1 -left-1 bg-gray-800 py-10 px-8 sm:py-20 sm:px-10 font-medium uppercase text-black text-3xl sm:text-2xl bg-transparent"
-          style={{ transform: "rotate(0deg)" }}
-          onClick={onClick}
-          id={id} 
-        >
-          NEXT
-        </button>
-
+    <div className="flex flex-col items-center justify-center h-[10%] w-full font-bentham">
+      <button
+        className="flex items-center justify-center  text-white py-4 px-6 sm:py-6 sm:px-8 font-semibold uppercase text-2xl sm:text-3xl transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500 rounded-lg shadow-lg"
+        style={{ transform: "rotate(0deg)" }}
+        onClick={onClick}
+        id={id}
+        aria-label="Next Button"
+      >
+        <div className="absolute inset-0 bg-black opacity-60 rounded-lg shadow-x z-0"></div>
+        <span className="mr-4 z-10">NEXT</span>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png"
+          alt="Pokeball"
+          className="w-12 h-12 sm:w-16 sm:h-16 object-contain z-10"
+        />
+      </button>
     </div>
   );
 };
@@ -93,70 +98,17 @@ export const NextP:React.FC<ButtonNextProps> = ({ onClick, id }) => {
 interface PokemonCardProps {
   onClick: () => void;
   id: string;
-}
-export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
-  const [isDragging, setIsDragging] = useState(false);
-  const [position, setPosition] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const handleRef = useRef<HTMLDivElement>(null);
-
-  const handleStart = () => {
-    setIsDragging(true);
-  };
-
-  const handleMove = (e: MouseEvent | TouchEvent) => {
-    if (!isDragging || !sliderRef.current || !handleRef.current) return;
-
-    const sliderWidth = sliderRef.current.offsetWidth;
-    const handleWidth = handleRef.current.offsetWidth;
-    const sliderLeft = sliderRef.current.getBoundingClientRect().left;
-
-    const clientX =
-      "touches" in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
-
-    let newPosition = clientX - sliderLeft - handleWidth / 2;
-    // Limitar el movimiento a un rango más corto
-    newPosition = Math.max(0, Math.min(newPosition, sliderWidth - handleWidth));
-
-    setPosition(newPosition);
-
-    // Activar clic cuando se alcanza el final
-    if (newPosition >= sliderWidth - handleWidth) {
-      onClick();
-      setIsDragging(false);
-    }
-  };
-
-  const handleEnd = () => {
-    setIsDragging(false);
-    setPosition(0);
-  };
-
+}export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
   const userLanguage = navigator.language || navigator.languages[0];
   const isSpanish = userLanguage.startsWith("es");
 
-  useEffect(() => {
-    const handleGlobalMove = (e: MouseEvent | TouchEvent) => handleMove(e);
-    const handleGlobalEnd = () => handleEnd();
-
-    if (isDragging) {
-      document.addEventListener("mousemove", handleGlobalMove);
-      document.addEventListener("mouseup", handleGlobalEnd);
-      document.addEventListener("touchmove", handleGlobalMove);
-      document.addEventListener("touchend", handleGlobalEnd);
-    }
-
-    return () => {
-      document.removeEventListener("mousemove", handleGlobalMove);
-      document.removeEventListener("mouseup", handleGlobalEnd);
-      document.removeEventListener("touchmove", handleGlobalMove);
-      document.removeEventListener("touchend", handleGlobalEnd);
-    };
-  }, [isDragging, position]);
+  // Función para manejar el clic en el ícono de la Pokébola
+  const handleClick = () => {
+    onClick(); // Activar la acción del clic
+  };
 
   return (
     <div
-      ref={sliderRef}
       style={{
         position: "fixed",
         bottom: "20px",
@@ -167,40 +119,32 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
         maxWidth: "200px", // Limitar el tamaño máximo
         height: "60px",
         borderRadius: "30px",
-        backgroundColor:
-          position >= (sliderRef.current?.offsetWidth || 300) - 60
-            ? "#4caf50"
-            : "#ddd",
+        backgroundColor: "#ddd",
         margin: "0 auto",
         overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        cursor: "pointer", // Cambiar el cursor al hacer hover
       }}
+      onClick={handleClick} // Activar la acción con un clic en todo el contenedor
     >
       <div
         style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
           fontSize: "16px",
           color: "black",
           fontWeight: "bold",
           zIndex: 100,
+          marginBottom: "10px",
         }}
       >
-        {isSpanish ? "Desliza para continuar" : "Swipe to continue"}
+        {isSpanish ? "Haz clic para continuar" : "Click to continue"}
       </div>
 
       <div
-        ref={handleRef}
-        onMouseDown={handleStart}
-        onTouchStart={handleStart}
         style={{
-          position: "absolute",
-          top: "5px",
-          left: `${position}px`,
           width: "50px",
           height: "50px",
-          cursor: "pointer",
         }}
       >
         <img
