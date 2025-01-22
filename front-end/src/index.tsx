@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import Game from './pages-PT-flow/mPage';
 import LastP from './pages-PT-flow/lastPage';
 import './utils/i18n';
-document.title = 'Quiz 1'; 
+document.title = '¿Asesino serial o Programador informático?'; 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

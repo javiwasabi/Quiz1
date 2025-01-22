@@ -1,10 +1,11 @@
 {
     "translation": {
-      "guessText": "¿Puedes diferenciar un inventor de un asesino?",
+      "guessText": "¿Puedes distinguir a un asesino serial de un profesional informático? ",
         "changeLanguageButton": "Cambiar idioma",
         "englishButton": "Inglés",
         "spanishButton": "Español",
-        "who": "asesino",
+        "who": "Asesino serial",
+        "whoi": "Informático",
         "textp": "Adivina quien es esta persona",
         "nextstep": "siguiente",
         "result": "Puntaje",

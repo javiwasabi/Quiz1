@@ -14,7 +14,7 @@ const Middle: React.FC = () => {
 
   const [showSerialKiller, setShowSerialKiller] = useState(false);
   const [showInventor, setShowInventor] = useState(false);
-  const [showOr, setShowOr] = useState(false);
+  const [showOr, setShowOr] = useState(true);
   const { t, i18n } = useTranslation();
   const shareOnFacebook = () => {
     const message = `I scored ${score} in this app!`; 
@@ -239,7 +239,7 @@ const isSpanish = userLanguage.startsWith('es');
     />
     
 
-      <div className="h-full w-full flex flex-col space-y-4 transform scale-[1] md:scale-[0.85] lg:scale-[0.9] justify-center ">
+      <div className="h-full w-full flex flex-col space-y-4 transform  justify-center ">
       {showResults ? (
   <div className="absolute inset-0 flex items-center justify-center">
     <div className="  p-6 rounded-md  max-w-4xl w-full flex flex-col items-center">
@@ -282,18 +282,18 @@ const isSpanish = userLanguage.startsWith('es');
         </p>
 
         <div className="flex space-x-4 mt-6 sm:mt-8">
-        <a href="#" onClick={shareOnWhatssap} id="email-button">
-            <IoLogoWhatsapp size={50} className="text-black hover:text-yellow-500 transition-colors" />
-          </a>
-          <a href="#" onClick={shareOnInstagram}>
-            <IoLogoInstagram size={50} className="text-black hover:text-pink-500 transition-colors" />
-          </a>
-          <a href="#" onClick={shareOnFacebook}>
-            <IoLogoFacebook size={50} className="text-black hover:text-blue-600 transition-colors" />
-          </a>
-          <a href="#" onClick={shareOnLinkedIn}>
-            <IoLogoLinkedin size={50} className="text-black hover:text-blue-600 transition-colors" />
-          </a>
+  <a href="#" onClick={shareOnWhatssap} id="email-button">
+    <IoLogoWhatsapp className="text-black hover:text-green-500 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
+  </a>
+  <a href="#" onClick={shareOnInstagram}>
+    <IoLogoInstagram className="text-black hover:text-pink-500 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
+  </a>
+  <a href="#" onClick={shareOnFacebook}>
+    <IoLogoFacebook className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
+  </a>
+  <a href="#" onClick={shareOnLinkedIn}>
+    <IoLogoLinkedin className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
+  </a>
         </div>
       </div>
     </div>
@@ -301,6 +301,7 @@ const isSpanish = userLanguage.startsWith('es');
 ) 
 
  : (
+  
               <>
                 {answered && (
                   <div className="absolute bottom-[0%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black w-full">
@@ -341,8 +342,15 @@ const isSpanish = userLanguage.startsWith('es');
                   <PolaroidPhoto />
                 </div>
 
-                {!answered && (
-                  <div className="absolute bottom-[4%] w-full flex justify-between items-center z-10 font-bentham mt-10">
+                
+
+              </>
+            )}
+          </div>
+          
+      </div>
+      {!answered && (
+                  <div className="absolute bottom-[10%] w-[90%] flex justify-between items-center z-10 font-bentham mt-10">
                     {showSerialKiller && (
                       <div
                         className="relative w-[45%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
@@ -353,7 +361,7 @@ const isSpanish = userLanguage.startsWith('es');
                         }}
                         onClick={() => handleAnswer("Killer")}
                       >
-                        <span className="block text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
+                        <span className="block text-lg sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-left">
                           {t("who")}
                         </span>
                       </div>
@@ -376,18 +384,13 @@ const isSpanish = userLanguage.startsWith('es');
                         }}
                         onClick={() => handleAnswer("Inventor")}
                       >
-                        <span className="block text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
-                          Inventor
+                        <span className="block text-lg sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
+                        {t("whoi")}
                         </span>
                       </div>
                     )}
                   </div>
                 )}
-
-              </>
-            )}
-          </div>
-      </div>
 
     </div>
   );

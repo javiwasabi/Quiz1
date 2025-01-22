@@ -1,14 +1,16 @@
 {
     "translation": {
-        "guessText": "Can you guess an inventor from a murderer?",
+        "guessText": "Can you tell the difference between a serial killer and an IT professional?",
         "changeLanguageButton": "Change Language",
         "englishButton": "English",
         "spanishButton": "Spanish",
-        "who": "Killer",
+        "who": "Serial killer",
+        "whoi": "IT professional",
         "textp": "Can you guess who this is?",
         "nextstep": "next",
-        "result": "score",
-        "share": "share your results"
+        "result": "Score",
+        "share": "Share your results"
+        
     }
   }
   
