@@ -37,16 +37,20 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
 };
 
 
-export const Choice: React.FC<{ onClick: () => void; id: string }> = ({
-  onClick,
-  id,
-}) => {
+export const Choice: React.FC<{ 
+  onClick: () => void; 
+  id: string; 
+  disabled: boolean; 
+}> = ({ onClick, id, disabled }) => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-auto font-bentham">
       <button
-        className="bg-white flex items-center justify-center w-80 py-3 px-4 sm:py-4 sm:px-6 md:py-5 md:px-8 lg:py-6 lg:px-10 font-medium uppercase text-black text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl leading-tight rounded-full shadow-lg hover:shadow-2xl transition-shadow duration-300"
-        onClick={onClick}
+        className={`bg-white flex items-center justify-center w-80 py-3 px-4 sm:py-4 sm:px-6 md:py-5 md:px-8 lg:py-6 lg:px-10 font-medium uppercase text-black text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl leading-tight rounded-full shadow-lg hover:shadow-2xl transition-shadow duration-300 ${
+          disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
+        }`}
+        onClick={!disabled ? onClick : undefined} // Evita ejecutar onClick si está deshabilitado
         id={id}
+        disabled={disabled} // HTML prop para deshabilitar el botón
       >
         {id === "choice-pokemon" ? "Pokemon" : "Technology"}
       </button>

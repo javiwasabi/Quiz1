@@ -173,53 +173,63 @@ useEffect(() => {
   renderQuestions(questions);
   
 
-  const handleAnswer = (answer: string) => {
-    const isAnswerCorrect = answer === questions[currentQuestion].correctAnswer;
-    setIsCorrect(isAnswerCorrect);
+  const [choicesEnabled, setChoicesEnabled] = useState(true);
 
-    if (isAnswerCorrect) {
-      setScore((prevScore) => prevScore + 1);
-    }
+const handleAnswer = (answer: string) => {
+  const isAnswerCorrect = answer === questions[currentQuestion].correctAnswer;
+  setIsCorrect(isAnswerCorrect);
 
-    setAnswered(true);
-    setIsFlipped(true);
+  if (isAnswerCorrect) {
+    setScore((prevScore) => prevScore + 1);
+  }
+
+  setAnswered(true);
+  setIsFlipped(true);
+  setShowPokemonButton(false);
+  setShowTechnologyButton(false);
+  setShowOr(false);
+  setChoicesEnabled(false); // Deshabilitar las opciones tras responder
+};
+
+const handleNextQuestion = () => {
+  if (currentQuestion + 1 >= questions.length) {
+    setShowResults(true);
+  } else {
+    setCurrentQuestion((prev) => prev + 1);
+    setIsCorrect(false);
+    setAnswered(false);
+    setIsFlipped(false);
+
     setShowPokemonButton(false);
     setShowTechnologyButton(false);
     setShowOr(false);
-  };
+    setChoicesEnabled(false); // Deshabilitar al inicio de la nueva pregunta
 
-  const handleNextQuestion = () => {
-    if (currentQuestion + 1 >= questions.length) {
-      setShowResults(true);
-    } else {
-      setCurrentQuestion((prev) => prev + 1);
-      setIsCorrect(false);
-      setAnswered(false);
-      setIsFlipped(false);
+    const timer1 = setTimeout(() => {
+      setShowPokemonButton(true);
+    }, 500);
 
-      setShowPokemonButton(false);
-      setShowTechnologyButton(false);
-      setShowOr(false);
+    const timer2 = setTimeout(() => {
+      setShowTechnologyButton(true);
+    }, 1000);
 
-      const timer1 = setTimeout(() => {
-        setShowPokemonButton(true);
-      }, 500);
-      const timer3 = setTimeout(() => {
-        setShowOr(true);
-      }, 1200);
+    const timer3 = setTimeout(() => {
+      setShowOr(true);
+    }, 1200);
 
+    // Habilitar opciones después de que ambas hayan aparecido
+    const timer4 = setTimeout(() => {
+      setChoicesEnabled(true);
+    }, 1200); // Ajusta según el último temporizador
 
-      const timer2 = setTimeout(() => {
-        setShowTechnologyButton(true);
-      }, 1000);
-
-      return () => {
-        clearTimeout(timer1);
-        clearTimeout(timer3);
-        clearTimeout(timer2);
-      };
-    }
-  };
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+    };
+  }
+};
 
   const handleFinishGame = () => {
     sessionStorage.setItem("finalScore", score.toString());
@@ -371,30 +381,33 @@ useEffect(() => {
               <div className="absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-8 px-4 w-full">
                 {/* Botón de Pokémon */}
                 <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2">
-                  {showPokemonButton && (
-                    <Choice
-                      id="choice-pokemon"
-                      onClick={() => handleAnswer("Pokemon")}
-                    />
-                  )}
-                </div>
+                {showPokemonButton && (
+        <Choice
+          id="choice-pokemon"
+          onClick={() => choicesEnabled && handleAnswer("Pokemon")}
+          disabled={!choicesEnabled || isFlipped} // Deshabilitar el botón según el estado
+        />
+      )}
+    </div>
 
+    {/* Texto "or" */}
+    {showOr && (
+      <div className="absolute flex justify-center items-center w-full sm:w-auto px-0">
+        <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-full text-white bg-black">
+          or
+        </span>
+      </div>
+    )}
 
-                {showOr  && (
-                <div className="absolute flex justify-center items-center w-full sm:w-auto px-0">
-                  <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-md">
-                    or
-                  </span>
-                </div>)}
-
-                {/* Botón de Tecnología */}
-                <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2">
-                  {showTechnologyButton && (
-                    <Choice
-                      id="choice-technology"
-                      onClick={() => handleAnswer("Technology")}
-                    />
-                  )}
+    {/* Botón de Tecnología */}
+    <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2">
+      {showTechnologyButton && (
+        <Choice
+          id="choice-technology"
+          onClick={() => choicesEnabled && handleAnswer("Technology")}
+          disabled={!choicesEnabled || isFlipped} // Deshabilitar el botón según el estado
+        />
+      )}
                 </div>
               </div>
 
