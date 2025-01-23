@@ -351,7 +351,7 @@ const isSpanish = userLanguage.startsWith('es');
                   <div className="absolute bottom-[-5%] w-[100%] flex justify-center items-center z-10 font-bentham mt-10">
                     {showSerialKiller && (
                       <div
-                        className="relative w-[40%] absolute  h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
+                        className="relative w-[43%] absolute  h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
                         style={{
                           background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
@@ -374,7 +374,7 @@ const isSpanish = userLanguage.startsWith('es');
 
                     {showInventor && (
                       <div
-                        className="relative w-[49%] h-[4rem] bg-yellow-300 text-black py-2 px-0 left-[0%] text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
+                        className="relative w-[47%] h-[4rem] bg-yellow-300 text-black py-2 px-0 left-[0%] text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
                         style={{
                           background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
@@ -382,7 +382,7 @@ const isSpanish = userLanguage.startsWith('es');
                         }}
                         onClick={() => handleAnswer("Inventor")}
                       >
-                        <span className="block text-md sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
+                        <span className="block text-sm sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
                         {t("whoi")}
                         </span>
                       </div>
