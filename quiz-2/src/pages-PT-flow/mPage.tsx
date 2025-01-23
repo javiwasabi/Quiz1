@@ -31,7 +31,7 @@ const Game: React.FC = () => {
 
   const shareOnWhatssap = () => {
     const message = `I scored ${score} in this app!`; 
-    const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
+    const instagramUrl = `https://web.whatsapp.com`;
     window.open(instagramUrl, '_blank');
   };
 
@@ -228,7 +228,7 @@ useEffect(() => {
   const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {
-    // Cuando el texto debe aparecer, activamos la animación
+
     if (!isFlipped) {
       setAnimationClass("opacity-100 scale-100");
     } else {
@@ -255,12 +255,12 @@ useEffect(() => {
   <div className="absolute inset-0 flex items-center justify-center">
     <div className="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg max-w-4xl w-[80%]">
       <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">
-        {navigator.language.includes("es") ? "Resultados del Juego" : "Game Results"}
+        {navigator.language.includes("es") ? "Resultados" : "Game Results"}
       </h2>
 
       {questions.length > 0 && (
         <>
-           <p className="text-2xl md:text-3xl mt-4 text-center">
+           <p className="text-2xl md:text-2xl mt-4 text-center">
     {navigator.language.includes("es")
       ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
       : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
@@ -269,23 +269,23 @@ useEffect(() => {
       )}
 
       {questions.length > 0 && (
-        <p className="text-3xl md:text-4xl mt-2 text-center font-bentham">
+        <p className="text-2xl md:text-3xl mt-2 text-center font-bentham">
           {navigator.language.includes("es")
             ? ((score / questions.length) * 100) < 40
-              ? "¡Ups! Parece que no eres un fan"
+              ? "¡Ups! Parece que no conoces Pokemon"
               : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
-              ? "Parece que sabes algo pero aún falta"
+              ? "Sabes algo sobre pokemones, pero no eres un fan"
               : "¡Eres un experto total en identificar nombres!"
             : ((score / questions.length) * 100) < 40
             ? "Oops! Looks like you're not a fan"
             : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
-            ? "You seem to know something but still need more"
+            ? "You seem to know something but you are not a fan"
             : "You're a total expert at identifying names!"}
         </p>
       )}
 
       <div className="mt-8 w-full flex flex-col items-center">
-        <p className="font-bold font-bentham text-black text-4xl sm:text-5xl lg:text-5xl text-center">
+        <p className="font-bold font-bentham text-black text-3xl sm:text-4xl lg:text-4xl text-center">
           {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
         </p>
 
@@ -368,7 +368,7 @@ useEffect(() => {
 
             </div>
 
-              <div className="absolute bottom-[5%] flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-4 px-4 w-full">
+              <div className="absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-8 px-4 w-full">
                 {/* Botón de Pokémon */}
                 <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2">
                   {showPokemonButton && (
