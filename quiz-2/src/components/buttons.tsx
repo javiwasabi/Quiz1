@@ -57,15 +57,21 @@ export const Choice: React.FC<{ onClick: () => void; id: string }> = ({
 
 
 
-
 export const ButtonStartp: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-[10%] w-full font-bentham ">
+    <div className="flex flex-col items-center justify-center h-[9%] w-full font-bentham">
       <Link to="/guess">
         <button
-          className="relative -top-1 -left-1 bg-gray-800 py-10 px-8 sm:py-20 sm:px-10 font-medium uppercase text-black text-5xl sm:text-4xl  bg-transparent"
-          style={{ transform: "rotate(0deg)" }}
+          className="bg-white flex items-center justify-center w-50 py-3 px-4 sm:py-4 sm:px-6 md:py-5 md:px-8 lg:py-6 lg:px-10 font-medium uppercase text-black text-5xl sm:text-4xl leading-tight rounded-full transition-shadow duration-300"
+          style={{
+            boxShadow: "0px 12px 10px -4px rgba(0, 0, 0, 0.5)",
+          }}
         >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png"
+            alt="Pokeball"
+            className="w-12 h-12 sm:w-16 sm:h-16 object-contain z-10 mr-2"
+          />
           START
         </button>
       </Link>
