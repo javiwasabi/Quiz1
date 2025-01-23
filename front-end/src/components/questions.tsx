@@ -69,7 +69,7 @@ export const Card: React.FC<CardProps> = ({
         className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer"
         onClick={() => onAnswer("Inventor")} 
       >
-        <div className="w-full aspect-[4/3] bg-white flex items-center justify-center rounded-lg">
+        <div className="w-full aspect-[4/3] flex items-center justify-center rounded-lg bg-black">
           <img
             src={imageUrl}
             alt="Polaroid"
