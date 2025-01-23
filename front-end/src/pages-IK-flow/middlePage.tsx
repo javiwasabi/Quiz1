@@ -247,7 +247,7 @@ const isSpanish = userLanguage.startsWith('es');
     <div className="  p-6 rounded-md  max-w-4xl w-full flex flex-col items-center">
       {/* Resultados del juego */}
       <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">
-      {isSpanish ? "Resultados del Juego" : "Game Results"}
+      {isSpanish ? "Resultados" : "Game Results"}
     </h2>
 
     {questions.length > 0 && (
@@ -359,7 +359,7 @@ const isSpanish = userLanguage.startsWith('es');
                         }}
                         onClick={() => handleAnswer("Killer")}
                       >
-                        <span className="block text-lg sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-left">
+                        <span className="block text-sm sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-left">
                           {t("who")}
                         </span>
                       </div>
