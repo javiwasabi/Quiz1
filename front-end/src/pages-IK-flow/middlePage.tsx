@@ -176,7 +176,7 @@ const Middle: React.FC = () => {
       }, 500);
       const timer3 = setTimeout(() => {
         setShowOr(true);
-      }, 700);
+      }, 1200);
   
       const timer2 = setTimeout(() => {
         setShowInventor(true);
@@ -185,8 +185,9 @@ const Middle: React.FC = () => {
   
       return () => {
         clearTimeout(timer1);
-        clearTimeout(timer3);
+        
         clearTimeout(timer2);
+        clearTimeout(timer3);
         
       };
     }
@@ -210,8 +211,8 @@ const isSpanish = userLanguage.startsWith('es');
       setShowSerialKiller(true);
     }, 500);
     const timer3 = setTimeout(() => {
-      setShowInventor(true);
-    }, 1100); 
+      setShowOr(true);
+    }, 1200); 
 
     const timer2 = setTimeout(() => {
       setShowInventor(true);
@@ -219,8 +220,9 @@ const isSpanish = userLanguage.startsWith('es');
 
     return () => {
       clearTimeout(timer1);
-      clearTimeout(timer3);
+
       clearTimeout(timer2);
+      clearTimeout(timer3);
  
     };
   }, []);
@@ -231,11 +233,11 @@ const isSpanish = userLanguage.startsWith('es');
 
   return (
     <div className="bg-black min-h-screen flex items-center justify-center z-0 relative">
-  <div className="relative w-[80%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10">
+  <div className="relative w-[80%] h-[90vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10 absolute ">
     <img
       src="assets/background-IK.jpg"
       alt="Background"
-      className="absolute inset-0 h-full w-full object-cover z-0"
+      className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"
     />
     
 
@@ -314,10 +316,9 @@ const isSpanish = userLanguage.startsWith('es');
                   <div
                     className="relative flex bg-transparent z-8 justify-center"
                     style={{
-                      width: "70%", 
                     }}
                   >
-                    <div className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%]">
+                    <div className="w-[85%] sm:w-[60%]">
                       <Card
                         imageUrl={questions[currentQuestion].imageUrl}
                         context={questions[currentQuestion].context}
@@ -368,7 +369,7 @@ const isSpanish = userLanguage.startsWith('es');
                     )}
 
                     {showOr  && (
-                      <span className="text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-gray-600 mx-4">
+                      <span className="text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-black mx-4">
                       or
                       </span>
                     )}

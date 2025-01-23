@@ -83,9 +83,9 @@ export const Card: React.FC<CardProps> = ({
       </div>
       <div className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8">
       {isFlipped && (
-      <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-10%]">
+      <div className="absolute w-full h-[100%] flex justify-center items-center absolute bottom-[-10%]">
         <h1
-          className={`absolute bottom-[-60%] text-xl sm:text-xl md:text-4xl font-bentham text-black ${isCorrect ? 'text-black' : 'text-black'} transition-all duration-500 w-[70%] max-w-[300px] text-center`}
+          className={`absolute top-[-5%] text-xl sm:text-xl md:text-4xl font-bentham text-black ${isCorrect ? 'text-black' : 'text-black'} transition-all duration-500 w-[70%] max-w-[300px] text-center`}
         >
           {isSpanish
             ? isCorrect

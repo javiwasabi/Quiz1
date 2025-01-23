@@ -44,6 +44,7 @@ const First: React.FC = () => {
         
           <ButtonStartp />
         </div>
+        
 
         <div className="absolute top-[20%] left-[50%] transform -translate-x-1/2 text-center px-4 md:px-0 rounded-md z-10">
           
