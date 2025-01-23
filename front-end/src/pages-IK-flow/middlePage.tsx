@@ -36,7 +36,7 @@ const Middle: React.FC = () => {
 
   const shareOnInstagram= () => {
     const message = `I scored ${score} in this app!`; // Traducción en inglés o español
-    const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
+    const instagramUrl = `https://www.whatsapp.com`;
     window.open(instagramUrl, '_blank');
   };
 
@@ -241,7 +241,7 @@ const isSpanish = userLanguage.startsWith('es');
     />
     
 
-      <div className="h-full w-full flex flex-col space-y-4 transform  justify-center ">
+      <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
       {showResults ? (
   <div className="absolute inset-0 flex items-center justify-center">
     <div className="  p-6 rounded-md  max-w-4xl w-full flex flex-col items-center">
@@ -347,14 +347,11 @@ const isSpanish = userLanguage.startsWith('es');
 
               </>
             )}
-          </div>
-          
-      </div>
-      {!answered && (
-                  <div className="absolute bottom-[10%] w-[90%] flex justify-between items-center z-10 font-bentham mt-10">
+             {!answered && (
+                  <div className="absolute bottom-[-5%] w-[100%] flex justify-between items-center z-10 font-bentham mt-10">
                     {showSerialKiller && (
                       <div
-                        className="relative w-[45%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
+                        className="relative w-[48%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
                         style={{
                           background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
@@ -369,7 +366,7 @@ const isSpanish = userLanguage.startsWith('es');
                     )}
 
                     {showOr  && (
-                      <span className="text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-black mx-4">
+                      <span className="text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-black mx-2 ">
                       or
                       </span>
                     )}
@@ -377,7 +374,7 @@ const isSpanish = userLanguage.startsWith('es');
 
                     {showInventor && (
                       <div
-                        className="relative w-[45%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
+                        className="relative w-[49%] h-[4rem] bg-yellow-300 text-black py-2 px-0 left-[0%] text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
                         style={{
                           background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
                           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
@@ -393,6 +390,10 @@ const isSpanish = userLanguage.startsWith('es');
                   </div>
                 )}
 
+          </div>
+          
+      </div>
+     
     </div>
   );
 };
