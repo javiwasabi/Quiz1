@@ -382,7 +382,7 @@ const isSpanish = userLanguage.startsWith('es');
                         }}
                         onClick={() => handleAnswer("Inventor")}
                       >
-                        <span className="block text-lg sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
+                        <span className="block text-md sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
                         {t("whoi")}
                         </span>
                       </div>
