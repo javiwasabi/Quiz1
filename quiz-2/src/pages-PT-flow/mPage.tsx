@@ -188,7 +188,7 @@ const handleAnswer = (answer: string) => {
   setShowPokemonButton(false);
   setShowTechnologyButton(false);
   setShowOr(false);
-  setChoicesEnabled(false); // Deshabilitar las opciones tras responder
+  setChoicesEnabled(false); 
 };
 
 const handleNextQuestion = () => {
@@ -203,7 +203,7 @@ const handleNextQuestion = () => {
     setShowPokemonButton(false);
     setShowTechnologyButton(false);
     setShowOr(false);
-    setChoicesEnabled(false); // Deshabilitar al inicio de la nueva pregunta
+    setChoicesEnabled(false);
 
     const timer1 = setTimeout(() => {
       setShowPokemonButton(true);
@@ -217,10 +217,9 @@ const handleNextQuestion = () => {
       setShowOr(true);
     }, 1200);
 
-    // Habilitar opciones después de que ambas hayan aparecido
     const timer4 = setTimeout(() => {
       setChoicesEnabled(true);
-    }, 1200); // Ajusta según el último temporizador
+    }, 1200);
 
     return () => {
       clearTimeout(timer1);
@@ -385,12 +384,12 @@ const handleNextQuestion = () => {
         <Choice
           id="choice-pokemon"
           onClick={() => choicesEnabled && handleAnswer("Pokemon")}
-          disabled={!choicesEnabled || isFlipped} // Deshabilitar el botón según el estado
+          disabled={!choicesEnabled || isFlipped} 
         />
       )}
     </div>
 
-    {/* Texto "or" */}
+
     {showOr && (
       <div className="absolute flex justify-center items-center w-full sm:w-auto px-0">
         <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-full text-white bg-black">
@@ -399,13 +398,12 @@ const handleNextQuestion = () => {
       </div>
     )}
 
-    {/* Botón de Tecnología */}
     <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2">
       {showTechnologyButton && (
         <Choice
           id="choice-technology"
           onClick={() => choicesEnabled && handleAnswer("Technology")}
-          disabled={!choicesEnabled || isFlipped} // Deshabilitar el botón según el estado
+          disabled={!choicesEnabled || isFlipped} 
         />
       )}
                 </div>

@@ -76,7 +76,7 @@ const Middle: React.FC = () => {
       "Notorious for the Milwaukee Cannibal murders.": "Conocido por los asesinatos del Caníbal de Milwaukee.",
       "Infamous serial killer, known for his brutal crimes.": "Asesino en serie infame, conocido por sus crímenes brutales.",
       "Pioneer in computer science, worked on UNIVAC and compilers.": "Pionera en informática, trabajó en UNIVAC y compiladores.",
-      "Pioneer in multiple fields, including computer science and game theory.": "Pionero en múltiples campos, incluyendo informática y teoría de juegos.",
+      "Pioneer in multiple fields, including computer science and game theory.": "Pionero en informática y teoría de juegos.",
     },
   };
   
