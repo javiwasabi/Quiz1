@@ -253,7 +253,7 @@ const isSpanish = userLanguage.startsWith('es');
     {questions.length > 0 && (
       <>
       
-        <p className="text-2xl md:text-3xl mt-4 text-center">
+        <p className="text-xl md:text-3xl mt-4 text-center">
           {isSpanish 
   
               ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
@@ -263,18 +263,18 @@ const isSpanish = userLanguage.startsWith('es');
     )}
 
     {questions.length > 0 && (
-      <p className="text-3xl md:text-4xl mt-2 text-center font-bentham">
+      <p className="text-2xl md:text-4xl mt-2 text-center font-bentham  ">
         {((score / questions.length) * 100) < 40
-          ? isSpanish 
-            ? "Ups! Parece que no eres un fan" 
-            : "Oops! It seems you're not a fan"
-          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
-          ? isSpanish 
-            ? "Parece que sabes algo pero aún falta" 
-            : "It seems you know something, but there's room for improvement"
-          : isSpanish 
-            ? "¡Eres un experto total en identificar nombres!" 
-            : "You're a total expert at identifying names!"}
+           ? ((score / questions.length) * 100) < 40
+           ? "¡Ups! Parece que no conoces Pokemon"
+           : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+           ? "Sabes algo sobre pokemones, pero no eres un fan"
+           : "¡Eres un experto total en identificar nombres!"
+         : ((score / questions.length) * 100) < 40
+         ? "Oops! Looks like you're not a fan"
+         : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+         ? "You seem to know something but you are not a fan"
+         : "You're a total expert at identifying names!"}
       </p>
     )}
 
