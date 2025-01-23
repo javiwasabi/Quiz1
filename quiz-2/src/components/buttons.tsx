@@ -62,7 +62,7 @@ export const ButtonStartp: React.FC = () => {
     <div className="flex flex-col items-center justify-center h-[9%] w-full font-bentham">
       <Link to="/guess">
         <button
-          className="bg-white flex items-center justify-center w-50 py-3 px-4 sm:py-4 sm:px-6 md:py-5 md:px-8 lg:py-6 lg:px-10 font-medium uppercase text-black text-5xl sm:text-4xl leading-tight rounded-full transition-shadow duration-300"
+          className="bg-white flex items-center justify-center w-45 py-3 px-4 sm:py-4 sm:px-6 md:py-5 md:px-8 lg:py-6 lg:px-10 font-medium uppercase text-black  text-2xl sm:text-3xl  leading-tight rounded-full transition-shadow duration-300"
           style={{
             boxShadow: "0px 12px 10px -4px rgba(0, 0, 0, 0.5)",
           }}
