@@ -62,15 +62,15 @@ export const ButtonStartp: React.FC = () => {
     <div className="flex flex-col items-center justify-center h-[9%] w-full font-bentham">
       <Link to="/guess">
         <button
-          className="bg-white flex items-center justify-center w-45 py-3 px-4 sm:py-4 sm:px-6 md:py-5 md:px-8 lg:py-6 lg:px-10 font-medium uppercase text-black  text-2xl sm:text-3xl  leading-tight rounded-full transition-shadow duration-300"
+          className="bg-white flex items-center justify-center w-45 py-2 px-4 sm:py-2 sm:px-6 font-medium uppercase text-black text-xl sm:text-2xl leading-tight rounded-full transition-shadow duration-300"
           style={{
-            boxShadow: "0px 12px 10px -4px rgba(0, 0, 0, 0.5)",
+            boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
           }}
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png"
             alt="Pokeball"
-            className="w-12 h-12 sm:w-16 sm:h-16 object-contain z-10 mr-2"
+            className="w-8 h-8 sm:w-12 sm:h-12 object-contain z-10 mr-2"
           />
           START
         </button>
@@ -78,6 +78,7 @@ export const ButtonStartp: React.FC = () => {
     </div>
   );
 };
+
 
 export const NextP: React.FC<ButtonNextProps> = ({ onClick, id }) => {
   return (
