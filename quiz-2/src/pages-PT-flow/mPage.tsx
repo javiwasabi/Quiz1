@@ -18,28 +18,29 @@ const Game: React.FC = () => {
   const [showOr, setShowOr] = useState(true);
   const navigate = useNavigate();
   const shareOnFacebook = () => {
-    const message = `I scored ${score} in this app!`; 
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=https://www.example.com&quote=${encodeURIComponent(message)}`;
-    window.open(facebookUrl, '_blank');
+    const message = `I scored ${score} in this app!`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      "https://quiz1-pearl.vercel.app/question"
+    )}&quote=${encodeURIComponent(message)}`;
+    window.open(facebookUrl, "_blank");
   };
-
+  
   const shareOnLinkedIn = () => {
-    const message = `I scored ${score} in this app!`; 
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://www.example.com&title=${encodeURIComponent(message)}`;
-    window.open(linkedInUrl, '_blank');
+    const message = `I scored ${score} in this app!`;
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      "https://quiz1-pearl.vercel.app/question"
+    )}&summary=${encodeURIComponent(message)}`;
+    window.open(linkedInUrl, "_blank");
   };
-
+  
   const shareOnWhatssap = () => {
-    const message = `I scored ${score} in this app!`; 
-    const instagramUrl = `https://web.whatsapp.com`;
-    window.open(instagramUrl, '_blank');
+    const message = `I scored ${score} in this app! Check it out: https://quiz1-pearl.vercel.app/question`;
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
   };
+  
 
-  const shareOnInstagram= () => {
-    const message = `I scored ${score} in this app!`; 
-    const instagramUrl = `https://www.instagram.com/create/style/?text=${encodeURIComponent(message)}`;
-    window.open(instagramUrl, '_blank');
-  };
+  
   const questions = [
     {
       imageUrl:
@@ -302,9 +303,7 @@ const handleNextQuestion = () => {
   <a href="#" onClick={shareOnWhatssap} id="email-button">
     <IoLogoWhatsapp className="text-black hover:text-green-500 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
   </a>
-  <a href="#" onClick={shareOnInstagram}>
-    <IoLogoInstagram className="text-black hover:text-pink-500 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
-  </a>
+
   <a href="#" onClick={shareOnFacebook}>
     <IoLogoFacebook className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
   </a>
