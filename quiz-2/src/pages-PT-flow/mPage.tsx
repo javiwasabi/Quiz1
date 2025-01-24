@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ButtonNext, NextP, Choice, PokemonCard } from "../components/buttons";
 import { useNavigate } from "react-router-dom";
 import "../styles/poke.css";
 import "../styles/background.css";
 import { CardPok } from "../components/questions";
 import { IoMdMail, IoLogoInstagram, IoLogoFacebook, IoLogoLinkedin , IoLogoWhatsapp} from "react-icons/io";
+import {
+  WhatsappShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  WhatsappIcon,
+  FacebookIcon,
 
+  XIcon
+} from "react-share";
 const Game: React.FC = () => {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -17,6 +26,14 @@ const Game: React.FC = () => {
   const [showTechnologyButton, setShowTechnologyButton] = useState(true);
   const [showOr, setShowOr] = useState(true);
   const navigate = useNavigate();
+  const [isSpanish, setIsSpanish] = useState(false);
+  const userLanguage = navigator.language.startsWith("es") ? "es" : "en";
+  const shareUrl = "https://quiz2-mauve-omega.vercel.app";
+  const shareText = userLanguage
+  ? `¡Tuve el siguiente puntaje: ${score} en reconocer nombres!`
+  : `I scored: ${score} in deciphering names!`;
+  const captureRef = useRef<HTMLDivElement>(null);
+
   const shareOnFacebook = () => {
     const message = `I scored ${score} in this app!`;
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -144,7 +161,7 @@ const Game: React.FC = () => {
       name: "Zygarde",
     },
   ];
-  const [isSpanish, setIsSpanish] = useState(false);
+  
 
 useEffect(() => {
   const userLanguage = navigator.language || navigator.languages[0];
@@ -300,16 +317,20 @@ const handleNextQuestion = () => {
         </p>
 
         <div className="flex space-x-4 mt-6 sm:mt-8">
-  <a href="#" onClick={shareOnWhatssap} id="email-button">
-    <IoLogoWhatsapp className="text-black hover:text-green-500 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
-  </a>
+        <WhatsappShareButton url={shareUrl} title={shareText}>
+        <WhatsappIcon size={40} round={true} />
+      </WhatsappShareButton>
 
-  <a href="#" onClick={shareOnFacebook}>
-    <IoLogoFacebook className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
-  </a>
-  <a href="#" onClick={shareOnLinkedIn}>
-    <IoLogoLinkedin className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" />
-  </a>
+      {/* Facebook */}
+      <FacebookShareButton url={shareUrl} title={shareText}>
+        <FacebookIcon size={40} round={true} />
+      </FacebookShareButton>
+
+
+      {/* X (Twitter) */}
+      <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+        <XIcon size={40} round={true} />
+      </TwitterShareButton>
 </div>
 
       </div>
