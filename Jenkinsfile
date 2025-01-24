@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         NODE_ENV = 'production'
-        MONGO_URI = 'mongodb+srv://javiwasabi:bhu8nji9@cluster0.t7nmc.mongodb.net/InternshipDB?retryWrites=true&w=majority&appName=Cluster0'
+        MONGO_URI = 'mo0'
         DISPLAY = ':99'
         PATH = "$PATH:/usr/local/bin"
         XDG_RUNTIME_DIR = '/tmp/runtime-jenkins'
