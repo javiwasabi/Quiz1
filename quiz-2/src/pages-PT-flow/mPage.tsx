@@ -20,7 +20,7 @@ const Game: React.FC = () => {
   const shareOnFacebook = () => {
     const message = `I scored ${score} in this app!`;
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-      "https://quiz1-pearl.vercel.app/question"
+      "https://quiz2-mauve-omega.vercel.app"
     )}&quote=${encodeURIComponent(message)}`;
     window.open(facebookUrl, "_blank");
   };
@@ -28,7 +28,7 @@ const Game: React.FC = () => {
   const shareOnLinkedIn = () => {
     const message = `I scored ${score} in this app!`;
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-      "https://quiz1-pearl.vercel.app/question"
+      "https://quiz2-mauve-omega.vercel.app"
     )}&summary=${encodeURIComponent(message)}`;
     window.open(linkedInUrl, "_blank");
   };
