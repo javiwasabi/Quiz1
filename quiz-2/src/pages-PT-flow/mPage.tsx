@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ButtonNext, NextP, Choice, PokemonCard } from "../components/buttons";
+import {  NextP, Choice, PokemonCard } from "../components/buttons";
 import { useNavigate } from "react-router-dom";
 import "../styles/poke.css";
 import "../styles/background.css";
@@ -372,7 +372,7 @@ const handleNextQuestion = () => {
 
               {isFlipped && (
 
-                          <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
+                          <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20">
                           
                             <NextP id="next-button" onClick={handleNextQuestion} />
                           </div>
@@ -397,7 +397,11 @@ const handleNextQuestion = () => {
 
             </div>
 
-              <div className="absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center z-20 text-center mx-auto gap-8 px-4 w-full">
+            <div
+  className={`absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-8 px-4 w-full ${
+    isFlipped ? "z-0" : "z-20"
+  }`}
+>
                 {/* Botón de Pokémon */}
                 <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2">
                 {showPokemonButton && (
