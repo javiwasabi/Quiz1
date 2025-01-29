@@ -10,7 +10,12 @@ import Last from './pages-IK-flow/lastPage';
 import { Provider } from 'react-redux';
 
 import './utils/i18n';
-document.title = '¿Asesino serial o Programador informático?'; 
+
+
+const userLang = navigator.language || navigator.language;
+const isSpanish = userLang.startsWith("es");
+document.title = isSpanish ? "¿Asesino serial o Programador informático?" : "Serial killer or computer programmer?";
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const userLang = navigator.language || navigator.userLanguage;
-        const isSpanish = userLang.startsWith("es");
-        document.title = isSpanish ? "Pokémon vs Tecnología" : "Pokemon vs Technology";
-      });
-    </script>
+    
     
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -17,6 +11,13 @@
       name="description"
       content="Mini Game "
     />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const userLang = navigator.language || navigator.userLanguage;
+        const isSpanish = userLang.startsWith("es");
+        document.title = isSpanish ? "Pokémon vs Tecnología" : "Pokemon vs Technology";
+      });
+    </script>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
