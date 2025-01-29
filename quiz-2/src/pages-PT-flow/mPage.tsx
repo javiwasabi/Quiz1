@@ -389,7 +389,7 @@ const handleNextQuestion = () => {
 
               {isFlipped && (
 
-                          <div className="absolute bottom-[0%] right-4 md:bottom-6 md:right-6 z-20">
+                          <div className="absolute bottom-[5%] right-4 md:bottom-6 md:right-6 z-20">
                           
                             <NextP id="next-button" onClick={handleNextQuestion} />
                           </div>
@@ -405,7 +405,7 @@ const handleNextQuestion = () => {
           boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
         }}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-2xl font-bentham text-black">
+        <h1 className="text-2xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-2xl font-bentham text-black">
           {isSpanish
             ? isCorrect
               ? "¡Correcto!"
