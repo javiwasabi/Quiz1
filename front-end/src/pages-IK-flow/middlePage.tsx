@@ -247,64 +247,61 @@ const isSpanish = userLanguage.startsWith('es');
 
       <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
       {showResults ? (
-        <div className="absolute inset-0 flex items-center justify-center">
-        <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col items-center space-y-6 md:space-y-0 md:space-x-6">
-          <div className="flex-1 p-6">
-            <h2 className="text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-bentham text-center">
-              {navigator.language.includes("es") ? "Resultados del juego" : "Game Results"}
-            </h2>
-      
-            {questions.length > 0 && (
-              <>
-                <p className="text-2xl sm:text-xl md:text-2xl mt-4 text-center">
-                  {navigator.language.includes("es")
-                    ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
-                    : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-                </p>
-              </>
-            )}
-      
-            {questions.length > 0 && (
-              <p className="text-3xl sm:text-2xl md:text-3xl mt-2 text-center font-bentham font-light">
-                {((score / questions.length) * 100) < 40
-                  ? isSpanish 
-                    ? "Ups! parece que no sabes mucho" 
-                    : "Oops! It seems you don't know that much"
-                  : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                  ? isSpanish 
-                    ? "Pareciera que sabes un poco sobre reconocer caras, pero no mucho" 
-                    : "It seems you know something, but there's room for improvement"
-                  : isSpanish 
-                    ? "¡Eres un experto total en identificar caras!" 
-                    : "You're a total expert at identifying faces!"}
-              </p>
-            )}
-          </div>
-      
-          <div className="flex-1 bg-transparent bg-opacity-80 p-6 rounded-lg">
-            <div className="mt-8 w-full flex flex-col items-center">
-              <p className="text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-bentham text-center">
-                {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
-              </p>
-      
-              <div className="flex space-x-4 mt-6 sm:mt-8">
-                <WhatsappShareButton url={shareUrl} title={shareText}>
-                  <WhatsappIcon size={40} round={true} />
-                </WhatsappShareButton>
-      
-                <FacebookShareButton url={shareUrl} title={shareText}>
-                  <FacebookIcon size={40} round={true} />
-                </FacebookShareButton>
-      
-                <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
-                  <XIcon size={40} round={true} />
-                </TwitterShareButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+       <div className="min-h-screen flex flex-col justify-center items-center overflow-y-auto">
+       <div className="bg-transparent p-6 rounded-lg max-w-4xl w-full flex flex-col items-center space-y-6">
+         <div className="flex-1 p-6">
+           <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 font-bentham text-center">
+             {navigator.language.includes("es") ? "Resultados del juego" : "Game Results"}
+           </h2>
+   
+           {questions.length > 0 && (
+             <p className="text-xl sm:text-lg md:text-xl mt-4 text-center">
+               {navigator.language.includes("es")
+                 ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
+                 : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+             </p>
+           )}
+   
+           {questions.length > 0 && (
+             <p className="text-2xl sm:text-xl md:text-2xl mt-2 text-center font-bentham font-light">
+               {((score / questions.length) * 100) < 40
+                 ? isSpanish 
+                   ? "Ups! parece que no sabes mucho" 
+                   : "Oops! It seems you don't know that much"
+                 : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+                 ? isSpanish 
+                   ? "Pareciera que sabes un poco sobre reconocer caras, pero no mucho" 
+                   : "It seems you know something, but there's room for improvement"
+                 : isSpanish 
+                   ? "¡Eres un experto total en identificar caras!" 
+                   : "You're a total expert at identifying faces!"}
+             </p>
+           )}
+         </div>
+   
+         <div className="flex-1 bg-transparent bg-opacity-80 p-6 rounded-lg w-full">
+           <div className="mt-8 w-full flex flex-col items-center">
+             <p className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 font-bentham text-center">
+               {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
+             </p>
+   
+             <div className="flex space-x-4 mt-6 sm:mt-8">
+               <WhatsappShareButton url={shareUrl} title={shareText}>
+                 <WhatsappIcon size={40} round={true} />
+               </WhatsappShareButton>
+   
+               <FacebookShareButton url={shareUrl} title={shareText}>
+                 <FacebookIcon size={40} round={true} />
+               </FacebookShareButton>
+   
+               <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+                 <XIcon size={40} round={true} />
+               </TwitterShareButton>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
       
 ) 
 
