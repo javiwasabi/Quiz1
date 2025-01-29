@@ -82,19 +82,20 @@ export const Card: React.FC<CardProps> = ({
         </p>
       </div>
       <div
-  className="relative flex flex-col items-center shadow-lg rounded-lg"
+  className="relative flex flex-col items-center justify-center shadow-lg rounded-lg bg-white p-4
+             w-[250px] h-[250px] sm:w-[400px] sm:h-[250px]"
   style={{
-    backgroundColor: "white", 
-    padding: "3rem", 
-    maxWidth: "600px", 
-    minHeight: "200px", 
+    overflow: "hidden",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
   }}
 >
-
   {isFlipped && (
-    <div className="absolute inset-0 flex justify-center items-center">
+    <div className="absolute inset-0 flex justify-center items-left">
       <h1
-        className={`absolute top-[7%] text-xl sm:text-xl md:text-4xl font-bentham text-black ${isCorrect ? 'text-black' : 'text-black'}w-[70%] max-w-[300px] text-center`}
+        className={`absolute top-[7%] text-xl sm:text-xl md:text-3xl font-light font-Merriweather text-black ${isCorrect ? 'text-black' : 'text-black'} w-[70%] max-w-[300px] text-center`}
       >
         {isSpanish
           ? isCorrect
@@ -108,12 +109,12 @@ export const Card: React.FC<CardProps> = ({
     </div>
   )}
 
-    {/* Texto animado */}
-    <p className="mt-4 text-xl sm:text-xl md:text-4xl font-light font-Merriweather text-center">
-      {typedText}
-    </p>
-
+  {/* Texto animado */}
+  <p className="mt-4 text-xl sm:text-xl md:text-2xl font-light font-Merriweather text-center flex-grow flex items-center justify-center">
+    {typedText}
+  </p>
 </div>
+
 
     </ReactCardFlip>
   );

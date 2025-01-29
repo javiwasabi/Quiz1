@@ -62,24 +62,24 @@ const Middle: React.FC = () => {
   const navigate = useNavigate();
   const translations = {
     en: {
-      "Creator of Python, a popular programming language.": "Creator of Python, a popular programming language.",
-      "Co-creator of C programming language and Unix OS.": "Co-creator of C programming language and Unix OS.",
-      "Known as the BTK killer, responsible for multiple murders.": "Known as the BTK killer, responsible for multiple murders.",
-      "Creator of the Java programming language.": "Creator of the Java programming language.",
-      "Notorious for the Milwaukee Cannibal murders.": "Notorious for the Milwaukee Cannibal murders.",
-      "Infamous serial killer, known for his brutal crimes.": "Infamous serial killer, known for his brutal crimes.",
-      "Pioneer in computer science, worked on UNIVAC and compilers.": "Pioneer in computer science, worked on UNIVAC and compilers.",
-      "Pioneer in multiple fields, including computer science and game theory.": "Pioneer in multiple fields, including computer science and game theory.",
+      "Creator of Python, a popular programming language.": "Guido van Rossum - Creator of Python, a popular programming language.",
+      "Co-creator of C programming language and Unix OS.": "Dennis Ritchie - Co-creator of C programming language and Unix OS.",
+      "Known as the BTK killer, responsible for multiple murders.": "Dennis Rader - Known as the BTK killer, responsible for multiple murders.",
+      "Creator of the Java programming language.": "James Gosling - Creator of the Java programming language.",
+      "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Notorious for the Milwaukee Cannibal murders.",
+      "Infamous serial killer, known for his brutal crimes.": "Ted Bundy - Infamous serial killer, known for his brutal crimes.",
+      "Pioneer in computer science, worked on UNIVAC and compilers.": "Grace Hopper - Pioneer in computer science, worked on UNIVAC and compilers.",
+      "Pioneer in multiple fields, including computer science and game theory.": "John von Neumann - Pioneer in multiple fields, including computer science and game theory.",
     },
     es: {
-      "Creator of Python, a popular programming language.": "Creador de Python, un lenguaje de programación popular.",
-      "Co-creator of C programming language and Unix OS.": "Co-creador del lenguaje de programación C y del sistema operativo Unix.",
-      "Known as the BTK killer, responsible for multiple murders.": "Conocido como el asesino BTK, responsable de múltiples asesinatos.",
-      "Creator of the Java programming language.": "Creador del lenguaje de programación Java.",
-      "Notorious for the Milwaukee Cannibal murders.": "Conocido por los asesinatos del Caníbal de Milwaukee.",
-      "Infamous serial killer, known for his brutal crimes.": "Asesino en serie infame, conocido por sus crímenes brutales.",
-      "Pioneer in computer science, worked on UNIVAC and compilers.": "Pionera en informática, trabajó en UNIVAC y compiladores.",
-      "Pioneer in multiple fields, including computer science and game theory.": "Pionero en informática y teoría de juegos.",
+      "Creator of Python, a popular programming language.": "Guido van Rossum - Creador de Python, un lenguaje de programación popular.",
+      "Co-creator of C programming language and Unix OS.": "Dennis Ritchie - Co-creador del lenguaje de programación C y del sistema operativo Unix.",
+      "Known as the BTK killer, responsible for multiple murders.": "Dennis Rader - Conocido como el asesino BTK, responsable de múltiples asesinatos.",
+      "Creator of the Java programming language.": "James Gosling - Creador del lenguaje de programación Java.",
+      "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Conocido por los asesinatos del Caníbal de Milwaukee.",
+      "Infamous serial killer, known for his brutal crimes.": "Ted Bundy - Asesino en serie infame, conocido por sus crímenes brutales.",
+      "Pioneer in computer science, worked on UNIVAC and compilers.": "Grace Hopper - Pionera en informática, trabajó en UNIVAC y compiladores.",
+      "Pioneer in multiple fields, including computer science and game theory.": "John von Neumann - Pionero en informática y teoría de juegos.",
     },
   };
   
@@ -312,7 +312,7 @@ const isSpanish = userLanguage.startsWith('es');
   
               <>
                 {answered && (
-                  <div className="absolute bottom-[0%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black w-full">
+                  <div className="absolute bottom-[-5%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black w-full">
                     <ButtonNext id="next-button" onClick={handleNextQuestion} />
 
                   </div>
