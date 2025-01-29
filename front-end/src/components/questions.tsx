@@ -111,7 +111,7 @@ export const Card: React.FC<CardProps> = ({
   )}
 
   {/* Texto animado */}
-  <p className="mt-4 text-xl sm:text-xl md:text-2xl font-light font-bentham  text-center flex-grow flex items-center justify-center">
+  <p className="mt-4 text-xl sm:text-xl md:text-3xl font-light font-bentham  text-center flex-grow flex items-center justify-center">
     {typedText}
   </p>
 </div>

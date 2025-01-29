@@ -68,7 +68,7 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
     <div className="absolute bottom-[15%] left-1/2 transform -translate-x-1/2 mb-4 sm:mb-6 md:mb-8 lg:mb-10">
       <button
         id={id} 
-        className="relative px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 lg:px-12 lg:py-6 bg-gray-800 text-black text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bentham rounded-full border-4 transition-all hover:bg-black hover:text-white"
+        className="relative px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 lg:px-12 lg:py-6 bg-gray-800 text-black text-xl sm:text-xl md:text-3xl  font-bentham rounded-full border-4 transition-all hover:bg-black "
         style={{
           background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
