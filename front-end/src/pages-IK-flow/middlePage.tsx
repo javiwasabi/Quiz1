@@ -271,7 +271,7 @@ const isSpanish = userLanguage.startsWith('es');
           ? isSpanish 
           ? "Ups! parece que no sabes mucho" 
           : "Oops! It seems you don't know that much"
-        : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+        : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
         ? isSpanish 
           ? "Pareciera que sabes un poco sobre reconocer caras, pero no mucho " 
           : "It seems you know something, but there's room for improvement"

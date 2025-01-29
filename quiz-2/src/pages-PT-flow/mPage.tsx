@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import {  NextP, Choice, PokemonCard } from "../components/buttons";
+import {  NextP, Choice, PokemonCard, Pokeb} from "../components/buttons";
 import { useNavigate } from "react-router-dom";
 import "../styles/poke.css";
 import "../styles/background.css";
 import { CardPok } from "../components/questions";
-import { IoMdMail, IoLogoInstagram, IoLogoFacebook, IoLogoLinkedin , IoLogoWhatsapp} from "react-icons/io";
+import { motion } from "framer-motion";
+
+import { X } from "lucide-react";
 import {
   WhatsappShareButton,
   FacebookShareButton,
@@ -279,75 +281,90 @@ const handleNextQuestion = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
       {showResults ? (
-  <div className="absolute inset-0 flex items-center justify-center">
-    <div className="bg-white bg-opacity-80 p-6 rounded-lg shadow-lg max-w-4xl w-[80%]">
-      <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">
+        <div className="absolute inset-0 flex items-center justify-center">
+  <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-wrap md:flex-nowrap space-y-6 md:space-y-0 md:space-x-6">
+    
+    {/* Bloque de Resultados */}
+    <div className="flex-1 bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
+      <h2 className="text-4xl md:text-4xl font-bold mb-4 font-bentham text-left">
         {navigator.language.includes("es") ? "Resultados" : "Game Results"}
       </h2>
 
       {questions.length > 0 && (
         <>
-           <p className="text-2xl md:text-2xl mt-4 text-center">
-    {navigator.language.includes("es")
-      ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
-      : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-  </p>
+          <p className="text-2xl md:text-2xl mt-4 text-left">
+            {navigator.language.includes("es")
+              ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
+              : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+          </p>
         </>
       )}
 
       {questions.length > 0 && (
-        <p className="text-2xl md:text-3xl mt-2 text-center font-bentham">
+        <p className="text-2xl md:text-2xl mt-2 text-left font-bentham">
           {navigator.language.includes("es")
             ? ((score / questions.length) * 100) < 40
               ? "¡Ups! Parece que no conoces Pokemon"
-              : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+              : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
               ? "Sabes algo sobre pokemones, pero no eres un fan"
               : "¡Eres un experto total en identificar nombres!"
             : ((score / questions.length) * 100) < 40
             ? "Oops! Looks like you're not a fan"
-            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 70
+            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
             ? "You seem to know something but you are not a fan"
             : "You're a total expert at identifying names!"}
         </p>
       )}
+    </div>
 
+    {/* Bloque de Compartir */}
+    <div className="flex-1 bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
       <div className="mt-8 w-full flex flex-col items-center">
-        <p className="font-bold font-bentham text-black text-3xl sm:text-4xl lg:text-4xl text-center">
+        <p className="font-bold font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
           {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
         </p>
 
         <div className="flex space-x-4 mt-6 sm:mt-8">
-        <WhatsappShareButton url={shareUrl} title={shareText}>
-        <WhatsappIcon size={40} round={true} />
-      </WhatsappShareButton>
+          <WhatsappShareButton url={shareUrl} title={shareText}>
+            <WhatsappIcon size={40} round={true} />
+          </WhatsappShareButton>
 
-      {/* Facebook */}
-      <FacebookShareButton url={shareUrl} title={shareText}>
-        <FacebookIcon size={40} round={true} />
-      </FacebookShareButton>
+          <FacebookShareButton url={shareUrl} title={shareText}>
+            <FacebookIcon size={40} round={true} />
+          </FacebookShareButton>
 
-
-      {/* X (Twitter) */}
-      <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
-        <XIcon size={40} round={true} />
-      </TwitterShareButton>
-</div>
-
+          <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+            <XIcon size={40} round={true} />
+          </TwitterShareButton>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+
 ) 
 
 
       : (
           <>
             <div
-        className={`flex justify-center z-20 text-center w-full mt-[0%] absolute top-[5%] transition-all duration-500 ease-out transform ${animationClass}`}
+        className={`flex justify-center z-20 text-center w-[38%] h-[15%] mt-[0%] absolute top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}
       >
-        <h3 className="text-5xl sm:text-3xl md:text-2xl lg:text-3xl xl:text-7xl font-Merriweather text-black">
-      
+       <motion.div
+        className="absolute inset-0 bg-white rounded-xl shadow-xl   p-6 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        style={{
+          boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        <h3 className="text-4xl sm:text-4xl text-black font-bentham text-center">
           {questions[currentQuestion].name}
         </h3>
+      </motion.div>
+
       </div>
 
       <button onClick={() => setIsFlipped(!isFlipped)} className="absolute bottom-10">
@@ -358,7 +375,7 @@ const handleNextQuestion = () => {
 
 
             <div className="w-full h-[30%]">
-              <div className="relative w-full h-[100%] flex justify-center absolute bottom-[-10%]">
+              <div className="relative w-full h-[90%] flex justify-center absolute bottom-[-31%] font-light font-bentham">
                 <CardPok
                   imageUrl={questions[currentQuestion].imageUrl}
                   context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
@@ -378,10 +395,17 @@ const handleNextQuestion = () => {
                           </div>
                         )}
                {isFlipped && (
-      <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-0%]">
-        <h1
-          className={`absolute bottom-[-0%] text-xl sm:text-xl md:text-4xl font-bentham text-black ${isCorrect ? 'text-black' : 'text-black'} transition-all duration-500 w-[70%] max-w-[300px] text-center`}
-        >
+      <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-15%]">
+      <motion.div
+        className="absolute top-[-50vh] w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[40%] max-w-[150px] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        style={{
+          boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        <h1 className="text-3xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-2xl font-bentham text-black">
           {isSpanish
             ? isCorrect
               ? "¡Correcto!"
@@ -391,47 +415,50 @@ const handleNextQuestion = () => {
             : "Incorrect!"
           }
         </h1>
-      </div>
+      </motion.div>
+    </div>
+    
+    
     )}
 
 
             </div>
 
             <div
-  className={`absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-8 px-4 w-full ${
-    isFlipped ? "z-0" : "z-20"
-  }`}
->
-                {/* Botón de Pokémon */}
-                <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2">
-                {showPokemonButton && (
-        <Choice
-          id="choice-pokemon"
-          onClick={() => choicesEnabled && handleAnswer("Pokemon")}
-          disabled={!choicesEnabled || isFlipped} 
-        />
-      )}
-    </div>
-
-
-    {showOr && (
-      <div className="absolute flex justify-center items-center w-full sm:w-auto px-0">
-        <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-full text-white bg-black">
-          or
-        </span>
-      </div>
-    )}
-
-    <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2">
-      {showTechnologyButton && (
-        <Choice
-          id="choice-technology"
-          onClick={() => choicesEnabled && handleAnswer("Technology")}
-          disabled={!choicesEnabled || isFlipped} 
-        />
-      )}
-                </div>
+            className={`absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full ${
+              isFlipped ? "z-0" : "z-20"
+            }`}
+          > {/* Botón de Pokémon */}
+                          <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2">
+                          {showPokemonButton && (
+                  <Choice
+                    id="choice-pokemon"
+                    onClick={() => choicesEnabled && handleAnswer("Pokemon")}
+                    disabled={!choicesEnabled || isFlipped} 
+                  />
+                )}
               </div>
+
+
+              {showOr && (
+  <div className="absolute flex justify-center items-center w-[15%] sm:w-auto px-0 bg-gradient-to-r from-white to-grey-900 rounded-full border-2 border-white">
+    <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-full ">
+      or
+    </span>
+  </div>
+)}
+
+
+              <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2">
+                {showTechnologyButton && (
+                  <Choice
+                    id="choice-technology"
+                    onClick={() => choicesEnabled && handleAnswer("Technology")}
+                    disabled={!choicesEnabled || isFlipped} 
+                  />
+                )}
+                </div>
+            </div>
 
 
           </>

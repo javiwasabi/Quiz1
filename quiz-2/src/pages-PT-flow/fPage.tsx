@@ -1,11 +1,22 @@
-import React, { useState } from "react";
-import { ButtonStartp } from "../components/buttons";
+import React, { useState, useEffect } from "react";
+import { ButtonStartp, Pokeb } from "../components/buttons";
 import "../styles/background.css";
+import { motion } from "framer-motion";
+
+import { X } from "lucide-react";
 
 const First: React.FC = () => {
   const [isRevealed, setIsRevealed] = useState(false);
   const userLanguage = navigator.language || navigator.languages[0];
   const isSpanish = userLanguage.startsWith("es");
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleClick = () => {
     setIsRevealed(!isRevealed);
@@ -26,29 +37,45 @@ const First: React.FC = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute top-[20%] left-[50%] transform  -translate-x-1/2 -translate-y-1/2 z-10 w-[80%] text-center ">
-        <div className="absolute inset-0 bg-black opacity-20 rounded-lg shadow-x z-0"></div>
-          <h1 className="text-3xl sm:text-5xl text-black font-bentham drop-shadow-lg z-10">
-            {isSpanish ? (
-              <>
-                ¿Puedes distinguir la diferencia entre <span className="font-extrabold"> Tecnologías</span> Digitales y <span className="font-extrabold">  Pokemones</span> ? 
-              </>
-            ) : (
-              <>
-                Can you tell the difference between <span className="font-extrabold">Digital Technologies</span> and <span className="font-extrabold">Pokémon?</span> 
-              </>
-            )}
-          </h1>
-        </div>
+        <div className="absolute top-[20%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[80%] h-[30%] max-w-[800px] text-center">
+          <motion.div
+            className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            style={{
+              boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            <h1 className="text-3xl sm:text-2xl md:text-4xl text-black font-bentham text-center leading-tight text-ellipsis overflow-hidden">
+              {isSpanish ? (
+                <>
+                  ¿Puedes distinguir la diferencia entre{" "}
+                  <span className="font-extrabold">Tecnologías</span> Digitales y{" "}
+                  <span className="font-extrabold">Pokemones</span>?
+                </>
+              ) : (
+                <>
+                  Can you tell the difference between{" "}
+                  <span className="font-extrabold">Digital Technologies</span> and{" "}
+                  <span className="font-extrabold">Pokemons</span>?
+                </>
+              )}
+            </h1>
+          </motion.div>
+          </div>
 
-        <div
-          className="relative w-48 h-48 ball absolute bottom-[-10%] cursor-pointer"
-          onClick={handleClick}
-        >
-          <div className="inside"></div>
-          <div className="center"></div>
-          <div className="absolute bottom-[0%] left-0 right-0 h-1/2 rounded-b-full bg-transparent"></div>
-        </div>
+
+    {/* Pokeball interactiva */}
+<div
+  className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw] ball absolute bottom-[-8%] cursor-pointer"
+  onClick={handleClick}
+>
+  <div className="inside"></div>
+  <div className="center"></div>
+  <div className="absolute bottom-[0%] left-0 right-0 h-1/2 rounded-b-full bg-transparent"></div>
+</div>
+
 
         <div
           className={`absolute transition-transform duration-500 ${
@@ -56,9 +83,8 @@ const First: React.FC = () => {
               ? "-translate-y-48 opacity-100"
               : "translate-y-0 opacity-0"
           }`}
-        >
-      
-        </div>
+        ></div>
+
 
         <div className="absolute top-[90%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 z-10 w-full text-center">
           <ButtonStartp />

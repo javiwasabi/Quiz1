@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import "../styles/idk.css"; // Asegúrate de importar el archivo CSS
 const userLang = navigator.language || navigator.language;
 const isSpanish = userLang.startsWith("es");
 
@@ -23,7 +24,6 @@ export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
     </div>
   );
 };
-
 export const Choice: React.FC<{ 
   onClick: () => void; 
   id: string; 
@@ -32,12 +32,15 @@ export const Choice: React.FC<{
   return (
     <div className="flex flex-col items-center justify-center w-full h-auto font-bentham">
       <button
-        className={`bg-white flex items-center justify-center w-80 py-3 px-4 sm:py-4 sm:px-6 md:py-5 md:px-8 lg:py-6 lg:px-10 font-medium uppercase text-black text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl leading-tight rounded-full shadow-lg hover:shadow-2xl transition-shadow duration-300 ${
+        className={`bg-white flex items-center justify-center w-auto min-w-[200px] max-w-full py-2 px-4 sm:py-3 sm:px-6 font-medium uppercase text-black text-xl sm:text-2xl leading-tight rounded-full transition-shadow duration-300 h-auto ${
           disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-200"
         }`}
         onClick={!disabled ? onClick : undefined}
         id={id}
         disabled={disabled}
+        style={{
+          boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+        }}
       >
         {id === "choice-pokemon" ? "Pokémon" : isSpanish ? "Tecnología" : "Technology"}
       </button>
@@ -50,7 +53,7 @@ export const ButtonStartp: React.FC = () => {
     <div className="flex flex-col items-center justify-center h-[9%] w-full font-bentham">
       <Link to="/guess">
         <button
-          className="bg-white flex items-center justify-center w-45 py-2 px-4 sm:py-2 sm:px-6 font-medium uppercase text-black text-xl sm:text-2xl leading-tight rounded-full transition-shadow duration-300"
+          className="bg-white flex items-center justify-center w-[100%] py-2 px-4 sm:py-2 sm:px-6 font-medium uppercase text-black text-xl sm:text-2xl leading-tight rounded-full transition-shadow duration-300"
           style={{
             boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
           }}
@@ -69,21 +72,24 @@ export const ButtonStartp: React.FC = () => {
 
 export const NextP: React.FC<ButtonNextProps> = ({ onClick, id }) => {
   return (
-    <div className="flex flex-col items-center justify-center h-[10%] w-full font-bentham">
+    <div className="flex flex-col items-center justify-center h-[0%] w-full font-bentham">
       <button
-        className="flex items-center justify-center text-white py-4 px-6 sm:py-6 sm:px-8 font-semibold uppercase text-2xl sm:text-3xl transition-transform duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-500 rounded-lg shadow-lg"
-        style={{ transform: "rotate(0deg)" }}
+        className="bg-white flex items-center justify-center w-auto min-w-[100px] max-w-[90%] py-2 px-4 sm:py-3 sm:px-6 font-medium uppercase text-black text-xl sm:text-xl leading-tight rounded-full transition-shadow duration-300 h-auto"
+        style={{
+          boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+        }}
+        
         onClick={onClick}
         id={id}
         aria-label="Next Button"
       >
-        <div className="absolute inset-0 bg-black opacity-60 rounded-lg shadow-x z-0"></div>
-        <span className="mr-4 z-10">{isSpanish ? "SIGUIENTE" : "NEXT"}</span>
+
+        <span className="mr-4  z-10">{isSpanish ? "SIGUIENTE" : "NEXT"}</span>
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png"
-          alt="Pokeball"
-          className="w-12 h-12 sm:w-16 sm:h-16 object-contain z-10"
-        />
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png"
+            alt="Pokeball"
+            className="w-8 h-8 sm:w-12 sm:h-12 object-contain z-10 mr-2"
+          />
       </button>
     </div>
   );
@@ -153,3 +159,27 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
     </div>
   );
 };
+
+
+
+export const Pokeb = ({ text }: { text: string }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsOpen(true);
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    return (
+        <div className={`pokeb ${isOpen ? "open" : ""}`}>
+            <button onClick={() => setIsOpen(!isOpen)}></button>
+            <article>
+                <p>{text}</p>
+            </article>
+        </div>
+    );
+};
+

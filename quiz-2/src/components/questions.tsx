@@ -55,10 +55,10 @@ export const CardPok: React.FC<CardPropsp> = ({
   
   return (
     <div className="flex absolute bottom-0">
-      <div className="relative flex flex-col items-center">
+      <div className="relative flex flex-col items-center font-bentham">
         {/* Ball */}
         <div
-          className="relative w-40 h-40 ball "
+          className="relative w-40 h-40 ball"
           style={{
             transform: isRevealed ? "rotate(0deg)" : "rotateY(180deg)",
             transition: "transform 0.5s ease-in-out",
@@ -66,9 +66,9 @@ export const CardPok: React.FC<CardPropsp> = ({
         >
           <div className="inside"></div>
           <div className="center"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-transparent rounded-b-full "></div>
+          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
         </div>
-
+  
         {/* Pokémon / Card */}
         <div
           className={`absolute transition-transform duration-500 ${
@@ -81,26 +81,28 @@ export const CardPok: React.FC<CardPropsp> = ({
           <div
             id="card"
             style={{
-              background: `radial-gradient(circle at 70% 0%,rgb(200, 210, 218), 46%, #EEEEEE 36%)`,
+              background:
+                "radial-gradient(circle at 70% 0%, white, 46%, #EEEEEE 36%)",
               transform: isRevealed ? "scale(1)" : "scale(0.7)",
               opacity: isRevealed ? "1" : "0",
+              top: "6vh",
             }}
             className="card"
           >
-     
             <img
               src={imageUrl}
               alt={context}
               className="card-image"
               style={{
-                transform: isRevealed ? "scale(1)" : "scale(0.7)",
+                transform: isRevealed ? "scale(0.8)" : "scale(0.6)",
                 transition: "transform 0.5s ease",
               }}
             />
-            <h2 className="poke-name font-light font-bentham">{context}</h2>
+            <h2 className="poke-name font-light font-bentham text-xl sm:text-xl">{context}</h2>
           </div>
         </div>
       </div>
     </div>
   );
+  
 };

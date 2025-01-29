@@ -1,3 +1,9 @@
+/* Asegurando que todo el contenido tenga fondo blanco y fuente Bentham Light */
+* {
+  font-family: 'Bentham', sans-serif;
+  font-weight: 300; /* Bentham Light tiene un peso de 300 */
+}
+
 .container {
   width: 350px;
   position: absolute;
@@ -5,15 +11,15 @@
   top: 40%;
   left: 50%;
 }
-
 #card {
   position: relative;
   width: 100%;
-  padding: 30px 20px;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.916);
+  padding: 18px 15px; 
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
   border-radius: 10%;
   background-color: #fff;
   transition: transform 0.3s ease-in-out;
+  margin-bottom: 0px; 
 }
 
 #card:hover {
@@ -30,18 +36,22 @@
 
 .hp {
   width: 80px;
-  background-color: #ffffff;
+  background-color: #ffffff; /* Fondo blanco */
   text-align: center;
   padding: 8px 0;
   border-radius: 15%;
   margin-left: auto;
   font-weight: 400;
+  color: #000; /* Color de texto negro para contraste */
 }
 
 .poke-name {
   text-align: center;
-  font-weight: 600;
+  font-weight: 300; /* Bentham Light */
+  font-family: 'Bentham', sans-serif; /* Aseguramos que se aplique la fuente Bentham */
+  color: #000; /* Color de texto negro */
 }
+
 
 .types {
   display: flex;
@@ -69,14 +79,9 @@
   text-align: center;
 }
 
-.stats p {
-  color: #404060;
-}
-
 #btn {
   display: block;
   padding: 15px 60px;
-  font-size: 18px;
   background-color: #101010;
   color: #ffffff;
   position: relative;
@@ -87,37 +92,40 @@
   border-radius: 20%;
 }
 
+#btn:hover {
+  background-color: #333333; /* Hover con un gris más oscuro */
+}
+
 @media (max-width: 768px) {
   .container {
-    width: 90%; /* Ajusta el ancho para pantallas medianas */
-    top: 50%; /* Centra mejor en tablets */
+    width: 90%;
+    top: 50%;
     transform: translate(-50%, -50%);
   }
 
   #card {
-    padding: 20px 15px; /* Reduce el padding */
-    border-radius: 15px; /* Ajusta el radio del borde */
+    padding: 20px 15px;
+    border-radius: 15px;
   }
 
   #card img {
-    width: 180px; /* Reduce el tamaño de la imagen */
+    width: 180px;
   }
 
   .types {
-    flex-wrap: wrap; /* Permite que las etiquetas de tipo se ajusten */
+    flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
   }
 
   #btn {
-    padding: 12px 50px; /* Ajusta el tamaño del botón */
-    font-size: 16px;
+    padding: 12px 50px;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    width: 95%; /* Ocupa casi todo el ancho en móviles */
+    width: 95%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -129,22 +137,19 @@
   }
 
   #card img {
-    width: 150px; /* Reduce aún más la imagen */
+    width: 150px;
   }
 
   .hp {
     width: 60px;
-    font-size: 14px;
     padding: 5px 0;
   }
 
   .types span {
-    font-size: 14px;
-    padding: 5px 15px; /* Reduce los márgenes */
+    padding: 5px 15px;
   }
 
   #btn {
     padding: 10px 40px;
-    font-size: 14px;
   }
 }
