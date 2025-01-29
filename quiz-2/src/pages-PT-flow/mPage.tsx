@@ -349,10 +349,10 @@ const handleNextQuestion = () => {
       : (
           <>
             <div
-        className={`flex justify-center z-20 text-center w-[38%] h-[15%] mt-[0%] absolute top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}
+        className={`flex justify-center z-20 text-center w-[50%] h-[15%] mt-[0%] absolute top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}
       >
      <motion.div
-  className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-auto"
+  className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ duration: 0.5, ease: "easeInOut" }}
