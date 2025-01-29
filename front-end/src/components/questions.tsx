@@ -96,7 +96,7 @@ export const Card: React.FC<CardProps> = ({
   {isFlipped && (
     <div className="absolute inset-0 flex justify-center items-left">
       <h1
-        className={`absolute top-[7%] text-xl sm:text-xl md:text-3xl font-light font-Merriweather text-black ${isCorrect ? 'text-black' : 'text-black'} w-[70%] max-w-[300px] text-center`}
+        className={`absolute top-[7%] text-xl sm:text-xl md:text-3xl font-light font-bentham  text-black ${isCorrect ? 'text-black' : 'text-black'} w-[70%] max-w-[300px] text-center`}
       >
         {isSpanish
           ? isCorrect
@@ -111,7 +111,7 @@ export const Card: React.FC<CardProps> = ({
   )}
 
   {/* Texto animado */}
-  <p className="mt-4 text-xl sm:text-xl md:text-2xl font-light font-Merriweather text-center flex-grow flex items-center justify-center">
+  <p className="mt-4 text-xl sm:text-xl md:text-2xl font-light font-bentham  text-center flex-grow flex items-center justify-center">
     {typedText}
   </p>
 </div>
