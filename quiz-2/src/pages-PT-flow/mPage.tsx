@@ -284,7 +284,7 @@ const handleNextQuestion = () => {
         <div className="absolute inset-0 flex items-center justify-center">
   <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-wrap md:flex-nowrap space-y-6 md:space-y-0 md:space-x-6">
     
-    {/* Bloque de Resultados */}
+
     <div className="flex-1 bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
       <h2 className="text-4xl md:text-4xl font-bold mb-4 font-bentham text-left">
         {navigator.language.includes("es") ? "Resultados" : "Game Results"}
@@ -317,7 +317,7 @@ const handleNextQuestion = () => {
       )}
     </div>
 
-    {/* Bloque de Compartir */}
+  
     <div className="flex-1 bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
       <div className="mt-8 w-full flex flex-col items-center">
         <p className="font-bold font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
@@ -351,19 +351,19 @@ const handleNextQuestion = () => {
             <div
         className={`flex justify-center z-20 text-center w-[38%] h-[15%] mt-[0%] absolute top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}
       >
-       <motion.div
-        className="absolute inset-0 bg-white rounded-xl shadow-xl   p-6 flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        style={{
-          boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-        }}
-      >
-        <h3 className="text-4xl sm:text-4xl text-black font-bentham text-center">
-          {questions[currentQuestion].name}
-        </h3>
-      </motion.div>
+     <motion.div
+  className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-auto"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.5, ease: "easeInOut" }}
+  style={{
+    boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+  }}
+>
+  <h3 className="text-4xl sm:text-3xl md:text-4xl text-black font-bentham text-center">
+    {questions[currentQuestion].name}
+  </h3>
+</motion.div>
 
       </div>
 
