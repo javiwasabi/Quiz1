@@ -9,7 +9,8 @@
         "textp": "Can you guess who this is?",
         "nextstep": "NEXT",
         "result": "Score",
-        "share": "Share your results"
+        "share": "Share your results",
+        "start": "START"
         
     }
   }

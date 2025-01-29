@@ -7,14 +7,32 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export const ButtonStart: React.FC = () => {
+  const { t, i18n } = useTranslation();
+      
+        
+        useEffect(() => {
+          const browserLanguage = navigator.language || navigator.languages[0];
+          const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+          i18n.changeLanguage(languageToSet).then(() => {
+
+          });
+        }, [i18n]);
+
+
+      
+        const changeLanguage = (lng: string) => {
+          i18n.changeLanguage(lng).then(() => {
+
+          });
+        };
   return (
-    <div className="flex flex-col items-center justify-center h-[10%] w-full font-title px-4">
+    <div className="flex flex-col items-center justify-center h-[30%] w-full font-frijole px-4 items-center">
       <Link to="/question">
         <button
           className="relative -top-1 -left-1 bg-gray-800 py-6 px-6 sm:py-10 sm:px-8 lg:py-12 lg:px-10 font-medium uppercase text-white text-2xl sm:text-3xl lg:text-4xl bg-transparent w-full sm:w-auto"
           style={{ transform: "rotate(0deg)" }}
         >
-          START
+           {t("start")}
         </button>
       </Link>
     </div>
@@ -108,7 +126,7 @@ export const Choice: React.FC<{ onClick: () => void; id: string }> = ({
   return (
     <div className="flex flex-col items-center justify-center h-[10%] w-[90%] font-title">
       <button
-        className=" bg-gray-800 py-10 px-8 sm:py-14 sm:px-10 md:py-16 md:px-12 lg:py-18 lg:px-16 font-medium uppercase text-white text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl bg-transparent"
+        className=" bg-gray-800 py-10 px-8 sm:py-14 sm:px-10 md:py-16 md:px-12 lg:py-18 lg:px-16 font-medium uppercase text-white text-xl sm:text-xl md:text-2xl font-light bg-transparent"
         onClick={onClick}
         id={id}
       >

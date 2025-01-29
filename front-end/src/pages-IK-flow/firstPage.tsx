@@ -53,7 +53,7 @@ const Vie: React.FC = () => {
         </div>
 
 
-        <div className="absolute bottom-[10%] left-4 right-0 flex justify-center items-center">
+        <div className="absolute bottom-[17%] left-4 right-0 flex justify-center items-center">
         <ButtonStart />
       </div>
 

@@ -9,7 +9,8 @@
         "textp": "Adivina quien es esta persona",
         "nextstep": "SIGUIENTE",
         "result": "Puntaje",
-        "share": "Comparte tus resultados"
+        "share": "Comparte tus resultados",
+        "start": "COMENZAR"
 
             }
   }
