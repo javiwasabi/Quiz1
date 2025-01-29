@@ -34,8 +34,8 @@ const Vie: React.FC = () => {
       className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"  
     />
 
-    <div className="absolute top-[10%] text-center z-20 w-[85%] px-4"> 
-      <p className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-bentham text-black break-words">
+    <div className="absolute top-[8%] text-center z-20 w-[85%] px-4"> 
+      <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-bentham text-black break-words">
         {t("guessText")}
       </p>
     </div>
