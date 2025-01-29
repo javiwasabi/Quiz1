@@ -9,7 +9,11 @@ import { Provider } from 'react-redux';
 import Game from './pages-PT-flow/mPage';
 import LastP from './pages-PT-flow/lastPage';
 import './utils/i18n';
-document.title = 'Pokemón vs Tecnología'; 
+
+const userLang = navigator.language || navigator.language;
+const isSpanish = userLang.startsWith("es");
+document.title = isSpanish ? "Pokémon vs Tecnología" : "Pokemon vs Technology";
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
