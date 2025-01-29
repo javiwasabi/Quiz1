@@ -27,42 +27,35 @@ const Vie: React.FC = () => {
 
   return (
     <div className="bg-black min-h-screen flex items-center justify-center">
-      <div className="relative w-[80%] h-[90vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10 absolute ">
+  <div className="relative w-[92%] sm:w-[80%] h-[90vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10 absolute ">
     <img
       src="assets/background-IK.jpg"
       alt="Background"
-      className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"
+      className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"  
     />
 
-        <div className="absolute top-[11%] text-center z-10 w-[95%] px-4">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-frijole text-black break-words">
-            {t("guessText")}
-          </p>
-        </div>
+    <div className="absolute top-[20%] text-center z-20 w-[85%] px-4"> 
+      <p className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-bentham text-black break-words">
+        {t("guessText")}
+      </p>
+    </div>
 
-
-
-        <div className="absolute top-[46%] w-full flex justify-center space-x-8 z-9">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/SVG_Human_Silhouette.svg/640px-SVG_Human_Silhouette.svg.png"
-          alt="Background"
-          className="absolute inset-1"
-        />
-
-         
-        </div>
-
-
-        <div className="absolute bottom-[17%] left-4 right-0 flex justify-center items-center">
-        <ButtonStart />
-      </div>
-
-      </div>
+    <div className="absolute top-[46%] w-full flex justify-center space-x-8 z-10"> {/* Imagen de silueta con un z-index mayor que las cartas */}
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/SVG_Human_Silhouette.svg/640px-SVG_Human_Silhouette.svg.png"
+        alt="Background"
+        className="absolute inset-1"
+      />
+    </div>
 
    
-   
+    <div className="absolute bottom-[12%] left-0 right-0 flex justify-center items-center z-10">
+      <ButtonStart />
+    </div>
+
   </div>
-  
+</div>
+
   );
 };
 

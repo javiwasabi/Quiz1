@@ -60,7 +60,7 @@ const Middle: React.FC = () => {
   };
 
   const navigate = useNavigate();
-  const translations = {
+  const translations: Record<string, Record<string, string>> = {
     en: {
       "Creator of Python, a popular programming language.": "Guido van Rossum - Creator of Python, a popular programming language.",
       "Co-creator of C programming language and Unix OS.": "Dennis Ritchie - Co-creator of C programming language and Unix OS.",
@@ -69,7 +69,7 @@ const Middle: React.FC = () => {
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Notorious for the Milwaukee Cannibal murders.",
       "Infamous serial killer, known for his brutal crimes.": "Ted Bundy - Infamous serial killer, known for his brutal crimes.",
       "Pioneer in computer science, worked on UNIVAC and compilers.": "Grace Hopper - Pioneer in computer science, worked on UNIVAC and compilers.",
-      "Pioneer in multiple fields, including computer science and game theory.": "John von Neumann - Pioneer in multiple fields, including computer science and game theory.",
+      "Pioneer in computer science, known for developing Dijkstra's algorithm to find shortest paths in graphs.": "Edsger W. Dijkstra - Pioneer in computer science, known for developing Dijkstra's algorithm to find shortest paths in graphs."
     },
     es: {
       "Creator of Python, a popular programming language.": "Guido van Rossum - Creador de Python, un lenguaje de programación popular.",
@@ -79,8 +79,8 @@ const Middle: React.FC = () => {
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Conocido por los asesinatos del Caníbal de Milwaukee.",
       "Infamous serial killer, known for his brutal crimes.": "Ted Bundy - Asesino en serie infame, conocido por sus crímenes brutales.",
       "Pioneer in computer science, worked on UNIVAC and compilers.": "Grace Hopper - Pionera en informática, trabajó en UNIVAC y compiladores.",
-      "Pioneer in multiple fields, including computer science and game theory.": "John von Neumann - Pionero en informática y teoría de juegos.",
-    },
+      "Pioneer in computer science, known for developing Dijkstra's algorithm to find shortest paths in graphs.": "Edsger W. Dijkstra - Pionero en informática, conocido por desarrollar el algoritmo de Dijkstra para encontrar rutas más cortas en grafos."
+    }
   };
   
 
@@ -129,12 +129,13 @@ const Middle: React.FC = () => {
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
     {
-      imageUrl: "assets/John_von_Neumann.jpg",
+      imageUrl: "assets/dikstra-2.jpg",
       correctAnswer: "Inventor",
-      context: translations[userLanguage]["Pioneer in multiple fields, including computer science and game theory."],
+      context: translations[userLanguage]["Pioneer in computer science, known for developing Dijkstra's algorithm to find shortest paths in graphs."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
   ];
+  
   
   const scoreRef = useRef(0);
   const handleAnswer = (answer: string) => {
@@ -236,7 +237,7 @@ const isSpanish = userLanguage.startsWith('es');
 
   return (
     <div className="bg-black min-h-screen flex items-center justify-center z-0 relative">
-  <div className="relative w-[80%] h-[90vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10 absolute ">
+  <div className="relative w-[92%] sm:w-[80%] h-[90vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10 absolute ">
     <img
       src="assets/background-IK.jpg"
       alt="Background"
@@ -246,28 +247,28 @@ const isSpanish = userLanguage.startsWith('es');
 
       <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
       {showResults ? (
-  <div className="absolute inset-0 flex items-center justify-center"  ref={captureRef}>
-    <div className="  p-6 rounded-md  max-w-4xl w-full flex flex-col items-center">
-      {/* Resultados del juego */}
-      <h2 className="text-5xl md:text-6xl font-bold mb-4 font-bentham text-center">
-      {isSpanish ? "Resultados" : "Game Results"}
-    </h2>
+        <div className="absolute inset-0 flex items-center justify-center">
+  <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col items-center space-y-6 md:space-y-0 md:space-x-6">
+    
 
-    {questions.length > 0 && (
-      <>
-      
-        <p className="text-xl md:text-2xl mt-4 text-center">
-          {isSpanish 
-  
+    <div className="flex-1  p-6 ">
+      <h2 className="text-4xl md:text-4xl font-bold mb-4 font-bentham text-center">
+        {navigator.language.includes("es") ? "Resultados" : "Game Results"}
+      </h2>
+
+      {questions.length > 0 && (
+        <>
+          <p className="text-2xl md:text-2xl mt-4 text-center">
+            {navigator.language.includes("es")
               ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
               : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
           </p>
-      </>
-    )}
+        </>
+      )}
 
-    {questions.length > 0 && (
-      <p className="text-2xl md:text-3xl mt-2 text-center font-bentham  ">
-        {((score / questions.length) * 100) < 40
+      {questions.length > 0 && (
+        <p className="text-3xl md:text-3xl mt-2 text-center font-bentham font-light">
+           {((score / questions.length) * 100) < 40
           ? isSpanish 
           ? "Ups! parece que no sabes mucho" 
           : "Oops! It seems you don't know that much"
@@ -279,33 +280,33 @@ const isSpanish = userLanguage.startsWith('es');
           ? "¡Eres un experto total en identificar caras!" 
           : "You're a total expert at identifying faces!"}
       </p>
-    )}
+      )}
+    </div>
 
-
+  
+    <div className="flex-1 bg-transparent bg-opacity-80 p-6 rounded-lg ">
       <div className="mt-8 w-full flex flex-col items-center">
-        <p className="font-bold font-bentham text-black text-4xl sm:text-5xl lg:text-5xl text-center">
-          {t("share")}
+        <p className="font-bold font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
+          {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
         </p>
 
         <div className="flex space-x-4 mt-6 sm:mt-8">
-        <WhatsappShareButton className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" url={shareUrl} title={shareText}>
-        <WhatsappIcon size={40} round={true} />
-      </WhatsappShareButton>
+          <WhatsappShareButton url={shareUrl} title={shareText}>
+            <WhatsappIcon size={40} round={true} />
+          </WhatsappShareButton>
 
-      {/* Facebook */}
-      <FacebookShareButton className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" url={shareUrl} title={shareText}>
-        <FacebookIcon size={40} round={true} />
-      </FacebookShareButton>
+          <FacebookShareButton url={shareUrl} title={shareText}>
+            <FacebookIcon size={40} round={true} />
+          </FacebookShareButton>
 
-
-      {/* X (Twitter) */}
-      <TwitterShareButton className="text-black hover:text-blue-600 transition-colors text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl" url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
-        <XIcon size={40} round={true} />
-      </TwitterShareButton>
-    </div>
+          <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+            <XIcon size={40} round={true} />
+          </TwitterShareButton>
+        </div>
       </div>
     </div>
   </div>
+</div>
 ) 
 
  : (
@@ -318,7 +319,7 @@ const isSpanish = userLanguage.startsWith('es');
                   </div>
                 )}
 
-                <div className="w-full h-full flex justify-center items-center top-[-10%] bg-transparent relative z-10">
+                <div className="w-full h-full flex justify-center items-center top-[-18%] bg-transparent relative z-10">
                   <div
                     className="relative flex bg-transparent z-8 justify-center"
                     style={{
@@ -353,48 +354,46 @@ const isSpanish = userLanguage.startsWith('es');
 
               </>
             )}
-             {!answered && (
-                  <div className="absolute bottom-[-5%] w-[100%] flex justify-center items-center z-10 font-bentham mt-10">
-                    {showSerialKiller && (
-                      <div
-                        className="relative w-[43%] absolute  h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
-                        style={{
-                          background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-                          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-                          transform: 'rotate(-2deg)',
-                        }}
-                        onClick={() => handleAnswer("Killer")}
-                      >
-                        <span className="block text-sm sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-left">
-                          {t("who")}
-                        </span>
-                      </div>
-                    )}
+          {!answered && (
+  <div className=" screen absolute bottom-[-10%] w-full flex justify-center items-center z-10 font-bentham mt-10 space-x-4">
+    {showSerialKiller && (
+      <div
+        className="relative w-[79%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
+        style={{
+          background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+        }}
+        onClick={() => handleAnswer("Killer")}
+      >
+        <span className="block text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider text-center">
+          {t("who")}
+        </span>
+      </div>
+    )}
 
-                    {showOr  && (
-                      <span className="text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wider text-black mx-2 ">
-                      or
-                      </span>
-                    )}
-                    
+    {showOr && (
+      <span className="text-xl sm:text-xl md:text-2xl font-bentham uppercase tracking-wider text-black mx-0 mb-2 sm:mb-0 bg-white py-1 px-4 border-2 border-black rounded-lg shadow-md">
+        or
+      </span>
+    )}
 
-                    {showInventor && (
-                      <div
-                        className="relative w-[47%] h-[4rem] bg-yellow-300 text-black py-2 px-0 left-[0%] text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center"
-                        style={{
-                          background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-                          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-                          transform: 'rotate(3deg)',
-                        }}
-                        onClick={() => handleAnswer("Inventor")}
-                      >
-                        <span className="block text-sm sm:text-2xl md:text-3xl font-bold uppercase tracking-wider">
-                        {t("whoi")}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
+    {showInventor && (
+      <div
+        className="relative w-[85%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
+        style={{
+          background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+        }}
+        onClick={() => handleAnswer("Inventor")}
+      >
+        <span className="block text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider">
+          {t("whoi")}
+        </span>
+      </div>
+    )}
+  </div>
+)}
+
 
           </div>
           

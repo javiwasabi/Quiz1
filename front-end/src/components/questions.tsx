@@ -66,37 +66,45 @@ export const Card: React.FC<CardProps> = ({
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
 
       <div
-        className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer"
-        onClick={() => onAnswer("Inventor")} 
+        className={`relative flex flex-col items-center justify-center rounded-lg p-4 w-[5vh] h-[3vh] sm:w-[400px] sm:h-[370px] border-2 border-black flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer
+          ${!isFlipped ? 'bg-transparent' : 'bg-transparent'}`}
+        onClick={() => onAnswer("Inventor")}  style={{
+          overflow: "hidden",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          maxWidth: "600px", maxHeight: "600px", minHeight: "280px", minWidth: "250px"
+        }}
       >
-        <div className="w-full aspect-[4/3] flex items-center justify-center rounded-lg bg-black">
+        <div className="w-full  flex items-center justify-center rounded-lg bg-black">
           <img
             src={imageUrl}
             alt="Polaroid"
-            className="w-full h-full object-contain"
-            style={{ maxWidth: "100%", maxHeight: "500px" }}
+            className="w-full h-full object-contain  border-2 border-black rounded-md "
+            style={{ maxWidth: "500px", maxHeight: "200px", minHeight: "70px", minWidth: "40px"}}
           />
         </div>
-        <p className="mt-4 text-xl sm:text-xl md:text-3xl font-bold text-black font-bentham text-center leading-tight">
+        <p className="mt-4 text-xl sm:text-xl md:text-3xl text-black font-bentham text-center leading-tight">
         {t("textp")}
         </p>
       </div>
       <div
-  className={`relative flex flex-col items-center justify-center rounded-lg 
-              p-4 w-[250px] h-[250px] sm:w-[400px] sm:h-[250px] 
-              ${!isFlipped ? 'bg-transparent' : 'bg-white'}`}
-  style={{
-    overflow: "hidden",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-  }}
+  className={`relative flex flex-col items-center justify-center rounded-lg p-4 w-[5vh] h-[3vh] sm:w-[400px] sm:h-[370px] border-2 border-black flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer
+           ${!isFlipped ? 'bg-transparent' : 'bg-white'}`}
+           style={{
+            overflow: "hidden",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            maxWidth: "600px", maxHeight: "600px", minHeight: "280px", minWidth: "250px"
+          }}
 >
   {isFlipped && (
-    <div className="absolute inset-0 flex justify-center items-left">
+    <div className="absolute inset-0 flex justify-center items-left border-2 border-black rounded-md">
       <h1
-        className={`absolute top-[7%] text-xl sm:text-xl md:text-3xl font-light font-bentham  text-black ${isCorrect ? 'text-black' : 'text-black'} w-[70%] max-w-[300px] text-center`}
+        className={`absolute top-[7%] text-xl sm:text-xl md:text-3xl  font-bentham  text-black ${isCorrect ? 'text-black' : 'text-black'} w-[70%] max-w-[300px] text-center`}
       >
         {isSpanish
           ? isCorrect
@@ -136,7 +144,7 @@ export const PolaroidPhoto: React.FC = () => {
           <p className="text-black"></p>
         </div>
 
-        <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white font-bentham">
+        <p className="mt-4 text-sm sm:text-base md:text-lg lg:text-xl text-white font-bentham">
           Guess
         </p>
       </div>
