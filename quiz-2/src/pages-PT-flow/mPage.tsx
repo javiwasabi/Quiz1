@@ -247,74 +247,83 @@ const Game: React.FC = () => {
         />
         {showResults ? (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
-              <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden h-[40vh] w-[110%] "
+
+            <div className={`flex justify-center z-20 text-center w-[65%] sm:w-[40%] h-[19%] sm:h-[16vh] mt-[0%] absolute top-[5%] sm:top-[5%] transition-all duration-500`}>
+            <motion.div
+                className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{
                   boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                }}
-              >
-                <h2 className="text-2xl md:text-4xl font-bold mb-4 font-bentham text-center justify-center absolute top-[10%] left-1/2 w-full transform -translate-x-1/2">
-                      {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-                    </h2>
+                }}>
+                 <div className="mt-8 w-full flex flex-col items-center">
+      <p className="font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center absolute top-[15%]">
+        {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
+      </p>
 
-                {questions.length > 0 && (
-                  <>
-                    
-                    <p className="text-lg md:text-2xl mt-2 text-left font-bentham absolute top-[20%] md:top-[25%] left-1/2 w-[80%] transform -translate-x-1/2">
-                      {navigator.language.includes("es")
-                        ? ((score / questions.length) * 100) < 40
-                          ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
-                          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                          ? "Todavía te falta para dominar la diferencia entre tecnologías y pokemones 😅  ¡pero no te preocupes 🤗! en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
-                          : "Felicitaciones 🥳, dominas casi a la perfección el arte de distinguir tecnologías y pokemones 🤓. En N12 nos especializamos en buscar profesionales de tecnología (y a veces pokemones) con la misma calidad que lo harías tú."
-                        : ((score / questions.length) * 100) < 40
-                       ? "You have a lot to learn about technology 🤨 but don't worry 🤗, at N12 we specialize in finding technology professionals (and also Pokémon) for you."
-                        : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                        ? "You still have a way to go to master the difference between technologies and Pokémon 😅 but don't worry 🤗! At N12 we specialize in finding technology professionals (and also Pokémon) for you."
-                        : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and Pokémon 🤓. At N12 we specialize in finding technology professionals (and sometimes Pokémon) with the same quality as you would."}
-                    </p>
-                  </>
-                )}
+      <div className="flex space-x-4 mt-6 sm:mt-8 absolute top-[30%]">
+        <WhatsappShareButton url={shareUrl} title={shareText}>
+          <WhatsappIcon size={40} round={true} />
+        </WhatsappShareButton>
+
+        <FacebookShareButton url={shareUrl} title={shareText}>
+          <FacebookIcon size={40} round={true} />
+        </FacebookShareButton>
+
+        <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+          <XIcon size={40} round={true} />
+        </TwitterShareButton>
+      </div>
+    </div>
+    
+    
               </motion.div>
+              </div>
+              <div className="w-[80%] h-full items-center justify-center">
+              <div className="relative w-[100%] h-[70%] flex justify-center absolute bottom-[-20%]  md:bottom-[-26%] items-center  font-light font-bentham">
+               <motion.div
+    className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden h-[51vh] w-[80%] md:h-[55vh] md:w-[50%] left-1/2 w-full transform -translate-x-1/2 sm:top-0 sm:left-0 sm:transform sm:-translate-x-0 z-10 absolute top-[10%]"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    style={{
+      boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+    }}
+  >
+    <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center justify-center absolute top-[10%] left-1/2 w-full transform -translate-x-1/2">
+      {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+    </h2>
 
-              <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden h-[20vh] w-[70%]  md:h-[25vh] md:w-[50%] left-1/2 w-full transform -translate-x-1/2  sm:top-0 sm:left-0 sm:transform sm:-translate-x-0 "
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                style={{
-                  boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                }}
-              >
-                <div className="mt-8 w-full flex flex-col items-center">
-                  <p className="font-bold font-bentham text-black text-2xl sm:text-3xl lg:text-3xl text-center absolute top-[2%]">
-                    {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
-                  </p>
+    {questions.length > 0 && (
+      <>
+        <p className="poke-name text-lg md:text-2xl mt-2 text-left font-bentham absolute top-[20%] md:top-[25%] left-1/2 w-[80%] transform -translate-x-1/2 justify-left">
+          {navigator.language.includes("es")
+            ? ((score / questions.length) * 100) < 40
+              ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
+              : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+              ? "Todavía te falta para dominar la diferencia entre tecnologías y pokemones 😅  ¡pero no te preocupes 🤗! en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
+              : "Felicitaciones 🥳, dominas casi a la perfección el arte de distinguir tecnologías y pokemones 🤓. En N12 nos especializamos en buscar profesionales de tecnología (y a veces pokemones) con la misma calidad que lo harías tú."
+            : ((score / questions.length) * 100) < 40
+            ? "You have a lot to learn about technology 🤨 but don't worry 🤗, at N12 we specialize in finding technology professionals (and also Pokémon) for you."
+            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+            ? "You still have a way to go to master the difference between technologies and Pokémon 😅 but don't worry 🤗! At N12 we specialize in finding technology professionals (and also Pokémon) for you."
+            : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and Pokémon 🤓. At N12 we specialize in finding technology professionals (and sometimes Pokémon) with the same quality as you would."}
+        </p>
+      </>
+    )}
+  </motion.div>
+  </div>
+ 
+  
 
-                  <div className="flex space-x-4 mt-6 sm:mt-8">
-                    <WhatsappShareButton url={shareUrl} title={shareText}>
-                      <WhatsappIcon size={40} round={true} />
-                    </WhatsappShareButton>
 
-                    <FacebookShareButton url={shareUrl} title={shareText}>
-                      <FacebookIcon size={40} round={true} />
-                    </FacebookShareButton>
+</div>
 
-                    <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
-                      <XIcon size={40} round={true} />
-                    </TwitterShareButton>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
           </div>) 
       : (
           <>
-            <div className={`flex justify-center z-20 text-center w-[55%] h-[15%] mt-[0%] absolute top-[10%] sm:top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
+            <div className={`flex justify-center z-20 text-center w-[55%] sm:w-[27%] h-[15%] mt-[0%] absolute top-[10%] sm:top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
               <motion.div
                 className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
                 initial={{ opacity: 0 }}
