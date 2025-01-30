@@ -34,11 +34,12 @@ const Vie: React.FC = () => {
       className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"  
     />
 
-    <div className="absolute top-[8%] text-center z-20 w-[85%] px-4"> 
-      <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-bentham text-black break-words">
-        {t("guessText")}
-      </p>
-    </div>
+<div className="absolute top-[8%] text-center z-20 w-[85%] h-[23vh] flex items-center justify-center px-4 bg-transparent shadow-xl"> 
+  <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-bentham text-black break-words">
+    {t("guessText")}
+  </p>
+</div>
+
 
     <div className="absolute top-[46%] w-full flex justify-center space-x-8 z-10"> {/* Imagen de silueta con un z-index mayor que las cartas */}
       <img

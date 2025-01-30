@@ -77,14 +77,15 @@ export const Card: React.FC<CardProps> = ({
           maxWidth: "600px", maxHeight: "600px", minHeight: "280px", minWidth: "250px"
         }}
       >
-        <div className="w-full  flex items-center justify-center rounded-lg bg-black">
-          <img
-            src={imageUrl}
-            alt="Polaroid"
-            className="w-full h-full object-contain  border-2 border-black rounded-md "
-            style={{ maxWidth: "500px", maxHeight: "200px", minHeight: "70px", minWidth: "40px"}}
-          />
-        </div>
+        <div className="w-full h-[200px] flex items-center justify-center rounded-lg bg-black">
+  <img
+    src={imageUrl}
+    alt="Polaroid"
+    className="w-full h-full object-cover border-2 border-black rounded-md"
+    style={{ maxWidth: "500px", maxHeight: "200px", minHeight: "150px", minWidth: "200px" }}
+  />
+</div>
+
         <p className="mt-4 text-xl sm:text-xl md:text-3xl text-black font-bentham text-center leading-tight">
         {t("textp")}
         </p>
