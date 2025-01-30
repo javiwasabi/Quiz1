@@ -345,7 +345,7 @@ const Game: React.FC = () => {
               {isFlipped && (
 
                 <div
-                className={`absolute bottom-[10%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}
+                className={`absolute bottom-[12%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}
                 >
                   <NextP id="next-button" onClick={handleNextQuestion} />
                 </div> )}
