@@ -264,7 +264,7 @@ const Game: React.FC = () => {
                 {questions.length > 0 && (
                   <>
                     
-                    <p className="text-lg md:text-2xl mt-2 text-left font-bentham absolute top-[26%] absolute top-[20%] md:top-[25%] left-1/2 w-[90%] transform -translate-x-1/2">
+                    <p className="text-lg md:text-2xl mt-2 text-left font-bentham absolute top-[20%] md:top-[25%] left-1/2 w-[80%] transform -translate-x-1/2">
                       {navigator.language.includes("es")
                         ? ((score / questions.length) * 100) < 40
                           ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
@@ -314,7 +314,7 @@ const Game: React.FC = () => {
           </div>) 
       : (
           <>
-            <div className={`flex justify-center z-20 text-center w-[55%] h-[15%] mt-[0%] absolute top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
+            <div className={`flex justify-center z-20 text-center w-[55%] h-[15%] mt-[0%] absolute top-[10%] sm:top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
               <motion.div
                 className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
                 initial={{ opacity: 0 }}
@@ -323,7 +323,7 @@ const Game: React.FC = () => {
                 style={{
                   boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                 }}>
-                <h3 className="text-4xl sm:text-3xl md:text-4xl text-black font-bentham text-center">
+                <h3 className="text-3xl sm:text-xl md:text-3xl lg:text-4xl  text-black font-bentham text-center">
                   {questions[currentQuestion].name}
                 </h3>
               </motion.div>

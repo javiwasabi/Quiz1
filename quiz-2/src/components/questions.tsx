@@ -151,7 +151,7 @@ export const Results: React.FC<CardProps> = ({
               {namep}
             </h1>
           
-            <h2 className="poke-name font-light font-bentham text-xl sm:text-xl">
+            <h2 className="poke-name font-light font-bentham text-2xl sm:text-2xl">
               {context}
             </h2>
           </div>

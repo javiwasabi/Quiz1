@@ -36,30 +36,32 @@ const First: React.FC = () => {
         />
 
         <div className="absolute top-[20%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[80%] h-[30%] max-w-[800px] text-center">
-          <motion.div
-            className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            style={{
-              boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-            }}>
-            <h1 className="text-3xl sm:text-2xl md:text-4xl text-black font-bentham text-center leading-tight text-ellipsis overflow-hidden">
-              {isSpanish ? (
-                <>
-                  ¿Puedes distinguir la diferencia entre{" "}
-                  <span className="font-extrabold">Tecnologías</span> Digitales y{" "}
-                  <span className="font-extrabold">Pokemones</span>?
-                </>
-              ) : (
-                <>
-                  Can you tell the difference between{" "}
-                  <span className="font-extrabold">Digital Technologies</span> and{" "}
-                  <span className="font-extrabold">Pokemons</span>?
-                </>
-              )}
-            </h1>
-          </motion.div>
+        <motion.div
+  className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.4, ease: "easeInOut" }}
+  style={{
+    boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+  }}
+>
+  <h1 className="text-2xl sm:text-xl md:text-3xl lg:text-4xl text-black font-bentham text-center leading-tight text-ellipsis overflow-hidden w-full px-4">
+    {isSpanish ? (
+      <>
+        ¿Puedes distinguir la diferencia entre{" "}
+        <span className="font-extrabold">Tecnologías</span> Digitales y{" "}
+        <span className="font-extrabold">Pokemones</span>?
+      </>
+    ) : (
+      <>
+        Can you tell the difference between{" "}
+        <span className="font-extrabold">Digital Technologies</span> and{" "}
+        <span className="font-extrabold">Pokemons</span>?
+      </>
+    )}
+  </h1>
+</motion.div>
+
         </div>
 
         <div
