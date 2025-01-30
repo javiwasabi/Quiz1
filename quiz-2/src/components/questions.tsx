@@ -30,6 +30,7 @@ interface CardPropsp {
   score: number; // Puntaje actual
   onNext: () => void; // Callback para pasar a la siguiente tarjeta
   namep: string;
+
 }
 
 export const CardPok: React.FC<CardPropsp> = ({
@@ -105,4 +106,59 @@ export const CardPok: React.FC<CardPropsp> = ({
     </div>
   );
   
+};
+
+interface CardProps {
+  context: React.ReactNode; // Nombre de la tecnología o Pokémon
+  namep: React.ReactNode;
+}
+
+export const Results: React.FC<CardProps> = ({
+  context,
+  namep,
+}) => {
+  const [isRevealed, setIsRevealed] = useState(false);
+  const [pokemon, setPokemon] = useState<any>(null);
+
+  return (
+    <div className="flex absolute bottom-0">
+      <div className="relative flex flex-col items-center font-bentham">
+        {/* Pokémon / Card */}
+        <div
+          className={`absolute transition-transform duration-500 ${
+            isRevealed
+              ? "-translate-y-[40%] opacity-100 scale-100"
+              : "translate-y-[50%] opacity-0 scale-90"
+          }`}
+        >
+          {/* Card */}
+          <div
+            id="card"
+            style={{
+              background:
+                "radial-gradient(circle at 70% 0%, white, 46%, #EEEEEE 36%)",
+              transform: isRevealed ? "scale(1)" : "scale(0.7)",
+              opacity: isRevealed ? "1" : "0",
+              top: "6vh",
+            }}
+            className="card"
+          >
+            <h1
+              className="card-image"
+              style={{
+                transform: isRevealed ? "scale(0.8)" : "scale(0.6)",
+                transition: "transform 0.5s ease",
+              }}
+            >
+              {namep}
+            </h1>
+          
+            <h2 className="poke-name font-light font-bentham text-xl sm:text-xl">
+              {context}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
