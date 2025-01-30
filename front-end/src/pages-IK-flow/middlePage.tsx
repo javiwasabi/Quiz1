@@ -251,7 +251,8 @@ const Middle: React.FC = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}>
                   {answered && (
-                    <div className="absolute bottom-[-5%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black w-full">
+                  <div className="absolute bottom-[-10%] right-4 md:bottom-15 md:right-6 z-20 transform -translate-y-[8%] left-1/2 transform -translate-x-[50%] w-full">
+                
                       <ButtonNext id="next-button" onClick={handleNextQuestion} />
 
                     </div>
@@ -299,7 +300,7 @@ const Middle: React.FC = () => {
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                
               >
-            <div className=" screen absolute bottom-[-10%] w-full flex justify-center items-center z-10 font-bentham mt-10 space-x-4">
+            <div className=" screen absolute bottom-[-5%] w-full flex justify-center items-center z-10 font-bentham mt-10 space-x-4">
               {showSerialKiller && (
                 <div
                   className="relative w-[79%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
