@@ -82,7 +82,7 @@ export const CardPok: React.FC<CardPropsp> = ({
               opacity: isRevealed ? "1" : "0",
               top: "6vh",
             }}
-            className="card w-full max-w-[210px] sm:max-w-[250px]" 
+            className="card w-full max-w-[210px] sm:max-w-[250px] sm:max-v-[500px] h-[300px]" // Ajuste de la altura
           >
             <img
               src={imageUrl}

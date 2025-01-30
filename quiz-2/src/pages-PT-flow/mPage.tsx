@@ -351,7 +351,7 @@ const Game: React.FC = () => {
               {isFlipped && (
                 <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-30%]">
                 <motion.div
-                  className=" absolute top-[-50vh] w-[55%] sm:w-[50%] md:w-[50%] lg:w-[50%] xl:w-[24%] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
+                  className=" absolute top-[-50vh] w-[40%] sm:w-[30%] md:w-[50%] lg:w-[50%] xl:w-[24%] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
