@@ -330,16 +330,16 @@ const Game: React.FC = () => {
           
  
             <div className="w-full h-[30%]">
-              <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%] top-1/2 -translate-y-[30%] sm:-translate-y-[40%]   font-light font-bentham">
-                <CardPok
-                  imageUrl={questions[currentQuestion].imageUrl}
-                  context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
-                  score={score}
-                  isCorrect={isCorrect}
-                  isFlipped={isFlipped}
-                  onNext={handleNextQuestion}
-                  namep={questions[currentQuestion].name}
-                />
+            <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%] top-1/2 -translate-y-[20%] sm:-translate-y-[40%] font-light font-bentham">
+  <CardPok
+    imageUrl={questions[currentQuestion].imageUrl}
+    context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
+    score={score}
+    isCorrect={isCorrect}
+    isFlipped={isFlipped}
+    onNext={handleNextQuestion}
+    namep={questions[currentQuestion].name}
+  />
               </div>
 
               {isFlipped && (
@@ -351,28 +351,28 @@ const Game: React.FC = () => {
                 </div> )}
 
               {isFlipped && (
-                <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-30%]">
-                <motion.div
-                  className=" absolute top-[-50vh] w-[55%] sm:w-[30%] md:w-[50%] lg:w-[50%] xl:w-[23%] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  style={{
-                    boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                  }}
-                >
-                  <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bentham text-black w-full">
-                    {isSpanish
-                      ? isCorrect
-                        ? "¡Correcto!"
-                        : "¡Incorrecto!"
-                      : isCorrect
-                      ? "Correct!"
-                      : "Incorrect!"
-                    }
-                  </h1>
-                </motion.div>
-              </div>
+               <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-5%]">
+               <motion.div
+                 className="absolute top-[-50vh] w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 transition={{ duration: 0.5, ease: "easeInOut" }}
+                 style={{
+                   boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+                 }}
+               >
+                 <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bentham text-black w-full">
+                   {isSpanish
+                     ? isCorrect
+                       ? "¡Correcto!"
+                       : "¡Incorrecto!"
+                     : isCorrect
+                     ? "Correct!"
+                     : "Incorrect!"
+                   }
+                 </h1>
+               </motion.div>
+             </div>
               )}
 
 

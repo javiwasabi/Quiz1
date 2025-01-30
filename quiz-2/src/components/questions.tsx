@@ -30,7 +30,6 @@ interface CardPropsp {
   onNext: () => void; // Callback para pasar a la siguiente tarjeta
   namep: string;
 }
-
 export const CardPok: React.FC<CardPropsp> = ({
   imageUrl,
   context,
@@ -61,7 +60,7 @@ export const CardPok: React.FC<CardPropsp> = ({
         >
           <div className="inside"></div>
           <div className="center"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
+          <div className="absolute bottom-[20%] left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
         </div>
 
         {/* Pokémon / Card */}
@@ -82,7 +81,7 @@ export const CardPok: React.FC<CardPropsp> = ({
               opacity: isRevealed ? "1" : "0",
               top: "6vh",
             }}
-            className="card w-full max-w-[210px] sm:max-w-[250px] sm:max-v-[350px] h-[200px]" // Ajuste de la altura
+            className="card w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px]" // Ajuste de la altura
           >
             <img
               src={imageUrl}
@@ -100,3 +99,5 @@ export const CardPok: React.FC<CardPropsp> = ({
     </div>
   );
 };
+
+
