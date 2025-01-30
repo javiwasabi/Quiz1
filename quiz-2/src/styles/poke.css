@@ -11,6 +11,7 @@
   top: 40%;
   left: 50%;
 }
+
 #card {
   position: relative;
   width: 100%;
@@ -28,55 +29,23 @@
 
 #card img {
   display: block;
-  width: 220px;
-  max-height: 220px;
+  width: 170px; 
+  max-height: 180px; 
   position: relative;
-  margin: 20px auto;
-}
-
-.hp {
-  width: 80px;
-  background-color: #ffffff; /* Fondo blanco */
-  text-align: center;
-  padding: 8px 0;
-  border-radius: 15%;
-  margin-left: auto;
-  font-weight: 400;
-  color: #000; /* Color de texto negro para contraste */
+  margin: 10px auto;
 }
 
 .poke-name {
   text-align: center;
-  font-weight: 300; /* Bentham Light */
-  font-family: 'Bentham', sans-serif; /* Aseguramos que se aplique la fuente Bentham */
-  color: #000; /* Color de texto negro */
+  font-weight: 300; 
+  font-family: 'Bentham', sans-serif; 
+  color: #000;
 }
-
 
 .types {
   display: flex;
   justify-content: space-around;
   margin: 20px 0 40px 0;
-}
-
-.hp span,
-.types span {
-  font-size: 17px;
-  letter-spacing: 0.4px;
-  font-weight: 600;
-}
-
-.types span {
-  padding: 5px 20px;
-  border-radius: 15%;
-  color: #ffffff;
-}
-
-.stats {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
 }
 
 #btn {
@@ -93,7 +62,7 @@
 }
 
 #btn:hover {
-  background-color: #333333; /* Hover con un gris más oscuro */
+  background-color: #333333; 
 }
 
 @media (max-width: 768px) {
@@ -109,7 +78,8 @@
   }
 
   #card img {
-    width: 180px;
+    width: 140px; 
+    max-height: 140px; 
   }
 
   .types {
@@ -123,7 +93,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
   .container {
     width: 95%;
     top: 50%;
@@ -137,7 +107,8 @@
   }
 
   #card img {
-    width: 150px;
+    width: 120px;
+    max-height: 120px; 
   }
 
   .hp {

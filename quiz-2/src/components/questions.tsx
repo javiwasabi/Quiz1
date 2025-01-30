@@ -123,7 +123,6 @@ export const Results: React.FC<CardProps> = ({
   return (
     <div className="flex absolute bottom-0">
       <div className="relative flex flex-col items-center font-bentham">
-        {/* Pokémon / Card */}
         <div
           className={`absolute transition-transform duration-500 ${
             isRevealed
@@ -131,7 +130,6 @@ export const Results: React.FC<CardProps> = ({
               : "translate-y-[50%] opacity-0 scale-90"
           }`}
         >
-          {/* Card */}
           <div
             id="card"
             style={{
