@@ -182,7 +182,7 @@ const Middle: React.FC = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
                 <motion.div
-                className="relative bg-transparent shadow-xl  p-6 flex flex-col items-start justify-center overflow-hidden h-[45vh] w-[100%] lef-[10%]"
+                className="relative bg-transparent shadow-xl  p-6 flex flex-col items-start justify-center overflow-hidden h-[50vh]  w-[100%] lef-[10%]"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -190,27 +190,25 @@ const Middle: React.FC = () => {
                     boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                   }}
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold mb-4 font-bentham items-center justify-center ">
-                  {navigator.language.includes("es") ?  `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-                </h2>
-
-
-                  {questions.length > 0 && (
-                   <p className="text-lg md:text-2xl mt-2 text-left font-bentham">
-                   {((score / questions.length) * 100) < 40
-                     ? isSpanish 
-                       ? "No te recomendaríamos ir a una conferencia de tecnología , pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte " 
-                       : "We wouldn't recommend you going to a technology conference , as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
-                     : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                     ? isSpanish 
-                       ? "No te recomendaríamos ir a una conferencia de tecnología , pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte " 
-                       : "We wouldn't recommend you going to a technology conference , as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
-                     : isSpanish 
-                       ? "Felicitaciones 🤩, distingues casi a la perfección a quienes han dado forma al mundo tecnológico en que vivimos. En N12 nos especializamos en identificar a buenos profesionales de tecnología con la misma calidad que lo harías tú " 
-                       : "Congratulations 🤩, you almost perfectly distinguish those who have shaped the technological world we live in. At N12, we specialize in identifying good technology professionals with the same quality as you would "
-                   }
-                 </p>
                  
+                  <h2 className="text-2xl md:text-4xl font-bold mb-4 font-bentham text-center justify-center absolute top-[10%] left-1/2 w-full transform -translate-x-1/2">
+                      {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+                    </h2>
+                  {questions.length > 0 && (
+                    <p className="text-md md:text-2xl mt-2 text-left font-bentham absolute top-[26%]">
+                      {((score / questions.length) * 100) < 40
+                        ? isSpanish 
+                          ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte" 
+                          : "We wouldn't recommend you going to a technology conference 😭, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
+                        : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+                        ? isSpanish 
+                          ? "No te recomendaríamos ir a una conferencia de tecnología 😤, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte " 
+                          : "We wouldn't recommend you going to a technology conference 😤, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
+                        : isSpanish 
+                          ? "Felicitaciones 🤩, distingues casi a la perfección a quienes han dado forma al mundo tecnológico en que vivimos. En N12 nos especializamos en identificar a buenos profesionales de tecnología con la misma calidad que lo harías tú" 
+                          : "Congratulations 🤩, you almost perfectly distinguish those who have shaped the technological world we live in. At N12, we specialize in identifying good technology professionals with the same quality as you would "
+                      }
+                    </p>
                   )}
                 </motion.div>
 
@@ -225,7 +223,7 @@ const Middle: React.FC = () => {
                 
                 >
                   <div className="mt-8 w-full flex flex-col items-center">
-                    <p className="font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center absolute top-[2%]">
+                    <p className="font-bentham text-black text-2xl sm:text-3xl lg:text-3xl text-center absolute top-[2%]">
                       {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
                     </p>
 
