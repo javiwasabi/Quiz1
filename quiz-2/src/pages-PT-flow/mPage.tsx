@@ -416,7 +416,7 @@ const handleNextQuestion = () => {
 
 
             <div className="w-full h-[30%]">
-              <div className="relative w-full h-[90%] flex justify-center absolute bottom-[-31%] font-light font-bentham">
+              <div className="relative w-full h-[90%] flex justify-center absolute bottom-[-20%]  md:bottom-[-31%]   font-light font-bentham">
                 <CardPok
                   imageUrl={questions[currentQuestion].imageUrl}
                   context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
@@ -430,10 +430,10 @@ const handleNextQuestion = () => {
 
               {isFlipped && (
 
-                          <div className="absolute bottom-[10%] right-4 md:bottom-6 md:right-6 z-20">
-                          
-                            <NextP id="next-button" onClick={handleNextQuestion} />
-                          </div>
+<div className="absolute bottom-[10%] right-4 md:bottom-10 md:right-6 z-20 transform -translate-y-[10%]">
+<NextP id="next-button" onClick={handleNextQuestion} />
+</div>
+
                         )}
                {isFlipped && (
       <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-15%]">
