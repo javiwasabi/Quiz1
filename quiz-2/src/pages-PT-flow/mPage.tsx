@@ -249,7 +249,7 @@ const Game: React.FC = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
               <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden h-[45vh] w-[100%] lef-[10%]"
+                className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden h-[40vh] w-[110%] "
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
