@@ -84,7 +84,7 @@ const Game: React.FC = () => {
       correctAnswer: "Technology",
       context: {
         en: "A simple IT automation platform used for configuration management.",
-        es: "Una plataforma de automatización de TI utilizada para la gestión de configuraciones.",
+        es: "Una plataforma de automatización de TI utilizada para las configuraciones.",
       },
       name: "Ansible",
     },
