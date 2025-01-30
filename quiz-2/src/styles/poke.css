@@ -76,7 +76,7 @@
   #card {
     padding: 20px 15px;
     border-radius: 1rem; /* rounded-xl */
-    height: 330px; /* Ajuste de la altura */
+    height: 360px; /* Ajuste de la altura */
   }
 
   #card img {
@@ -106,7 +106,7 @@
   #card {
     padding: 15px 10px;
     border-radius: 1rem; /* rounded-xl */
-    height: 300px; /* Ajuste de la altura */
+    height: 360px; /* Ajuste de la altura */
   }
 
   #card img {
