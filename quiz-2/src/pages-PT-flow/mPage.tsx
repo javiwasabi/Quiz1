@@ -374,7 +374,7 @@ const Game: React.FC = () => {
 
               {isFlipped && (
 
-                <div className="absolute bottom-[10%] right-4 md:bottom-10 md:right-6 z-20 transform -translate-y-[10%]">
+                <div className="absolute bottom-[10%] right-4 md:bottom-15 md:right-6 z-20 transform -translate-y-[10%]">
                   <NextP id="next-button" onClick={handleNextQuestion} />
                 </div> )}
 
