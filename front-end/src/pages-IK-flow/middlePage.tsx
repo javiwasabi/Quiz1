@@ -250,7 +250,7 @@ const isSpanish = userLanguage.startsWith('es');
        <div className="absolute inset-0 flex items-center justify-center">
        <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
   <motion.div
-    className="relative bg-transparent shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden flex-1 md:flex-[2]"
+   className="relative bg-transparent shadow-xl  p-6 flex flex-col items-start justify-center overflow-hidden"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -288,7 +288,7 @@ const isSpanish = userLanguage.startsWith('es');
   </motion.div>
 
   <motion.div
-    className="relative shadow-xl p-6 flex items-center justify-center overflow-hidden shadow-lg rounded-lg border-4 border-yellow-600 flex-1 md:flex-[1]"
+   className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden shadow-lg rounded-lg border-4 border-yellow-600 "
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.4, ease: "easeInOut" }}
