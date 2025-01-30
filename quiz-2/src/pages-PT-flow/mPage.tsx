@@ -313,7 +313,7 @@ const shareText = userLanguage
         />
         {showResults ? (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex space-x-6">
+           <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-wrap md:flex-nowrap space-y-6 md:space-y-0 md:space-x-6">
               <motion.div
                 ref={resultsRef}
                 className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden"
