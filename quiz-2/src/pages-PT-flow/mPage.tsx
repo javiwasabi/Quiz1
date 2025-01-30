@@ -311,7 +311,7 @@ const Game: React.FC = () => {
           </div>) 
       : (
           <>
-            <div className={`flex justify-center z-20 text-center w-[50%] sm:w-[50%] md:w-[50%] lg:w-[30%] h-auto mt-[0%] absolute top-[10%] sm:top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
+            <div className={`flex justify-center z-20 text-center w-[40%] sm:w-[30%] md:w-[30%] lg:w-[20%] h-auto mt-[0%] absolute top-[10%] sm:top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
               <motion.div
                 className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
                 initial={{ opacity: 0 }}
@@ -361,7 +361,7 @@ const Game: React.FC = () => {
                     boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                   }}
                 >
-                  <h1 className="text-2xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-2xl font-bentham text-black w-full">
+                  <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bentham text-black w-full">
                     {isSpanish
                       ? isCorrect
                         ? "¡Correcto!"
@@ -379,7 +379,7 @@ const Game: React.FC = () => {
             </div>
 
             <div
-              className={`absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full ${
+              className={`absolute bottom-[8%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full ${
                 isFlipped ? "z-0" : "z-20"
               }`}
             >
