@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonStart } from "../components/buttons";
-
+import { motion } from "framer-motion";
 
 
 const Vie: React.FC = () => {
@@ -40,10 +40,17 @@ const Vie: React.FC = () => {
         />
       </div>
 
-      
+      <motion.div
+              
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+             
+            >
       <div className="absolute bottom-[12%] left-0 right-0 flex justify-center items-center z-10">
         <ButtonStart />
       </div>
+      </motion.div>
 
       </div>
     </div>

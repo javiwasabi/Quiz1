@@ -26,8 +26,8 @@ const Middle: React.FC = () => {
   const shareText = userLanguage
     ? `¡Tuve el siguiente puntaje: ${score} en reconocer caras!`
     : `I scored: ${score} in deciphering faces!`;;
-  const [showSerialKiller, setShowSerialKiller] = useState(false);
-  const [showInventor, setShowInventor] = useState(false);
+  const [showSerialKiller, setShowSerialKiller] = useState(true);
+  const [showInventor, setShowInventor] = useState(true);
   const [showOr, setShowOr] = useState(true);
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -146,52 +146,15 @@ const Middle: React.FC = () => {
       setIsCorrect(false);
       setAnswered(false); 
       setIsFlipped(false);
-      setShowSerialKiller(false);
-      setShowInventor(false);
-      setShowOr(false);
+      setShowSerialKiller(true);
+      setShowInventor(true);
+      setShowOr(true);
   
-      const timer1 = setTimeout(() => {
-        setShowSerialKiller(true);
-      }, 500);
-      const timer3 = setTimeout(() => {
-        setShowOr(true);
-      }, 1200);
-  
-      const timer2 = setTimeout(() => {
-        setShowInventor(true);
-      }, 1000);
       
-  
-      return () => {
-        clearTimeout(timer1);
-        
-        clearTimeout(timer2);
-        clearTimeout(timer3);
-        
-      };
     }
   };
 
-  useEffect(() => {
-    const timer1 = setTimeout(() => {
-      setShowSerialKiller(true);
-    }, 500);
-    const timer3 = setTimeout(() => {
-      setShowOr(true);
-    }, 1200); 
-
-    const timer2 = setTimeout(() => {
-      setShowInventor(true);
-    }, 1000); 
-
-    return () => {
-      clearTimeout(timer1);
-
-      clearTimeout(timer2);
-      clearTimeout(timer3);
  
-    };
-  }, []);
   useEffect(() => {
     console.log("Puntaje actualizado:", score);
   }, [score]);
@@ -290,12 +253,18 @@ const Middle: React.FC = () => {
             </div> ) : (
   
               <>
-                {answered && (
-                  <div className="absolute bottom-[-5%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black w-full">
-                    <ButtonNext id="next-button" onClick={handleNextQuestion} />
+              
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}>
+                  {answered && (
+                    <div className="absolute bottom-[-5%] left-[70%] transform -translate-x-1/2 z-20 flex gap-x-8 text-black w-full">
+                      <ButtonNext id="next-button" onClick={handleNextQuestion} />
 
-                  </div>
-                )}
+                    </div>
+                  )}
+                </motion.div>
 
                 <div className="w-full h-full flex justify-center items-center top-[-18%] bg-transparent relative z-10">
                   <div
@@ -331,6 +300,13 @@ const Middle: React.FC = () => {
             )}
 
           {!answered && (
+              <motion.div
+              
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+               
+              >
             <div className=" screen absolute bottom-[-10%] w-full flex justify-center items-center z-10 font-bentham mt-10 space-x-4">
               {showSerialKiller && (
                 <div
@@ -368,7 +344,9 @@ const Middle: React.FC = () => {
                 </div>
               )}
             </div>
+            </motion.div>
           )}
+          
 
 
         </div>
