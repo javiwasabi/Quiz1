@@ -210,33 +210,12 @@ const Game: React.FC = () => {
       setAnswered(false);
       setIsFlipped(false);
 
-      setShowPokemonButton(false);
-      setShowTechnologyButton(false);
-      setShowOr(false);
-      setChoicesEnabled(false);
+      setShowPokemonButton(true);
+      setShowTechnologyButton(true);
+      setShowOr(true);
+      setChoicesEnabled(true);
 
-      const timer1 = setTimeout(() => {
-        setShowPokemonButton(true);
-      }, 500);
-
-      const timer2 = setTimeout(() => {
-        setShowTechnologyButton(true);
-      }, 1000);
-
-      const timer3 = setTimeout(() => {
-        setShowOr(true);
-      }, 1200);
-
-      const timer4 = setTimeout(() => {
-        setChoicesEnabled(true);
-      }, 1200);
-
-      return () => {
-        clearTimeout(timer1);
-        clearTimeout(timer2);
-        clearTimeout(timer3);
-        clearTimeout(timer4);
-      };
+      
     }
   };
 
@@ -270,7 +249,7 @@ const Game: React.FC = () => {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
               <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden"
+                className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden h-[45vh] w-[100%] lef-[10%]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -278,36 +257,32 @@ const Game: React.FC = () => {
                   boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                 }}
               >
-                <h2 className="text-4xl md:text-4xl font-bold mb-4 font-bentham text-left">
-                  {navigator.language.includes("es") ? "Resultados" : "Game Results"}
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 font-bentham items-center justify-center ">
+                  {navigator.language.includes("es") ?  `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
                 </h2>
 
                 {questions.length > 0 && (
                   <>
-                    <p className="text-2xl md:text-2xl mt-4 text-left">
-                      {navigator.language.includes("es")
-                        ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
-                        : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-                    </p>
-                    <p className="text-2xl md:text-2xl mt-2 text-left font-bentham">
+                    
+                    <p className="text-lg md:text-2xl mt-2 text-left font-bentham">
                       {navigator.language.includes("es")
                         ? ((score / questions.length) * 100) < 40
-                          ? "¡Ups! Parece que no conoces Pokemon"
+                          ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
                           : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                          ? "Sabes algo sobre pokemones, pero no eres un fan"
-                          : "¡Eres un experto total en identificar nombres!"
+                          ? "Todavía te falta para dominar la diferencia entre tecnologías y pokemones 😅  ¡pero no te preocupes 🤗! en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
+                          : "Felicitaciones 🥳, dominas casi a la perfección el arte de distinguir tecnologías y pokemones 🤓. En N12 nos especializamos en buscar profesionales de tecnología (y a veces pokemones) con la misma calidad que lo harías tú."
                         : ((score / questions.length) * 100) < 40
-                        ? "Oops! Looks like you're not a fan"
+                       ? "You have a lot to learn about technology 🤨 but don't worry 🤗, at N12 we specialize in finding technology professionals (and also Pokémon) for you."
                         : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                        ? "You seem to know something but you are not a fan"
-                        : "You're a total expert at identifying names!"}
+                        ? "You still have a way to go to master the difference between technologies and Pokémon 😅 but don't worry 🤗! At N12 we specialize in finding technology professionals (and also Pokémon) for you."
+                        : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and Pokémon 🤓. At N12 we specialize in finding technology professionals (and sometimes Pokémon) with the same quality as you would."}
                     </p>
                   </>
                 )}
               </motion.div>
 
               <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden"
+                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden h-[20vh]  md:h-[25vh] md:w-[50%] "
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -316,7 +291,7 @@ const Game: React.FC = () => {
                 }}
               >
                 <div className="mt-8 w-full flex flex-col items-center">
-                  <p className="font-bold font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
+                  <p className="font-bold font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center absolute top-[2%]">
                     {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
                   </p>
 
@@ -409,36 +384,37 @@ const Game: React.FC = () => {
             <div
               className={`absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full ${
                 isFlipped ? "z-0" : "z-20"
-              }`}> 
-                <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2">
-                  {showPokemonButton && (
-                    <Choice
-                      id="choice-pokemon"
-                      onClick={() => choicesEnabled && handleAnswer("Pokemon")}
-                      disabled={!choicesEnabled || isFlipped} 
-                    />
-                  )}
-                </div>
-
-                {showOr && (
-                  <div className="absolute flex justify-center items-center w-[15%] sm:w-auto px-0 bg-gradient-to-r from-white to-grey-900 rounded-full border-2 border-white">
-                    <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-full ">
-                      or
-                    </span>
-                  </div>
+              }`}
+            >
+              <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2 ">
+                {showPokemonButton && (
+                  <Choice
+                    id="choice-pokemon"
+                    onClick={() => choicesEnabled && handleAnswer("Pokemon")}
+                    disabled={!choicesEnabled || isFlipped}
+                  />
                 )}
+              </div>
 
+              {showOr && (
+                <div className="absolute flex justify-center items-center w-[15%] sm:w-auto px-0 bg-gradient-to-r from-white to-grey-900 rounded-full border-2 border-white fade-in-up">
+                  <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-full">
+                    or
+                  </span>
+                </div>
+              )}
 
-              <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2">
+              <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2 ">
                 {showTechnologyButton && (
                   <Choice
                     id="choice-technology"
                     onClick={() => choicesEnabled && handleAnswer("Technology")}
-                    disabled={!choicesEnabled || isFlipped} 
+                    disabled={!choicesEnabled || isFlipped}
                   />
                 )}
               </div>
             </div>
+
           </>
         )}
         
