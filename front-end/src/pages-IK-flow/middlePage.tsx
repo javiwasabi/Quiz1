@@ -248,79 +248,78 @@ const isSpanish = userLanguage.startsWith('es');
       <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
       {showResults ? (
        <div className="absolute inset-0 flex items-center justify-center">
-       <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex space-x-6">
-       <motion.div
-         className="relative bg-transparent shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden"
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1 }}
-         transition={{ duration: 0.4, ease: "easeInOut" }}
-         style={{
-           boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-         }}
-       >
-         <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 font-bentham text-center">
-             {navigator.language.includes("es") ? "Resultados del juego" : "Game Results"}
-           </h2>
-   
-           {questions.length > 0 && (
-             <p className="text-2xl md:text-2xl font-bentham mt-4 text-left">
-               {navigator.language.includes("es")
-                 ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
-                 : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-             </p>
-           )}
-   
-           {questions.length > 0 && (
-             <p className="text-2xl md:text-2xl mt-2 text-left font-bentham">
-               {((score / questions.length) * 100) < 40
-                 ? isSpanish 
-                   ? "Ups! parece que no sabes mucho" 
-                   : "Oops! It seems you don't know that much"
-                 : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                 ? isSpanish 
-                   ? "Pareciera que sabes un poco sobre reconocer caras, pero no mucho" 
-                   : "It seems you know something, but there's room for improvement"
-                 : isSpanish 
-                   ? "¡Eres un experto total en identificar caras!" 
-                   : "You're a total expert at identifying faces!"}
-             </p>
-        
-         )}
-       </motion.div>
-     
-       <motion.div
-         className="relative  shadow-xl p-6 flex items-center justify-center overflow-hidden shadow-lg rounded-lg border-4 border-yellow-600"
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1 }}
-         transition={{ duration: 0.4, ease: "easeInOut" }}
-         style={{
-          background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-        }}
-      
-       >
-         <div className="mt-8 w-full flex flex-col items-center">
-           <p className="font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
-             {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
-           </p>
-     
-           <div className="flex space-x-4 mt-6 sm:mt-8">
-             <WhatsappShareButton url={shareUrl} title={shareText}>
-               <WhatsappIcon size={40} round={true} />
-             </WhatsappShareButton>
-     
-             <FacebookShareButton url={shareUrl} title={shareText}>
-               <FacebookIcon size={40} round={true} />
-             </FacebookShareButton>
-     
-             <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
-               <XIcon size={40} round={true} />
-             </TwitterShareButton>
-           </div>
-         </div>
-       </motion.div>
-     </div>
-     
+       <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
+  <motion.div
+    className="relative bg-transparent shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden flex-1 md:flex-[2]"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    style={{
+      boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+    }}
+  >
+    <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 font-bentham text-center">
+      {navigator.language.includes("es") ? "Resultados del juego" : "Game Results"}
+    </h2>
+
+    {questions.length > 0 && (
+      <p className="text-2xl md:text-2xl font-bentham mt-4 text-left">
+        {navigator.language.includes("es")
+          ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
+          : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+      </p>
+    )}
+
+    {questions.length > 0 && (
+      <p className="text-2xl md:text-2xl mt-2 text-left font-bentham">
+        {((score / questions.length) * 100) < 40
+          ? isSpanish 
+            ? "Ups! parece que no sabes mucho" 
+            : "Oops! It seems you don't know that much"
+          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+          ? isSpanish 
+            ? "Pareciera que sabes un poco sobre reconocer caras, pero no mucho" 
+            : "It seems you know something, but there's room for improvement"
+          : isSpanish 
+            ? "¡Eres un experto total en identificar caras!" 
+            : "You're a total expert at identifying faces!"}
+      </p>
+    )}
+  </motion.div>
+
+  <motion.div
+    className="relative shadow-xl p-6 flex items-center justify-center overflow-hidden shadow-lg rounded-lg border-4 border-yellow-600 flex-1 md:flex-[1]"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    style={{
+      background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+    }}
+  >
+    <div className="mt-8 w-full flex flex-col items-center">
+      <p className="font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
+        {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
+      </p>
+
+      <div className="flex space-x-4 mt-6 sm:mt-8">
+        <WhatsappShareButton url={shareUrl} title={shareText}>
+          <WhatsappIcon size={40} round={true} />
+        </WhatsappShareButton>
+
+        <FacebookShareButton url={shareUrl} title={shareText}>
+          <FacebookIcon size={40} round={true} />
+        </FacebookShareButton>
+
+        <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+          <XIcon size={40} round={true} />
+        </TwitterShareButton>
+      </div>
+    </div>
+  </motion.div>
+</div>
+
+
      
      </div>
      
