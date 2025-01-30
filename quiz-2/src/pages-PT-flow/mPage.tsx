@@ -330,7 +330,7 @@ const Game: React.FC = () => {
           
  
             <div className="w-full h-[30%]">
-            <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%] top-1/2 -translate-y-[20%] sm:-translate-y-[40%] font-light font-bentham">
+            <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%] top-1/2 -translate-y-[20%] sm:-translate-y-[35%] font-light font-bentham">
   <CardPok
     imageUrl={questions[currentQuestion].imageUrl}
     context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
@@ -351,7 +351,7 @@ const Game: React.FC = () => {
                 </div> )}
 
               {isFlipped && (
-               <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-5%]">
+               <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-5%]  sm:-translate-y-[-35%]">
                <motion.div
                  className="absolute top-[-50vh] w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
                  initial={{ opacity: 0 }}
