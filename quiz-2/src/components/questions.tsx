@@ -21,7 +21,6 @@ const typeColor: Record<string, string> = {
   rock: "#2d3436",
   water: "#59A2E6",
 };
-
 interface CardPropsp {
   imageUrl: string; // URL de la imagen a mostrar
   context: string; // Nombre de la tecnología o Pokémon
@@ -30,7 +29,6 @@ interface CardPropsp {
   score: number; // Puntaje actual
   onNext: () => void; // Callback para pasar a la siguiente tarjeta
   namep: string;
-
 }
 
 export const CardPok: React.FC<CardPropsp> = ({
@@ -43,20 +41,16 @@ export const CardPok: React.FC<CardPropsp> = ({
   onNext,
 }) => {
   const [isRevealed, setIsRevealed] = useState(false);
-  
   const [pokemon, setPokemon] = useState<any>(null);
-
-  
 
   // Sincroniza el estado interno con isFlipped
   useEffect(() => {
     setIsRevealed(isFlipped);
   }, [isFlipped]);
 
-  
   return (
-    <div className="flex absolute bottom-0">
-      <div className="relative flex flex-col items-center font-bentham">
+    <div className="flex absolute bottom-0 w-full">
+      <div className="relative flex flex-col items-center font-bentham w-full">
         {/* Ball */}
         <div
           className="relative w-40 h-40 ball"
@@ -69,7 +63,7 @@ export const CardPok: React.FC<CardPropsp> = ({
           <div className="center"></div>
           <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
         </div>
-  
+
         {/* Pokémon / Card */}
         <div
           className={`absolute transition-transform duration-500 ${
@@ -88,7 +82,7 @@ export const CardPok: React.FC<CardPropsp> = ({
               opacity: isRevealed ? "1" : "0",
               top: "6vh",
             }}
-            className="card"
+            className="card w-full max-w-[210px] sm:max-w-[250px]" 
           >
             <img
               src={imageUrl}
@@ -105,5 +99,4 @@ export const CardPok: React.FC<CardPropsp> = ({
       </div>
     </div>
   );
-  
 };

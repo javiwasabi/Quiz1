@@ -5,7 +5,7 @@
 }
 
 .container {
-  width: 350px;
+  width: 400px; /* Ajuste del ancho */
   position: absolute;
   transform: translate(-50%, -50%);
   top: 40%;
@@ -17,7 +17,7 @@
   width: 100%;
   padding: 18px 15px; 
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
-  border-radius: 10%;
+  border-radius: 1rem; /* rounded-xl */
   background-color: #fff;
   transition: transform 0.3s ease-in-out;
   margin-bottom: 0px; 
@@ -58,7 +58,7 @@
   cursor: pointer;
   border: none;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.878);
-  border-radius: 20%;
+  border-radius: 1rem; /* rounded-xl */
 }
 
 #btn:hover {
@@ -67,14 +67,14 @@
 
 @media (max-width: 768px) {
   .container {
-    width: 90%;
+    width: 95%; /* Ajuste del ancho */
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
   #card {
     padding: 20px 15px;
-    border-radius: 15px;
+    border-radius: 1rem; /* rounded-xl */
   }
 
   #card img {
@@ -95,7 +95,7 @@
 
 @media (max-width: 500px) {
   .container {
-    width: 95%;
+    width: 100%; /* Ajuste del ancho */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -103,7 +103,7 @@
 
   #card {
     padding: 15px 10px;
-    border-radius: 10px;
+    border-radius: 1rem; /* rounded-xl */
   }
 
   #card img {

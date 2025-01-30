@@ -248,21 +248,44 @@ const Game: React.FC = () => {
         {showResults ? (
           <div className="absolute inset-0 flex items-center justify-center">
 
-            <div className={`flex justify-center z-20 text-center w-[65%] sm:w-[40%] h-[19%] sm:h-[16vh] mt-[0%] absolute top-[5%] sm:top-[5%] transition-all duration-500`}>
-            <motion.div
-                className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                style={{
-                  boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                }}>
-                 <div className="mt-8 w-full flex flex-col items-center">
-      <p className="font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center absolute top-[15%]">
+           
+              <div className="w-[80%] h-full items-center justify-center">
+              <div className="fixed inset-0 flex items-center justify-center w-[90%] left-1/2 transform -translate-x-[50%] ">
+  <motion.div
+    className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[50%] h-auto"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    style={{
+      boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+    }}
+  >
+    <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
+      {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+    </h2>
+
+    {questions.length > 0 && (
+      <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%]">
+        {navigator.language.includes("es")
+          ? ((score / questions.length) * 100) < 40
+            ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
+            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+            ? "Todavía te falta para dominar la diferencia entre tecnologías y pokemones 😅  ¡pero no te preocupes 🤗! en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
+            : "Felicitaciones 🥳, dominas casi a la perfección el arte de distinguir tecnologías y pokemones 🤓. En N12 nos especializamos en buscar profesionales de tecnología (y a veces pokemones) con la misma calidad que lo harías tú."
+          : ((score / questions.length) * 100) < 40
+          ? "You have a lot to learn about technology 🤨 but don't worry 🤗, at N12 we specialize in finding technology professionals (and also Pokémon) for you."
+          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+          ? "You still have a way to go to master the difference between technologies and Pokémon 😅 but don't worry 🤗! At N12 we specialize in finding technology professionals (and also Pokémon) for you."
+          : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and Pokémon 🤓. At N12 we specialize in finding technology professionals (and sometimes Pokémon) with the same quality as you would."}
+      </p>
+    )}
+
+    <div className="mt-8 w-full flex flex-col items-center">
+      <p className="font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center">
         {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
       </p>
 
-      <div className="flex space-x-4 mt-6 sm:mt-8 absolute top-[30%]">
+      <div className="flex space-x-4 mt-6 sm:mt-8">
         <WhatsappShareButton url={shareUrl} title={shareText}>
           <WhatsappIcon size={40} round={true} />
         </WhatsappShareButton>
@@ -276,44 +299,9 @@ const Game: React.FC = () => {
         </TwitterShareButton>
       </div>
     </div>
-    
-    
-              </motion.div>
-              </div>
-              <div className="w-[80%] h-full items-center justify-center">
-              <div className="relative w-[100%] h-[70%] flex justify-center absolute bottom-[-20%]  md:bottom-[-26%] items-center  font-light font-bentham">
-               <motion.div
-    className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden h-[51vh] w-[80%] md:h-[55vh] md:w-[50%] left-1/2 w-full transform -translate-x-1/2 sm:top-0 sm:left-0 sm:transform sm:-translate-x-0 z-10 absolute top-[10%]"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.4, ease: "easeInOut" }}
-    style={{
-      boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-    }}
-  >
-    <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center justify-center absolute top-[10%] left-1/2 w-full transform -translate-x-1/2">
-      {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-    </h2>
-
-    {questions.length > 0 && (
-      <>
-        <p className="poke-name text-lg md:text-2xl mt-2 text-left font-bentham absolute top-[20%] md:top-[25%] left-1/2 w-[80%] transform -translate-x-1/2 justify-left">
-          {navigator.language.includes("es")
-            ? ((score / questions.length) * 100) < 40
-              ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
-              : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-              ? "Todavía te falta para dominar la diferencia entre tecnologías y pokemones 😅  ¡pero no te preocupes 🤗! en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
-              : "Felicitaciones 🥳, dominas casi a la perfección el arte de distinguir tecnologías y pokemones 🤓. En N12 nos especializamos en buscar profesionales de tecnología (y a veces pokemones) con la misma calidad que lo harías tú."
-            : ((score / questions.length) * 100) < 40
-            ? "You have a lot to learn about technology 🤨 but don't worry 🤗, at N12 we specialize in finding technology professionals (and also Pokémon) for you."
-            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-            ? "You still have a way to go to master the difference between technologies and Pokémon 😅 but don't worry 🤗! At N12 we specialize in finding technology professionals (and also Pokémon) for you."
-            : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and Pokémon 🤓. At N12 we specialize in finding technology professionals (and sometimes Pokémon) with the same quality as you would."}
-        </p>
-      </>
-    )}
   </motion.div>
-  </div>
+</div>
+
  
   
 
@@ -323,25 +311,23 @@ const Game: React.FC = () => {
           </div>) 
       : (
           <>
-            <div className={`flex justify-center z-20 text-center w-[55%] sm:w-[27%] h-[15%] mt-[0%] absolute top-[10%] sm:top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
+            <div className={`flex justify-center z-20 text-center w-[50%] sm:w-[50%] md:w-[50%] lg:w-[30%] h-auto mt-[0%] absolute top-[10%] sm:top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
               <motion.div
-                className="absolute inset-0 bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
+                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{
                   boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                }}>
-                <h3 className="text-3xl sm:text-xl md:text-3xl lg:text-4xl  text-black font-bentham text-center">
+                }}
+              >
+                <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham text-center">
                   {questions[currentQuestion].name}
                 </h3>
               </motion.div>
-
             </div>
 
-            <button onClick={() => setIsFlipped(!isFlipped)} className="absolute bottom-10">
-            
-            </button>
+          
  
             <div className="w-full h-[30%]">
               <div className="relative w-full h-[90%] flex justify-center absolute bottom-[-23%]  md:bottom-[-31%]   font-light font-bentham">
@@ -358,14 +344,14 @@ const Game: React.FC = () => {
 
               {isFlipped && (
 
-                <div className="absolute bottom-[10%] right-4 md:bottom-15 md:right-6 z-20 transform -translate-y-[10%]">
+                <div className="absolute bottom-[5%] right-4 md:bottom-15 md:right-6 z-20 transform -translate-y-[8%] left-1/2 transform -translate-x-[50%] w-full">
                   <NextP id="next-button" onClick={handleNextQuestion} />
                 </div> )}
 
               {isFlipped && (
-                <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-15%]">
+                <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-30%]">
                 <motion.div
-                  className="absolute top-[-50vh] w-[80%] sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[40%] max-w-[150px] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
+                  className=" absolute top-[-50vh] w-[55%] sm:w-[50%] md:w-[50%] lg:w-[50%] xl:w-[28%] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -373,7 +359,7 @@ const Game: React.FC = () => {
                     boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                   }}
                 >
-                  <h1 className="text-2xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-2xl font-bentham text-black">
+                  <h1 className="text-2xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-2xl font-bentham text-black w-full">
                     {isSpanish
                       ? isCorrect
                         ? "¡Correcto!"

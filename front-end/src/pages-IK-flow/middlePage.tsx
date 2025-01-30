@@ -179,71 +179,70 @@ const Middle: React.FC = () => {
         
         <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
           {showResults ? (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
-                <motion.div
-                className="relative bg-transparent shadow-xl  p-6 flex flex-col items-start justify-center overflow-hidden h-[43vh]  w-[110%] left-1/2  transform -translate-x-1/2 sm:top-0 sm:left-0 sm:transform sm:-translate-x-0"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  style={{
-                    boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                  }}
-                >
-                 
-                  <h2 className="text-2xl md:text-4xl font-bold mb-4 font-bentham text-center justify-center absolute top-[5%] left-1/2 w-full transform -translate-x-1/2">
-                      {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-                    </h2>
-                  {questions.length > 0 && (
-                    <p className="text-lg md:text-2xl mt-2 text-left font-bentham  justify-center absolute top-[17%] md:top-[25%] left-1/2 w-[90%] transform -translate-x-1/2">
-                      {((score / questions.length) * 100) < 40
-                        ? isSpanish 
-                          ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte" 
-                          : "We wouldn't recommend you going to a technology conference 😭, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
-                        : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                        ? isSpanish 
-                          ? "No te recomendaríamos ir a una conferencia de tecnología 😤, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte " 
-                          : "We wouldn't recommend you going to a technology conference 😤, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
-                        : isSpanish 
-                          ? "Felicitaciones 🤩, distingues casi a la perfección a quienes han dado forma al mundo tecnológico en que vivimos. En N12 nos especializamos en identificar a buenos profesionales de tecnología con la misma calidad que lo harías tú" 
-                          : "Congratulations 🤩, you almost perfectly distinguish those who have shaped the technological world we live in. At N12, we specialize in identifying good technology professionals with the same quality as you would "
-                      }
-                    </p>
-                  )}
-                </motion.div>
+               <div className="absolute inset-0 flex items-center justify-center">
 
-                <motion.div
-                className="relative  shadow-xl p-6 flex items-center justify-center overflow-hidden  h-[20vh]  md:h-[25vh] md:w-[50%] absolute bottom-0 "
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  style={{
-                    boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                  }}
-                
-                >
-                  <div className="mt-8 w-full flex flex-col items-center">
-                    <p className="font-bentham text-black text-2xl sm:text-3xl lg:text-3xl text-center absolute top-[10%]">
-                      {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
-                    </p>
-
-                    <div className="flex space-x-4 mt-6 sm:mt-8 absolute top-[45%]">
-                      <WhatsappShareButton url={shareUrl} title={shareText}>
-                        <WhatsappIcon size={40} round={true} />
-                      </WhatsappShareButton>
-
-                      <FacebookShareButton url={shareUrl} title={shareText}>
-                        <FacebookIcon size={40} round={true} />
-                      </FacebookShareButton>
-
-                      <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
-                        <XIcon size={40} round={true} />
-                      </TwitterShareButton>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div> ) : (
+           
+               <div className="w-[80%] h-full items-center justify-center">
+               <div className="fixed inset-0 flex items-center justify-center w-[90%] left-1/2 transform -translate-x-[50%] ">
+   <motion.div
+     className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[50%] h-auto"
+     initial={{ opacity: 0 }}
+     animate={{ opacity: 1 }}
+     transition={{ duration: 0.4, ease: "easeInOut" }}
+     style={{
+       boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+     }}
+   >
+     <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
+       {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+     </h2>
+ 
+     {questions.length > 0 && (
+         <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%]">
+        {((score / questions.length) * 100) < 40
+          ? isSpanish 
+            ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte" 
+            : "We wouldn't recommend you going to a technology conference 😭, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
+          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+          ? isSpanish 
+            ? "No te recomendaríamos ir a una conferencia de tecnología 😤, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte " 
+            : "We wouldn't recommend you going to a technology conference 😤, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
+          : isSpanish 
+            ? "Felicitaciones 🤩, distingues casi a la perfección a quienes han dado forma al mundo tecnológico en que vivimos. En N12 nos especializamos en identificar a buenos profesionales de tecnología con la misma calidad que lo harías tú" 
+            : "Congratulations 🤩, you almost perfectly distinguish those who have shaped the technological world we live in. At N12, we specialize in identifying good technology professionals with the same quality as you would "
+        }
+      </p>
+     )}
+ 
+     <div className="mt-8 w-full flex flex-col items-center">
+       <p className="font-bold font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center">
+         {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
+       </p>
+ 
+       <div className="flex space-x-4 mt-6 sm:mt-8">
+         <WhatsappShareButton url={shareUrl} title={shareText}>
+           <WhatsappIcon size={40} round={true} />
+         </WhatsappShareButton>
+ 
+         <FacebookShareButton url={shareUrl} title={shareText}>
+           <FacebookIcon size={40} round={true} />
+         </FacebookShareButton>
+ 
+         <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+           <XIcon size={40} round={true} />
+         </TwitterShareButton>
+       </div>
+     </div>
+   </motion.div>
+ </div>
+ 
+  
+   
+ 
+ 
+ </div>
+ 
+           </div>) : (
   
               <>
               
