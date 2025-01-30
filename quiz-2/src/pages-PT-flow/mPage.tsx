@@ -257,14 +257,14 @@ const Game: React.FC = () => {
                   boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                 }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 font-bentham items-center justify-center ">
-                  {navigator.language.includes("es") ?  `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-                </h2>
+                <h2 className="text-2xl md:text-4xl font-bold mb-4 font-bentham text-center justify-center absolute top-[10%] left-1/2 w-full transform -translate-x-1/2">
+                      {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+                    </h2>
 
                 {questions.length > 0 && (
                   <>
                     
-                    <p className="text-lg md:text-2xl mt-2 text-left font-bentham">
+                    <p className="text-md md:text-2xl mt-2 text-left font-bentham absolute top-[26%]">
                       {navigator.language.includes("es")
                         ? ((score / questions.length) * 100) < 40
                           ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
@@ -282,7 +282,7 @@ const Game: React.FC = () => {
               </motion.div>
 
               <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden h-[20vh]  md:h-[25vh] md:w-[50%] "
+                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden h-[20vh] w-[70%]  md:h-[25vh] md:w-[50%] left-1/2 w-full transform -translate-x-1/2  sm:top-0 sm:left-0 sm:transform sm:-translate-x-0 "
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -291,7 +291,7 @@ const Game: React.FC = () => {
                 }}
               >
                 <div className="mt-8 w-full flex flex-col items-center">
-                  <p className="font-bold font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center absolute top-[2%]">
+                  <p className="font-bold font-bentham text-black text-2xl sm:text-3xl lg:text-3xl text-center absolute top-[2%]">
                     {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
                   </p>
 
