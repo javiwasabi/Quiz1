@@ -262,14 +262,11 @@ const handleNextQuestion = () => {
     }
   }, [isFlipped]);
 
-  const shareUrl = "https://quiz2-mauve-omega.vercel.app";
-const shareText = userLanguage
-  ? `¡Tuve el siguiente puntaje: ${score} en reconocer nombres!`
-  : `I scored: ${score} in deciphering names!`;
-  const [isRevealed, setIsRevealed] = useState(false);
-  const [pokemon, setPokemon] = useState<any>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
-
+  const shareUrl = "https://quiz2-mauve-omega.vercel.app";
+  const shareText = userLanguage
+   ? `¡Tuve el siguiente puntaje: ${((score / questions.length) * 100).toFixed(0)}% en reconocer nombres!`
+   : `I scored: ${((score / questions.length) * 100).toFixed(0)}% in deciphering names!`;
   const captureImage = async () => {
     if (resultsRef.current) {
       const canvas = await html2canvas(resultsRef.current);
@@ -295,7 +292,7 @@ const shareText = userLanguage
         alert('Sharing not supported on this browser.');
       }
     }
-  };
+  }
 
   return (
     <div className="relative bg-blue min-h-screen flex items-center justify-center overflow-hidden">
@@ -306,84 +303,89 @@ const shareText = userLanguage
       />
       
       <div className="relative w-[90%] md:w-[70%] lg:w-[60%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
+    
         <img
           src="field.jpg"
           alt="Background"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {showResults ? (
-          <div className="absolute inset-0 flex items-center justify-center">
-           <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-wrap md:flex-nowrap space-y-6 md:space-y-0 md:space-x-6">
-              <motion.div
-                ref={resultsRef}
-                className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                style={{
-                  boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                }}
-              >
-                <h2 className="text-4xl md:text-4xl font-bold mb-4 font-bentham text-left">
-                  {navigator.language.includes("es") ? "Resultados" : "Game Results"}
-                </h2>
+      {showResults ? (
+        <div className="absolute inset-0 flex items-center justify-center">
+  <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex space-x-6">
+  <motion.div
+    className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-start justify-center overflow-hidden"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    style={{
+      boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+    }}
+  >
+    <h2 className="text-4xl md:text-4xl font-bold mb-4 font-bentham text-left">
+      {navigator.language.includes("es") ? "Resultados" : "Game Results"}
+    </h2>
 
-                {questions.length > 0 && (
-                  <>
-                    <p className="text-2xl md:text-2xl mt-4 text-left">
-                      {navigator.language.includes("es")
-                        ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
-                        : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-                    </p>
-                    <p className="text-2xl md:text-2xl mt-2 text-left font-bentham">
-                      {navigator.language.includes("es")
-                        ? ((score / questions.length) * 100) < 40
-                          ? "¡Ups! Parece que no conoces Pokemon"
-                          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                          ? "Sabes algo sobre pokemones, pero no eres un fan"
-                          : "¡Eres un experto total en identificar nombres!"
-                        : ((score / questions.length) * 100) < 40
-                        ? "Oops! Looks like you're not a fan"
-                        : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                        ? "You seem to know something but you are not a fan"
-                        : "You're a total expert at identifying names!"}
-                    </p>
-                  </>
-                )}
-              </motion.div>
+    {questions.length > 0 && (
+      <>
+        <p className="text-2xl md:text-2xl mt-4 text-left">
+          {navigator.language.includes("es")
+            ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
+            : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+        </p>
+        <p className="text-2xl md:text-2xl mt-2 text-left font-bentham">
+          {navigator.language.includes("es")
+            ? ((score / questions.length) * 100) < 40
+              ? "¡Ups! Parece que no conoces Pokemon"
+              : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+              ? "Sabes algo sobre pokemones, pero no eres un fan"
+              : "¡Eres un experto total en identificar nombres!"
+            : ((score / questions.length) * 100) < 40
+            ? "Oops! Looks like you're not a fan"
+            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+            ? "You seem to know something but you are not a fan"
+            : "You're a total expert at identifying names!"}
+        </p>
+      </>
+    )}
+  </motion.div>
 
-              <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                style={{
-                  boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                }}
-              >
-                <div className="mt-8 w-full flex flex-col items-center">
-                  <p className="font-bold font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
-                    {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
-                  </p>
+  <motion.div
+    className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.4, ease: "easeInOut" }}
+    style={{
+      boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+    }}
+  >
+    <div className="mt-8 w-full flex flex-col items-center">
+      <p className="font-bold font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
+        {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
+      </p>
 
-                  <div className="flex space-x-4 mt-6 sm:mt-8">
-                    <button onClick={() => handleShare('whatsapp')}>
-                      <WhatsappIcon size={40} round={true} />
-                    </button>
+      <div className="flex space-x-4 mt-6 sm:mt-8">
+        <WhatsappShareButton url={shareUrl} title={shareText}>
+          <WhatsappIcon size={40} round={true} />
+        </WhatsappShareButton>
 
-                    <button onClick={() => handleShare('facebook')}>
-                      <FacebookIcon size={40} round={true} />
-                    </button>
+        <FacebookShareButton url={shareUrl} title={shareText}>
+          <FacebookIcon size={40} round={true} />
+        </FacebookShareButton>
 
-                    <button onClick={() => handleShare('twitter')}>
-                      <XIcon size={40} round={true} />
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        ) 
+        <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+          <XIcon size={40} round={true} />
+        </TwitterShareButton>
+      </div>
+    </div>
+  </motion.div>
+</div>
+
+
+</div>
+
+
+) 
+
 
       : (
           <>
