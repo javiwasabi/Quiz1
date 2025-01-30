@@ -344,14 +344,16 @@ const Game: React.FC = () => {
 
               {isFlipped && (
 
-                <div className="absolute bottom-[10%] right-4 md:bottom-15 md:right-6 z-20 transform -translate-y-[8%] left-1/2 transform -translate-x-[50%] w-full">
+                <div
+                className={`absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}
+                >
                   <NextP id="next-button" onClick={handleNextQuestion} />
                 </div> )}
 
               {isFlipped && (
                 <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-30%]">
                 <motion.div
-                  className=" absolute top-[-50vh] w-[55%] sm:w-[30%] md:w-[50%] lg:w-[50%] xl:w-[24%] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
+                  className=" absolute top-[-50vh] w-[55%] sm:w-[30%] md:w-[50%] lg:w-[50%] xl:w-[23%] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
