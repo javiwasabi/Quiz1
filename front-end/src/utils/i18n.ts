@@ -7,7 +7,7 @@ import en from "../translations/en/global.json";
 import es from "../translations/es/global.json";
 
 const i18nConfig: InitOptions = {
-  fallbackLng: "en", // Idioma predeterminado
+  fallbackLng: "en", 
   debug: true,
   detection: {
     order: ["queryString", "cookie"],
@@ -17,8 +17,8 @@ const i18nConfig: InitOptions = {
     escapeValue: false,
   },
   resources: {
-    en: en, // Traducciones en inglés
-    es: es, // Traducciones en español
+    en: en, 
+    es: es, 
   },
 };
 

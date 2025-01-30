@@ -3,11 +3,9 @@ import { ButtonNext } from "../components/buttons";
 import { Card, PolaroidPhoto } from "../components/questions";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import html2canvas from "html2canvas";
 import {
   WhatsappShareButton,
   FacebookShareButton,
-  LinkedinShareButton,
   TwitterShareButton,
   WhatsappIcon,
   FacebookIcon,
@@ -15,7 +13,7 @@ import {
   XIcon
 } from "react-share";
 import { motion } from "framer-motion";
-import { IoMdMail, IoLogoInstagram, IoLogoFacebook, IoLogoLinkedin , IoLogoWhatsapp} from "react-icons/io";
+
 const Middle: React.FC = () => {
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -24,42 +22,18 @@ const Middle: React.FC = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const shareUrl = "https://quiz1-pearl.vercel.app";
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const userLanguage = navigator.language.startsWith("es") ? "es" : "en";
-  
   const shareText = userLanguage
     ? `¡Tuve el siguiente puntaje: ${score} en reconocer caras!`
-    : `I scored: ${score} in deciphering faces!`;
-    const captureRef = useRef<HTMLDivElement>(null);
-
-   
-
+    : `I scored: ${score} in deciphering faces!`;;
   const [showSerialKiller, setShowSerialKiller] = useState(false);
   const [showInventor, setShowInventor] = useState(false);
   const [showOr, setShowOr] = useState(true);
   const { t, i18n } = useTranslation();
-  
-  const message = `I scored ${score} in this app! Check it out: https://quiz1-pearl.vercel.app/question`;
-
- 
-  
-
-
-  useEffect(() => {
-    const browserLanguage = navigator.language || navigator.languages[0];
-    const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
-    i18n.changeLanguage(languageToSet).then(() => {
-
-    });
-  }, [i18n]);
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng).then(() => {
-
-    });
-  };
-
   const navigate = useNavigate();
+  const scoreRef = useRef(0);
+  const isSpanish = userLanguage.startsWith('es');
+
   const translations: Record<string, Record<string, string>> = {
     en: {
       "Creator of Python, a popular programming language.": "Guido van Rossum - Creator of Python, a popular programming language.",
@@ -137,7 +111,7 @@ const Middle: React.FC = () => {
   ];
   
   
-  const scoreRef = useRef(0);
+
   const handleAnswer = (answer: string) => {
     if (answered) return;
   
@@ -161,6 +135,7 @@ const Middle: React.FC = () => {
     setShowInventor(false);
     setShowOr(false);
   };
+
   const handleNextQuestion = () => {
     if (!answered) return;
   
@@ -197,19 +172,6 @@ const Middle: React.FC = () => {
     }
   };
 
-const isSpanish = userLanguage.startsWith('es');
-  
-  const [visibleResults, setVisibleResults] = useState(3);
-  const loadMoreResults = () => {
-    setVisibleResults((prev) => prev + 3);
-  };
-
-  const handleFinishGame = () => {
-    console.log("Puntaje final guardado:", score);
-    sessionStorage.setItem("finalScore", score.toString());
-    navigate("/final");
-  };
-  
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setShowSerialKiller(true);
@@ -233,100 +195,99 @@ const isSpanish = userLanguage.startsWith('es');
   useEffect(() => {
     console.log("Puntaje actualizado:", score);
   }, [score]);
+  
+  useEffect(() => {
+    const browserLanguage = navigator.language || navigator.languages[0];
+    const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+    i18n.changeLanguage(languageToSet).then(() => {
+
+    });
+  }, [i18n]);
 
 
   return (
     <div className="bg-black min-h-screen flex items-center justify-center z-0 relative">
-  <div className="relative w-[92%] sm:w-[80%] h-[90vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10 absolute ">
-    <img
-      src="assets/background-IK.jpg"
-      alt="Background"
-      className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"
-    />
-    
+      <div className="relative w-[92%] sm:w-[80%] h-[90vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10 absolute ">
+        <img
+          src="assets/background-IK.jpg"
+          alt="Background"
+          className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"
+        />
+        
+        <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
+          {showResults ? (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
+                <motion.div
+                className="relative bg-transparent shadow-xl  p-6 flex flex-col items-start justify-center overflow-hidden"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  style={{
+                    boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 font-bentham text-center">
+                    {navigator.language.includes("es") ? "Resultados del juego" : "Game Results"}
+                  </h2>
 
-      <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
-      {showResults ? (
-       <div className="absolute inset-0 flex items-center justify-center">
-       <div className="bg-transparent p-6 rounded-lg max-w-4xl w-[90%] flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0">
-  <motion.div
-   className="relative bg-transparent shadow-xl  p-6 flex flex-col items-start justify-center overflow-hidden"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.4, ease: "easeInOut" }}
-    style={{
-      boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-    }}
-  >
-    <h2 className="text-3xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 font-bentham text-center">
-      {navigator.language.includes("es") ? "Resultados del juego" : "Game Results"}
-    </h2>
+                  {questions.length > 0 && (
+                    <p className="text-2xl md:text-2xl font-bentham mt-4 text-left">
+                      {navigator.language.includes("es")
+                        ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
+                        : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+                    </p>
+                  )}
 
-    {questions.length > 0 && (
-      <p className="text-2xl md:text-2xl font-bentham mt-4 text-left">
-        {navigator.language.includes("es")
-          ? `Tuviste el ${((score / questions.length) * 100).toFixed(0)}% de aciertos`
-          : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-      </p>
-    )}
+                  {questions.length > 0 && (
+                    <p className="text-2xl md:text-2xl mt-2 text-left font-bentham">
+                      {((score / questions.length) * 100) < 40
+                        ? isSpanish 
+                          ? "Ups! parece que no sabes mucho" 
+                          : "Oops! It seems you don't know that much"
+                        : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+                        ? isSpanish 
+                          ? "Pareciera que sabes un poco sobre reconocer caras, pero no mucho" 
+                          : "It seems you know something, but there's room for improvement"
+                        : isSpanish 
+                          ? "¡Eres un experto total en identificar caras!" 
+                          : "You're a total expert at identifying faces!"}
+                    </p>
+                  )}
+                </motion.div>
 
-    {questions.length > 0 && (
-      <p className="text-2xl md:text-2xl mt-2 text-left font-bentham">
-        {((score / questions.length) * 100) < 40
-          ? isSpanish 
-            ? "Ups! parece que no sabes mucho" 
-            : "Oops! It seems you don't know that much"
-          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-          ? isSpanish 
-            ? "Pareciera que sabes un poco sobre reconocer caras, pero no mucho" 
-            : "It seems you know something, but there's room for improvement"
-          : isSpanish 
-            ? "¡Eres un experto total en identificar caras!" 
-            : "You're a total expert at identifying faces!"}
-      </p>
-    )}
-  </motion.div>
+                <motion.div
+                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden shadow-lg rounded-lg border-4 border-yellow-600 "
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  style={{
+                    background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+                  }}
+                >
+                  <div className="mt-8 w-full flex flex-col items-center">
+                    <p className="font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
+                      {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
+                    </p>
 
-  <motion.div
-   className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden shadow-lg rounded-lg border-4 border-yellow-600 "
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.4, ease: "easeInOut" }}
-    style={{
-      background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-    }}
-  >
-    <div className="mt-8 w-full flex flex-col items-center">
-      <p className="font-bentham text-black text-3xl sm:text-3xl lg:text-3xl text-center">
-        {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
-      </p>
+                    <div className="flex space-x-4 mt-6 sm:mt-8">
+                      <WhatsappShareButton url={shareUrl} title={shareText}>
+                        <WhatsappIcon size={40} round={true} />
+                      </WhatsappShareButton>
 
-      <div className="flex space-x-4 mt-6 sm:mt-8">
-        <WhatsappShareButton url={shareUrl} title={shareText}>
-          <WhatsappIcon size={40} round={true} />
-        </WhatsappShareButton>
+                      <FacebookShareButton url={shareUrl} title={shareText}>
+                        <FacebookIcon size={40} round={true} />
+                      </FacebookShareButton>
 
-        <FacebookShareButton url={shareUrl} title={shareText}>
-          <FacebookIcon size={40} round={true} />
-        </FacebookShareButton>
-
-        <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
-          <XIcon size={40} round={true} />
-        </TwitterShareButton>
-      </div>
-    </div>
-  </motion.div>
-</div>
-
-
-     
-     </div>
-     
-      
-) 
-
- : (
+                      <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+                        <XIcon size={40} round={true} />
+                      </TwitterShareButton>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div> ) : (
   
               <>
                 {answered && (
@@ -366,53 +327,51 @@ const isSpanish = userLanguage.startsWith('es');
                   style={{ transform: "rotate(22deg)" }}>
                   <PolaroidPhoto />
                 </div>
-
-                
-
               </>
             )}
+
           {!answered && (
-  <div className=" screen absolute bottom-[-10%] w-full flex justify-center items-center z-10 font-bentham mt-10 space-x-4">
-    {showSerialKiller && (
-      <div
-        className="relative w-[79%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
-        style={{
-          background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-        }}
-        onClick={() => handleAnswer("Killer")}
-      >
-        <span className="block text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider text-center">
-          {t("who")}
-        </span>
-      </div>
-    )}
+            <div className=" screen absolute bottom-[-10%] w-full flex justify-center items-center z-10 font-bentham mt-10 space-x-4">
+              {showSerialKiller && (
+                <div
+                  className="relative w-[79%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
+                  style={{
+                    background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+                  }}
+                  onClick={() => handleAnswer("Killer")}
+                >
+                  <span className="block text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider text-center">
+                    {t("who")}
+                  </span>
+                </div>
+              )}
 
-    {showOr && (
-      <span className="text-xl sm:text-xl md:text-2xl font-bentham uppercase tracking-wider text-black mx-0 mb-2 sm:mb-0 bg-white py-1 px-4 border-2 border-black rounded-lg shadow-md">
-        or
-      </span>
-    )}
+              {showOr && (
+                <span className="text-xl sm:text-xl md:text-2xl font-bentham uppercase tracking-wider text-black mx-0 mb-2 sm:mb-0 bg-white py-1 px-4 border-2 border-black rounded-lg shadow-md">
+                  or
+                </span>
+              )}
 
-    {showInventor && (
-      <div
-        className="relative w-[100%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
-        style={{
-          background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-        }}
-        onClick={() => handleAnswer("Inventor")}
-      >
-        <span className="block text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider">
-          {t("whoi")}
-        </span>
-      </div>
-    )}
-  </div>
-)}
+              {showInventor && (
+                <div
+                  className="relative w-[100%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
+                  style={{
+                    background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+                  }}
+                  onClick={() => handleAnswer("Inventor")}
+                >
+                  <span className="block text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider">
+                    {t("whoi")}
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
 
 
-          </div>
+        </div>
           
       </div>
      

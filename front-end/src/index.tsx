@@ -5,10 +5,6 @@ import reportWebVitals from './reportWebVitals';
 import Vie from './pages-IK-flow/firstPage'; 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
 import Middle from './pages-IK-flow/middlePage';
-
-
-import { Provider } from 'react-redux';
-
 import './utils/i18n';
 
 
@@ -28,8 +24,6 @@ root.render(
         <Routes>
           <Route path="/" element={<Vie />} /> 
           <Route path="/question" element={<Middle />} /> 
-
-         
         </Routes>
       </Router>
       </Suspense>

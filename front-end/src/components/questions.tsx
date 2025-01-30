@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { NextP } from "./buttons";
 import '../styles/background.css';
 import ReactCardFlip from "react-card-flip";
 import { useTranslation } from "react-i18next";
@@ -31,8 +30,6 @@ export const Card: React.FC<CardProps> = ({
     setIsSpanish(userLanguage.startsWith("es"));
   }, []);
     
-  
-    
       
   useEffect(() => {
     const browserLanguage = navigator.language || navigator.languages[0];
@@ -42,11 +39,6 @@ export const Card: React.FC<CardProps> = ({
     });
   }, [i18n]);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng).then(() => {
-
-    });
-  };
   useEffect(() => {
     setTypedText("");
     setIndex(0);
@@ -78,56 +70,53 @@ export const Card: React.FC<CardProps> = ({
         }}
       >
         <div className="w-full h-[200px] flex items-center justify-center rounded-lg bg-black">
-  <img
-    src={imageUrl}
-    alt="Polaroid"
-    className="w-full h-full object-cover border-2 border-black rounded-md"
-    style={{ maxWidth: "500px", maxHeight: "200px", minHeight: "150px", minWidth: "200px" }}
-  />
-</div>
+          <img
+            src={imageUrl}
+            alt="Polaroid"
+            className="w-full h-full object-cover border-2 border-black rounded-md"
+            style={{ maxWidth: "500px", maxHeight: "200px", minHeight: "150px", minWidth: "200px" }}
+          />
+        </div>
 
         <p className="mt-4 text-xl sm:text-xl md:text-3xl text-black font-bentham text-center leading-tight">
         {t("textp")}
         </p>
-      </div>
-      <div
-  className={`relative flex flex-col items-center justify-center rounded-lg p-4 w-[5vh] h-[3vh] sm:w-[400px] sm:h-[370px] border-2 border-black flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer
-           ${!isFlipped ? 'bg-transparent' : 'bg-white'}`}
-           style={{
-            overflow: "hidden",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            maxWidth: "600px", maxHeight: "600px", minHeight: "280px", minWidth: "250px"
-          }}
->
-  {isFlipped && (
-    <div className="absolute inset-0 flex justify-center items-left border-2 border-black rounded-md">
-      <h1
-        className={`absolute top-[7%] text-xl sm:text-xl md:text-3xl  font-bentham  text-black ${isCorrect ? 'text-black' : 'text-black'} w-[70%] max-w-[300px] text-center`}
-      >
-        {isSpanish
-          ? isCorrect
-            ? "¡Correcto!"
-            : "¡Incorrecto!"
-          : isCorrect
-          ? "Correct!"
-          : "Incorrect!"
-        }
-      </h1>
     </div>
-  )}
+      <div
+        className={`relative flex flex-col items-center justify-center rounded-lg p-4 w-[5vh] h-[3vh] sm:w-[400px] sm:h-[370px] border-2 border-black flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer
+                ${!isFlipped ? 'bg-transparent' : 'bg-white'}`}
+        style={{
+                overflow: "hidden",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                maxWidth: "600px", maxHeight: "600px", minHeight: "280px", minWidth: "250px"
+                }}
+        >
+      {isFlipped && (
+        <div className="absolute inset-0 flex justify-center items-left border-2 border-black rounded-md">
+          <h1
+            className={`absolute top-[7%] text-xl sm:text-xl md:text-3xl  font-bentham  text-black ${isCorrect ? 'text-black' : 'text-black'} w-[70%] max-w-[300px] text-center`}
+          >
+            {isSpanish
+              ? isCorrect
+                ? "¡Correcto!"
+                : "¡Incorrecto!"
+              : isCorrect
+              ? "Correct!"
+              : "Incorrect!"
+            }
+          </h1>
+        </div>
+      )}
 
-  {/* Texto animado */}
-  <p className="mt-4 text-xl sm:text-xl md:text-3xl font-light font-bentham  text-center flex-grow flex items-center justify-center">
-    {typedText}
-  </p>
-</div>
 
-
-
-    </ReactCardFlip>
+      <p className="mt-4 text-xl sm:text-xl md:text-3xl font-light font-bentham  text-center flex-grow flex items-center justify-center">
+        {typedText}
+      </p>
+  </div>
+  </ReactCardFlip>
   );
 };
 

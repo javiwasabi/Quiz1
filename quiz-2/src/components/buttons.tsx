@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import "../styles/idk.css"; // Asegúrate de importar el archivo CSS
 const userLang = navigator.language || navigator.language;
 const isSpanish = userLang.startsWith("es");
 
@@ -10,20 +9,6 @@ interface ButtonNextProps {
   id?: string; 
 }
 
-export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
-  return (
-    <div className="absolute bottom-[15%] left-1/2 transform -translate-x-1/2 mb-4 sm:mb-6 md:mb-8 lg:mb-10">
-      <button
-        id={id} 
-        className="relative px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 lg:px-12 lg:py-6 bg-gray-800 text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bentham rounded-full border-4 transition-all hover:bg-black hover:text-white"
-        onClick={onClick}
-      >
-        <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity"></div>
-        <span className="relative z-10">{isSpanish ? "SIGUIENTE" : "NEXT"}</span>
-      </button>
-    </div>
-  );
-};
 export const Choice: React.FC<{ 
   onClick: () => void; 
   id: string; 
@@ -101,7 +86,6 @@ interface PokemonCardProps {
 }
 
 export const PokemonCard: React.FC<PokemonCardProps> = ({ onClick, id }) => {
-  // Función para manejar el clic en el ícono de la Pokébola
   const handleClick = () => {
     onClick();
   };

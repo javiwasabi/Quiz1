@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ButtonStartp, Pokeb } from "../components/buttons";
+import { ButtonStartp } from "../components/buttons";
 import "../styles/background.css";
 import { motion } from "framer-motion";
-
-import { X } from "lucide-react";
 
 const First: React.FC = () => {
   const [isRevealed, setIsRevealed] = useState(false);
@@ -45,8 +43,7 @@ const First: React.FC = () => {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             style={{
               boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-            }}
-          >
+            }}>
             <h1 className="text-3xl sm:text-2xl md:text-4xl text-black font-bentham text-center leading-tight text-ellipsis overflow-hidden">
               {isSpanish ? (
                 <>
@@ -63,18 +60,16 @@ const First: React.FC = () => {
               )}
             </h1>
           </motion.div>
-          </div>
+        </div>
 
-
-    {/* Pokeball interactiva */}
-<div
-  className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw] ball absolute bottom-[-8%] cursor-pointer"
-  onClick={handleClick}
->
-  <div className="inside"></div>
-  <div className="center"></div>
-  <div className="absolute bottom-[0%] left-0 right-0 h-1/2 rounded-b-full bg-transparent"></div>
-</div>
+        <div
+          className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw] ball absolute bottom-[-8%] cursor-pointer"
+          onClick={handleClick}
+        >
+          <div className="inside"></div>
+          <div className="center"></div>
+          <div className="absolute bottom-[0%] left-0 right-0 h-1/2 rounded-b-full bg-transparent"></div>
+        </div>
 
 
         <div
