@@ -264,7 +264,7 @@ const Game: React.FC = () => {
                 {questions.length > 0 && (
                   <>
                     
-                    <p className="text-md md:text-2xl mt-2 text-left font-bentham absolute top-[26%]">
+                    <p className="text-lg md:text-2xl mt-2 text-left font-bentham absolute top-[26%] absolute top-[20%] md:top-[25%] left-1/2 w-[90%] transform -translate-x-1/2">
                       {navigator.language.includes("es")
                         ? ((score / questions.length) * 100) < 40
                           ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
