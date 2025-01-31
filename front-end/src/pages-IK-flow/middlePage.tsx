@@ -20,16 +20,16 @@ const Middle: React.FC = () => {
   const [answered, setAnswered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showResults, setShowResults] = useState(false);
-  const shareUrl = "https://quiz1-pearl.vercel.app";
+  const shareUrl = "https://programadoroasesino.n12.cl";
   const userLanguage = navigator.language.startsWith("es") ? "es" : "en";
   const shareText = userLanguage
-    ? `¡Tuve el siguiente puntaje: ${score} en reconocer caras!`
-    : `I scored: ${score} in deciphering faces!`;;
+    ? `Obtuve un  ${score} de aciertos en el juego Developers vs Asesinos Seriales. Juegalo tú también en`
+    : `I scored ${score} correct answers in the game Developers vs Serial Killers. Play it too at`;
   const [showSerialKiller, setShowSerialKiller] = useState(true);
   const [showInventor, setShowInventor] = useState(true);
   const [showOr, setShowOr] = useState(true);
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
+
   const scoreRef = useRef(0);
   const isSpanish = userLanguage.startsWith('es');
 

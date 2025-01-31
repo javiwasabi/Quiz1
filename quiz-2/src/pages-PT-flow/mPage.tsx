@@ -28,7 +28,6 @@ const Game: React.FC = () => {
   const [showPokemonButton, setShowPokemonButton] = useState(true);
   const [showTechnologyButton, setShowTechnologyButton] = useState(true);
   const [showOr, setShowOr] = useState(true);
-  const navigate = useNavigate();
   const [isSpanish, setIsSpanish] = useState(false);
   const userLanguage = navigator.language.startsWith("es") ? "es" : "en";
   const [choicesEnabled, setChoicesEnabled] = useState(true);
@@ -141,10 +140,11 @@ const Game: React.FC = () => {
   ];
 
   const resultsRef = useRef<HTMLDivElement>(null);
-  const shareUrl = "https://quiz2-mauve-omega.vercel.app";
+  const shareUrl = "https://pokemonotecnologia.n12.cl";
   const shareText = userLanguage
-   ? `¡Tuve el siguiente puntaje: ${((score / questions.length) * 100).toFixed(0)}% en reconocer nombres!`
-   : `I scored: ${((score / questions.length) * 100).toFixed(0)}% in deciphering names!`;
+  ? `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos en el Pokemones vs Tecnologías. Juegalo tú también en`
+  : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game Pokemons vs Technology. Play it too at`;
+
   const captureImage = async () => {
     if (resultsRef.current) {
       const canvas = await html2canvas(resultsRef.current);
