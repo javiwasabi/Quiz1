@@ -32,11 +32,11 @@ const Vie: React.FC = () => {
       </div>
 
 
-      <div className="absolute top-[46%] w-full flex justify-center space-x-8 z-10"> {/* Imagen de silueta con un z-index mayor que las cartas */}
+      <div className="absolute top-[46%] sm:top-[36%]  w-full flex justify-center space-x-8 z-10"> 
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/SVG_Human_Silhouette.svg/640px-SVG_Human_Silhouette.svg.png"
           alt="Background"
-          className="absolute inset-1"
+          className="absolute inset-1 sm:left-1/2 transform sm:-translate-x-[50%]"
         />
       </div>
 
