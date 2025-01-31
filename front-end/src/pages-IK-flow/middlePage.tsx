@@ -69,7 +69,7 @@ const Middle: React.FC = () => {
     {
       imageUrl: "assets/Dennis_Ritchie_2011.jpg",
       correctAnswer: "Inventor",
-      context: translations[userLanguage]["Cocreator of C programming language and Unix OS."],
+      context: translations[userLanguage]["Creator of C programming language and Unix OS."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
     {
@@ -200,7 +200,7 @@ const Middle: React.FC = () => {
                <div className=" w-[80%] h-[80%] items-center justify-center transform-none">
                <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none">
    <motion.div
-     className="relative bg-white   border-2 border-black rounded-xl  p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[50%] h-auto"
+     className="relative bg-white   border-2 border-black rounded-xl  p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto"
      initial={{ opacity: 0 }}
      animate={{ opacity: 1 }}
      transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -229,6 +229,9 @@ const Middle: React.FC = () => {
         }
       </p>
      )}
+     <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl ">
+  N12 - Recruiters in Tech
+</a>
  
      <div className="mt-8 w-full flex flex-col items-center">
        <p className="font-bold font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center">

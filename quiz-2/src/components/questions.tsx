@@ -52,18 +52,18 @@ export const CardPok: React.FC<CardPropsp> = ({
       <div className="relative flex flex-col items-center font-bentham w-full">
         {/* Ball */}
         <div
-  className="fixed top-[-20%] sm:top-[-10%] w-40 h-40 ball z-0"
-  style={{
-    transform: isRevealed ? "rotate(0deg)" : "rotateY(180deg)",
-    transition: "transform 0.5s ease-in-out",
-  }}
->
-  <div className="inside"></div>
-  <div className="center"></div>
-  <div className="absolute bottom-[20%] left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
-</div>
-
-
+          className={`fixed top-[-20%] sm:top-[-10%] w-40 h-40 ball z-0 ${
+            isRevealed ? "opacity-0" : "opacity-100"
+          }`}
+          style={{
+            transform: isRevealed ? "rotateY(180deg)" : "rotate(0deg)",
+            transition: "transform 0.5s ease-in-out, opacity 0.5s ease",
+          }}
+        >
+          <div className="inside"></div>
+          <div className="center"></div>
+          <div className="absolute bottom-[20%] left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
+        </div>
 
         {/* Pokémon / Card */}
         <div

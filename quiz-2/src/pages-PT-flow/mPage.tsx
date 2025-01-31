@@ -227,6 +227,15 @@ const Game: React.FC = () => {
       setAnimationClass("opacity-0 scale-95");
     }
   }, [isFlipped]);
+  const [scale, setScale] = useState(window.innerWidth < 640 ? 0.8 : 1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScale(window.innerWidth < 640 ? 0.8 : 1);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
 
 
@@ -246,11 +255,16 @@ const Game: React.FC = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
         {showResults ? (
-          <div className="absolute inset-0 flex items-center justify-center">
-
-           
-              <div className="w-[80%] h-full items-center justify-center">
-              <div className="fixed inset-0 flex items-center justify-center w-[90%] left-1/2 transform -translate-x-[50%] ">
+           <div
+           style={{
+             transform: `scale(${scale})`,
+             transformOrigin: "center",
+           }}
+           className="absolute inset-0 flex items-center justify-center"
+         >
+      
+          <div className=" w-[80%] h-[80%] items-center justify-center transform-none">
+          <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none">
   <motion.div
     className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[50%] h-auto"
     initial={{ opacity: 0 }}
@@ -279,8 +293,12 @@ const Game: React.FC = () => {
           : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and Pokémon 🤓. At N12 we specialize in finding technology professionals (and sometimes Pokémon) with the same quality as you would."}
       </p>
     )}
+    <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl ">
+  N12 - Recruiters in Tech
+</a>
 
     <div className="mt-8 w-full flex flex-col items-center">
+    
       <p className="font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center">
         {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
       </p>
