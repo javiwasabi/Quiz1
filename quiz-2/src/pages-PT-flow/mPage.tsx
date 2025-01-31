@@ -238,7 +238,7 @@ const Game: React.FC = () => {
         className="absolute inset-0 h-full w-full object-cover"
       />
       
-      <div className="relative w-[90%] md:w-[70%] lg:w-[60%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
+      <div className="relative w-[90%] md:w-[70%] lg:w-[60%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-between py-6">
     
         <img
           src="field.jpg"
@@ -354,7 +354,7 @@ const Game: React.FC = () => {
                </motion.div>
              </div>
               )}
-            | <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%]  top-[-10%] sm:top-[2%]  font-light font-bentham z-0">
+            | <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%]  top-[125%] sm:top-[140%]  font-light font-bentham z-0">
                 <CardPok
                   imageUrl={questions[currentQuestion].imageUrl}
                   context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}

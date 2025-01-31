@@ -81,7 +81,7 @@ export const CardPok: React.FC<CardPropsp> = ({
                 "radial-gradient(circle at 70% 0%, white, 46%, #EEEEEE 36%)",
               transform: isRevealed ? "scale(1)" : "scale(0.7)",
               opacity: isRevealed ? "1" : "0",
-              top: "6vh",
+              top: "0vh",
             }}
             className="card w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px]" // Ajuste de la altura
           >
