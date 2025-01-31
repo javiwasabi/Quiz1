@@ -37,7 +37,7 @@ const Middle: React.FC = () => {
   const translations: Record<string, Record<string, string>> = {
     en: {
       "Creator of Python, a popular programming language.": "Guido van Rossum - Creator of Python, a popular programming language.",
-      "Cocreator of C programming language and Unix OS.": "Dennis Ritchie - Cocreator of C programming language and Unix OS.",
+      "Creator of C programming language and Unix OS.": "Dennis Ritchie - Creator of C programming language and Unix OS.",
       "Known as the BTK killer, responsible for multiple murders.": "Dennis Rader - Known as the BTK killer, responsible for multiple murders.",
       "Creator of the Java programming language.": "James Gosling - Creator of the Java programming language.",
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Notorious for the Milwaukee Cannibal murders.",
@@ -47,7 +47,7 @@ const Middle: React.FC = () => {
     },
     es: {
       "Creator of Python, a popular programming language.": "Guido van Rossum - Creador de Python, un lenguaje de programación popular.",
-      "Cocreator of C programming language and Unix OS.": "Dennis Ritchie - Cocreador del lenguaje de programación C y del sistema operativo Unix.",
+      "Creator of C programming language and Unix OS.": "Dennis Ritchie - Creador del lenguaje de programación C y del sistema operativo Unix.",
       "Known as the BTK killer, responsible for multiple murders.": "Dennis Rader - Conocido como el asesino BTK, responsable de múltiples asesinatos.",
       "Creator of the Java programming language.": "James Gosling - Creador del lenguaje de programación Java.",
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Conocido por los asesinatos del Caníbal de Milwaukee.",
