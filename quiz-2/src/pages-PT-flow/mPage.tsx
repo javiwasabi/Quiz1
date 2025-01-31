@@ -331,7 +331,7 @@ const Game: React.FC = () => {
               </motion.div>
             </div>
             {isFlipped && (
-                <div className={`absolute top-[0%] sm:top-[12%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center `}>
+                <div className={`absolute top-[0%] sm:top-[12%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 `}>
                   <motion.div
                   className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] "
                   initial={{ opacity: 0 }}
@@ -354,7 +354,7 @@ const Game: React.FC = () => {
                </motion.div>
              </div>
               )}
-            | <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%]  top-[-10%] sm:top-[0%]  font-light font-bentham">
+            | <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%]  top-[-10%] sm:top-[0%]  font-light font-bentham z-0">
                 <CardPok
                   imageUrl={questions[currentQuestion].imageUrl}
                   context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
