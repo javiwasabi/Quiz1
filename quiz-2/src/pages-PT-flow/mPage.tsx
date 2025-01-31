@@ -363,7 +363,7 @@ useEffect(() => {
             {isFlipped && (
                 <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
                   <motion.div
-                  className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:max-w-[250px]   nesthub:left-[50%]  nesthub:transform -translate-x-1/2 "
+                  className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:max-w-[250px]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                 
