@@ -165,15 +165,41 @@ const Middle: React.FC = () => {
 
     });
   }, [i18n]);
-  const [scale, setScale] = useState(window.innerWidth < 640 ? 0.8 : 1);
-
+  const getScaleFactor = () => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+  
+  
+    if (width >= 1000 && width <= 1024  && height <= 610) {
+      return 0.8; 
+    }
+  
+  };
+  
+    const [scale, setScale] = useState(getScaleFactor());
+    const [resizeFactor, setResizeFactor] = useState(window.innerWidth < 640 ? 0.8 : 1);
+  
   useEffect(() => {
     const handleResize = () => {
-      setScale(window.innerWidth < 640 ? 0.8 : 1);
+      setResizeFactor(window.innerWidth < 640 ? 0.8 : 1);
     };
+  
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
+  
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setScale(getScaleFactor());
+    };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  
+  
 
 
 
@@ -186,19 +212,19 @@ const Middle: React.FC = () => {
           className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"
         />
         
-        <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
+        <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center nesthub:w-full  ">
           {showResults ? (
             <div
               style={{
-                transform: `scale(${scale})`,
+                transform: `scale(${resizeFactor})`,
                 transformOrigin: "center",
               }}
-              className="absolute inset-0 flex items-center justify-center">
+              className="absolute inset-0 flex items-center justify-center auto  nesthub:w-full ">
            
-                <div className=" w-[80%] h-[80%] items-center justify-center transform-none">
-                  <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none">
+                <div className=" w-[80%] h-[80%] items-center justify-center transform-none auto  nesthub:w-full ">
+                  <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none ">
                     <motion.div
-                      className="relative bg-white   border-2 border-black rounded-xl  p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto"
+                      className="relative bg-white   border-2 border-black rounded-xl  p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto  nesthub:max-h-[450px] nesthub:max-w-full"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -212,7 +238,7 @@ const Middle: React.FC = () => {
                       </h2>
                   
                       {questions.length > 0 && (
-                          <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%]">
+                          <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%]  nesthub:text-lg">
                           {((score / questions.length) * 100) < 40
                             ? isSpanish 
                               ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte." 
@@ -227,12 +253,12 @@ const Middle: React.FC = () => {
                           }
                         </p>
                       )}
-                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl ">
+                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl  nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
                   
                       <div className="mt-8 w-full flex flex-col items-center">
-                        <p className="font-bold font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center">
+                        <p className="font-bold font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center nesthub:text-2xl ">
                           {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
                         </p>
                   
