@@ -354,7 +354,7 @@ const Game: React.FC = () => {
                </motion.div>
              </div>
               )}
-            | <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%]  top-[-10%] sm:top-[0%]  font-light font-bentham z-0">
+            | <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%]  top-[-10%] sm:top-[2%]  font-light font-bentham z-0">
                 <CardPok
                   imageUrl={questions[currentQuestion].imageUrl}
                   context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
