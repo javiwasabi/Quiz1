@@ -22,12 +22,12 @@ const typeColor: Record<string, string> = {
   water: "#59A2E6",
 };
 interface CardPropsp {
-  imageUrl: string; // URL de la imagen a mostrar
-  context: string; // Nombre de la tecnología o Pokémon
-  isCorrect: boolean; // Si la respuesta fue correcta
-  isFlipped: boolean; // Estado de la tarjeta (adivinando o revelada)
-  score: number; // Puntaje actual
-  onNext: () => void; // Callback para pasar a la siguiente tarjeta
+  imageUrl: string;
+  context: string; 
+  isCorrect: boolean; 
+  isFlipped: boolean; 
+  score: number; 
+  onNext: () => void; 
   namep: string;
 }
 export const CardPok: React.FC<CardPropsp> = ({
@@ -42,7 +42,7 @@ export const CardPok: React.FC<CardPropsp> = ({
   const [isRevealed, setIsRevealed] = useState(false);
   const [pokemon, setPokemon] = useState<any>(null);
 
-  // Sincroniza el estado interno con isFlipped
+
   useEffect(() => {
     setIsRevealed(isFlipped);
   }, [isFlipped]);
@@ -50,7 +50,7 @@ export const CardPok: React.FC<CardPropsp> = ({
   return (
     <div className="flex absolute bottom-0 w-full">
       <div className="relative flex flex-col items-center font-bentham w-full">
-        {/* Ball */}
+
         <div
           className={`fixed top-[-20%] sm:top-[-10%] w-40 h-40 ball z-0 ${
             isRevealed ? "opacity-0" : "opacity-100"
@@ -65,7 +65,7 @@ export const CardPok: React.FC<CardPropsp> = ({
           <div className="absolute bottom-[20%] left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
         </div>
 
-        {/* Pokémon / Card */}
+
         <div
           className={`absolute transition-transform duration-500 ${
             isRevealed
@@ -73,7 +73,7 @@ export const CardPok: React.FC<CardPropsp> = ({
               : "translate-y-[50%] opacity-0 scale-90"
           }`}
         >
-          {/* Card */}
+
           <div
             id="card"
             style={{
@@ -83,7 +83,7 @@ export const CardPok: React.FC<CardPropsp> = ({
               opacity: isRevealed ? "1" : "0",
               top: "6vh",
             }}
-            className="card w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10" // Ajuste de la altura
+            className="card w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10" 
           >
             <img
               src={imageUrl}

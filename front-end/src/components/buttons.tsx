@@ -13,10 +13,6 @@ export const ButtonStart: React.FC = () => {
     i18n.changeLanguage(languageToSet).then(() => {});
   }, [i18n]);
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng).then(() => {});
-  };
-
   return (
     <div className="flex flex-col items-center justify-center h-[30%] w-full font-frijole px-4 items-center">
       <Link to="/question">
@@ -46,22 +42,22 @@ interface ButtonNextProps {
 export const ButtonNext: React.FC<ButtonNextProps> = ({ onClick, id }) => {
   const { t, i18n } = useTranslation();
       
-        
-        useEffect(() => {
-          const browserLanguage = navigator.language || navigator.languages[0];
-          const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
-          i18n.changeLanguage(languageToSet).then(() => {
+  
+  useEffect(() => {
+    const browserLanguage = navigator.language || navigator.languages[0];
+    const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+    i18n.changeLanguage(languageToSet).then(() => {
 
-          });
-        }, [i18n]);
+    });
+  }, [i18n]);
 
 
-      
-        const changeLanguage = (lng: string) => {
-          i18n.changeLanguage(lng).then(() => {
 
-          });
-        };
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng).then(() => {
+
+    });
+  };
   return (
     <div className="absolute bottom-[15%] left-1/2 transform -translate-x-1/2 mb-4 sm:mb-6 md:mb-8 lg:mb-10">
       <button
@@ -86,21 +82,14 @@ export const NextP:React.FC<ButtonNextProps> = ({ onClick, id }) => {
    const { t, i18n } = useTranslation();
       
         
-        useEffect(() => {
-          const browserLanguage = navigator.language || navigator.languages[0];
-          const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
-          i18n.changeLanguage(languageToSet).then(() => {
+  useEffect(() => {
+    const browserLanguage = navigator.language || navigator.languages[0];
+    const languageToSet = browserLanguage.startsWith("es") ? "es" : "en";
+    i18n.changeLanguage(languageToSet).then(() => {
 
-          });
-        }, [i18n]);
+    });
+  }, [i18n]);
       
-
-      
-        const changeLanguage = (lng: string) => {
-          i18n.changeLanguage(lng).then(() => {
-
-          });
-        };
   return (
     <div className="flex flex-col items-center justify-center h-[10%] w-full font-title">
         <button

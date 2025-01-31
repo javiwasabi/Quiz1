@@ -1,11 +1,10 @@
-/* Asegurando que todo el contenido tenga fondo blanco y fuente Bentham Light */
 * {
   font-family: 'Bentham', sans-serif;
-  font-weight: 300; /* Bentham Light tiene un peso de 300 */
+  font-weight: 300; 
 }
 
 .container {
-  width: 400px; /* Ajuste del ancho */
+  width: 400px;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 40%;
@@ -17,11 +16,11 @@
   width: 100%;
   padding: 18px 15px; 
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
-  border-radius: 1rem; /* rounded-xl */
+  border-radius: 1rem;
   background-color: #fff;
   transition: transform 0.3s ease-in-out;
   margin-bottom: 0px; 
-  height: 328px; /* Ajuste de la altura */
+  height: 328px; 
 }
 
 #card:hover {
@@ -59,7 +58,7 @@
   cursor: pointer;
   border: none;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.878);
-  border-radius: 1rem; /* rounded-xl */
+  border-radius: 1rem; 
 }
 
 #btn:hover {
@@ -68,15 +67,15 @@
 
 @media (max-width: 768px) {
   .container {
-    width: 95%; /* Ajuste del ancho */
+    width: 95%; 
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
   #card {
     padding: 20px 15px;
-    border-radius: 1rem; /* rounded-xl */
-    height: 350px; /* Ajuste de la altura */
+    border-radius: 1rem; 
+    height: 350px; 
   }
 
   #card img {
@@ -97,7 +96,7 @@
 
 @media (max-width: 500px) {
   .container {
-    width: 100%; /* Ajuste del ancho */
+    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -105,8 +104,8 @@
 
   #card {
     padding: 15px 10px;
-    border-radius: 1rem; /* rounded-xl */
-    height: 300px; /* Ajuste de la altura */
+    border-radius: 1rem;
+    height: 300px;
   }
 
   #card img {

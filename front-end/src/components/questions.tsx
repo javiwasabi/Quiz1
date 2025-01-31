@@ -58,8 +58,7 @@ export const Card: React.FC<CardProps> = ({
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
 
       <div
-        className={`relative flex flex-col items-center justify-center rounded-lg p-4 w-[5vh] h-[3vh] sm:w-[400px] sm:h-[370px] border-2 border-black flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer
-          ${!isFlipped ? 'bg-transparent' : 'bg-transparent'}`}
+        className={`relative flex flex-col items-center justify-center rounded-lg p-4 w-[5vh] h-[3vh] sm:w-[400px] sm:h-[370px] border-2 border-black flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer  ${!isFlipped ? 'bg-transparent' : 'bg-transparent'}`}
         onClick={() => onAnswer("Inventor")}  style={{
           overflow: "hidden",
           position: "absolute",
@@ -67,8 +66,8 @@ export const Card: React.FC<CardProps> = ({
           left: "50%",
           transform: "translate(-50%, -50%)",
           maxWidth: "600px", maxHeight: "600px", minHeight: "280px", minWidth: "250px"
-        }}
-      >
+        }}>
+
         <div className="w-full h-[200px] flex items-center justify-center rounded-lg bg-black">
           <img
             src={imageUrl}
@@ -81,7 +80,7 @@ export const Card: React.FC<CardProps> = ({
         <p className="mt-4 text-xl sm:text-xl md:text-3xl text-black font-bentham text-center leading-tight">
         {t("textp")}
         </p>
-    </div>
+      </div>
       <div
         className={`relative flex flex-col items-center justify-center rounded-lg p-4 w-[5vh] h-[3vh] sm:w-[400px] sm:h-[370px] border-2 border-black flex flex-col items-center bg-white shadow-lg rounded-lg p-4 sm:p-6 md:p-8 w-[100%] items-center justify-center cursor-pointer
                 ${!isFlipped ? 'bg-transparent' : 'bg-white'}`}
@@ -110,7 +109,6 @@ export const Card: React.FC<CardProps> = ({
           </h1>
         </div>
       )}
-
 
       <p className="mt-4 text-xl sm:text-xl md:text-3xl font-light font-bentham  text-center flex-grow flex items-center justify-center">
         {typedText}
