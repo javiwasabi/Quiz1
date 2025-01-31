@@ -48,15 +48,12 @@ const First: React.FC = () => {
             <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham leading-tight w-full">
               {isSpanish ? (
                 <>
-                  ¿Puedes distinguir la diferencia entre{" "}
-                  <span className="font-extrabold">Tecnologías</span> Digitales y{" "}
-                  <span className="font-extrabold">Pokemones</span>?
+                  ¿Puedes distinguir la diferencia entre Tecnologías y Pokemones?
                 </>
               ) : (
                 <>
                   Can you tell the difference between{" "}
-                  <span className="font-extrabold">Digital Technologies</span> and{" "}
-                  <span className="font-extrabold">Pokemons</span>?
+                 Digital Technologies and Pokemons?
                 </>
               )}
             </h1>
