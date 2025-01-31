@@ -235,14 +235,24 @@ const getScaleFactor = () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
 
-  // Verifica si la pantalla es aproximadamente 1024x600
+
   if (width >= 1000 && width <= 1024  && height <= 610) {
-    return 0.8; // Ajusta la escala a 0.8 solo para pantallas 1024x600
+    return 0.8; 
   }
 
 };
 
   const [scale, setScale] = useState(getScaleFactor());
+  const [resizeFactor, setResizeFactor] = useState(window.innerWidth < 640 ? 0.8 : 1);
+
+useEffect(() => {
+  const handleResize = () => {
+    setResizeFactor(window.innerWidth < 640 ? 0.8 : 1);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
 
 
@@ -276,7 +286,7 @@ useEffect(() => {
         {showResults ? (
            <div
             style={{
-              transform: `scale(${scale})`,
+              transform: `scale(${resizeFactor})`,
               transformOrigin: "center",
             }}
             className="absolute inset-0 flex items-center justify-center">
