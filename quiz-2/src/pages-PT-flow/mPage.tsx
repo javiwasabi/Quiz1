@@ -361,9 +361,9 @@ useEffect(() => {
               </motion.div>
             </div>
             {isFlipped && (
-                <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 `}>
+                <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
                   <motion.div
-                  className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] "
+                  className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:max-w-[250px]   nesthub:left-[50%]  nesthub:transform -translate-x-1/2 "
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                 
@@ -385,7 +385,7 @@ useEffect(() => {
              </div>
               )}
             <div
-  className="relative w-full h-full flex justify-center items-center top-[-10%] sm:top-[2%] font-light font-bentham z-0"
+  className="relative w-full h-full flex justify-center items-center top-[-10%] sm:top-[2%] font-light font-bentham z-0  nesthub:top-[20%]"
   style={{
     transform: `scale(${scale})`,
   }}

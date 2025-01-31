@@ -12,7 +12,10 @@ module.exports = {
       colors: {
         'custom-dark': 'rgba(25,73,93,1)',
         'radio-yellow': 'rgb(234 216 106)',
-      }
+      },
+      screens: {
+        nesthub: { raw: "(width: 1024px) and (height: 600px)" }, 
+      },
     },
   },
   plugins: [],
