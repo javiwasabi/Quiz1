@@ -34,7 +34,7 @@ const Vie: React.FC = () => {
 
       <div className="absolute top-[46%] sm:top-[36%]  w-full flex justify-center space-x-8 z-10"> 
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/SVG_Human_Silhouette.svg/640px-SVG_Human_Silhouette.svg.png"
+          src="assets/silueta.png"
           alt="Background"
           className="absolute inset-1 sm:left-1/2 transform sm:-translate-x-[50%]"
         />
@@ -44,7 +44,7 @@ const Vie: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeInOut" }} >
-          
+
       <div className="absolute bottom-[12%] left-0 right-0 flex justify-center items-center z-10">
         <ButtonStart />
       </div>

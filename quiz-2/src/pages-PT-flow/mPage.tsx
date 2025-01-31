@@ -38,7 +38,7 @@ const Game: React.FC = () => {
   const questions = [
     {
       imageUrl:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/385.png",
+        "assets/jirachi.png",
       correctAnswer: "Pokemon",
       context: {
         en: "A mythical Pokémon known for its wish-granting powers.",
@@ -48,7 +48,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/TensorFlow_logo.svg/640px-TensorFlow_logo.svg.png",
+      "assets/tensor.png",
       correctAnswer: "Technology",
       context: {
         en: "An open-source machine learning framework developed by Google.",
@@ -58,7 +58,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/479.png",
+      "assets/rotom.png",
       correctAnswer: "Pokemon",
       context: {
         en: "An Electric/Ghost-type Pokémon that can possess electronics.",
@@ -68,7 +68,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/640px-Kubernetes_logo_without_workmark.svg.png",
+         "assets/kuber.png",
       correctAnswer: "Technology",
       context: {
         en: "A platform for automating deployment, scaling, and operations of applications.",
@@ -79,7 +79,7 @@ const Game: React.FC = () => {
 
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Ansible_logo.svg/640px-Ansible_logo.svg.png",
+      "assets/ansible.png",
       correctAnswer: "Technology",
       context: {
         en: "A simple IT automation platform used for configuration management.",
@@ -89,8 +89,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/640px-Prometheus_software_logo.svg.png",
-      correctAnswer: "Technology",
+      "assets/prometheus.png",
       context: {
         en: "An open-source monitoring and alerting toolkit designed for reliability.",
         es: "Una herramienta de monitoreo y alertas de código abierto diseñada para la confiabilidad.",
@@ -99,7 +98,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/791.png",
+      "assets/sol.png",
       correctAnswer: "Pokemon",
       context: {
         en: "A Legendary Pokémon known as the Sun incarnation.",
@@ -109,7 +108,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/493.png",
+      "assets/arce.png",
       correctAnswer: "Pokemon",
       context: {
         en: "A Legendary Pokémon, said to be the creator of the universe.",
@@ -119,7 +118,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Sdcsdxc.jpg/640px-Sdcsdxc.jpg",
+      "assets/terra.jpg",
       correctAnswer: "Technology",
       context: {
         en: "A tool for building, changing, and managing infrastructure as code.",
@@ -129,7 +128,7 @@ const Game: React.FC = () => {
     },
     {
       imageUrl:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/718.png",
+      "assets/zygar.png",
       correctAnswer: "Pokemon",
       context: {
         en: "A Pokémon that represents the balance of the ecosystem.",
@@ -142,7 +141,7 @@ const Game: React.FC = () => {
   const resultsRef = useRef<HTMLDivElement>(null);
   const shareUrl = "https://pokemonotecnologia.n12.cl";
   const shareText = userLanguage
-  ? `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos en el Pokemones vs Tecnologías. Juegalo tú también en`
+  ? `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos en el juego Pokemones vs Tecnologías. Juegalo tú también en`
   : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game Pokemons vs Technology. Play it too at`;
 
   const captureImage = async () => {

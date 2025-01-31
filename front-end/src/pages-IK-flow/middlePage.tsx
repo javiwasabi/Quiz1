@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ButtonNext } from "../components/buttons";
 import { Card, PolaroidPhoto } from "../components/questions";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   WhatsappShareButton,
