@@ -166,6 +166,16 @@ const Middle: React.FC = () => {
 
     });
   }, [i18n]);
+  const [scale, setScale] = useState(window.innerWidth < 640 ? 0.8 : 1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScale(window.innerWidth < 640 ? 0.8 : 1);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
 
   return (
@@ -179,8 +189,13 @@ const Middle: React.FC = () => {
         
         <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
           {showResults ? (
-               <div style={{ transform: "scale(0.85)" }}  className="absolute inset-0 flex items-center justify-center ">
-
+                <div
+                style={{
+                  transform: `scale(${scale})`,
+                  transformOrigin: "center",
+                }}
+                className="absolute inset-0 flex items-center justify-center"
+              >
            
                <div className=" w-[80%] h-[80%] items-center justify-center transform-none">
                <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none">
