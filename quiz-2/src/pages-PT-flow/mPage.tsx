@@ -345,61 +345,62 @@ useEffect(() => {
           
  
             <div className="w-full h-[30%] space-y-6 ">
-            <div className={`absolute top-[5%] sm:top-[15%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center transition-all duration-500 ease-out transform ${animationClass}`}>
-              <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                style={{
-                  boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                }}
-              >
-                <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham">
-                  {questions[currentQuestion].name}
-                </h3>
-              </motion.div>
-            </div>
-            {isFlipped && (
-                <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
-                  <motion.div
-                  className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:max-w-[250px]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
+              <div className={`absolute top-[5%] sm:top-[15%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center transition-all duration-500 ease-out transform ${animationClass}`}>
+                <motion.div
+                  className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
                   style={{
                     boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                   }}
                 >
-                 <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bentham text-black w-full">
-                   {isSpanish
-                     ? isCorrect
-                       ? "¡Correcto!"
-                       : "¡Incorrecto!"
-                     : isCorrect
-                     ? "Correct!"
-                     : "Incorrect!"
-                   }
-                 </h1>
-               </motion.div>
-             </div>
-              )}
-            <div
-  className="relative w-full h-full flex justify-center items-center top-[-10%] sm:top-[2%] font-light font-bentham z-0  nesthub:top-[20%]"
-  style={{
-    transform: `scale(${scale})`,
-  }}
->
-  <CardPok
-    imageUrl={questions[currentQuestion].imageUrl}
-    context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
-    score={score}
-    isCorrect={isCorrect}
-    isFlipped={isFlipped}
-    onNext={handleNextQuestion}
-    namep={questions[currentQuestion].name}
-  />
-</div>
+                  <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham">
+                    {questions[currentQuestion].name}
+                  </h3>
+                </motion.div>
+              </div>
+
+              {isFlipped && (
+                  <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
+                    <motion.div
+                    className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:max-w-[250px]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  
+                    style={{
+                      boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+                    }}
+                  >
+                  <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bentham text-black w-full">
+                    {isSpanish
+                      ? isCorrect
+                        ? "¡Correcto!"
+                        : "¡Incorrecto!"
+                      : isCorrect
+                      ? "Correct!"
+                      : "Incorrect!"
+                    }
+                  </h1>
+                </motion.div>
+              </div>
+                )}
+
+              <div
+                className="relative w-full h-full flex justify-center items-center top-[-10%] sm:top-[2%] font-light font-bentham z-0  nesthub:top-[20%]"
+                style={{
+                  transform: `scale(${scale})`,
+                }}>
+                <CardPok
+                  imageUrl={questions[currentQuestion].imageUrl}
+                  context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
+                  score={score}
+                  isCorrect={isCorrect}
+                  isFlipped={isFlipped}
+                  onNext={handleNextQuestion}
+                  namep={questions[currentQuestion].name}
+                />
+              </div>
 
 
               {isFlipped && (
