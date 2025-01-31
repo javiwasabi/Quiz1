@@ -311,9 +311,13 @@ const Game: React.FC = () => {
           </div>) 
       : (
           <>
-            <div className={`flex justify-center z-20 text-center w-[40%] sm:w-[30%] md:w-[30%] lg:w-[20%] h-auto mt-[0%] absolute top-[10%] sm:top-[15%] transition-all duration-500 ease-out transform ${animationClass}`}>
+            
+          
+ 
+            <div className="w-full h-[30%] space-y-6 ">
+            <div className={`absolute top-[5%] sm:top-[15%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center transition-all duration-500 ease-out transform ${animationClass}`}>
               <motion.div
-                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-full"
+                className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -321,46 +325,22 @@ const Game: React.FC = () => {
                   boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                 }}
               >
-                <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham text-center">
+                <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham">
                   {questions[currentQuestion].name}
                 </h3>
               </motion.div>
             </div>
-
-          
- 
-            <div className="w-full h-[30%]">
-            <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%] top-1/2 -translate-y-[20%] sm:-translate-y-[35%] font-light font-bentham">
-  <CardPok
-    imageUrl={questions[currentQuestion].imageUrl}
-    context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
-    score={score}
-    isCorrect={isCorrect}
-    isFlipped={isFlipped}
-    onNext={handleNextQuestion}
-    namep={questions[currentQuestion].name}
-  />
-              </div>
-
-              {isFlipped && (
-
-                <div
-                className={`absolute bottom-[10%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}
+            {isFlipped && (
+                <div className={`absolute top-[0%] sm:top-[12%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center `}>
+                  <motion.div
+                  className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] "
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                
+                  style={{
+                    boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+                  }}
                 >
-                  <NextP id="next-button" onClick={handleNextQuestion} />
-                </div> )}
-
-              {isFlipped && (
-               <div className="relative w-full h-[50%] flex justify-center items-center absolute bottom-[-5%]  sm:-translate-y-[-35%]">
-               <motion.div
-                 className="absolute top-[-50vh] w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] text-center bg-white rounded-xl shadow-xl p-4 flex items-center justify-center"
-                 initial={{ opacity: 0 }}
-                 animate={{ opacity: 1 }}
-                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                 style={{
-                   boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                 }}
-               >
                  <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bentham text-black w-full">
                    {isSpanish
                      ? isCorrect
@@ -374,6 +354,25 @@ const Game: React.FC = () => {
                </motion.div>
              </div>
               )}
+            | <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%]  top-[-10%] sm:top-[0%]  font-light font-bentham">
+                <CardPok
+                  imageUrl={questions[currentQuestion].imageUrl}
+                  context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
+                  score={score}
+                  isCorrect={isCorrect}
+                  isFlipped={isFlipped}
+                  onNext={handleNextQuestion}
+                  namep={questions[currentQuestion].name}
+                />
+              </div>
+
+              {isFlipped && (
+
+              <div className={`absolute bottom-[10%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}>
+                <NextP id="next-button" onClick={handleNextQuestion} />
+              </div> )}
+
+              
 
 
             </div>

@@ -35,9 +35,9 @@ const First: React.FC = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-<div className="absolute top-[20%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[80%] lg:w-[70%] h-auto text-center">
+<div className="absolute top-[5%] sm:top-[15%] left-[50%] transform -translate-x-1/2 w-[90%] md:w-[80%] lg:w-[70%] text-center">
   <motion.div
-    className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center overflow-hidden"
+    className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -45,7 +45,7 @@ const First: React.FC = () => {
       boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
     }}
   >
-    <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham text-center leading-tight w-full px-4">
+    <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham leading-tight w-full">
       {isSpanish ? (
         <>
           ¿Puedes distinguir la diferencia entre{" "}
@@ -65,7 +65,7 @@ const First: React.FC = () => {
 
 
         <div
-          className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw] ball absolute bottom-[-8%] cursor-pointer"
+          className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw] ball fixed top-[5%]  cursor-pointer"
           onClick={handleClick}
         >
           <div className="inside"></div>

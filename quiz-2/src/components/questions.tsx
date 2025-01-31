@@ -52,16 +52,18 @@ export const CardPok: React.FC<CardPropsp> = ({
       <div className="relative flex flex-col items-center font-bentham w-full">
         {/* Ball */}
         <div
-          className="relative w-40 h-40 ball"
-          style={{
-            transform: isRevealed ? "rotate(0deg)" : "rotateY(180deg)",
-            transition: "transform 0.5s ease-in-out",
-          }}
-        >
-          <div className="inside"></div>
-          <div className="center"></div>
-          <div className="absolute bottom-[20%] left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
-        </div>
+  className="fixed top-[-20%] sm:top-[-10%] w-40 h-40 ball"
+  style={{
+    transform: isRevealed ? "rotate(0deg)" : "rotateY(180deg)",
+    transition: "transform 0.5s ease-in-out",
+  }}
+>
+  <div className="inside"></div>
+  <div className="center"></div>
+  <div className="absolute bottom-[20%] left-0 right-0 h-1/2 bg-transparent rounded-b-full"></div>
+</div>
+
+
 
         {/* Pokémon / Card */}
         <div
@@ -81,7 +83,7 @@ export const CardPok: React.FC<CardPropsp> = ({
               opacity: isRevealed ? "1" : "0",
               top: "6vh",
             }}
-            className="card w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px]" // Ajuste de la altura
+            className="card w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px]" // Ajuste de la altura
           >
             <img
               src={imageUrl}
