@@ -220,6 +220,9 @@ const Game: React.FC = () => {
     }
   };
 
+
+  
+
   useEffect(() => {
 
     if (!isFlipped) {
@@ -228,16 +231,30 @@ const Game: React.FC = () => {
       setAnimationClass("opacity-0 scale-95");
     }
   }, [isFlipped]);
+const getScaleFactor = () => {
+  const width = window.innerWidth;
+  const height = window.innerHeight;
 
-  const [scale, setScale] = useState(window.innerWidth < 640 ? 0.8 : 1);
+  // Verifica si la pantalla es aproximadamente 1024x600
+  if (width >= 1000 && width <= 1024  && height <= 610) {
+    return 0.8; // Ajusta la escala a 0.8 solo para pantallas 1024x600
+  }
 
-  useEffect(() => {
-    const handleResize = () => {
-      setScale(window.innerWidth < 640 ? 0.8 : 1);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+};
+
+  const [scale, setScale] = useState(getScaleFactor());
+
+
+
+useEffect(() => {
+  const handleResize = () => {
+    setScale(getScaleFactor());
+  };
+  
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
 
 
 
@@ -249,7 +266,7 @@ const Game: React.FC = () => {
         className="absolute inset-0 h-full w-full object-cover"
       />
       
-      <div className="relative w-[90%] md:w-[70%] lg:w-[60%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
+      <div className="relative w-[90%] md:w-[70%] lg:w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
     
         <img
           src="field.jpg"
@@ -264,10 +281,10 @@ const Game: React.FC = () => {
             }}
             className="absolute inset-0 flex items-center justify-center">
           
-            <div className=" w-[80%] h-[80%] items-center justify-center transform-none">
+            <div className=" w-[80%] sm:w-[100%] h-[80%] items-center justify-center transform-none">
               <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none">
                 <motion.div
-                  className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[50%] h-auto"
+                  className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[70%] h-auto"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -344,7 +361,10 @@ const Game: React.FC = () => {
               </motion.div>
             </div>
             {isFlipped && (
-                <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 `}>
+                <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 `}
+                 style={{
+    transform: `scale(${scale})`,
+  }}>
                   <motion.div
                   className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] "
                   initial={{ opacity: 0 }}
@@ -367,17 +387,23 @@ const Game: React.FC = () => {
                </motion.div>
              </div>
               )}
-            |  <div className="relative w-full h-[100%] flex justify-center left-1/2 transform -translate-x-[50%]  top-[-10%] sm:top-[2%]  font-light font-bentham z-0">
-                <CardPok
-                  imageUrl={questions[currentQuestion].imageUrl}
-                  context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
-                  score={score}
-                  isCorrect={isCorrect}
-                  isFlipped={isFlipped}
-                  onNext={handleNextQuestion}
-                  namep={questions[currentQuestion].name}
-                />
-              </div>
+            <div
+  className="relative w-full h-full flex justify-center items-center top-[-10%] sm:top-[2%] font-light font-bentham z-0"
+  style={{
+    transform: `scale(${scale})`,
+  }}
+>
+  <CardPok
+    imageUrl={questions[currentQuestion].imageUrl}
+    context={questions[currentQuestion].context[getBrowserLanguage()] || questions[currentQuestion].context["en"]}
+    score={score}
+    isCorrect={isCorrect}
+    isFlipped={isFlipped}
+    onNext={handleNextQuestion}
+    namep={questions[currentQuestion].name}
+  />
+</div>
+
 
               {isFlipped && (
 

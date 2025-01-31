@@ -28,14 +28,14 @@ const First: React.FC = () => {
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      <div className="relative w-[90%] md:w-[70%] lg:w-[60%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
+      <div className="relative w-[90%] md:w-[70%] lg:w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
         <img
           src="field.jpg"
           alt="Field"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute top-[5%] sm:top-[15%] left-[50%] transform -translate-x-1/2 w-[90%] md:w-[80%] lg:w-[70%] text-center">
+        <div className="absolute top-[5%] sm:top-[15%] left-[50%] transform -translate-x-1/2 w-[90%] md:w-[80%] lg:w-[70%] text-center z-10">
           <motion.div
             className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center"
             initial={{ opacity: 0 }}
@@ -62,7 +62,7 @@ const First: React.FC = () => {
 
 
         <div
-          className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw] ball fixed top-[5%]  cursor-pointer"
+          className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw] ball fixed top-[5%]  cursor-pointer z-0"
           onClick={handleClick}
         >
           <div className="inside"></div>
