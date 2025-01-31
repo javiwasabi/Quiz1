@@ -361,10 +361,7 @@ useEffect(() => {
               </motion.div>
             </div>
             {isFlipped && (
-                <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 `}
-                 style={{
-    transform: `scale(${scale})`,
-  }}>
+                <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 `}>
                   <motion.div
                   className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] "
                   initial={{ opacity: 0 }}
