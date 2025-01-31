@@ -179,11 +179,11 @@ const Middle: React.FC = () => {
         
         <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center ">
           {showResults ? (
-               <div className="absolute inset-0 flex items-center justify-center">
+               <div style={{ transform: "scale(0.85)" }}  className="absolute inset-0 flex items-center justify-center ">
 
            
-               <div className="w-[80%] h-full items-center justify-center">
-               <div className="fixed inset-0 flex items-center justify-center w-[90%] left-1/2 transform -translate-x-[50%] ">
+               <div className=" w-[80%] h-[80%] items-center justify-center transform-none">
+               <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none">
    <motion.div
      className="relative bg-white   border-2 border-black rounded-xl  p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[50%] h-auto"
      initial={{ opacity: 0 }}
@@ -191,6 +191,7 @@ const Middle: React.FC = () => {
      transition={{ duration: 0.4, ease: "easeInOut" }}
      style={{
        boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+       
      }}
    >
      <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
