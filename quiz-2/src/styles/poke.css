@@ -21,7 +21,7 @@
   background-color: #fff;
   transition: transform 0.3s ease-in-out;
   margin-bottom: 0px; 
-  height: 350px; /* Ajuste de la altura */
+  height: 325px; /* Ajuste de la altura */
 }
 
 #card:hover {

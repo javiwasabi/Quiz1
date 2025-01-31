@@ -48,7 +48,7 @@ export const CardPok: React.FC<CardPropsp> = ({
   }, [isFlipped]);
 
   return (
-    <div className="flex absolute bottom-0 w-full">
+    <div className="flex  w-full">
       <div className="relative flex flex-col items-center font-bentham w-full">
         {/* Ball */}
         <div
