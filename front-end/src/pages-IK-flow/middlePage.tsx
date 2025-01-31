@@ -37,7 +37,7 @@ const Middle: React.FC = () => {
   const translations: Record<string, Record<string, string>> = {
     en: {
       "Creator of Python, a popular programming language.": "Guido van Rossum - Creator of Python, a popular programming language.",
-      "Co-creator of C programming language and Unix OS.": "Dennis Ritchie - Co-creator of C programming language and Unix OS.",
+      "Cocreator of C programming language and Unix OS.": "Dennis Ritchie - Cocreator of C programming language and Unix OS.",
       "Known as the BTK killer, responsible for multiple murders.": "Dennis Rader - Known as the BTK killer, responsible for multiple murders.",
       "Creator of the Java programming language.": "James Gosling - Creator of the Java programming language.",
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Notorious for the Milwaukee Cannibal murders.",
@@ -47,7 +47,7 @@ const Middle: React.FC = () => {
     },
     es: {
       "Creator of Python, a popular programming language.": "Guido van Rossum - Creador de Python, un lenguaje de programación popular.",
-      "Co-creator of C programming language and Unix OS.": "Dennis Ritchie - Co-creador del lenguaje de programación C y del sistema operativo Unix.",
+      "Cocreator of C programming language and Unix OS.": "Dennis Ritchie - Cocreador del lenguaje de programación C y del sistema operativo Unix.",
       "Known as the BTK killer, responsible for multiple murders.": "Dennis Rader - Conocido como el asesino BTK, responsable de múltiples asesinatos.",
       "Creator of the Java programming language.": "James Gosling - Creador del lenguaje de programación Java.",
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Conocido por los asesinatos del Caníbal de Milwaukee.",
@@ -69,7 +69,7 @@ const Middle: React.FC = () => {
     {
       imageUrl: "assets/Dennis_Ritchie_2011.jpg",
       correctAnswer: "Inventor",
-      context: translations[userLanguage]["Co-creator of C programming language and Unix OS."],
+      context: translations[userLanguage]["Cocreator of C programming language and Unix OS."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
     {
@@ -217,15 +217,15 @@ const Middle: React.FC = () => {
          <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%]">
         {((score / questions.length) * 100) < 40
           ? isSpanish 
-            ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte" 
-            : "We wouldn't recommend you going to a technology conference 😭, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
+            ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte." 
+            : "We wouldn't recommend you going to a technology conference 😭, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you. "
           : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
           ? isSpanish 
-            ? "No te recomendaríamos ir a una conferencia de tecnología 😤, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte " 
-            : "We wouldn't recommend you going to a technology conference 😤, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you "
+            ? "No te recomendaríamos ir a una conferencia de tecnología 😤, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte. " 
+            : "We wouldn't recommend you going to a technology conference 😤, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you. "
           : isSpanish 
-            ? "Felicitaciones 🤩, distingues casi a la perfección a quienes han dado forma al mundo tecnológico en que vivimos. En N12 nos especializamos en identificar a buenos profesionales de tecnología con la misma calidad que lo harías tú" 
-            : "Congratulations 🤩, you almost perfectly distinguish those who have shaped the technological world we live in. At N12, we specialize in identifying good technology professionals with the same quality as you would "
+            ? "Felicitaciones 🤩, distingues casi a la perfección a quienes han dado forma al mundo tecnológico en que vivimos. En N12 nos especializamos en identificar a buenos profesionales de tecnología con la misma calidad que lo harías tú." 
+            : "Congratulations 🤩, you almost perfectly distinguish those who have shaped the technological world we live in. At N12, we specialize in identifying good technology professionals with the same quality as you would. "
         }
       </p>
      )}
