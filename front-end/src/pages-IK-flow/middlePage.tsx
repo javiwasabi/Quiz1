@@ -251,7 +251,7 @@ const Middle: React.FC = () => {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}>
                   {answered && (
-                  <div className=" screen absolute bottom-[-5%] w-full flex justify-center items-center z-10 font-bentham mt-10 space-x-4">
+                  <div className="absolute bottom-[-8%] sm:bottom-[-10%] right-4 md:bottom-15 md:right-6 z-20 transform -translate-y-[8%] left-1/2 transform -translate-x-[50%] w-full">
                 
                       <ButtonNext id="next-button" onClick={handleNextQuestion} />
 
