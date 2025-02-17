@@ -1,6 +1,7 @@
+/* Estilos generales */
 * {
   font-family: 'Bentham', sans-serif;
-  font-weight: 300; 
+  font-weight: 300;
 }
 
 .container {
@@ -14,13 +15,16 @@
 #card {
   position: relative;
   width: 100%;
-  padding: 18px 15px; 
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
-  border-radius: 1rem;
-  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 0px;
+
+  background-size: cover;
+  background-position: center;
   transition: transform 0.3s ease-in-out;
-  margin-bottom: 0px; 
-  height: 328px; 
+  margin-bottom: 0px;
+  height: 380px;
+
 }
 
 #card:hover {
@@ -29,25 +33,21 @@
 
 #card img {
   display: block;
-  width: 170px; 
-  max-height: 180px; 
+  width: 150px;
+  max-height: 160px;
   position: relative;
-  margin: 10px auto;
+  margin: 15px auto;
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.4));
 }
 
 .poke-name {
   text-align: center;
-  font-weight: 300; 
-  font-family: 'Bentham', sans-serif; 
-  color: #000;
+  font-weight: 300;
+  font-family: 'Bentham', sans-serif;
+  color: #4A2C16;
 }
 
-.types {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0 40px 0;
-}
-
+/* Botón estilizado */
 #btn {
   display: block;
   padding: 15px 60px;
@@ -58,35 +58,29 @@
   cursor: pointer;
   border: none;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.878);
-  border-radius: 1rem; 
+  border-radius: 0rem;
 }
 
 #btn:hover {
-  background-color: #333333; 
+  background-color: #333333;
 }
 
+/* Responsividad */
 @media (max-width: 768px) {
   .container {
-    width: 95%; 
+    width: 95%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
   #card {
-    padding: 20px 15px;
-    border-radius: 1rem; 
-    height: 350px; 
+    padding: 18px;
+    height: 320px;
   }
 
   #card img {
-    width: 140px; 
-    max-height: 140px; 
-  }
-
-  .types {
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+    width: 140px;
+    max-height: 170px;
   }
 
   #btn {
@@ -103,23 +97,13 @@
   }
 
   #card {
-    padding: 15px 10px;
-    border-radius: 1rem;
-    height: 300px;
+    padding: 15px;
+    height: 330px;
   }
 
   #card img {
-    width: 120px;
-    max-height: 120px; 
-  }
-
-  .hp {
-    width: 60px;
-    padding: 5px 0;
-  }
-
-  .types span {
-    padding: 5px 15px;
+    width: 130px;
+    max-height: 140px;
   }
 
   #btn {

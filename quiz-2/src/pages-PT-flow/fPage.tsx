@@ -30,14 +30,14 @@ const First: React.FC = () => {
 
       <div className="relative w-[90%] md:w-[70%] lg:w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
         <img
-          src="field.jpg"
-          alt="Field"
-          className="absolute inset-0 h-full w-full object-cover"
+          src="/assets/fondoo.webp"
+          alt="Background"
+           className="absolute inset-0 h-full w-full object-cover"
         />
 
         <div className="absolute top-[5%] sm:top-[15%] left-[50%] transform -translate-x-1/2 w-[90%] md:w-[80%] lg:w-[70%] text-center  nesthub:top-[3%]">
           <motion.div
-            className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center"
+            className="relative bg-white  shadow-xl p-6 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -48,12 +48,11 @@ const First: React.FC = () => {
             <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham leading-tight w-full">
               {isSpanish ? (
                 <>
-                  ¿Puedes distinguir la diferencia entre Tecnologías y Pokemones?
+                  ¿Puedes distinguir la diferencia entre Tecnologías y Personajes de fantasía?
                 </>
               ) : (
                 <>
-                  Can you tell the difference between{" "}
-                 Digital Technologies and Pokemons?
+                  Can you tell the difference between Digital Technologies and Fantasy Characters?
                 </>
               )}
             </h1>
@@ -62,12 +61,11 @@ const First: React.FC = () => {
 
 
         <div
-          className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw] ball fixed top-[5%]  cursor-pointer"
+          className="relative w-[20vw] sm:w-[15vw] md:w-[12vw] lg:w-[10vw] h-[20vw] sm:h-[15vw] md:h-[12vw] lg:h-[10vw]  fixed top-[2%]  cursor-pointer"
           onClick={handleClick}
         >
-          <div className="inside"></div>
-          <div className="center"></div>
-          <div className="absolute bottom-[0%] left-0 right-0 h-1/2 rounded-b-full bg-transparent"></div>
+        
+         
         </div>
 
 

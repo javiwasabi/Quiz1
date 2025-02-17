@@ -9,7 +9,7 @@ import './utils/i18n';
 
 const userLang = navigator.language || navigator.language;
 const isSpanish = userLang.startsWith("es");
-document.title = isSpanish ? "Pokémon vs Tecnología" : "Pokemon vs Technology";
+document.title = isSpanish ? "Personaje vs Tecnología" : "Character vs Technology";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

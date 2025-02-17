@@ -1,11 +1,11 @@
 {
     "translation": {
-      "guessText": "¿Puedes distinguir a un asesino serial de un profesional informático? ",
+      "guessText": "¿Puedes distinguir a un asesino serial de un creador de sistema operativo? ",
         "changeLanguageButton": "Cambiar idioma",
         "englishButton": "Inglés",
         "spanishButton": "Español",
         "who": "Asesino serial",
-        "whoi": "Informático",
+        "whoi": "Creador SO.",
         "textp": "Adivina quién es esta persona",
         "nextstep": "SIGUIENTE",
         "result": "Puntaje",

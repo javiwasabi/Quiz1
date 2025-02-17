@@ -34,124 +34,104 @@ const Game: React.FC = () => {
   const [animationClass, setAnimationClass] = useState("");
   
  
-  
   const questions = [
     {
-      imageUrl:
-        "assets/jirachi.png",
+      imageUrl: "assets/dorian.webp",
       correctAnswer: "Pokemon",
       context: {
-        en: "A mythical Pokémon known for its wish-granting powers.",
-        es: "Un Pokémon mítico conocido por su capacidad de conceder deseos.",
+        en: "Dorian, the man who never aged, but whose portrait bore the marks of time.\n\n- The Picture of Dorian Gray (Oscar Wilde)",
+        es: "Dorian, el hombre que nunca envejecía, pero cuyo retrato escondía el tiempo.\n\n- El retrato de Dorian Gray (Oscar Wilde)"
       },
-      name: "Jirachi",
+      name: "Dorian"
     },
     {
-      imageUrl:
-      "assets/tensor.png",
-      correctAnswer: "Technology",
-      context: {
-        en: "An open-source machine learning framework developed by Google.",
-        es: "Un framework de aprendizaje automático de código abierto desarrollado por Google.",
-      },
-      name: "TensorFlow",
-    },
-    {
-      imageUrl:
-      "assets/rotom.png",
-      correctAnswer: "Pokemon",
-      context: {
-        en: "An Electric/Ghost-type Pokémon that can possess electronics.",
-        es: "Un Pokémon de tipo Eléctrico/Fantasma que puede poseer dispositivos electrónicos.",
-      },
-      name: "Rotom",
-    },
-    {
-      imageUrl:
-         "assets/kuber.png",
-      correctAnswer: "Technology",
-      context: {
-        en: "A platform for automating deployment, scaling, and operations of applications.",
-        es: "Una plataforma para automatizar el despliegue, escalado y operaciones de aplicaciones.",
-      },
-      name: "Kubernetes",
-    },
-
-    {
-      imageUrl:
-      "assets/ansible.png",
+      imageUrl: "assets/ansible.png",
       correctAnswer: "Technology",
       context: {
         en: "A simple IT automation platform used for configuration management.",
         es: "Una plataforma de automatización de TI utilizada para las configuraciones.",
       },
-      name: "Ansible",
+      name: "Ansible"
     },
     {
-      imageUrl:
-      "assets/prometheus.png",
+      imageUrl: "assets/baldur.jpg",
+      correctAnswer: "Pokemon",
+      context: {
+        en: "Baldur, a Norse god of light and purity, loved by all but fell due to Loki's trickery.\n\n- Norse Mythology",
+        es: "Baldur, dios nórdico de la luz y la pureza, amado por todos pero cayó por el engaño de Loki.\n\n- Mitología nórdica"
+      },
+      name: "Baldur"
+    },
+    {
+      imageUrl: "assets/prometheus.png",
+      correctAnswer: "Technology",
       context: {
         en: "An open-source monitoring and alerting toolkit designed for reliability.",
         es: "Una herramienta de monitoreo y alertas de código abierto diseñada para la confiabilidad.",
       },
-      name: "Prometheus",
+      name: "Prometheus"
     },
     {
-      imageUrl:
-      "assets/sol.png",
+      imageUrl: "assets/phoebus.jpg",
       correctAnswer: "Pokemon",
       context: {
-        en: "A Legendary Pokémon known as the Sun incarnation.",
-        es: "Un Pokémon legendario conocido como la encarnación del Sol.",
+        en: "Phoebus, another name for Apollo, associated with the sun, music, and prophecy.\n\n- Greek Mythology",
+        es: "Phoebus, otro nombre de Apolo, asociado con el sol, la música y la profecía.\n\n- Mitología griega"
       },
-      name: "Solgaleo",
+      name: "Phoebus"
     },
     {
-      imageUrl:
-      "assets/arce.png",
-      correctAnswer: "Pokemon",
-      context: {
-        en: "A Legendary Pokémon, said to be the creator of the universe.",
-        es: "Un Pokémon legendario, se dice que es el creador del universo.",
-      },
-      name: "Arceus",
-    },
-    {
-      imageUrl:
-      "assets/terra.jpg",
+      imageUrl: "assets/terra.jpg",
       correctAnswer: "Technology",
       context: {
         en: "A tool for building, changing, and managing infrastructure as code.",
         es: "Una herramienta para construir, cambiar y gestionar infraestructura como código.",
       },
-      name: "Terraform",
+      name: "Terraform"
     },
     {
-      imageUrl:
-      "assets/zygar.png",
+      imageUrl: "assets/erebus.webp",
       correctAnswer: "Pokemon",
       context: {
-        en: "A Pokémon that represents the balance of the ecosystem.",
-        es: "Un Pokémon que representa el equilibrio del ecosistema.",
+        en: "Erebus, the primordial deity of darkness.\n\n- Greek Mythology",
+        es: "Érebo, la deidad primordial de la oscuridad.\n\n- Mitología griega"
       },
-      name: "Zygarde",
+      name: "Erebus"
     },
+    {
+      imageUrl: "assets/kuber.png",
+      correctAnswer: "Technology",
+      context: {
+        en: "A platform for automating deployment, scaling, and operations of applications.",
+        es: "Una plataforma para automatizar el despliegue, escalado y operaciones de aplicaciones.",
+      },
+      name: "Kubernetes"
+    },
+    {
+      imageUrl: "assets/vanhelsing.jpg",
+      correctAnswer: "Pokemon",
+      context: {
+        en: "Van Helsing, a fearless vampire hunter.\n\n- Dracula (Bram Stoker)",
+        es: "Van Helsing, un intrépido cazador de vampiros.\n\n- Drácula (Bram Stoker)"
+      },
+      name: "Van Helsing"
+    },
+    {
+      imageUrl: "assets/tensor.png",
+      correctAnswer: "Technology",
+      context: {
+        en: "An open-source machine learning framework developed by Google.",
+        es: "Un framework de aprendizaje automático de código abierto desarrollado por Google.",
+      },
+      name: "TensorFlow"
+    }
   ];
+  
 
-  const resultsRef = useRef<HTMLDivElement>(null);
   const shareUrl = "https://pokemonotecnologia.n12.cl";
   const shareText = userLanguage
   ? `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos en el juego Pokemones vs Tecnologías. Juegalo tú también en`
   : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game Pokemons vs Technology. Play it too at`;
-
-  const captureImage = async () => {
-    if (resultsRef.current) {
-      const canvas = await html2canvas(resultsRef.current);
-      const imgData = canvas.toDataURL('image/png');
-      return imgData;
-    }
-    return null;
-  };
 
   
 
@@ -201,23 +181,30 @@ const Game: React.FC = () => {
     setChoicesEnabled(false); 
   };
 
-  const handleNextQuestion = () => {
-    if (currentQuestion + 1 >= questions.length) {
-      setShowResults(true);
-    } else {
-      setCurrentQuestion((prev) => prev + 1);
-      setIsCorrect(false);
-      setAnswered(false);
-      setIsFlipped(false);
+  const [shuffledQuestions, setShuffledQuestions] = useState([...questions]);
 
-      setShowPokemonButton(true);
-      setShowTechnologyButton(true);
-      setShowOr(true);
-      setChoicesEnabled(true);
-
-      
-    }
+useEffect(() => {
+  const shuffleArray = (array: any[]) => {
+    return array.sort(() => Math.random() - 0.5);
   };
+
+  setShuffledQuestions(shuffleArray([...questions]));
+}, []);
+
+const handleNextQuestion = () => {
+  if (currentQuestion + 1 >= shuffledQuestions.length) {
+    setShowResults(true);
+  } else {
+    setCurrentQuestion((prev) => prev + 1);
+    setIsCorrect(false);
+    setAnswered(false);
+    setIsFlipped(false);
+    setShowPokemonButton(true);
+    setShowTechnologyButton(true);
+    setShowOr(true);
+    setChoicesEnabled(true);
+  }
+};
 
 
   
@@ -277,10 +264,10 @@ useEffect(() => {
       
       <div className="relative w-[90%] md:w-[70%] lg:w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
     
-        <img
-          src="field.jpg"
+      <img
+          src="/assets/fondoo.webp"
           alt="Background"
-          className="absolute inset-0 h-full w-full object-cover"
+           className="absolute inset-0 h-full w-full object-cover"
         />
         {showResults ? (
            <div
@@ -293,7 +280,7 @@ useEffect(() => {
             <div className=" w-[80%] sm:w-[100%] h-[80%] items-center justify-center transform-none">
               <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none">
                 <motion.div
-                  className="relative bg-white rounded-xl shadow-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[70%] h-auto"
+                  className="relative bg-white shadow-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[70%] h-auto"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -309,15 +296,15 @@ useEffect(() => {
                     <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%]">
                       {navigator.language.includes("es")
                         ? ((score / questions.length) * 100) < 40
-                          ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
+                          ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y también personajes épicos) por ti."
                           : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                          ? "Todavía te falta para dominar la diferencia entre tecnologías y pokemones 😅  ¡pero no te preocupes 🤗! en N12 nos especializamos en buscar profesionales de tecnología (y tambien pokemones) por ti."
-                          : "Felicitaciones 🥳, dominas casi a la perfección el arte de distinguir tecnologías y pokemones 🤓. En N12 nos especializamos en buscar profesionales de tecnología (y a veces pokemones) con la misma calidad que lo harías tú."
+                          ? "Todavía te falta para dominar la diferencia entre tecnologías y personajes fantásticos 😅 ¡pero no te preocupes 🤗! en N12 nos especializamos en buscar profesionales de tecnología (y también personajes épicos) por ti."
+                          : "Felicitaciones 🥳, dominas casi a la perfección el arte de distinguir tecnologías y personajes de fantasía 🤓. En N12 nos especializamos en buscar profesionales de tecnología (y a veces de personajes épicos) con la misma calidad que lo harías tú."
                         : ((score / questions.length) * 100) < 40
-                        ? "You have a lot to learn about technology 🤨 but don't worry 🤗, at N12 we specialize in finding technology professionals (and also Pokémon) for you."
+                        ? "You have a lot to learn about technology 🤨 but don't worry 🤗, at N12 we specialize in finding technology professionals (and also fantasy characters) for you."
                         : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                        ? "You still have a way to go to master the difference between technologies and Pokémon 😅 but don't worry 🤗! At N12 we specialize in finding technology professionals (and also Pokémon) for you."
-                        : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and Pokémon 🤓. At N12 we specialize in finding technology professionals (and sometimes Pokémon) with the same quality as you would."}
+                        ? "You still have a way to go to master the difference between technologies and fantasy characters 😅 but don't worry 🤗! At N12 we specialize in finding technology professionals (and also epic characters) for you."
+                        : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and fantasy characters 🤓. At N12 we specialize in finding technology professionals (and sometimes epic characters) with the same quality as you would."}
                     </p>
                   )}
                   <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl ">
@@ -354,9 +341,9 @@ useEffect(() => {
           
  
             <div className="w-full h-[30%] space-y-6 ">
-              <div className={`absolute top-[5%] sm:top-[15%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center transition-all duration-500 ease-out transform ${animationClass}`}>
+              <div className={`absolute top-[5%] sm:top-[6%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[210px]  text-center transition-all duration-500 ease-out transform ${animationClass}`}>
                 <motion.div
-                  className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center"
+                  className="relative bg-white shadow-xl p-6 flex items-center justify-center"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -371,9 +358,9 @@ useEffect(() => {
               </div>
 
               {isFlipped && (
-                  <div className={`absolute top-[0%] sm:top-[11%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
+                  <div className={`absolute top-[0%] sm:top-[2%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
                     <motion.div
-                    className="relative bg-white rounded-xl shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:max-w-[250px]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
+                    className="relative bg-white shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:max-w-[250px]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   
@@ -396,7 +383,7 @@ useEffect(() => {
                 )}
 
               <div
-                className="relative w-full h-full flex justify-center items-center top-[-10%] sm:top-[2%] font-light font-bentham z-0  nesthub:top-[20%]"
+                className="relative w-full h-full flex justify-center items-center top-[-60%] sm:top-[-20%] font-light font-bentham z-0  nesthub:top-[20%]"
                 style={{
                   transform: `scale(${scale})`,
                 }}>
@@ -414,7 +401,7 @@ useEffect(() => {
 
               {isFlipped && (
 
-              <div className={`absolute bottom-[10%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}>
+              <div className={`absolute bottom-[10%] nesthub:absolute bottom-[4%]  flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}>
                 <NextP id="next-button" onClick={handleNextQuestion} />
               </div> )}
 

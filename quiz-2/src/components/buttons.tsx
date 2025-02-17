@@ -14,6 +14,8 @@ export const Choice: React.FC<{
   id: string; 
   disabled: boolean; 
 }> = ({ onClick, id, disabled }) => {
+  const isSpanish = navigator.language.startsWith("es"); 
+
   return (
     <div className="flex flex-col items-center justify-center w-full h-auto font-bentham">
       <button
@@ -27,7 +29,7 @@ export const Choice: React.FC<{
           boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
         }}
       >
-        {id === "choice-pokemon" ? "Pokémon" : isSpanish ? "Tecnología" : "Technology"}
+        {id === "choice-pokemon" ? (isSpanish ? "Personaje" : "Character") : (isSpanish ? "Tecnología" : "Technology")}
       </button>
     </div>
   );
@@ -43,11 +45,7 @@ export const ButtonStartp: React.FC = () => {
             boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
           }}
         >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png"
-            alt="Pokeball"
-            className="w-8 h-8 sm:w-12 sm:h-12 object-contain z-10 mr-2"
-          />
+       
           {isSpanish ? "INICIAR" : "START"}
         </button>
       </Link>
@@ -70,11 +68,7 @@ export const NextP: React.FC<ButtonNextProps> = ({ onClick, id }) => {
       >
 
         <span className="mr-4  z-10">{isSpanish ? "SIGUIENTE" : "NEXT"}</span>
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png"
-            alt="Pokeball"
-            className="w-8 h-8 sm:w-12 sm:h-12 object-contain z-10 mr-2"
-          />
+       
       </button>
     </div>
   );
