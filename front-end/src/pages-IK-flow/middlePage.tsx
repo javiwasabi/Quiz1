@@ -251,12 +251,12 @@ const shareText = userLanguage
               transform: `scale(${resizeFactor})`,
               transformOrigin: "center",
             }}>
-              <div className="border-2 border-black rounded-xl bg-white p-6 shadow-lg text-center max-w-lg w-[100%]">
+              <div className="border-2 border-black rounded-xl bg-white p-6 shadow-lg text-center max-w-lg w-[100%] mt-5">
                 <div className="text-center">
                   <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham">
                     {isSpanish ? "¡Prepárate para el juego y recuerda tener en cuenta lo siguiente 😊!" : "Get ready for the game and keep in mind this 😊!"}
                   </h2>
-                  <p className="poke-name text-lg md:text-2xl mt-2 font-bentham">
+                  <p className="poke-name text-xl md:text-2xl mt-2 font-bentham">
                     {isSpanish
                       ? "En este juego, exploramos a los genios que revolucionaron la tecnología y los criminales más infames de la historia. No buscamos estereotipar ni trivializar sus impactos. Reconocemos el legado de los creadores de sistemas operativos y aclaramos que no existe evidencia que permita identificar a un asesino serial solo por su apariencia. Pon a prueba tu intuición y conocimientos. ¿Podrás distinguir a un inventor de un criminal?"
                       : "In this game, we explore the geniuses who revolutionized technology and the most infamous criminals in history. We do not seek to stereotype or trivialize their impacts. We acknowledge the legacy of operating system creators and clarify that there is no evidence to identify a serial killer based solely on appearance. Test your intuition and knowledge. Can you distinguish a technological visionary from a criminal?"}
@@ -307,7 +307,7 @@ const shareText = userLanguage
                       </h2>
                   
                       {questions.length > 0 && (
-                          <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%] nesthub:text-lg">
+                          <p className="poke-name text-xl md:text-2xl mt-2 text-center font-bentham w-[80%] nesthub:text-lg">
                           {((score / questions.length) * 100) < 40
                             ? isSpanish 
                               ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte." 
@@ -360,7 +360,7 @@ const shareText = userLanguage
         <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
           {isSpanish ? "Créditos de las imágenes" : "Image Credits"}
         </h2>
-        <ul className="list-disc pl-5 text-mdg md:text-lg mt-2 text-left font-bentham w-[100%] nesthub:text-xs">
+        <ul className="list-disc pl-5 text-md md:text-lg mt-2 text-left font-bentham w-[100%] nesthub:text-xs">
           {imageCredits.map((credit, index) => (
             <li key={index} className="mb-2">
               <a

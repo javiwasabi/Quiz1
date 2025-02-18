@@ -318,12 +318,12 @@ const [showCredits, setShowCredits] = useState(false);
                         boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
                       }}
                     >
-                      <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
+                      <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full font-bold ">
                         {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
                       </h2>
                   
                       {questions.length > 0 && (
-  <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%] nesthub:text-lg">
+  <p className="poke-name text-xl md:text-2xl mt-2 text-center font-bentham w-[80%] nesthub:text-lg">
     {((score / questions.length) * 100) < 40
       ? isSpanish 
         ? "Te queda mucho por aprender de tecnología aún 😭, pero no te preocupes, en N12 nos especializamos en buscar profesionales de tecnología por ti." 
@@ -339,7 +339,7 @@ const [showCredits, setShowCredits] = useState(false);
   </p>
 )}
 
-                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl nesthub:text-lg ">
+                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-xl sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
                      <button onClick={() => setShowCredits(true)} className="mt-4 underline font-bentham text-xl md:text-2xl">
@@ -436,7 +436,7 @@ const [showCredits, setShowCredits] = useState(false);
                 )}
 
               <div
-                className="relative w-full h-full flex justify-center items-center top-[-60%] sm:top-[-20%] font-light font-bentham z-0  nesthub:top-[20%]"
+                className="relative w-full h-full flex justify-center items-center top-[-3%] sm:top-[-20%] font-light font-bentham z-0  nesthub:top-[20%]"
                 style={{
                   transform: `scale(${scale})`,
                 }}>
@@ -459,40 +459,43 @@ const [showCredits, setShowCredits] = useState(false);
               </div> )}
 
             </div>
-
             <div
-              className={`absolute bottom-[4%] flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full ${
-                isFlipped ? "z-0" : "z-20"
-              }`}
-            >
-              <div className="flex justify-center items-center w-full sm:max-w-[34%] px-2 ">
-                {showPokemonButton && (
-                  <Choice
-                    id="choice-pokemon"
-                    onClick={() => choicesEnabled && handleAnswer("Pokemon")}
-                    disabled={!choicesEnabled || isFlipped}
-                  />
-                )}
-              </div>
+  className={`absolute bottom-[6%] flex flex-row justify-center items-center text-center mx-auto gap-4 px-4 w-full ${
+    isFlipped ? "z-0" : "z-20"
+  }`}
+>
+  {/* Choice Pokemon */}
+  <div className="flex justify-center items-center w-auto max-w-[34%] px-2">
+    {showPokemonButton && (
+      <Choice
+        id="choice-pokemon"
+        onClick={() => choicesEnabled && handleAnswer("Pokemon")}
+        disabled={!choicesEnabled || isFlipped}
+      />
+    )}
+  </div>
 
-              {showOr && (
-                <div className="absolute flex justify-center items-center w-[15%] sm:w-auto px-0 bg-gradient-to-r from-white to-grey-900 rounded-full border-2 border-white fade-in-up">
-                  <span className="font-bentham uppercase text-black text-md sm:text-xl tracking-wider rounded-full">
-                    or
-                  </span>
-                </div>
-              )}
+  {/* OR text */}
+  {showOr && (
+    <div className="flex justify-center items-center px-2 bg-gradient-to-r from-white to-grey-900 rounded-full border-2 border-white fade-in-up">
+      <span className="font-bentham uppercase text-black text-xs sm:text-md md:text-xl tracking-wider">
+        or
+      </span>
+    </div>
+  )}
 
-              <div className="flex justify-center items-center w-full sm:max-w-[33%] px-2 ">
-                {showTechnologyButton && (
-                  <Choice
-                    id="choice-technology"
-                    onClick={() => choicesEnabled && handleAnswer("Technology")}
-                    disabled={!choicesEnabled || isFlipped}
-                  />
-                )}
-              </div>
-            </div>
+  {/* Choice Technology */}
+  <div className="flex justify-center items-center w-auto max-w-[34%] px-2">
+    {showTechnologyButton && (
+      <Choice
+        id="choice-technology"
+        onClick={() => choicesEnabled && handleAnswer("Technology")}
+        disabled={!choicesEnabled || isFlipped}
+      />
+    )}
+  </div>
+</div>
+
 
           </>
         )}
