@@ -323,21 +323,22 @@ const [showCredits, setShowCredits] = useState(false);
                       </h2>
                   
                       {questions.length > 0 && (
-                          <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%] nesthub:text-lg">
-                          {((score / questions.length) * 100) < 40
-                            ? isSpanish 
-                              ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte." 
-                              : "We wouldn't recommend you going to a technology conference 😭, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you. "
-                            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                            ? isSpanish 
-                              ? "No te recomendaríamos ir a una conferencia de tecnología 😤, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte. " 
-                              : "We wouldn't recommend you going to a technology conference 😤, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you. "
-                            : isSpanish 
-                              ? "Felicitaciones 🤩, distingues casi a la perfección a quienes han dado forma al mundo tecnológico en que vivimos. En N12 nos especializamos en identificar a buenos profesionales de tecnología con la misma calidad que lo harías tú." 
-                              : "Congratulations 🤩, you almost perfectly distinguish those who have shaped the technological world we live in. At N12, we specialize in identifying good technology professionals with the same quality as you would. "
-                          }
-                        </p>
-                      )}
+  <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%] nesthub:text-lg">
+    {((score / questions.length) * 100) < 40
+      ? isSpanish 
+        ? "Te queda mucho por aprender de tecnología aún 😭, pero no te preocupes, en N12 nos especializamos en buscar profesionales de tecnología por ti." 
+        : "You still have a lot to learn about technology 😭, but don't worry, at N12 we specialize in finding tech professionals for you."
+      : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+      ? isSpanish 
+        ? "Todavía te falta para dominar la diferencia entre tecnologías y personajes de fantasía 😤, pero no te preocupes, en N12 nos especializamos en buscar profesionales de tecnología por ti." 
+        : "You’re still not quite there when it comes to distinguishing between technologies and fantasy characters 😤, but don't worry, at N12 we specialize in finding tech professionals for you."
+      : isSpanish 
+        ? "Felicitaciones 🤩, dominas casi a la perfección las distinciones entre tecnologías del mundo real y personajes de fantasía. En N12 nos especializamos en buscar profesionales de tecnología con la misma calidad que lo harías tú." 
+        : "Congratulations 🤩, you have mastered the distinctions between real-world technologies and fantasy characters almost perfectly. At N12, we specialize in finding tech professionals with the same level of quality as you would."
+    }
+  </p>
+)}
+
                       <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
