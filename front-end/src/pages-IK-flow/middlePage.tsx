@@ -132,7 +132,7 @@ const questions = [
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
   {
-      imageUrl: "assets/ken2.jpg",
+      imageUrl: "assets/ken.jpg",
       correctAnswer: "Inventor",
       context: translations[userLanguage]["Co-creator of Unix and the Plan 9 OS."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
@@ -230,6 +230,7 @@ const questions = [
     return () => window.removeEventListener("resize", handleResize);
   }, []);
   const [showCredits, setShowCredits] = useState(false);
+    const [showDisclaimer, setShowDisclaimer] = useState(true);
 
   
   
@@ -244,8 +245,42 @@ const questions = [
           alt="Background"
           className="absolute inset-0 h-[97%] justify-center items-center w-full object-cover z-0"
         />
+         {showDisclaimer && (
+            <div className="absolute inset-0 flex items-center justify-center z-20  w-full h-full" style={{
+              transform: `scale(${resizeFactor})`,
+              transformOrigin: "center",
+            }}>
+              <div className="border-2 border-black rounded-xl bg-white p-6 shadow-lg text-center max-w-lg w-[100%]">
+                <div className="text-center">
+                  <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham">
+                    {isSpanish ? "¡Prepárate para el juego y recuerda tener en cuenta lo siguiente 😊!" : "Get ready for the game and keep in mind this 😊!"}
+                  </h2>
+                  <p className="poke-name text-lg md:text-2xl mt-2 font-bentham">
+                    {isSpanish
+                      ? "En este juego, exploramos a los genios que revolucionaron la tecnología y los criminales más infames de la historia. No buscamos estereotipar ni trivializar sus impactos. Reconocemos el legado de los creadores de sistemas operativos y aclaramos que no existe evidencia que permita identificar a un asesino serial solo por su apariencia. Pon a prueba tu intuición y conocimientos. ¿Podrás distinguir a un inventor de un criminal?"
+                      : "In this game, we explore the geniuses who revolutionized technology and the most infamous criminals in history. We do not seek to stereotype or trivialize their impacts. We acknowledge the legacy of operating system creators and clarify that there is no evidence to identify a serial killer based solely on appearance. Test your intuition and knowledge. Can you distinguish a technological visionary from a criminal?"}
+                  </p>
+                </div>
         
-        <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center nesthub:w-full  ">
+                {/* Botón centrado dentro del modal */}
+                <div className="flex justify-center mt-6">
+                  <button
+                    className="w-[79%] sm:w-[73%] md:w-[73%] h-[4rem] bg-yellow-300 text-black py-1 px-4 shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider"
+                    onClick={() => setShowDisclaimer(false)}
+                    style={{
+                      background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+                    }}
+                  >
+                    {isSpanish ? "COMENZAR EL JUEGO" : "START THE GAME"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        
+        
+        <div className={`h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center nesthub:w-full    ${showDisclaimer ? "invisible" : ""}`}>
         {showResults ? (
             <div
               style={{
@@ -363,13 +398,13 @@ const questions = [
 
   
               <>
-            
+              <div  className={`  ${showDisclaimer ? "invisible" : ""}`}> </div>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}>
                 {answered && (
-                <div className="absolute bottom-[-8%] sm:bottom-[-11%] right-4 md:bottom-15 md:right-6 z-20 transform -translate-y-[8%] left-1/2 transform -translate-x-[50%] w-full">
+                <div className={`absolute bottom-[-8%] sm:bottom-[-11%] right-4 md:bottom-15 md:right-6 z-20 transform -translate-y-[8%] left-1/2 transform -translate-x-[50%] w-full ${showDisclaimer ? "invisible" : ""}`}>
               
                     <ButtonNext id="next-button" onClick={handleNextQuestion} />
 
@@ -377,7 +412,7 @@ const questions = [
                 )}
               </motion.div>
 
-              <div className="w-full h-full flex justify-center items-center top-[-18%] bg-transparent relative z-10">
+              <div className={`w-full h-full flex justify-center items-center top-[-18%] bg-transparent relative z-10  ${showDisclaimer ? "invisible" : ""}`}>
                 <div
                   className="relative flex bg-transparent z-8 justify-center"
                   style={{
@@ -396,7 +431,7 @@ const questions = [
               </div>
 
 
-              <div className="absolute top-[45%] w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center absolute right-0">
+              <div className={`absolute top-[45%] w-[40%] sm:w-[35%] md:w-[30%] lg:w-[25%] h-1/2 z-0 flex justify-center items-center absolute right-0  ${showDisclaimer ? "invisible" : ""}`}>
                 <PolaroidPhoto />
               </div>
 

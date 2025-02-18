@@ -62,48 +62,15 @@ const Vie: React.FC = () => {
     className="absolute inset-0 h-[97%] w-full object-cover z-0"
   />
   
-  {showDisclaimer && (
-    <div className="absolute inset-0 flex items-center justify-center z-20  w-full h-full" style={{
-      transform: `scale(${resizeFactor})`,
-      transformOrigin: "center",
-    }}>
-      <div className="border-2 border-black rounded-xl bg-white p-6 shadow-lg text-center max-w-lg w-[100%]">
-        <div className="text-center">
-          <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham">
-            {isSpanish ? "¡Prepárate para el juego y recuerda tener en cuenta lo siguiente 😊!" : "Get ready for the game and keep in mind this 😊!"}
-          </h2>
-          <p className="poke-name text-lg md:text-2xl mt-2 font-bentham">
-            {isSpanish
-              ? "En este juego, exploramos a los genios que revolucionaron la tecnología y los criminales más infames de la historia. No buscamos estereotipar ni trivializar sus impactos. Reconocemos el legado de los creadores de sistemas operativos y aclaramos que no existe evidencia que permita identificar a un asesino serial solo por su apariencia. Pon a prueba tu intuición y conocimientos. ¿Podrás distinguir a un inventor de un criminal?"
-              : "In this game, we explore the geniuses who revolutionized technology and the most infamous criminals in history. We do not seek to stereotype or trivialize their impacts. We acknowledge the legacy of operating system creators and clarify that there is no evidence to identify a serial killer based solely on appearance. Test your intuition and knowledge. Can you distinguish a technological visionary from a criminal?"}
-          </p>
-        </div>
-
-        {/* Botón centrado dentro del modal */}
-        <div className="flex justify-center mt-6">
-          <button
-            className="w-[79%] sm:w-[73%] md:w-[73%] h-[4rem] bg-yellow-300 text-black py-1 px-4 shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider"
-            onClick={() => setShowDisclaimer(false)}
-            style={{
-              background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-            }}
-          >
-            {isSpanish ? "COMENZAR EL JUEGO" : "START THE GAME"}
-          </button>
-        </div>
-      </div>
-    </div>
-  )}
-
-
-        <div className={`absolute top-[12%] text-center z-20 w-[85%] h-[24vh] flex items-center justify-center px-4 bg-transparent  ${showDisclaimer ? "invisible" : ""}`}>
+ 
+        /esta parte quiero que parezca primero
+        <div className={`absolute top-[12%] text-center z-20 w-[85%] h-[24vh] flex items-center justify-center px-4 bg-transparent `}>
           <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-bentham text-black break-words">
             {t("guessText")}
           </p>
         </div>
 
-        <div className={`absolute top-[46%] sm:top-[36%] w-full flex justify-center space-x-8 z-10  ${showDisclaimer ? "invisible" : ""}`}>
+        <div className={`absolute top-[46%] sm:top-[36%] w-full flex justify-center space-x-8 z-10  `}>
           <img
             src="assets/silueta.png"
             alt="Background"
@@ -116,7 +83,7 @@ const Vie: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
-          <div className={`absolute bottom-[12%] left-0 right-0 flex justify-center items-center z-10  ${showDisclaimer ? "invisible" : ""}`}>
+          <div className={`absolute bottom-[12%] left-0 right-0 flex justify-center items-center z-10  `}>
             <ButtonStart />
           </div>
         </motion.div>
