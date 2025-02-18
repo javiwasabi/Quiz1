@@ -454,7 +454,7 @@ const [showCredits, setShowCredits] = useState(false);
 
               {isFlipped && (
 
-              <div className={`absolute bottom-[10%] nesthub:absolute bottom-[10%]  flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}>
+              <div className={`absolute bottom-[10%] nesthub:absolute bottom-[6%]  flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}>
                 <NextP id="next-button" onClick={handleNextQuestion} />
               </div> )}
 

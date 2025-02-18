@@ -23,7 +23,7 @@
   background-position: center;
   transition: transform 0.3s ease-in-out;
   margin-bottom: 0px;
-  height: 405px;
+  height: 409px;
 
 }
 
@@ -98,7 +98,7 @@
 
   #card {
     padding: 15px;
-    height: 330px;
+    height: 340px;
   }
 
   #card img {
