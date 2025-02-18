@@ -356,9 +356,6 @@ const [showCredits, setShowCredits] = useState(false);
                             <WhatsappIcon size={40} round={true} />
                           </WhatsappShareButton>
                   
-                          <FacebookShareButton url={shareUrl} title={shareText} hashtag={"QuizGame"}>
-                            <FacebookIcon size={40} round={true} />
-                          </FacebookShareButton>
                   
                           <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
                             <XIcon size={40} round={true} />

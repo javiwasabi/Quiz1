@@ -340,9 +340,7 @@ const shareText = userLanguage
                             <WhatsappIcon size={40} round={true} />
                           </WhatsappShareButton>
                   
-                          <FacebookShareButton url={shareUrl} title={shareText}>
-                            <FacebookIcon size={40} round={true} />
-                          </FacebookShareButton>
+                         
                   
                           <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
                             <XIcon size={40} round={true} />
