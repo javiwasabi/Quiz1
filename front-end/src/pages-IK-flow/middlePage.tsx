@@ -137,9 +137,7 @@ const questions = [
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
 ];
-const shareText = userLanguage
-    ? `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos de aciertos en el juego creadores S.O. vs Asesinos Seriales. Juegalo tú también en`
-    : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game O.S. Creators vs Serial Killers. Play it too at`;
+const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos de aciertos en el juego creadores S.O. vs Asesinos Seriales. Juegalo tú también en` : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game O.S. Creators vs Serial Killers. Play it too at`;
   
   
 
