@@ -289,7 +289,7 @@ const questions = [
                       <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
-                     <button onClick={() => setShowCredits(true)} className="mt-4 underline font-bentham">
+                     <button onClick={() => setShowCredits(true)} className="mt-4 underline font-bentham text-lg md:text-2xl">
                      {isSpanish ? "Derechos de autor" : "Copyright"}
                    
                      </button>
