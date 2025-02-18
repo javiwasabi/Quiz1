@@ -82,10 +82,10 @@ export const CardPok: React.FC<CardPropsp> = ({
               style={{
                 transform: isRevealed ? "scale(0.8)" : "scale(0.6)",
                 transition: "transform 0.5s ease",
-                top: "1vh",
+                top: "2vh",
               }}
             />
-            <h2 className="poke-name font-light font-bentham text-md sm:text-lg text-center">{context}</h2>
+            <h2 className="poke-name font-light font-bentham text-md sm:text-lg text-center left-1/2  ">{context}</h2>
           </div>
         </div>
       </div>

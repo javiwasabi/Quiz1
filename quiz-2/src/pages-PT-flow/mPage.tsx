@@ -58,7 +58,7 @@ const Game: React.FC = () => {
       correctAnswer: "Pokemon",
       context: {
         en: "Baldur, a Norse god of light and purity, loved by all but fell due to Loki's trickery.\n\n- Norse Mythology",
-        es: "Baldur, dios nórdico de la luz y la pureza, amado por todos pero cayó por el engaño de Loki.\n\n- Mitología nórdica"
+        es: "Baldur, dios nórdico de la luz y la pureza, amado por todos pero fue engañado por Loki.\n\n- Mitología nórdica"
       },
       name: "Baldur"
     },
@@ -341,8 +341,8 @@ const [showCredits, setShowCredits] = useState(false);
                       <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
-                     <button onClick={() => setShowCredits(true)} className="mt-4 text-blue-600 underline">
-                        Créditos de las imágenes
+                     <button onClick={() => setShowCredits(true)} className="mt-4 underline">
+                     {isSpanish ? "Derechos de autor" : "Copyright"}
                      </button>
                   
                       <div className="mt-8 w-full flex flex-col items-center">
