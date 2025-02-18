@@ -22,8 +22,8 @@ const Middle: React.FC = () => {
   const shareUrl = "https://programadoroasesino.n12.cl";
   const userLanguage = navigator.language.startsWith("es") ? "es" : "en";
   const shareText = userLanguage
-    ? `Obtuve un  ${score} de aciertos en el juego Developers vs Asesinos Seriales. Juegalo tú también en`
-    : `I scored ${score} correct answers in the game Developers vs Serial Killers. Play it too at`;
+    ? `Obtuve un  ${score} de aciertos en el juego creadores S.O. vs Asesinos Seriales. Juegalo tú también en`
+    : `I scored ${score} correct answers in the game O.S. Creators vs Serial Killers. Play it too at`;
   const [showSerialKiller, setShowSerialKiller] = useState(true);
   const [showInventor, setShowInventor] = useState(true);
   const [showOr, setShowOr] = useState(true);
