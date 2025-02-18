@@ -34,7 +34,7 @@ const Middle: React.FC = () => {
     { url: "https://commons.wikimedia.org/wiki/File:John_Wayne_Gacy.jpg", author: "White House photographer", license: "Public domain" },
     { url: "https://commons.wikimedia.org/wiki/File:Ian_Murdock_interview_at_Holiday_Club_hotel_2008_01.jpg", author: "Ilya Schurov", license: "CC BY-SA 2.0" },
     { url: "https://commons.wikimedia.org/wiki/File:Fernando_Corbato.jpg", author: "Jason Dorfman, MIT CSAIL photographer", license: "CC BY-SA 3.0" },
-    { url: "https://commons.wikimedia.org/wiki/File:Ken_Thompson_and_Dennis_Ritchie--1973.jpg", author: "Unknown", license: "Public domain" },
+    { url: "https://commons.wikimedia.org/wiki/File:Ken_Thompson,_2019.jpg", author: "A.C.Diller", license: "CC BY-SA 4.0" },
     { url: "https://commons.wikimedia.org/wiki/File:Edmund_Kemper_(mug_shot_-_1973)_(cropped).jpg", author: "Santa Cruz County Sheriff's Office", license: "Public domain" },
     { url: "https://commons.wikimedia.org/wiki/File:Grace_Hopper_and_UNIVAC.jpg", author: "Unknown", license: "CC BY 2.0" },
     { url: "https://commons.wikimedia.org/wiki/File:Jeffrey_Dahmer_HS_Yearbook.jpg", author: "Revere Senior High School", license: "Public domain" },
@@ -132,7 +132,7 @@ const questions = [
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
   {
-      imageUrl: "assets/ken.jpg",
+      imageUrl: "assets/ken3.jpg",
       correctAnswer: "Inventor",
       context: translations[userLanguage]["Co-creator of Unix and the Plan 9 OS."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
