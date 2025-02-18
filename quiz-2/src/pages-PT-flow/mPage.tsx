@@ -130,8 +130,8 @@ const Game: React.FC = () => {
 
   const shareUrl = "https://pokemonotecnologia.n12.cl";
   const shareText = userLanguage
-  ? `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos en el juego Pokemones vs Tecnologías. Juegalo tú también en`
-  : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game Pokemons vs Technology. Play it too at`;
+  ? `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos en el juego Personajes fantásticos vs Tecnologías digitales. Juegalo tú también en`
+  : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game Fantasy Characters vs Digital Technology. Play it too at`;
 
   
 
