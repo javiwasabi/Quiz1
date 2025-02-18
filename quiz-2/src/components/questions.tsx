@@ -35,7 +35,7 @@ export const CardPok: React.FC<CardPropsp> = ({
       <ReactCardFlip isFlipped={isRevealed} flipDirection="horizontal">
         <div className="relative flex flex-col items-center font-bentham w-full">
           <div 
-            className={`nesthub:h-[250px] nesthub:w-[320px]  z-0  `}
+            className={`nesthub:h-[250px] nesthub:w-[320px]  z-0  ${isFlipped ? "invisible" : ""}`}
             style={{
               transform: isRevealed ? "rotateY(180deg)" : "rotate(0deg)",
               overflow: "hidden",
