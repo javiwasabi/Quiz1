@@ -381,7 +381,7 @@ const [showCredits, setShowCredits] = useState(false);
         ))}
       </ul>
       <button onClick={() => setShowCredits(false)} className="mt-4 text-red-600 underline block mx-auto">
-        Cerrar
+      {isSpanish ? "Cerrar" : "Close"}
       </button>
     </div>
   </div>

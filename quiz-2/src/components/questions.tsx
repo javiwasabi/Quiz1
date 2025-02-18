@@ -64,29 +64,30 @@ export const CardPok: React.FC<CardPropsp> = ({
           className="absolute inset-0 h-full w-full  "
         />
 
-          <div
-            id="card"
-            style={{
-             
+<div
+  id="card"
+  style={{
+    transform: isRevealed ? "scale(1)" : "scale(0.7)",
+    opacity: isRevealed ? "1" : "0",
+    top: "0vh",
+  }}
+  className="card flex flex-col items-center justify-center absolute inset-0 max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] 
+             h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10"
+>
+  <img
+    src={imageUrl}
+    alt={context}
+    className="card-image"
+    style={{
+      transform: isRevealed ? "scale(0.8)" : "scale(0.6)",
+      transition: "transform 0.5s ease",
+    }}
+  />
+  <h2 className="poke-name font-light font-bentham text-md sm:text-lg text-center">
+    {context}
+  </h2>
+</div>
 
-              transform: isRevealed ? "scale(1)" : "scale(0.7)",
-              opacity: isRevealed ? "1" : "0",
-              top: "0vh",
-            }}
-            className="card absolute inset-0 h-full w-full w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10 fixed top-[10%]" 
-          >
-            <img
-              src={imageUrl}
-              alt={context}
-              className="card-image"
-              style={{
-                transform: isRevealed ? "scale(0.8)" : "scale(0.6)",
-                transition: "transform 0.5s ease",
-                top: "2vh",
-              }}
-            />
-            <h2 className="poke-name font-light font-bentham text-md sm:text-lg text-center left-1/2  ">{context}</h2>
-          </div>
         </div>
       </div>
     </div>
