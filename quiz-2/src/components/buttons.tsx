@@ -55,22 +55,18 @@ export const ButtonStartp: React.FC = () => {
 
 export const NextP: React.FC<ButtonNextProps> = ({ onClick, id }) => {
   return (
-    <div className="flex flex-col items-center justify-center h-[0%] w-full font-bentham">
+    <div className="flex items-center justify-center h-full w-full font-bentham">
       <button
         className="bg-white flex items-center justify-center w-auto min-w-[100px] max-w-[90%] py-2 px-4 sm:py-3 sm:px-6 font-medium uppercase text-black text-xl sm:text-2xl leading-tight rounded-full transition-shadow duration-300 h-auto"
         style={{
           boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
         }}
-        
         onClick={onClick}
         id={id}
         aria-label="Next Button"
       >
-
-        <span className="mr-4  z-10">{isSpanish ? "SIGUIENTE" : "NEXT"}</span>
-       
+        <span className=" z-10">{isSpanish ? "SIGUIENTE" : "NEXT"}</span>
       </button>
     </div>
   );
 };
-
