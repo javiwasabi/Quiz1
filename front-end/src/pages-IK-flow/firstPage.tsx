@@ -34,7 +34,7 @@ const Vie: React.FC = () => {
       </div>
       
       {/* Contenedor que alinea el botón sin sacarlo del modal */}
-      <div className="flex justify-center absolute sm:bottom-[15%] bottom-[20%] left-1/2 transform -translate-x-[50%]">
+      <div className="flex justify-center absolute sm:bottom-[15%] bottom-[0%] left-1/2 transform -translate-x-[50%]">
         <button
           className="w-[79%] sm:w-[73%] md:w-[73%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] 
                      bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 
