@@ -10,7 +10,7 @@ import './utils/i18n';
 
 const userLang = navigator.language || navigator.language;
 const isSpanish = userLang.startsWith("es");
-document.title = isSpanish ? "¿Asesino serial o Programador informático?" : "Serial killer or computer programmer?";
+document.title = isSpanish ? "¿Asesino serial o Creador de Sistema Operativo?" : "Serial killer or S.O. Inventor?";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
