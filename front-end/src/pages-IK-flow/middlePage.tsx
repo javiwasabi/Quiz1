@@ -355,7 +355,7 @@ const questions = [
 
                 {showCredits && (
   <div className="  fixed top-1/2 transform -translate-y-[50%] left-1/2 transform -translate-x-[50%] w-screen h-screen flex items-center justify-center z-50 w-full h-full ">
-    <div className="  border-2 border-black rounded-xl bg-white p-6 rounded-lg shadow-lg text-center max-w-lg sm:w-[70%]  sm:h-[65%]  w-[100%] h-[75%]  relative">
+    <div className="  border-2 border-black rounded-xl bg-white p-6 rounded-lg shadow-lg text-center max-w-lg sm:w-[70%]  sm:h-[68%]  w-[100%] h-[75%]  relative">
       <div className="rounded-md text-center justify-center">
         <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
           {isSpanish ? "Créditos de las imágenes" : "Image Credits"}
