@@ -38,7 +38,8 @@ const Middle: React.FC = () => {
     { url: "https://commons.wikimedia.org/wiki/File:Edmund_Kemper_(mug_shot_-_1973)_(cropped).jpg", author: "Santa Cruz County Sheriff's Office", license: "Public domain" },
     { url: "https://commons.wikimedia.org/wiki/File:Grace_Hopper_and_UNIVAC.jpg", author: "Unknown", license: "CC BY 2.0" },
     { url: "https://commons.wikimedia.org/wiki/File:Jeffrey_Dahmer_HS_Yearbook.jpg", author: "Revere Senior High School", license: "Public domain" },
-    { url: "https://commons.wikimedia.org/wiki/File:Theodore_Kaczynski,_1968_(re-scanned,_as-is;_de-bordered).jpg", author: "George Bergman", license: "CC BY-SA 4.0" }
+    { url: "https://commons.wikimedia.org/wiki/File:Theodore_Kaczynski,_1968_(re-scanned,_as-is;_de-bordered).jpg", author: "George Bergman", license: "CC BY-SA 4.0" },
+    { url: "https://commons.wikimedia.org/wiki/File:SVG_Human_Silhouette.svg", author: "Madhero88", license: "CC BY-SA 3.0" }
   ];
 
   const scoreRef = useRef(0);
