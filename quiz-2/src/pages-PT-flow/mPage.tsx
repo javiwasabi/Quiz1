@@ -250,6 +250,36 @@ useEffect(() => {
   window.addEventListener("resize", handleResize);
   return () => window.removeEventListener("resize", handleResize);
 }, []);
+const worksAndAuthors = [
+  {
+    name: "Dorian",
+    work: "The Picture of Dorian Gray",
+    author: "Oscar Wilde"
+  },
+  {
+    name: "Baldur",
+    work: "Norse Mythology",
+    author: "Norse Legends"
+  },
+  {
+    name: "Phoebus",
+    work: "Greek Mythology",
+    author: "Various Ancient Greek Sources"
+  },
+  {
+    name: "Erebus",
+    work: "Greek Mythology",
+    author: "Various Ancient Greek tales"
+  },
+  {
+    name: "Van Helsing",
+    work: "Dracula",
+    author: "Bram Stoker"
+  }
+];
+const [showCredits, setShowCredits] = useState(false);
+
+
 
 
 
@@ -270,72 +300,94 @@ useEffect(() => {
            className="absolute inset-0 h-full w-full object-cover"
         />
         {showResults ? (
-           <div
-            style={{
-              transform: `scale(${resizeFactor})`,
-              transformOrigin: "center",
-            }}
-            className="absolute inset-0 flex items-center justify-center">
-          
-            <div className=" w-[80%] sm:w-[100%] h-[80%] items-center justify-center transform-none">
-              <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none">
-                <motion.div
-                  className="relative bg-white shadow-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[90%] md:w-[70%] lg:w-[70%] h-auto"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  style={{
-                    boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                  }}
-                >
-                  <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
-                    {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
-                  </h2>
-
-                  {questions.length > 0 && (
-                    <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%]">
-                      {navigator.language.includes("es")
-                        ? ((score / questions.length) * 100) < 40
-                          ? "Te queda mucho por aprender de tecnología 😟 !pero no te preocupes 🤗¡, en N12 nos especializamos en buscar profesionales de tecnología (y también personajes épicos) por ti."
-                          : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                          ? "Todavía te falta para dominar la diferencia entre tecnologías y personajes fantásticos 😅 ¡pero no te preocupes 🤗! en N12 nos especializamos en buscar profesionales de tecnología (y también personajes épicos) por ti."
-                          : "Felicitaciones 🥳, dominas casi a la perfección el arte de distinguir tecnologías y personajes de fantasía 🤓. En N12 nos especializamos en buscar profesionales de tecnología (y a veces de personajes épicos) con la misma calidad que lo harías tú."
-                        : ((score / questions.length) * 100) < 40
-                        ? "You have a lot to learn about technology 🤨 but don't worry 🤗, at N12 we specialize in finding technology professionals (and also fantasy characters) for you."
-                        : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
-                        ? "You still have a way to go to master the difference between technologies and fantasy characters 😅 but don't worry 🤗! At N12 we specialize in finding technology professionals (and also epic characters) for you."
-                        : "🎊Congratulations 🥳, you almost perfectly master the art of distinguishing technologies and fantasy characters 🤓. At N12 we specialize in finding technology professionals (and sometimes epic characters) with the same quality as you would."}
-                    </p>
-                  )}
-                  <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl ">
-                N12 - Recruiters in Tech
-              </a>
-
-                  <div className="mt-8 w-full flex flex-col items-center">
+            <div
+              style={{
+                transform: `scale(${resizeFactor})`,
+                transformOrigin: "center",
+              }}
+              className="absolute inset-0 flex items-center justify-center auto nesthub:w-full ">
+           
+                <div className="w-[80%] h-[80%] items-center justify-center transform-none auto nesthub:w-full ">
+                  <div className="fixed inset-0 flex items-center justify-center w-[100%] transform-none ">
+                    <motion.div
+                      className="relative bg-white border-2 border-black rounded-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto nesthub:max-h-[450px] nesthub:max-w-full"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      style={{
+                        boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
+                      }}
+                    >
+                      <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
+                        {navigator.language.includes("es") ? `Tuviste ${((score / questions.length) * 100).toFixed(0)}% de aciertos` : `You had ${((score / questions.length) * 100).toFixed(0)}% correct answers`}
+                      </h2>
                   
-                    <p className="font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center">
-                      {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
-                    </p>
+                      {questions.length > 0 && (
+                          <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%] nesthub:text-lg">
+                          {((score / questions.length) * 100) < 40
+                            ? isSpanish 
+                              ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte." 
+                              : "We wouldn't recommend you going to a technology conference 😭, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you. "
+                            : ((score / questions.length) * 100) >= 40 && ((score / questions.length) * 100) < 80
+                            ? isSpanish 
+                              ? "No te recomendaríamos ir a una conferencia de tecnología 😤, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte. " 
+                              : "We wouldn't recommend you going to a technology conference 😤, as you might get quite a scare there ☠. If finding technology professionals is a problem in your organization, remember that at N12 we can help you. "
+                            : isSpanish 
+                              ? "Felicitaciones 🤩, distingues casi a la perfección a quienes han dado forma al mundo tecnológico en que vivimos. En N12 nos especializamos en identificar a buenos profesionales de tecnología con la misma calidad que lo harías tú." 
+                              : "Congratulations 🤩, you almost perfectly distinguish those who have shaped the technological world we live in. At N12, we specialize in identifying good technology professionals with the same quality as you would. "
+                          }
+                        </p>
+                      )}
+                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl nesthub:text-lg ">
+                         N12 - Recruiters in Tech
+                     </a>
+                     <button onClick={() => setShowCredits(true)} className="mt-4 text-blue-600 underline">
+                        Créditos de las imágenes
+                     </button>
+                  
+                      <div className="mt-8 w-full flex flex-col items-center">
+                        <p className="font-bold font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center nesthub:text-2xl ">
+                          {navigator.language.includes("es") ? "Comparte tus resultados" : "Share your results"}
+                        </p>
+                  
+                        <div className="flex space-x-4 mt-6 sm:mt-8">
+                          <WhatsappShareButton url={shareUrl} title={shareText}>
+                            <WhatsappIcon size={40} round={true} />
+                          </WhatsappShareButton>
+                  
+                          <FacebookShareButton url={shareUrl} title={shareText}>
+                            <FacebookIcon size={40} round={true} />
+                          </FacebookShareButton>
+                  
+                          <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+                            <XIcon size={40} round={true} />
+                          </TwitterShareButton>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>  
+                </div>
 
-                    <div className="flex space-x-4 mt-6 sm:mt-8">
-                      <WhatsappShareButton url={shareUrl} title={shareText}>
-                        <WhatsappIcon size={40} round={true} />
-                      </WhatsappShareButton>
+                {showCredits && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
+    <div className="bg-white p-4 md:p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-auto">
+      <h2 className="text-lg md:text-xl font-bold mb-4 text-center">Créditos de las imágenes</h2>
+      <ul className="list-disc pl-5 text-sm md:text-base">
+        {worksAndAuthors.map((item, index) => (
+          <li key={index} className="mb-2">
+            <i>{item.work}</i> by {item.author}
+          </li>
+        ))}
+      </ul>
+      <button onClick={() => setShowCredits(false)} className="mt-4 text-red-600 underline block mx-auto">
+        Cerrar
+      </button>
+    </div>
+  </div>
+)}
 
-                      <FacebookShareButton url={shareUrl} title={shareText}>
-                        <FacebookIcon size={40} round={true} />
-                      </FacebookShareButton>
+           </div>) : (
 
-                      <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
-                        <XIcon size={40} round={true} />
-                      </TwitterShareButton>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </div>) 
-      : (
           <>
             
           
@@ -401,7 +453,7 @@ useEffect(() => {
 
               {isFlipped && (
 
-              <div className={`absolute bottom-[10%] nesthub:absolute bottom-[4%]  flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}>
+              <div className={`absolute bottom-[10%] nesthub:absolute bottom-[10%]  flex flex-col sm:flex-row justify-center items-center text-center mx-auto gap-10 px-4 w-full`}>
                 <NextP id="next-button" onClick={handleNextQuestion} />
               </div> )}
 

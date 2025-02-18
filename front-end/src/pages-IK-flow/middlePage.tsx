@@ -28,85 +28,117 @@ const Middle: React.FC = () => {
   const [showInventor, setShowInventor] = useState(true);
   const [showOr, setShowOr] = useState(true);
   const { t, i18n } = useTranslation();
+  const imageCredits = [
+    { url: "https://commons.wikimedia.org/wiki/File:Dennis_Ritchie_2011.jpg", author: "Denise Panyik-Dale", license: "CC BY 2.0" },
+    { url: "https://commons.wikimedia.org/wiki/File:Aileen_Wuornos.jpg", author: "Florida Department of Corrections", license: "Public domain" },
+    { url: "https://commons.wikimedia.org/wiki/File:John_Wayne_Gacy.jpg", author: "White House photographer", license: "Public domain" },
+    { url: "https://commons.wikimedia.org/wiki/File:Ian_Murdock_interview_at_Holiday_Club_hotel_2008_01.jpg", author: "Ilya Schurov", license: "CC BY-SA 2.0" },
+    { url: "https://commons.wikimedia.org/wiki/File:Fernando_Corbato.jpg", author: "Jason Dorfman, MIT CSAIL photographer", license: "CC BY-SA 3.0" },
+    { url: "https://commons.wikimedia.org/wiki/File:Ken_Thompson_and_Dennis_Ritchie--1973.jpg", author: "Unknown", license: "Public domain" },
+    { url: "https://commons.wikimedia.org/wiki/File:Edmund_Kemper_(mug_shot_-_1973)_(cropped).jpg", author: "Santa Cruz County Sheriff's Office", license: "Public domain" },
+    { url: "https://commons.wikimedia.org/wiki/File:Grace_Hopper_and_UNIVAC.jpg", author: "Unknown", license: "CC BY 2.0" },
+    { url: "https://commons.wikimedia.org/wiki/File:Jeffrey_Dahmer_HS_Yearbook.jpg", author: "Revere Senior High School", license: "Public domain" },
+    { url: "https://commons.wikimedia.org/wiki/File:Theodore_Kaczynski,_1968_(re-scanned,_as-is;_de-bordered).jpg", author: "George Bergman", license: "CC BY-SA 4.0" }
+  ];
 
   const scoreRef = useRef(0);
   const isSpanish = userLanguage.startsWith('es');
 
   const translations: Record<string, Record<string, string>> = {
     en: {
-      "Creator of Python, a popular programming language.": "Guido van Rossum - Creator of Python, a popular programming language.",
       "Creator of C programming language and Unix OS.": "Dennis Ritchie - Creator of C programming language and Unix OS.",
-      "Known as the BTK killer, responsible for multiple murders.": "Dennis Rader - Known as the BTK killer, responsible for multiple murders.",
-      "Creator of the Java programming language.": "James Gosling - Creator of the Java programming language.",
+      "Co-creator of Unix and the Plan 9 OS.": "Ken Thompson - Co-creator of Unix and the Plan 9 OS.",
+      "Pioneer in computer science, worked on UNIVAC and compilers.": "Grace Hopper - Pioneer in computer science, worked on UNIVAC and compilers.",
+      "Developer of Debian, a widely used Linux distribution.": "Ian Murdock - Developer of Debian, a widely used Linux distribution.",
+      "Key contributor to Multics, influencing modern OS design.": "Fernando Corbató - Key contributor to Multics, influencing modern OS design.",
+      "Known as the Unabomber, responsible for multiple attacks.": "Ted Kaczynski - Known as the Unabomber, responsible for multiple attacks.",
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Notorious for the Milwaukee Cannibal murders.",
       "Infamous serial killer, known for his brutal crimes.": "Ted Bundy - Infamous serial killer, known for his brutal crimes.",
-      "Pioneer in computer science, worked on UNIVAC and compilers.": "Grace Hopper - Pioneer in computer science, worked on UNIVAC and compilers.",
-      "Pioneer in computer science, known for developing Dijkstra's algorithm to find shortest paths in graphs.": "Edsger W. Dijkstra - Pioneer in computer science, known for developing Dijkstra's algorithm to find shortest paths in graphs."
+      "Known for a string of murders and manipulative behavior.": "Aileen Wuornos - Known for a string of murders and manipulative behavior.",
+      "Infamous serial killer, responsible for multiple killings.": "John Wayne Gacy - Infamous serial killer, responsible for multiple killings as a clown."
     },
     es: {
-      "Creator of Python, a popular programming language.": "Guido van Rossum - Creador de Python, un lenguaje de programación popular.",
       "Creator of C programming language and Unix OS.": "Dennis Ritchie - Creador del lenguaje de programación C y del sistema operativo Unix.",
-      "Known as the BTK killer, responsible for multiple murders.": "Dennis Rader - Conocido como el asesino BTK, responsable de múltiples asesinatos.",
-      "Creator of the Java programming language.": "James Gosling - Creador del lenguaje de programación Java.",
+      "Co-creator of Unix and the Plan 9 OS.": "Ken Thompson - Co-creador de Unix y del sistema operativo Plan 9.",
+      "Pioneer in computer science, worked on UNIVAC and compilers.": "Grace Hopper - Pionera en informática, trabajó en UNIVAC y en compiladores.",
+      "Developer of Debian, a widely used Linux distribution.": "Ian Murdock - Desarrollador de Debian, una distribución de Linux ampliamente utilizada.",
+      "Key contributor to Multics, influencing modern OS design.": "Fernando Corbató - Contribuyente clave en Multics, influyendo en el diseño de sistemas operativos modernos.",
+      "Known as the Unabomber, responsible for multiple attacks.": "Ted Kaczynski - Conocido como el Unabomber, responsable de múltiples atentados.",
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Conocido por los asesinatos del Caníbal de Milwaukee.",
       "Infamous serial killer, known for his brutal crimes.": "Ted Bundy - Asesino en serie infame, conocido por sus crímenes brutales.",
-      "Pioneer in computer science, worked on UNIVAC and compilers.": "Grace Hopper - Pionera en informática, trabajó en UNIVAC y compiladores.",
-      "Pioneer in computer science, known for developing Dijkstra's algorithm to find shortest paths in graphs.": "Edsger W. Dijkstra - Pionero en informática, conocido por desarrollar el algoritmo de Dijkstra para encontrar rutas más cortas en grafos."
+      "Known for a string of murders and manipulative behavior.": "Aileen Wuornos - Conocida por una serie de asesinatos y comportamiento manipulador.",
+      "Infamous serial killer, responsible for multiple killings.": "John Wayne Gacy - Asesino en serie infame, responsable de múltiples asesinatos vestido como payaso."
     }
   };
   
-
-  
-  const questions = [
-    {
-      imageUrl: "assets/Guido-portrait-2014-curvves.jpg",
-      correctAnswer: "Inventor",
-      context: translations[userLanguage]["Creator of Python, a popular programming language."],
-      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
-    },
+const questions = [
     {
       imageUrl: "assets/Dennis_Ritchie_2011.jpg",
       correctAnswer: "Inventor",
       context: translations[userLanguage]["Creator of C programming language and Unix OS."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
-    },
-    {
-      imageUrl: "assets/dennis-rader-btk-.jpg",
-      correctAnswer: "Killer",
-      context: translations[userLanguage]["Known as the BTK killer, responsible for multiple murders."],
-      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
-    },
-    {
-      imageUrl: "assets/James_Gosling_2008-1.jpg",
-      correctAnswer: "Inventor",
-      context: translations[userLanguage]["Creator of the Java programming language."],
-      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
-    },
-    {
-      imageUrl: "assets/jeffrey-dahmer-4.webp",
-      correctAnswer: "Killer",
-      context: translations[userLanguage]["Notorious for the Milwaukee Cannibal murders."],
-      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
-    },
-    {
+    },{
       imageUrl: "assets/Edmund_Kemper_.jpg",
       correctAnswer: "Killer",
       context: translations[userLanguage]["Infamous serial killer, known for his brutal crimes."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
     {
+      imageUrl: "assets/bomb.jpg",
+      correctAnswer: "Killer",
+      context: translations[userLanguage]["Known as the Unabomber, responsible for multiple attacks."],
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+    {
+      imageUrl: "assets/jhon.jpg",
+      correctAnswer: "Killer",
+      context: translations[userLanguage]["Infamous serial killer, responsible for multiple killings."],
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+   
+    {
       imageUrl: "assets/Grace_Hopper_and_UNIVAC.jpg",
       correctAnswer: "Inventor",
       context: translations[userLanguage]["Pioneer in computer science, worked on UNIVAC and compilers."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
+    
     {
-      imageUrl: "assets/dikstra-2.jpg",
+      imageUrl: "assets/ian.jpg",
       correctAnswer: "Inventor",
-      context: translations[userLanguage]["Pioneer in computer science, known for developing Dijkstra's algorithm to find shortest paths in graphs."],
+      context: translations[userLanguage]["Developer of Debian, a widely used Linux distribution."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
-  ];
+    
+    {
+      imageUrl: "assets/fernando.jpg",
+      correctAnswer: "Inventor",
+      context: translations[userLanguage]["Key contributor to Multics, influencing modern OS design."],
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+    
+    
+    
+    {
+      imageUrl: "assets/aileen.jpg",
+      correctAnswer: "Killer",
+      context: translations[userLanguage]["Known for a string of murders and manipulative behavior."],
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+    {
+      imageUrl: "assets/jeffrey.jpg",
+      correctAnswer: "Killer",
+      context: translations[userLanguage]["Notorious for the Milwaukee Cannibal murders."],
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+  {
+      imageUrl: "assets/ken2.jpg",
+      correctAnswer: "Inventor",
+      context: translations[userLanguage]["Co-creator of Unix and the Plan 9 OS."],
+      imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
+    },
+];
+
   
   
 
@@ -197,6 +229,8 @@ const Middle: React.FC = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  const [showCredits, setShowCredits] = useState(false);
+
   
   
 
@@ -212,24 +246,23 @@ const Middle: React.FC = () => {
         />
         
         <div className="h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center nesthub:w-full  ">
-          {showResults ? (
+        {showResults ? (
             <div
               style={{
                 transform: `scale(${resizeFactor})`,
                 transformOrigin: "center",
               }}
-              className="absolute inset-0 flex items-center justify-center auto  nesthub:w-full ">
+              className="absolute inset-0 flex items-center justify-center auto nesthub:w-full ">
            
-                <div className=" w-[80%] h-[80%] items-center justify-center transform-none auto  nesthub:w-full ">
-                  <div className="fixed inset-0 flex items-center justify-center w-[100%]   transform-none ">
+                <div className="w-[80%] h-[80%] items-center justify-center transform-none auto nesthub:w-full ">
+                  <div className="fixed inset-0 flex items-center justify-center w-[100%] transform-none ">
                     <motion.div
-                      className="relative bg-white   border-2 border-black rounded-xl  p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto  nesthub:max-h-[450px] nesthub:max-w-full"
+                      className="relative bg-white border-2 border-black rounded-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto nesthub:max-h-[450px] nesthub:max-w-full"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                       style={{
                         boxShadow: "0px 8px 8px -2px rgba(0, 0, 0, 0.5)",
-                        
                       }}
                     >
                       <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
@@ -237,7 +270,7 @@ const Middle: React.FC = () => {
                       </h2>
                   
                       {questions.length > 0 && (
-                          <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%]  nesthub:text-lg">
+                          <p className="poke-name text-lg md:text-2xl mt-2 text-center font-bentham w-[80%] nesthub:text-lg">
                           {((score / questions.length) * 100) < 40
                             ? isSpanish 
                               ? "No te recomendaríamos ir a una conferencia de tecnología 😭, pues podrías pasar más de algún susto ahí ☠. Si buscar profesionales de tecnología es un problema en tu organización, recuerda que en N12 podemos ayudarte." 
@@ -252,9 +285,12 @@ const Middle: React.FC = () => {
                           }
                         </p>
                       )}
-                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl  nesthub:text-lg ">
+                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
+                     <button onClick={() => setShowCredits(true)} className="mt-4 text-blue-600 underline">
+                        Créditos de las imágenes
+                     </button>
                   
                       <div className="mt-8 w-full flex flex-col items-center">
                         <p className="font-bold font-bentham text-black text-xl sm:text-3xl lg:text-3xl text-center nesthub:text-2xl ">
@@ -278,7 +314,28 @@ const Middle: React.FC = () => {
                     </motion.div>
                   </div>  
                 </div>
+
+                {showCredits && (
+                  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
+                    <div className="bg-white p-4 md:p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-auto">
+                      <h2 className="text-lg md:text-xl font-bold mb-4 text-center">Créditos de las imágenes</h2>
+                      <ul className="list-disc pl-5 text-sm md:text-base">
+                        {imageCredits.map((credit, index) => (
+                          <li key={index} className="mb-2">
+                            <a href={credit.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline break-words">
+                              {credit.author} ({credit.license})
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                      <button onClick={() => setShowCredits(false)} className="mt-4 text-red-600 underline block mx-auto">
+                        Cerrar
+                      </button>
+                    </div>
+                  </div>
+                )}
            </div>) : (
+
   
               <>
             
