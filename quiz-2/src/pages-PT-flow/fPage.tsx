@@ -52,7 +52,7 @@ const First: React.FC = () => {
                 </>
               ) : (
                 <>
-                  Can you tell the difference between Digital Technologies and Fantasy Characters?
+                  Can you spot the difference between Digital Technologies and Fantasy Characters?
                 </>
               )}
             </h1>
