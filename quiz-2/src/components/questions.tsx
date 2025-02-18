@@ -35,14 +35,14 @@ export const CardPok: React.FC<CardPropsp> = ({
       <ReactCardFlip isFlipped={isRevealed} flipDirection="horizontal">
         <div className="relative flex flex-col items-center font-bentham w-full">
           <div 
-            className={`nesthub:h-[250px] nesthub:w-[320px]  z-0 `}
+            className={`nesthub:h-[250px] nesthub:w-[320px]  z-0   `}
             style={{
               transform: isRevealed ? "rotateY(180deg)" : "rotate(0deg)",
               overflow: "hidden",
       
             }}
           >
-            <img src="/assets/who.webp" alt="Background" className="absolute inset-0 h-full w-full" />
+            <img src="/assets/who.webp" alt="Background" className="absolute inset-0  z-0 h-full w-full" />
             <div
             id="card"
          
@@ -69,8 +69,8 @@ export const CardPok: React.FC<CardPropsp> = ({
         <div
         
           className={`nesthub:h-[250px] nesthub:w-[320px] ${isFlipped ? "" : "invisible"}`}>
-            <img src="/assets/who.webp" alt="Background" className={`absolute inset-0 h-full w-full ${isFlipped ? "invisible" : "visible"}`}/>
-          <img src="/assets/who_cleanup.webp" alt="Background" className="absolute inset-0 h-full w-full" />
+            <img src="/assets/who.webp" alt="Background" className={`absolute inset-0 h-full w-full ${isFlipped ? "visible" : "visible"}`}/>
+          <img src="/assets/who_cleanup.webp" alt="Background" className="absolute inset-0 h-full w-full z-10" />
           <div
             id="card"
             style={{
