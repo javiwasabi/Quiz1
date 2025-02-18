@@ -290,7 +290,8 @@ const questions = [
                          N12 - Recruiters in Tech
                      </a>
                      <button onClick={() => setShowCredits(true)} className="mt-4 underline">
-                        Créditos de las imágenes
+                     {isSpanish ? "Derechos de autor" : "Copyright"}
+                   
                      </button>
                   
                       <div className="mt-8 w-full flex flex-col items-center">
