@@ -70,7 +70,7 @@ export const CardPok: React.FC<CardPropsp> = ({
         <div
         
           className={`nesthub:h-[250px] nesthub:w-[320px] `}>
-            <img src="/assets/who.webp" alt="Background" className={`absolute inset-0 h-full w-full ${isFlipped ? "visible" : "visible"}`}/>
+
           <img src="/assets/who_cleanup.webp" alt="Background" className="absolute inset-0 h-full w-full z-10" />
           <div
             id="card"
