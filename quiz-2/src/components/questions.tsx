@@ -34,16 +34,15 @@ export const CardPok: React.FC<CardPropsp> = ({
     <div className="flex absolute inset-0 items-center justify-center w-full h-full">
       <ReactCardFlip isFlipped={isRevealed} flipDirection="horizontal">
         <div className="relative flex flex-col items-center font-bentham w-full">
-        <img src="/assets/who.webp" alt="Background" className="absolute inset-0 h-full w-full" />
           <div 
-            className={`nesthub:h-[250px] nesthub:w-[320px]  z-0  ${isFlipped ? "invisible" : ""}`}
+            className={`nesthub:h-[250px] nesthub:w-[320px]  z-0 `}
             style={{
               transform: isRevealed ? "rotateY(180deg)" : "rotate(0deg)",
               overflow: "hidden",
       
             }}
           >
-          
+            <img src="/assets/who.webp" alt="Background" className="absolute inset-0 h-full w-full" />
             <div
             id="card"
          
