@@ -64,9 +64,9 @@ export const CardPok: React.FC<CardPropsp> = ({
         </div>
 
         {/* carta trasera */}
+        
         <div
-          className="nesthub:h-[250px] nesthub:w-[320px] "
-        >
+          className="nesthub:h-[250px] nesthub:w-[320px] "  >
           <img src="/assets/who_cleanup.webp" alt="Background" className="absolute inset-0 h-full w-full" />
           <div
             id="card"
@@ -75,8 +75,8 @@ export const CardPok: React.FC<CardPropsp> = ({
              
               top: "0vh",
             }}
-            className="card flex flex-col items-center justify-center absolute inset-0 max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10"
-          >
+            className={`card flex flex-col items-center justify-center absolute inset-0 max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10 ${isFlipped ? "" : "invisible"}`}>
+          
             <img
               src={imageUrl}
               alt={context}
