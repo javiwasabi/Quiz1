@@ -324,7 +324,7 @@ const questions = [
         <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
           {isSpanish ? "Créditos de las imágenes" : "Image Credits"}
         </h2>
-        <ul className="list-disc pl-5 text-mdg md:text-lg mt-2 text-left font-bentham w-[100%] nesthub:text-lg">
+        <ul className="list-disc pl-5 text-mdg md:text-lg mt-2 text-left font-bentham w-[100%] nesthub:text-xs">
           {imageCredits.map((credit, index) => (
             <li key={index} className="mb-2">
               <a

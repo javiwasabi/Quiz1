@@ -341,7 +341,7 @@ const [showCredits, setShowCredits] = useState(false);
                       <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
-                     <button onClick={() => setShowCredits(true)} className="mt-4 underline font-bentham">
+                     <button onClick={() => setShowCredits(true)} className="mt-4 underline font-bentham text-lg md:text-2xl">
                      {isSpanish ? "Derechos de autor" : "Copyright"}
                      </button>
                   
@@ -369,7 +369,7 @@ const [showCredits, setShowCredits] = useState(false);
                 </div>
 
                 {showCredits && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4 font-bentham ">
     <div className="bg-white p-4 md:p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-auto">
       <h2 className="text-lg md:text-xl font-bold mb-4 text-center">Créditos de las imágenes</h2>
       <ul className="list-disc pl-5 text-sm md:text-base">
