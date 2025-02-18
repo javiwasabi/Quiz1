@@ -1,6 +1,7 @@
 {
     "translation": {
-      "guessText": "¿Puedes distinguir a un asesino serial de un creador de sistema operativo? ",
+        "guessText": "¿Puedes distinguir entre un asesino serial y un creador de sistemas operativos?",
+
         "changeLanguageButton": "Cambiar idioma",
         "englishButton": "Inglés",
         "spanishButton": "Español",

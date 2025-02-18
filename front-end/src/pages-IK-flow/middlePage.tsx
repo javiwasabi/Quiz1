@@ -254,7 +254,8 @@ const questions = [
               }}
               className="absolute inset-0 flex items-center justify-center auto nesthub:w-full ">
            
-                <div className="w-[80%] h-[80%] items-center justify-center transform-none auto nesthub:w-full ">
+           <div className={`w-[80%] h-[80%] items-center justify-center transform-none auto nesthub:w-full ${showCredits ? "invisible" : ""}`}>
+
                   <div className="fixed inset-0 flex items-center justify-center w-[100%] transform-none ">
                     <motion.div
                       className="relative bg-white border-2 border-black rounded-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto nesthub:max-h-[450px] nesthub:max-w-full"
@@ -288,7 +289,7 @@ const questions = [
                       <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-lg sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
-                     <button onClick={() => setShowCredits(true)} className="mt-4 text-blue-600 underline">
+                     <button onClick={() => setShowCredits(true)} className="mt-4 underline">
                         Créditos de las imágenes
                      </button>
                   
@@ -316,25 +317,47 @@ const questions = [
                 </div>
 
                 {showCredits && (
-                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 w-full h-full">
+  <div className="  fixed top-1/2 transform -translate-y-[50%] left-1/2 transform -translate-x-[50%] w-screen h-screen flex items-center justify-center z-50 w-full h-full ">
+    <div className="  border-2 border-black rounded-xl bg-white p-6 rounded-lg shadow-lg text-center max-w-lg sm:w-[70%]  sm:h-[65%]  w-[100%] h-[70%]  relative">
+      <div className="rounded-md text-center justify-center">
+        <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
+          {isSpanish ? "Créditos de las imágenes" : "Image Credits"}
+        </h2>
+        <ul className="list-disc pl-5 text-mdg md:text-lg mt-2 text-left font-bentham w-[100%] nesthub:text-lg">
+          {imageCredits.map((credit, index) => (
+            <li key={index} className="mb-2">
+              <a
+                href={credit.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className=" underline break-words"
+              >
+                {credit.author} ({credit.license})
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-                    <div className="bg-white p-4 md:p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-auto">
-                      <h2 className="text-lg md:text-xl font-bold mb-4 text-center">Créditos de las imágenes</h2>
-                      <ul className="list-disc pl-5 text-sm md:text-base">
-                        {imageCredits.map((credit, index) => (
-                          <li key={index} className="mb-2">
-                            <a href={credit.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline break-words">
-                              {credit.author} ({credit.license})
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                      <button onClick={() => setShowCredits(false)} className="mt-4 text-red-600 underline block mx-auto">
-                        Cerrar
-                      </button>
-                    </div>
-                  </div>
-                )}
+ 
+      <div className="flex justify-center mt-[5%] sm:mt-[5%]">
+        <button
+          className="w-[79%] sm:w-[73%] md:w-[73%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] 
+                     bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 
+                     flex justify-center items-center transform hover:scale-105 transition duration-300 block text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider text-center"
+          onClick={() => setShowCredits(false)}
+          style={{
+            background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+          }}
+        >
+          {isSpanish ? "CERRAR" : "CLOSE"}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
            </div>) : (
 
   

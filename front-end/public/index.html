@@ -15,7 +15,10 @@
       document.addEventListener("DOMContentLoaded", function () {
         const userLang = navigator.language || navigator.userLanguage;
         const isSpanish = userLang.startsWith("es");
-        document.title = isSpanish ? "¿Asesino serial o Creador de Sistema Operativo?" : "Serial killer or S.O. Inventor?";
+        document.title = isSpanish 
+  ? "¿Asesino serial o creador de sistema operativo?" 
+  : "Serial Killer or Operating System Creator?";
+
       });
     </script>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/assets/favicon.ico" />
