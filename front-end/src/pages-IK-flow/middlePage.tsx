@@ -279,7 +279,7 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
           )}
         
         
-        <div className={`h-[70%] w-[90%] flex flex-col space-y-4 transform  justify-center nesthub:w-full    ${showDisclaimer ? "invisible" : ""}`}>
+        <div className={`h-[70%] w-[100%] flex flex-col space-y-4 transform  justify-center nesthub:w-full    ${showDisclaimer ? "invisible" : ""}`}>
         {showResults ? (
             <div
               style={{
