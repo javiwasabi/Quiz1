@@ -381,7 +381,7 @@ const [showCredits, setShowCredits] = useState(false);
       </ul>
       <button
         onClick={() => setShowCredits(false)}
-        className="bg-gray-200 border-black border-2 flex items-center justify-center w-auto min-w-[120px] px-6 py-3 mt-6 text-lg sm:text-xl font-semibold uppercase rounded-full transition-all duration-300 hover:bg-gray-300"
+        className="bg-gray-200 flex items-center justify-center w-auto min-w-[120px] px-6 py-3 mt-6 text-lg sm:text-xl font-semibold uppercase rounded-full transition-all duration-300 hover:bg-gray-300"
       >
         {isSpanish ? "Cerrar" : "Close"}
       </button>
