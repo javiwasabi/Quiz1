@@ -19,7 +19,7 @@ const Middle: React.FC = () => {
   const [answered, setAnswered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showResults, setShowResults] = useState(false);
-  const shareUrl = "https://programadoroasesino.n12.cl";
+  const shareUrl = "https://visionariotechoasesino.n12.cl";
   const userLanguage = navigator.language.startsWith("es") ? "es" : "en";
   
   const [showSerialKiller, setShowSerialKiller] = useState(true);
@@ -340,7 +340,7 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
                   
                          
                   
-                          <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+                          <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "N12 ", "RecruitersInTech"]}>
                             <XIcon size={40} round={true} />
                           </TwitterShareButton>
                         </div>

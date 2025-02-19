@@ -128,7 +128,7 @@ const Game: React.FC = () => {
   ];
   
 
-  const shareUrl = "https://pokemonotecnologia.n12.cl";
+  const shareUrl = "https://tecnologiaofantasia.n12.cl";
   const shareText =  isSpanish ?
    `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos en el juego Personajes fantásticos vs Tecnologías digitales. Juegalo tú también en`
   : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game Fantasy Characters vs Digital Technology. Play it too at`;
@@ -357,7 +357,7 @@ const [showCredits, setShowCredits] = useState(false);
                           </WhatsappShareButton>
                   
                   
-                          <TwitterShareButton url={shareUrl} title={shareText} hashtags={["Quiz", "DecipheringFaces"]}>
+                          <TwitterShareButton url={shareUrl} title={shareText}  hashtags={["Quiz", "N12 ", "RecruitersInTech"]}>
                             <XIcon size={40} round={true} />
                           </TwitterShareButton>
                         </div>
