@@ -207,11 +207,11 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
   };
   
     const [scale, setScale] = useState(getScaleFactor());
-    const [resizeFactor, setResizeFactor] = useState(window.innerWidth < 640 ? 0.8 : 1);
+    const [resizeFactor, setResizeFactor] = useState(window.innerWidth  < 1025 ? 0.8 : 1);
   
   useEffect(() => {
     const handleResize = () => {
-      setResizeFactor(window.innerWidth < 640 ? 0.8 : 1);
+      setResizeFactor(window.innerWidth < 1025 ? 0.8 : 1);
     };
   
     window.addEventListener("resize", handleResize);
@@ -249,7 +249,7 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
               transform: `scale(${resizeFactor})`,
               transformOrigin: "center",
             }}>
-              <div className="border-2 border-black rounded-xl bg-white p-6 shadow-lg text-center max-w-lg w-[100%] mt-5">
+              <div className="border-2 border-black rounded-xl bg-white p-6 shadow-lg text-center max-w-lg w-[100%] nesthub:w-full mt-5">
                 <div className="text-center">
                   <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham">
                     {isSpanish ? "¡Prepárate para el juego y recuerda tener en cuenta lo siguiente 😊!" : "Get ready for the game and keep in mind this 😊!"}
@@ -292,7 +292,7 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
 
                   <div className="fixed inset-0 flex items-center justify-center w-[100%] transform-none ">
                     <motion.div
-                      className="relative bg-white border-2 border-black rounded-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto nesthub:max-h-[450px] nesthub:max-w-full"
+                      className="relative bg-white border-2 border-black rounded-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto nesthub:max-h-[90vh] nesthub:max-w-full"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, ease: "easeInOut" }}

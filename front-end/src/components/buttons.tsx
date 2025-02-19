@@ -14,17 +14,17 @@ export const ButtonStart: React.FC = () => {
   }, [i18n]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-[30%] w-full font-frijole px-4 items-center">
+    <div className="flex flex-col items-center justify-center h-[30%] w-full font-frijole px-4 items-center   nesthub:top-[48%] ">
       <Link to="/question">
         <button
-          className="relative w-full sm:w-[43%] md:w-[100%] h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
+          className="relative w-full sm:w-[43%] md:w-[100%] nesthub:w-[90%]  h-[4rem] bg-yellow-300 text-black py-2 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
           style={{
             background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
             transform: 'rotate(0deg)',
           }}
         >
-          <span className="block text-sm sm:text-2xl md:text-3xl font-bentham uppercase tracking-wider text-left">
+          <span className="block text-sm sm:text-2xl md:text-3xl font-bentham uppercase tracking-wider text-left nesthub:text-xl">
             {t("start")}
           </span>
         </button>
