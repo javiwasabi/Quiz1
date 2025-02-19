@@ -24,21 +24,19 @@ export const CardPok: React.FC<CardPropsp> = ({
 }) => {
   const [isRevealed, setIsRevealed] = useState(false);
   const [showBack, setShowBack] = useState(false);
-  const [forceRender, setForceRender] = useState(false); // Para forzar re-render en cambios de estado
+  const [pokemon, setPokemon] = useState<any>(null);
 
   useEffect(() => {
     if (isFlipped) {
       setIsRevealed(true);
       setTimeout(() => {
         setShowBack(true);
-        setForceRender(prev => !prev); // Forzar re-render después del cambio de estado
-      }, 400); // Ajustado el tiempo del flip para evitar inconsistencias
+      }, 100); // Delay para mostrar la carta trasera después del flip
     } else {
       setShowBack(false);
       setTimeout(() => {
         setIsRevealed(false);
-        setForceRender(prev => !prev); // Forzar re-render después del cambio de estado
-      }, 400);
+      }, 100); // Delay para ocultar la carta trasera después del flip
     }
   }, [isFlipped]);
 
@@ -47,7 +45,6 @@ export const CardPok: React.FC<CardPropsp> = ({
   return (
     <div className="flex absolute inset-0 items-center justify-center w-full h-full">
       <ReactCardFlip isFlipped={isRevealed} flipDirection="horizontal">
-        {/* Carta frontal */}
         <div className="relative flex flex-col items-center font-bentham w-full">
           <div 
             className={`nesthub:h-[250px] nesthub:w-[320px] z-0 ${isFlipped ? "transparent" : ""}`}
@@ -76,7 +73,7 @@ export const CardPok: React.FC<CardPropsp> = ({
           </div>
         </div>
 
-        {/* Carta trasera */}
+        {/* carta trasera */}
         <div className="nesthub:h-[250px] nesthub:w-[320px]">
           <img src="/assets/who_cleanup.webp" alt="Background" className="absolute inset-0 h-full w-full z-10" />
           <div
@@ -84,9 +81,7 @@ export const CardPok: React.FC<CardPropsp> = ({
             style={{
               transform: isRevealed ? "scale(1)" : "scale(0.7)",
               top: "0vh",
-              zIndex: showBack ? 20 : -1, // Forzar el z-index para evitar superposición
-              opacity: showBack ? 1 : 0, // Controlar visibilidad con opacidad
-              transition: "opacity 0.3s ease-in-out", // Suavizar la transición
+              visibility: showBack ? "visible" : "hidden", // Solo se muestra después del delay
             }}
             className="card flex flex-col items-center justify-center absolute inset-0 max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10"
           >
