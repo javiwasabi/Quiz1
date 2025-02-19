@@ -485,7 +485,7 @@ const [showCredits, setShowCredits] = useState(false);
   {showOr && (
     <div className="flex justify-center items-center px-2 bg-gradient-to-r from-white to-grey-900 rounded-full border-2 border-white fade-in-up">
       <span className="font-bentham uppercase text-black text-xs sm:text-md md:text-xl tracking-wider">
-        or
+      {isSpanish? "o": "or"}
       </span>
     </div>
   )}
