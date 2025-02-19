@@ -464,7 +464,7 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
 
               {showOr && (
                 <span className="text-xl sm:text-xl md:text-2xl font-bentham uppercase tracking-wider text-black mx-0 mb-2 sm:mb-0 bg-white py-1 px-4 border-2 border-black rounded-lg shadow-md">
-                  or
+                  {isSpanish? "o": "or"}
                 </span>
               )}
 

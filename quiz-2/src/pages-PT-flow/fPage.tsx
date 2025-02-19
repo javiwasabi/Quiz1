@@ -48,7 +48,7 @@ const First: React.FC = () => {
             <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-black font-bentham leading-tight w-full">
               {isSpanish ? (
                 <>
-                  ¿Puedes distinguir la diferencia entre Tecnologías y Personajes de fantasía?
+                  ¿Puedes distinguir la diferencia entre tecnologías y personajes de fantasía?
                 </>
               ) : (
                 <>
