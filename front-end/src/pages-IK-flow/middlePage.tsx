@@ -348,45 +348,41 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
                     </motion.div>
                   </div>  
                 </div>
-
                 {showCredits && (
-  <div className="  fixed top-1/2 transform -translate-y-[50%] left-1/2 transform -translate-x-[50%] w-screen h-screen flex items-center justify-center z-50 w-full h-full ">
-    <div className="  border-2 border-black rounded-xl bg-white p-6 rounded-lg shadow-lg text-center max-w-lg sm:w-[70%]  sm:h-[68%]  w-[100%] h-[75%]  relative">
-      <div className="rounded-md text-center justify-center">
-        <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham text-center w-full">
-          {isSpanish ? "Créditos de las imágenes" : "Image Credits"}
-        </h2>
-        <ul className="list-disc pl-5 text-md md:text-lg mt-2 text-left font-bentham w-[100%] nesthub:text-xs">
-          {imageCredits.map((credit, index) => (
-            <li key={index} className="mb-2">
-              <a
-                href={credit.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className=" underline break-words"
-              >
-                {credit.author} ({credit.license})
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+  <div className="fixed inset-0 flex items-center justify-center z-50 p-4 absolute w-full ">
+    <div className="border-2 border-black rounded-xl bg-white p-6 shadow-lg text-center w-full max-w-2xl sm:w-fit h-fit flex flex-col items-center">
+      <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham">
+        {isSpanish ? "Créditos de las imágenes" : "Image Credits"}
+      </h2>
 
- 
-      <div className="flex justify-center mt-[10%] sm:mt-[5%]">
-        <button
-          className="w-[79%] sm:w-[73%] md:w-[73%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] 
-                     bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 
-                     flex justify-center items-center transform hover:scale-105 transition duration-300 block text-sm sm:text-lg md:text-2xl font-bentham uppercase tracking-wider text-center"
-          onClick={() => setShowCredits(false)}
-          style={{
-            background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
-          }}
-        >
-          {isSpanish ? "CERRAR" : "CLOSE"}
-        </button>
-      </div>
+      {/* Lista de créditos ajustable */}
+      <ul className="list-disc pl-5 text-md md:text-lg text-left font-bentham w-full">
+        {imageCredits.map((credit, index) => (
+          <li key={index} className="mb-2">
+            <a
+              href={credit.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline break-words"
+            >
+              {credit.author} ({credit.license})
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {/* Botón de cerrar centrado */}
+      <button
+        className="mt-0 w-[40%] sm:w-[30%] h-[4rem] bg-yellow-300 text-black shadow-lg rounded-lg border-4 border-yellow-600 
+                   flex justify-center items-center hover:scale-105 transition duration-300 text-lg sm:text-2xl font-bentham uppercase tracking-wider"
+        onClick={() => setShowCredits(false)}
+        style={{
+          background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+        }}
+      >
+        {isSpanish ? "CERRAR" : "CLOSE"}
+      </button>
     </div>
   </div>
 )}
@@ -453,7 +449,7 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
             <div className=" screen absolute bottom-[-5%] w-full flex justify-center items-center z-10 font-bentham mt-10 space-x-4">
               {showSerialKiller && (
                 <div
-                  className="relative w-[79%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
+                  className="relative w-[80%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
                   style={{
                     background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
@@ -474,7 +470,7 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
 
               {showInventor && (
                 <div
-                  className="relative w-[100%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
+                  className="relative w-[80%] sm:w-[33%] md:w-[33%] h-[4rem] sm:h-[4rem] min-w-[5rem] sm:min-w-[6rem] md:min-w-[8rem] bg-yellow-300 text-black py-1 px-4 text-center shadow-lg rounded-lg border-4 border-yellow-600 flex justify-center items-center transform hover:scale-105 transition duration-300 mb-2 sm:mb-0"
                   style={{
                     background: 'linear-gradient(145deg, #f8e9a1, #d8c880)',
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',

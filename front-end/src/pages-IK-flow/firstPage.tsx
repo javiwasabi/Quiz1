@@ -70,7 +70,7 @@ const Vie: React.FC = () => {
           </p>
         </div>
 
-        <div className={`absolute top-[46%] sm:top-[36%] w-full flex justify-center space-x-8 z-10  `}>
+        <div className={`absolute top-[48%] sm:top-[38%] w-full flex justify-center space-x-8 z-10  `}>
           <img
             src="assets/silueta.png"
             alt="Background"
