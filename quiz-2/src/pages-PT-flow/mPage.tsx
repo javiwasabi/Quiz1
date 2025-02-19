@@ -222,7 +222,7 @@ const getScaleFactor = () => {
   const height = window.innerHeight;
 
 
-  if (width >= 1000 && width <= 1024  && height <= 610) {
+  if ((width >= 1000 && width <= 1024  && height <= 610) ||(width >= 1000 && width <= 1930  && height <= 1010)) {
     return 0.8; 
   }
 
@@ -400,7 +400,7 @@ const [showCredits, setShowCredits] = useState(false);
           
  
             <div className="w-full h-[30%] space-y-6 ">
-              <div className={` z-10 absolute top-[5%] sm:top-[6%] left-[50%] nesthub:left-[58%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] nesthub:w- text-center transition-all duration-500 ease-out transform ${animationClass}`}>
+              <div className={` z-10 absolute mypc:top-[0%] top-[5%] sm:top-[6%] left-[50%] nesthub:left-[58%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] nesthub:w- text-center transition-all duration-500 ease-out transform ${animationClass}`}>
                 <motion.div
                   className="relative bg-white shadow-xl p-6 flex items-center justify-center nesthub:w-[65%] "
                   initial={{ opacity: 0 }}
@@ -442,7 +442,7 @@ const [showCredits, setShowCredits] = useState(false);
                 )}
 
               <div
-                className="relative w-full h-full flex justify-center items-center top-[-3%] sm:top-[-20%] font-light font-bentham z-0  nesthub:top-[0%]"
+                className="relative w-full h-full flex justify-center items-center top-[-3%] sm:top-[-5%] font-light font-bentham z-0  nesthub:top-[0%]"
                 style={{
                   transform: `scale(${scale})`,
                 }}>

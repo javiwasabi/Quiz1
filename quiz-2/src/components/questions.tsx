@@ -99,7 +99,7 @@ export const CardPok: React.FC<CardPropsp> = ({
                 alt={context}
                 className="card-image"
                 style={{
-                  transform: isRevealed ? "scale(0.8)" : "scale(0.6)",
+                  transform: isRevealed ? "scale(0.8)" : "scale(0.8)",
                 }}
               />
               <h2 className="poke-name font-light font-bentham text-md sm:text-lg text-center">
@@ -129,7 +129,7 @@ export const CardPok: React.FC<CardPropsp> = ({
               alt={context}
               className="card-image"
               style={{
-                transform: isRevealed ? "scale(0.8)" : "scale(0.6)",
+                transform: isRevealed ? "scale(0.8)" : "scale(0.8)",
               }}
             />
             <h2 className="poke-name font-light font-bentham text-md sm:text-lg text-center">

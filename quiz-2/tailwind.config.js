@@ -15,6 +15,7 @@ module.exports = {
       },
       screens: {
         nesthub: { raw: "(width: 1024px) and (height: 600px)" }, 
+        mypc: { raw: "(width: 1920px) and (height: 1080px)" }, 
       },
     },
   },
