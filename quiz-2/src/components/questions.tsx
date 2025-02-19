@@ -36,7 +36,7 @@ export const CardPok: React.FC<CardPropsp> = ({
       setShowBack(false);
       setTimeout(() => {
         setIsRevealed(false);
-      }, 100); // Delay para ocultar la carta trasera después del flip
+      }, 50); // Delay para ocultar la carta trasera después del flip
     }
   }, [isFlipped]);
 
