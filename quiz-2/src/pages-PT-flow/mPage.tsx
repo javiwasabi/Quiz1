@@ -385,6 +385,9 @@ const [showCredits, setShowCredits] = useState(false);
       >
         {isSpanish ? "Cerrar" : "Close"}
       </button>
+
+
+      
     </div>
   </div>
 )}
