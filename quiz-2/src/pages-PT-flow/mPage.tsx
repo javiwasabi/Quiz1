@@ -253,23 +253,23 @@ useEffect(() => {
 const worksAndAuthors = [
   {
     name: "Dorian",
-    work: "The Picture of Dorian Gray",
+    work: isSpanish ? "El retrato de Dorian Gray" :"The Picture of Dorian Gray",
     author: "Oscar Wilde"
   },
   {
     name: "Baldur",
-    work: "Norse Mythology",
-    author: "Norse Legends"
+    work:  isSpanish ? "Mitología nórdica" : "Norse Mythology",
+    author:   isSpanish ? "Leyendas nórdicas": "Norse Legends"
   },
   {
     name: "Phoebus",
-    work: "Greek Mythology",
-    author: "Various Ancient Greek Sources"
+    work:  isSpanish ? "Mitología griega": "Greek Mythology",
+    author:  isSpanish ? "Antiguas historias griegas": "Various Ancient Greek Sources"
   },
   {
     name: "Erebus",
-    work: "Greek Mythology",
-    author: "Various Ancient Greek tales"
+    work:  isSpanish ? "Mitología griega": "Greek Mythology",
+    author:   isSpanish ? "Antiguas historias griegas": "Various Ancient Greek tales"
   },
   {
     name: "Van Helsing",
@@ -368,14 +368,14 @@ const [showCredits, setShowCredits] = useState(false);
 
                 {showCredits && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4 font-bentham rounded-xl h-full">
-                  <div className="bg-white p-4 md:p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-auto flex flex-col items-center">
-                    <h2 className="text-lg md:text-xl font-bold mb-4 text-center">
+                  <div className="bg-white p-4 md:p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-auto flex flex-col items-center font-bentham">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">
                       {isSpanish ? "Derechos de autor" : "Copyright"}
                     </h2>
-                    <ul className="list-disc pl-5 text-sm md:text-base">
+                    <ul className="list-disc pl-5 text-xl md:text-2xl ">
                       {worksAndAuthors.map((item, index) => (
                         <li key={index} className="mb-2">
-                          <i>{item.work}</i> by {item.author}
+                          <i>{item.work}</i> {isSpanish? "de": "by"} {item.author}
                         </li>
                       ))}
                     </ul>
