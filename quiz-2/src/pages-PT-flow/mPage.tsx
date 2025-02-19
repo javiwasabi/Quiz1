@@ -310,7 +310,7 @@ const [showCredits, setShowCredits] = useState(false);
                 <div className="w-[80%] h-[80%] items-center justify-center transform-none auto nesthub:w-full ">
                   <div className="fixed inset-0 flex items-center justify-center w-[100%] transform-none ">
                     <motion.div
-                      className="relative bg-white border-2 border-black rounded-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto nesthub:max-h-[450px] nesthub:max-w-full"
+                      className="relative bg-white border-2 border-black rounded-xl p-6 flex flex-col items-center justify-center overflow-hidden w-[100%] md:w-[70%] lg:w-[50%] h-auto nesthub:max-h-[450px] nesthub:w-[70%]"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, ease: "easeInOut" }}
@@ -400,9 +400,9 @@ const [showCredits, setShowCredits] = useState(false);
           
  
             <div className="w-full h-[30%] space-y-6 ">
-              <div className={` z-10 absolute top-[5%] sm:top-[6%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center transition-all duration-500 ease-out transform ${animationClass}`}>
+              <div className={` z-10 absolute top-[5%] sm:top-[6%] left-[50%] nesthub:left-[58%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] nesthub:w- text-center transition-all duration-500 ease-out transform ${animationClass}`}>
                 <motion.div
-                  className="relative bg-white shadow-xl p-6 flex items-center justify-center"
+                  className="relative bg-white shadow-xl p-6 flex items-center justify-center nesthub:w-[65%] "
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -419,7 +419,7 @@ const [showCredits, setShowCredits] = useState(false);
               {isFlipped && (
                   <div className={`absolute top-[0%] sm:top-[2%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
                     <motion.div
-                    className="relative bg-white shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:max-w-[250px]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
+                    className="relative bg-white shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:w-[65%]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   
@@ -442,7 +442,7 @@ const [showCredits, setShowCredits] = useState(false);
                 )}
 
               <div
-                className="relative w-full h-full flex justify-center items-center top-[-3%] sm:top-[-20%] font-light font-bentham z-0  nesthub:top-[20%]"
+                className="relative w-full h-full flex justify-center items-center top-[-3%] sm:top-[-20%] font-light font-bentham z-0  nesthub:top-[0%]"
                 style={{
                   transform: `scale(${scale})`,
                 }}>
