@@ -367,30 +367,30 @@ const [showCredits, setShowCredits] = useState(false);
                 </div>
 
                 {showCredits && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4 font-bentham rounded-xl h-full">
-    <div className="bg-white p-4 md:p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-auto flex flex-col items-center">
-      <h2 className="text-lg md:text-xl font-bold mb-4 text-center">
-        {isSpanish ? "Derechos de autor" : "Copyright"}
-      </h2>
-      <ul className="list-disc pl-5 text-sm md:text-base">
-        {worksAndAuthors.map((item, index) => (
-          <li key={index} className="mb-2">
-            <i>{item.work}</i> by {item.author}
-          </li>
-        ))}
-      </ul>
-      <button
-        onClick={() => setShowCredits(false)}
-        className="bg-gray-200 flex items-center justify-center w-auto min-w-[120px] px-6 py-3 mt-6 text-lg sm:text-xl font-semibold uppercase rounded-full transition-all duration-300 hover:bg-gray-300"
-      >
-        {isSpanish ? "Cerrar" : "Close"}
-      </button>
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4 font-bentham rounded-xl h-full">
+                  <div className="bg-white p-4 md:p-6 rounded-lg w-[90%] max-w-[400px] max-h-[80vh] overflow-auto flex flex-col items-center">
+                    <h2 className="text-lg md:text-xl font-bold mb-4 text-center">
+                      {isSpanish ? "Derechos de autor" : "Copyright"}
+                    </h2>
+                    <ul className="list-disc pl-5 text-sm md:text-base">
+                      {worksAndAuthors.map((item, index) => (
+                        <li key={index} className="mb-2">
+                          <i>{item.work}</i> by {item.author}
+                        </li>
+                      ))}
+                    </ul>
+                    <button
+                      onClick={() => setShowCredits(false)}
+                      className="bg-gray-200 flex items-center justify-center w-auto min-w-[120px] px-6 py-3 mt-6 text-lg sm:text-xl font-semibold uppercase rounded-full transition-all duration-300 hover:bg-gray-300"
+                    >
+                      {isSpanish ? "Cerrar" : "Close"}
+                    </button>
 
 
-      
-    </div>
-  </div>
-)}
+                    
+                  </div>
+                </div>
+              )}
 
 
            </div>) : (
