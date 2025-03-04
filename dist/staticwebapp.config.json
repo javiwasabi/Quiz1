@@ -1,12 +1,14 @@
 {
     "routes": [
       {
-        "route": "/quiz1/{*all}",
-        "serve": "/quiz1/index.html"
+        "route": "/quiz1/*",
+        "serve": "/quiz1/index.html",
+        "statusCode": 200
       },
       {
-        "route": "/quiz2/{*all}",
-        "serve": "/quiz2/index.html"
+        "route": "/quiz2/*",
+        "serve": "/quiz2/index.html",
+        "statusCode": 200
       }
     ]
   }
