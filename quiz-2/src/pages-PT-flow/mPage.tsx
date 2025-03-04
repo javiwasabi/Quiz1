@@ -295,7 +295,7 @@ const [showCredits, setShowCredits] = useState(false);
       <div className="relative w-[90%] md:w-[70%] lg:w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
     
       <img
-          src="/assets/fondoo.webp"
+          src="%PUBLIC_URL%/assets/fondoo.webp"
           alt="Background"
            className="absolute inset-0 h-full w-full object-cover"
         />
