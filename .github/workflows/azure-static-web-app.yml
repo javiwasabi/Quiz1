@@ -20,7 +20,7 @@ jobs:
       # ──────────────────────────────────────────────
       # 1) Instalar dependencias y compilar quiz-1 (front-end)
       # ──────────────────────────────────────────────
-      - name: Build Quiz-1
+      - name: Build visionariotechoasesino
         run: |
           cd front-end
           npm install --legacy-peer-deps
@@ -28,11 +28,11 @@ jobs:
           npm run build --legacy-peer-deps
           cd ..
           # Borramos la carpeta destino si existe
-          rm -rf dist/quiz1
+          rm -rf dist/visionariotechoasesino
           # Creamos la carpeta destino
-          mkdir -p dist/quiz1
+          mkdir -p dist/visionariotechoasesino
           # Movemos los archivos de build
-          mv front-end/build/* dist/quiz1/
+          mv front-end/build/* dist/visionariotechoasesino/
 
       # ──────────────────────────────────────────────
       # 2) Instalar dependencias y compilar quiz-2
