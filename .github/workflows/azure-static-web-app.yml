@@ -13,43 +13,51 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     name: Build and Deploy
+
     steps:
       - uses: actions/checkout@v3
 
-      # 🟢 Instalar dependencias y construir la primera app (Front-end)
-      - name: Install Dependencies for Front-end
+      # ──────────────────────────────────────────────
+      # 1) Instalar dependencias y compilar quiz-1 (front-end)
+      # ──────────────────────────────────────────────
+      - name: Build Quiz-1
         run: |
           cd front-end
           npm install --legacy-peer-deps
-
-      - name: Build Front-end
-        run: |
-          cd front-end
           export CI=false
           npm run build --legacy-peer-deps
-          mv build ../dist/quiz1  # Mueve el build a la carpeta correcta
+          cd ..
+          # Borramos la carpeta destino si existe
+          rm -rf dist/quiz1
+          # Creamos la carpeta destino
+          mkdir -p dist/quiz1
+          # Movemos los archivos de build
+          mv front-end/build/* dist/quiz1/
 
-      # 🟢 Instalar dependencias y construir la segunda app (Quiz-2)
-      - name: Install Dependencies for Quiz 2
+      # ──────────────────────────────────────────────
+      # 2) Instalar dependencias y compilar quiz-2
+      # ──────────────────────────────────────────────
+      - name: Build Quiz-2
         run: |
           cd quiz-2
           npm install --legacy-peer-deps
-
-      - name: Build Quiz 2
-        run: |
-          cd quiz-2
           export CI=false
           npm run build --legacy-peer-deps
-          mv build ../dist/quiz2  # Mueve el build a la carpeta correcta
+          cd ..
+          rm -rf dist/quiz2
+          mkdir -p dist/quiz2
+          mv quiz-2/build/* dist/quiz2/
 
-      # 🚀 Deploy a Azure Static Web Apps
+      # ──────────────────────────────────────────────
+      # 3) Deploy de ambas apps desde "dist"
+      # ──────────────────────────────────────────────
       - name: Deploy Both Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "dist"  # ✅ Ahora apunta correctamente a los archivos estáticos
-          api_location: ""  
-          output_location: ""  
+          app_location: "dist"   # Aquí se encuentran las dos subcarpetas: quiz1 y quiz2
+          api_location: ""
+          output_location: ""
           skip_app_build: true
