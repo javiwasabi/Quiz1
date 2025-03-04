@@ -13,12 +13,17 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
         .button {
             background-color: white;
             color: black;
             font-size: 1.5rem;
-            font-weight: bold;
             text-transform: uppercase;
             padding: 10px 20px;
             border-radius: 999px;
@@ -31,12 +36,14 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const isSpanish = navigator.language.startsWith("es");
+            document.getElementById("title").innerText = isSpanish ? "Escoge un Mini Quiz Game" : "Choose a Mini Quiz Game";
             document.getElementById("btn1").innerText = isSpanish ? "Visionario Techo Asesino" : "Visionary Killer Roof";
             document.getElementById("btn2").innerText = isSpanish ? "Tecnología o Fantasía" : "Technology or Fantasy";
         });
     </script>
 </head>
 <body>
+    <h1 id="title"></h1>
     <a href="/visionariotechoasesino"><button id="btn1" class="button"></button></a>
     <a href="/tecnologiaofantasia"><button id="btn2" class="button"></button></a>
 </body>
