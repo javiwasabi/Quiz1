@@ -1,46 +1,22 @@
-name: Azure Static Web Apps CI/CD
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
-
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
-        with:
-          submodules: true
-          lfs: false
 
-      # ✅ Instalar dependencias manualmente con --legacy-peer-deps
-      - name: Install Dependencies
-        run: |
-          cd front-end
-          npm install --legacy-peer-deps
+      # Agregar permisos de ejecución al script
+      - name: Set execute permissions for custom build script
+        run: chmod +x front-end/oryx-build.sh
 
-      # ✅ Construir la aplicación manualmente
-      - name: Build Application
-        run: |
-          cd front-end
-          npm run build
-
-      # ✅ Subir la aplicación a Azure sin que haga npm install automáticamente
-      - name: Build And Deploy
+      - name: Build and Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ASHY_PEBBLE_0B4B69D1E }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "./front-end" # Directorio donde está tu código fuente
-          api_location: "" # No usas API, así que déjalo vacío
-          output_location: "front-end/build" # Directorio de salida tras `npm run build`
-          skip_app_build: true # 🚨 Esto evita que Azure vuelva a correr `npm install`
+          app_location: "front-end"
+          api_location: ""
+          output_location: "front-end/build"
+          skip_app_build: true # ⬅️ Evita que Oryx haga `npm install` automáticamente
+          custom_build_command: "./oryx-build.sh" # ⬅️ Usa el script personalizado
