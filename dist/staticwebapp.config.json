@@ -1,8 +1,8 @@
 {
     "routes": [
       {
-        "route": "/quiz1/*",
-        "serve": "/quiz1/index.html",
+        "route": "/visionariotechoasesino/*",
+        "serve": "/visionariotechoasesino/index.html",
         "statusCode": 200
       },
       {
