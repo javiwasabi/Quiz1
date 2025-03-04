@@ -21,7 +21,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Suspense fallback={<div>Loading...</div>}>
-      <BrowserRouter basename="/quiz2">
+      <BrowserRouter basename="/tecnologiaofantasia">
         <Routes>
           <Route path="/" element={<First />} /> 
           <Route path="/guess" element={<Game />} /> 
