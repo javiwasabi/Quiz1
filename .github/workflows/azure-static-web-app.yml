@@ -27,7 +27,7 @@ jobs:
           cd front-end
           export CI=false
           npm run build --legacy-peer-deps
-          mv build ../build/front-end  # Mueve el build a una carpeta común
+          mv build ../dist/quiz1  # Mueve el build a la carpeta correcta
 
       # 🟢 Instalar dependencias y construir la segunda app (Quiz-2)
       - name: Install Dependencies for Quiz 2
@@ -40,7 +40,7 @@ jobs:
           cd quiz-2
           export CI=false
           npm run build --legacy-peer-deps
-          mv build ../build/quiz-2  # Mueve el build a una carpeta común
+          mv build ../dist/quiz2  # Mueve el build a la carpeta correcta
 
       # 🚀 Deploy a Azure Static Web Apps
       - name: Deploy Both Apps
@@ -49,7 +49,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "build"  # ✅ Ahora apunta correctamente a los archivos estáticos
+          app_location: "dist"  # ✅ Ahora apunta correctamente a los archivos estáticos
           api_location: ""  
           output_location: ""  
-          skip_app_build: true  
+          skip_app_build: true
