@@ -37,16 +37,16 @@ jobs:
       # ──────────────────────────────────────────────
       # 2) Instalar dependencias y compilar quiz-2
       # ──────────────────────────────────────────────
-      - name: Build Quiz-2
+      - name: Build tecnologiaofantasia
         run: |
-          cd quiz-2
+          cd tecnologiaofantasia
           npm install --legacy-peer-deps
           export CI=false
           npm run build --legacy-peer-deps
           cd ..
-          rm -rf dist/quiz2
-          mkdir -p dist/quiz2
-          mv quiz-2/build/* dist/quiz2/
+          rm -rf dist/tecnologiaofantasia
+          mkdir -p dist/tecnologiaofantasia
+          mv quiz-2/build/* dist/tecnologiaofantasia/
 
       # ──────────────────────────────────────────────
       # 3) Deploy de ambas apps desde "dist"

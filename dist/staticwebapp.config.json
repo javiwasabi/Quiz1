@@ -6,8 +6,8 @@
         "statusCode": 200
       },
       {
-        "route": "/quiz2/*",
-        "serve": "/quiz2/index.html",
+        "route": "/tecnologiaofantasia/*",
+        "serve": "/tecnologiaofantasia/index.html",
         "statusCode": 200
       }
     ]
