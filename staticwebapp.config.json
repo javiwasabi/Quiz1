@@ -8,6 +8,10 @@
         "route": "/quiz2/{*all}",
         "serve": "/quiz2/index.html"
       }
-    ]
+    ],
+    "navigationFallback": {
+      "rewrite": "/quiz1/index.html",
+      "exclude": ["/quiz2/*"]
+    }
   }
   
