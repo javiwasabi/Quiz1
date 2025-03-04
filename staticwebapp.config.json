@@ -1,0 +1,7 @@
+{
+    "routes": [
+      { "route": "/quiz1/*", "serve": "/front-end/build/index.html" },
+      { "route": "/quiz2/*", "serve": "/quiz-2/build/index.html" }
+    ]
+  }
+  
