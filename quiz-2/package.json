@@ -1,8 +1,8 @@
 {
-  "name": "quiz-2",
+  "name": "tecnologiaofantasia",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/quiz2",
+  "homepage": "/tecnologiaofantasia",
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
     "@reduxjs/toolkit": "^1.9.5",
