@@ -1,7 +1,13 @@
 {
     "routes": [
-      { "route": "/quiz1/*", "serve": "/front-end/build/index.html" },
-      { "route": "/quiz2/*", "serve": "/quiz-2/build/index.html" }
+      {
+        "route": "/quiz1/{*all}",
+        "serve": "/quiz1/index.html"
+      },
+      {
+        "route": "/quiz2/{*all}",
+        "serve": "/quiz2/index.html"
+      }
     ]
   }
   
