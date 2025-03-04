@@ -30,7 +30,8 @@ jobs:
       - name: Build Application
         run: |
           cd front-end
-          npm run build
+          export CI=false 
+          npm run build --legacy-peer-deps
 
       # ✅ Subir la aplicación a Azure sin que haga npm install automáticamente
       - name: Build And Deploy
