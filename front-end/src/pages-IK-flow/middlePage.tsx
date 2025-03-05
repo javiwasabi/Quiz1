@@ -19,7 +19,7 @@ const Middle: React.FC = () => {
   const [answered, setAnswered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showResults, setShowResults] = useState(false);
-  const shareUrl = "https://zealous-ocean-07a53d20f.6.azurestaticapps.net";
+  const shareUrl = "https://zealous-ocean-07a53d20f.6.azurestaticapps.net/visionariotechoasesino";
   const userLanguage = navigator.language.startsWith("es") ? "es" : "en";
   
   const [showSerialKiller, setShowSerialKiller] = useState(true);

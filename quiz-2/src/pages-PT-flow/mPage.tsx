@@ -128,7 +128,7 @@ const Game: React.FC = () => {
   ];
   
 
-  const shareUrl = "https://tecnologiaofantasia.n12.cl";
+  const shareUrl = "https://zealous-ocean-07a53d20f.6.azurestaticapps.net/tecnologiaofantasia";
   const shareText =  isSpanish ?
    `Obtuve un  ${((score / questions.length) * 100).toFixed(0)}% de aciertos en el juego Personajes fantásticos vs Tecnologías digitales. Juegalo tú también en`
   : `I scored ${((score / questions.length) * 100).toFixed(0)}% correct answers in the game Fantasy Characters vs Digital Technology. Play it too at`;
@@ -339,7 +339,7 @@ const [showCredits, setShowCredits] = useState(false);
   </p>
 )}
 
-                      <a href="https://zealous-ocean-07a53d20f.6.azurestaticapps.net" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-xl sm:text-2xl lg:text-2xl nesthub:text-lg ">
+                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-xl sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
                      <button onClick={() => setShowCredits(true)} className="mt-4 underline font-bentham text-xl md:text-2xl">
