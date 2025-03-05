@@ -23,14 +23,14 @@ const First: React.FC = () => {
   return (
     <div className="relative bg-blue min-h-screen flex items-center justify-center overflow-hidden">
       <img
-        src="fondo.png"
+        src="/tecnologiaofantasia/fondo.png"
         alt="Background"
         className="absolute inset-0 h-full w-full object-cover"
       />
 
       <div className="relative w-[90%] md:w-[70%] lg:w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
         <img
-         src="%PUBLIC_URL%/assets/fondoo.webp"
+         src="/tecnologiaofantasia/assets/fondoo.webp"
           alt="Background"
            className="absolute inset-0 h-full w-full object-cover"
         />

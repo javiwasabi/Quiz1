@@ -295,7 +295,7 @@ const [showCredits, setShowCredits] = useState(false);
       <div className="relative w-[90%] md:w-[70%] lg:w-[70%] h-[80vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center">
     
       <img
-          src="%PUBLIC_URL%/assets/fondoo.webp"
+          src="/tecnologiaofantasia/assets/fondoo.webp"
           alt="Background"
            className="absolute inset-0 h-full w-full object-cover"
         />
@@ -339,7 +339,7 @@ const [showCredits, setShowCredits] = useState(false);
   </p>
 )}
 
-                      <a href="https://n12.cl" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-xl sm:text-2xl lg:text-2xl nesthub:text-lg ">
+                      <a href="https://zealous-ocean-07a53d20f.6.azurestaticapps.net" id="recruiters-link" className="bg-gray-200 text-black py-2 px-4 rounded hover:bg-gray-300 font-bentham text-black text-xl sm:text-2xl lg:text-2xl nesthub:text-lg ">
                          N12 - Recruiters in Tech
                      </a>
                      <button onClick={() => setShowCredits(true)} className="mt-4 underline font-bentham text-xl md:text-2xl">

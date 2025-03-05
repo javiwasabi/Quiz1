@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placeholder</title>
+    <!-- Cargando la fuente Bentham desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bentham&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: black;
+            background-image: url('fondo.png'); /* Se establece la imagen de fondo */
+            background-size: cover; /* Para que la imagen cubra toda la pantalla */
+            background-position: center; /* Centra la imagen */
             color: white;
+            font-family: 'Bentham', serif; /* Aplica la fuente Bentham a todo el cuerpo */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,7 +42,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             const isSpanish = navigator.language.startsWith("es");
             document.getElementById("title").innerText = isSpanish ? "Escoge un Mini Quiz Game" : "Choose a Mini Quiz Game";
-            document.getElementById("btn1").innerText = isSpanish ? "Visionario Techo Asesino" : "Visionary Killer Roof";
+            document.getElementById("btn1").innerText = isSpanish ? "Visionario o Asesino" : "Visionary or Killer";
             document.getElementById("btn2").innerText = isSpanish ? "Tecnología o Fantasía" : "Technology or Fantasy";
         });
     </script>

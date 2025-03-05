@@ -57,7 +57,7 @@ const Vie: React.FC = () => {
       
     <div className={`relative w-[92%] sm:w-[80%] h-[90vh] overflow-hidden rounded-lg shadow-xl flex flex-col items-center justify-center z-10`}>
   <img
-    src="assets/background-IK.jpg"
+    src="visionariotechoasesino/assets/background-IK.jpg"
     alt="Background"
     className="absolute inset-0 h-[97%] w-full object-cover z-0"
   />
@@ -72,7 +72,7 @@ const Vie: React.FC = () => {
 
         <div className={`absolute top-[48%] sm:top-[38%] w-full flex justify-center space-x-8 z-10  nesthub:top-[48%]  `}>
           <img
-            src="assets/silueta.png"
+            src="visionariotechoasesino/assets/silueta.png"
             alt="Background"
             className="absolute inset-1 sm:left-1/2 transform sm:-translate-x-[50%]"
           />
