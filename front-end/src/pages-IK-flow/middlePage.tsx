@@ -52,7 +52,7 @@ const Middle: React.FC = () => {
       "Key contributor to Multics, influencing modern OS design.": "Fernando Corbató - Key contributor to Multics, influencing modern OS design.",
       "Known as the Unabomber, responsible for multiple attacks.": "Ted Kaczynski - Known as the Unabomber, responsible for multiple attacks.",
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Notorious for the Milwaukee Cannibal murders.",
-      "Infamous serial killer, known for his brutal crimes.": "Ted Bundy - Infamous serial killer, known for his brutal crimes.",
+      "Infamous serial killer, known for his brutal crimes.": "Edmund Kemper - Infamous serial killer, known for his brutal crimes against his own mother.",
       "Known for a string of murders and manipulative behavior.": "Aileen Wuornos - Known for a string of murders and manipulative behavior.",
       "Infamous serial killer, responsible for multiple killings.": "John Wayne Gacy - Infamous serial killer, responsible for multiple killings as a clown."
     },
@@ -64,7 +64,7 @@ const Middle: React.FC = () => {
       "Key contributor to Multics, influencing modern OS design.": "Fernando Corbató - Contribuyente clave en Multics, influyendo en el diseño de sistemas operativos modernos.",
       "Known as the Unabomber, responsible for multiple attacks.": "Ted Kaczynski - Conocido como el Unabomber, responsable de múltiples atentados.",
       "Notorious for the Milwaukee Cannibal murders.": "Jeffrey Dahmer - Conocido por los asesinatos del Caníbal de Milwaukee.",
-      "Infamous serial killer, known for his brutal crimes.": "Ted Bundy - Asesino en serie infame, conocido por sus crímenes brutales.",
+      "Infamous serial killer, known for his brutal crimes.": "Edmund Kemper - Asesino en serie infame, conocido por sus crímenes brutales contra su propia madre.",
       "Known for a string of murders and manipulative behavior.": "Aileen Wuornos - Conocida por una serie de asesinatos y comportamiento manipulador.",
       "Infamous serial killer, responsible for multiple killings.": "John Wayne Gacy - Asesino en serie infame, responsable de múltiples asesinatos vestido como payaso."
     }
