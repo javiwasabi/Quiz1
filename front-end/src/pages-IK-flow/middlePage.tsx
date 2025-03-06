@@ -252,7 +252,7 @@ const shareText =   isSpanish ? `Obtuve un  ${((score / questions.length) * 100)
               <div className="border-2 border-black rounded-xl bg-white p-6 shadow-lg text-center max-w-lg w-[100%] nesthub:w-full mt-5">
                 <div className="text-center">
                   <h2 className="poke-name text-2xl md:text-4xl font-bold mb-4 font-bentham">
-                    {isSpanish ? "¡Prepárate para el juego y recuerda tener en cuenta lo siguiente 😊!" : "Get ready for the game and keep in mind this 😊!"}
+                    {isSpanish ? "¡Prepárate para el juego y recuerda tener en cuenta lo siguiente 😊!" : "Get ready for the game and keep in mind 😊!"}
                   </h2>
                   <p className="poke-name text-xl md:text-2xl mt-2 font-bentham">
                     {isSpanish
