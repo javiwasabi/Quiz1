@@ -400,7 +400,7 @@ const [showCredits, setShowCredits] = useState(false);
           
  
             <div className="w-full h-[30%] space-y-6 ">
-              <div className={` z-10 absolute mypc:top-[0%] top-[5%] sm:top-[6%] left-[50%] nesthub:left-[58%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] nesthub:w- text-center transition-all duration-500 ease-out transform ${animationClass}`}>
+              <div className={` z-10 absolute mypc:top-[0%] top-[5%] sm:top-[6%] left-[50%] nesthub:left-[58%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[350px] nesthub:w- text-center transition-all duration-500 ease-out transform ${animationClass}`}>
                 <motion.div
                   className="relative bg-white shadow-xl p-6 flex items-center justify-center nesthub:w-[65%] "
                   initial={{ opacity: 0 }}
@@ -417,9 +417,9 @@ const [showCredits, setShowCredits] = useState(false);
               </div>
 
               {isFlipped && (
-                  <div className={`absolute top-[0%] sm:top-[2%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
+                  <div className={`absolute top-[0%] sm:top-[2%] left-[50%] transform -translate-x-1/2 w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[350px]  text-center z-10 nesthub:top-[0%] nesthub:w-[100%]  `}>
                     <motion.div
-                    className="relative bg-white shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[300px] nesthub:w-[65%]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
+                    className="relative bg-white shadow-xl p-6 flex items-center justify-center w-full max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[350px] nesthub:w-[65%]   nesthub:left-[50%]  nesthub:transform nesthub:-translate-x-1/2 "
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   

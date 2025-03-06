@@ -92,7 +92,7 @@ export const CardPok: React.FC<CardPropsp> = ({
             <img src="/tecnologiaofantasia/assets/who.webp" alt="Background" className="absolute inset-0 z-0 h-full w-full" />
             <div
               id="card"
-              className={`card flex flex-col items-center justify-center absolute inset-0 max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10 ${alwaysfalse ? "invisible" : ""}`}
+              className={`card flex flex-col items-center justify-center absolute inset-0 max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[350px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10 ${alwaysfalse ? "invisible" : ""}`}
             >
               <img
                 src={imageUrl}
@@ -102,7 +102,7 @@ export const CardPok: React.FC<CardPropsp> = ({
                   transform: isRevealed ? "scale(0.8)" : "scale(0.8)",
                 }}
               />
-              <h2 className="poke-name font-light font-bentham text-md sm:text-lg text-center">
+              <h2 className="poke-name font-light font-bentham text-xl sm:text-xl text-center">
                 {context}
               </h2>
             </div>
@@ -122,7 +122,7 @@ export const CardPok: React.FC<CardPropsp> = ({
  
               visibility: showBack ? "visible" : "hidden", // Solo se muestra después del delay
             }}
-            className="card flex flex-col items-center justify-center absolute inset-0 max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[250px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10"
+            className="card flex flex-col items-center justify-center absolute inset-0 max-w-[210px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] xl:max-w-[350px] h-[200px] sm:h-[180px] md:h-[160px] lg:h-[140px] xl:h-[120px] z-10"
           >
             <img
               src={imageUrl}
@@ -132,7 +132,7 @@ export const CardPok: React.FC<CardPropsp> = ({
                 transform: isRevealed ? "scale(0.8)" : "scale(0.8)",
               }}
             />
-            <h2 className="poke-name font-light font-bentham text-md sm:text-lg text-center">
+            <h2 className="poke-name font-light font-bentham text-xl sm:text-2xl text-center">
               {context}
             </h2>
           </div>

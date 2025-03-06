@@ -5,11 +5,12 @@
 }
 
 .container {
-  width: 400px;
+  width: 500px;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 40%;
   left: 50%;
+  height:100%;
 }
 
 #card {
@@ -23,7 +24,7 @@
   background-position: center;
   transition: transform 0.3s ease-in-out;
   margin-bottom: 0px;
-  height: 409px;
+  height: 500px;
 
 }
 
@@ -68,14 +69,14 @@
 /* Responsividad */
 @media (max-width: 768px) {
   .container {
-    width: 95%;
+    width: 100%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
   #card {
     padding: 18px;
-    height: 320px;
+    height: 100%;
   }
 
   #card img {
@@ -88,7 +89,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .container {
     width: 100%;
     top: 50%;
@@ -98,7 +99,7 @@
 
   #card {
     padding: 15px;
-    height: 320px;
+    height: 100%;
   }
 
   #card img {
