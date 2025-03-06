@@ -77,7 +77,7 @@ const questions = [
       context: translations[userLanguage]["Creator of C programming language and Unix OS."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },{
-      imageUrl: "assets/Edmund_Kemper_.jpg",
+      imageUrl: "assets/Edmund_Kemper.png",
       correctAnswer: "Killer",
       context: translations[userLanguage]["Infamous serial killer, known for his brutal crimes."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
@@ -89,7 +89,7 @@ const questions = [
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
     },
     {
-      imageUrl: "assets/jhon.jpg",
+      imageUrl: "assets/john.png",
       correctAnswer: "Killer",
       context: translations[userLanguage]["Infamous serial killer, responsible for multiple killings."],
       imageClasses: "grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300",
