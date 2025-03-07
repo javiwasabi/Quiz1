@@ -63,14 +63,14 @@ const Game: React.FC = () => {
       name: "Baldur"
     },
     {
-      imageUrl: "assets/prometheus.png",
+      imageUrl: "assets/istio.png",
       correctAnswer: "Technology",
       context: {
-        en: "An open-source monitoring and alerting toolkit designed for reliability.",
-        es: "Una herramienta de monitoreo y alertas de código abierto diseñada para la confiabilidad.",
+        "en": "An open-source service mesh that provides observability, security, and traffic management for microservices.",
+        "es": "Un service mesh de código abierto que proporciona observabilidad, seguridad y gestión del tráfico para microservicios."
       },
-      name: "Prometheus"
-    },
+      name: "Istio"
+    },    
     {
       imageUrl: "assets/phoebus.jpg",
       correctAnswer: "Pokemon",
